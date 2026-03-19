@@ -1,6 +1,6 @@
-import { IRespuestaDto } from "./respuesta.dto";
+import { IRespuestaDto } from './respuesta.dto';
 
 export interface IPreguntaDto {
 	enunciado: string;
-	respuestas: IRespuestaDto[]
+	respuestas: IRespuestaDto[];
 }

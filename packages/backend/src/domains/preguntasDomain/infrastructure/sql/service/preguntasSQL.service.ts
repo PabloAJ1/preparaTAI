@@ -1,5 +1,5 @@
-import { Pregunta } from "../../../domain/entities/Pregunta";
-import { IPreguntaRepositoryPlano } from "../../../domain/repositories/preguntasRepositoryPlano.interface";
+import { Pregunta } from '../../../domain/entities/Pregunta';
+import { IPreguntaRepositoryPlano } from '../../../domain/repositories/preguntasRepositoryPlano.interface';
 
 /**
  * Funcion para legacy que pasada una pregunta la convierta en sentencia SQL con la estructura actual de la bd
@@ -22,7 +22,7 @@ import { IPreguntaRepositoryPlano } from "../../../domain/repositories/preguntas
  *   `tema` tinyint(4) DEFAULT NULL,
  *   PRIMARY KEY (`id`)
  * ) ENGINE=MyISAM AUTO_INCREMENT=1628 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
- * 
+ *
  * Como la idea es poder crear las sql con desconocimiento del ID vamos a partir de un id alto
  */
 
@@ -32,21 +32,29 @@ export class PreguntasSQLService implements IPreguntaRepositoryPlano {
 	crear(preguntas: Pregunta[]): string[] {
 		const result = [];
 
-		for(let pregunta of preguntas){
+		for (let pregunta of preguntas) {
 			const idPregunta = INDICE++;
 			const correcta = pregunta.respuestaCorrecta?.enunciado || '';
 
-			result.push(`INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('${idPregunta}','${this.#escapeSQL(pregunta.enunciado)}','${this.#escapeSQL(correcta)}','2026')`);
-			pregunta.respuestasIncorrecta.forEach(r => {
-				result.push(`INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('${idPregunta}', '${this.#escapeSQL(r.enunciado)}')`)
-			})			
+			result.push(
+				`INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('${idPregunta}','${this.#escapeSQL(
+					pregunta.enunciado
+				)}','${this.#escapeSQL(correcta)}','2026')`
+			);
+			pregunta.respuestasIncorrecta.forEach((r) => {
+				result.push(
+					`INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('${idPregunta}', '${this.#escapeSQL(
+						r.enunciado
+					)}')`
+				);
+			});
 		}
 
 		return result;
 	}
 
 	#escapeSQL(str: string) {
-		if(str === undefined) return "";
-		return str.toString().replaceAll('\'', "''");
+		if (str === undefined) return '';
+		return str.toString().replaceAll("'", "''");
 	}
 }

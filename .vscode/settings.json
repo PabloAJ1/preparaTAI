@@ -1,0 +1,26 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "sonarlint.connectedMode.project": {
+        "connectionId": "https-sonar-pacisa-es-",
+        "projectKey": "PACISA-Server-ESM"
+    },
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/coverage": true,
+        "**/.scannerwork": true,
+        "**/.sonarlint": true,
+        "**/.nx": true,
+        "**/.git": true,
+        "**/.vscode": false,
+        "**/.vs": true,
+        "**/_pdf": true,
+        "**/_xlsx": true,
+        "**/dist": true,
+        "**/ficherosGenerados": true,
+        "**/ssl": true,
+        "**/subidas": true,
+        "**/.jshintrc": true,
+        "**/.mocharc.e2e.json": true,
+        "**/.mocharc.json": true,
+    }
+}

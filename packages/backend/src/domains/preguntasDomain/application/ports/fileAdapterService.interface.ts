@@ -1,3 +1,3 @@
 export interface IFileSaveService {
-  	save(strings: string[]): Promise<void>;
+	save(strings: string[]): Promise<void>;
 }

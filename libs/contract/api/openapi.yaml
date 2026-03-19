@@ -3,10 +3,247 @@ info:
   title: PreparaTAI API
   version: 1.0.0
 
+servers:
+    - url: /api
+      variables:
+        port:
+            enum:
+                - '3000'
+            default: '80'
+
 paths:
-  /preguntas:
+  /pregunta:
     get:
+      tags:
+        - preguntas
       summary: Obtener preguntas
+      operationId: getAllPreguntas
       responses:
-        "200":
+        '200':
           description: Lista de preguntas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pregunta'
+
+    post:
+      tags:
+        - preguntas
+      summary: Guardar una pregunta
+      operationId: createPregunta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pregunta'
+      responses:
+        '200':
+          description: Pregunta guardada con exito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pregunta'
+
+  /pregunta/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la pregunta
+        schema:
+          type: string
+    get:
+      tags:
+        - preguntas
+      summary: Obtener una pregunta por id
+      operationId: getOnePreguntasById
+      responses:
+        '200':
+          description: Pregunta por ID
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Pregunta'
+
+  /pregunta/getNumeroDePreguntas:
+    get:
+      tags:
+        - preguntas
+      summary: Obtener el numero de preguntas actuales en la base de datos
+      operationId: getNumeroDePreguntas
+      responses:
+        '200':
+          description: Numero de preguntas en la abse de datos
+          content:
+            application/json:
+              schema:
+                  type: integer
+
+    put:
+      tags:
+        - preguntas
+      summary: Actualizar una pregunta por id
+      operationId: updatePreguntaById
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pregunta'
+      responses:
+        '200':
+          description: Pregunta actualizada por ID
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Pregunta'
+
+    delete:
+      tags:
+        - preguntas
+      summary: Eliminar una pregunta por id
+      operationId: deletePreguntaById
+      responses:
+        '204':
+          description: Pregunta eliminada por ID
+
+  /categoria:
+    get:
+      summary: Obtener categorias
+      tags:
+        - categorias
+      operationId: getAllCategorias
+      responses:
+        '200':
+          description: Lista de categorias
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+
+  /gruposDePreguntasRelacionadas:
+    get:
+      summary: Obtener Grupos de Preguntas GrupoPreguntasRelacionadas
+      operationId: getAllGruposDePreguntasRelacionadas
+      tags:
+        - gruposDePreguntasRelacionadas
+        - preguntas
+      responses:
+        '200':
+          description: Listado de preguntas GrupoPreguntasRelacionadas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GrupoPreguntasRelacionadas'
+
+  /examenes:
+    get:
+      summary: Obtener un listado de los Examenes
+      operationId: getAllExamenes
+      tags:
+        - examenes
+        - preguntas
+      responses:
+        '200':
+          description: Listado de Examenes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Examen'
+
+components:
+  schemas:
+    Categoria:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+      required:
+        - id
+        - nombre
+
+    Respuesta:
+      type: object
+      properties:
+        id:
+          type: string
+        enunciado:
+          type: string
+        correcta:
+          type: boolean
+      required:
+        - enunciado
+        - correcta
+        - id
+
+    Pregunta:
+      type: object
+      properties:
+        id:
+          type: string
+        enunciado:
+          type: string
+        respuestas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Respuesta'
+        categorias:
+          type: array
+          items:
+            $ref: '#/components/schemas/Categoria'
+      required:
+        - id
+        - enunciado
+        - respuestas
+    
+    GrupoPreguntasRelacionadas:
+      type: object
+      properties:
+        id:
+          type: string
+        textoBase:
+          type: string
+        preguntas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pregunta'
+      required:
+        - id
+        - textoBase
+        - preguntas
+
+    Examen:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        anio:
+          type: integer
+        grupo:
+          type: string
+        subgrupo: 
+          type: string
+        preguntas:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Pregunta'
+              - $ref: '#/components/schemas/GrupoPreguntasRelacionadas'
+      required:
+        - id
+        - nombre

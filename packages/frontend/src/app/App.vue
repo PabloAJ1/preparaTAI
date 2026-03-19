@@ -1,7 +1,9 @@
-<script setup lang="ts">
-import NxWelcome from './NxWelcome.vue';
-</script>
-
 <template>
-	<NxWelcome title="@ts-demo/frontend" />
+	<router-view />
 </template>
+
+<script lang="ts">
+export default {
+	name: 'App',
+};
+</script>

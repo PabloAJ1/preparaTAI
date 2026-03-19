@@ -1,0 +1,6 @@
+/* tslint:disable */
+/* eslint-disable */
+export * from './CategoriasApi';
+export * from './ExamenesApi';
+export * from './GruposDePreguntasRelacionadasApi';
+export * from './PreguntasApi';

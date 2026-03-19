@@ -1,6 +1,7 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 export default defineConfig(() => ({
 	root: __dirname,
@@ -38,4 +39,10 @@ export default defineConfig(() => ({
 			provider: 'v8' as const,
 		},
 	},
+	resolve: {
+		alias: {
+		// Asegúrate de que la ruta apunte correctamente al index.ts de tu lib
+			'@preparatai/api-client': path.resolve(__dirname, '../../libs/api-client/src/index.ts')
+		}
+	}
 }));

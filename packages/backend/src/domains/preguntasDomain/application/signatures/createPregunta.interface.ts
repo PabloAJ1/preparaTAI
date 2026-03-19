@@ -1,5 +1,5 @@
-import { IPreguntaDto } from "../dtos/pregunta.dto";
+import { IPreguntaDto } from '../dtos/pregunta.dto';
 
 export interface ICrearPregunta {
-	exec(preguntaDto: IPreguntaDto): Promise<IPreguntaDto>
+	exec(preguntaDto: IPreguntaDto): Promise<IPreguntaDto>;
 }

@@ -11,11 +11,17 @@ export default [
 				parser: await import('@typescript-eslint/parser'),
 			},
 		},
+		rules: {
+			'vue/html-indent': ['error', 'tab']
+		}
 	},
 	{
 		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.vue'],
 		rules: {
-			'vue/multi-word-component-names': 'off',
+			'vue/html-indent': ['error', 'tab', {
+				baseIndent: 1,
+				alignAttributesVertically: true
+			}]
 		},
 	},
 ];
