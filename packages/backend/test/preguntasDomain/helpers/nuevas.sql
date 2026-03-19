@@ -1,7 +1,7 @@
 INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('9999','¿Cuáles el objeto principal de la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y Garantía de los Derechos Digitales?','Adaptar el ordenamiento al Reglamento General de Protección de Datos y garantizar los derechos digitales','2026');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('9999', 'Ampliar el Reglamento General de Protección de Datos y eliminar derechos digitales');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('9999', 'Regular únicamente los datos personales de menores');
-INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('9999', 'Ampliar el ámbito personal de libre uso de datos');
+INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('9999', 'Ampliar el ámbito personal de libre uso de datos ');
 INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('10000','Segúnel articulo 18,4 de la Constitución Española, ¿cuál es la finalidad del uso de la.informática por parte de los poderes públicos?','Garantizar el honor y la intimidad personal y familiar de los ciudadanos y el pleno ejercicio de sus derechos','2026');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10000', 'Facilitar el acceso universal a la información administrativa');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10000', 'Garantizar la seguridad del Estado y el orden público');

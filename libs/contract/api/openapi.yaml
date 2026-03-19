@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: PreparaTAI API
+  version: 1.0.0
+
+paths:
+  /preguntas:
+    get:
+      summary: Obtener preguntas
+      responses:
+        "200":
+          description: Lista de preguntas
