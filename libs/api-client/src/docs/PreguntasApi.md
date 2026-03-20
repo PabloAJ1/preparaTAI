@@ -5,13 +5,14 @@ All URIs are relative to */api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createPregunta**](PreguntasApi.md#createpregunta) | **POST** /pregunta | Guardar una pregunta |
-| [**deletePreguntaById**](PreguntasApi.md#deletepreguntabyid) | **DELETE** /pregunta/getNumeroDePreguntas | Eliminar una pregunta por id |
+| [**deletePreguntaById**](PreguntasApi.md#deletepreguntabyid) | **DELETE** /pregunta/{id} | Eliminar una pregunta por id |
 | [**getAllExamenes**](PreguntasApi.md#getallexamenes) | **GET** /examenes | Obtener un listado de los Examenes |
 | [**getAllGruposDePreguntasRelacionadas**](PreguntasApi.md#getallgruposdepreguntasrelacionadas) | **GET** /gruposDePreguntasRelacionadas | Obtener Grupos de Preguntas GrupoPreguntasRelacionadas |
 | [**getAllPreguntas**](PreguntasApi.md#getallpreguntas) | **GET** /pregunta | Obtener preguntas |
 | [**getNumeroDePreguntas**](PreguntasApi.md#getnumerodepreguntas) | **GET** /pregunta/getNumeroDePreguntas | Obtener el numero de preguntas actuales en la base de datos |
 | [**getOnePreguntasById**](PreguntasApi.md#getonepreguntasbyid) | **GET** /pregunta/{id} | Obtener una pregunta por id |
-| [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PUT** /pregunta/getNumeroDePreguntas | Actualizar una pregunta por id |
+| [**getPreguntasPorCategoria**](PreguntasApi.md#getpreguntasporcategoria) | **GET** /pregunta/porCategoria/{id} | Obtener las preguntas que pertenecen a una categoria dada |
+| [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PUT** /pregunta/{id} | Actualizar una pregunta por id |
 
 
 
@@ -82,7 +83,7 @@ No authorization required
 
 ## deletePreguntaById
 
-> deletePreguntaById()
+> deletePreguntaById(id)
 
 Eliminar una pregunta por id
 
@@ -99,8 +100,13 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const api = new PreguntasApi();
 
+  const body = {
+    // string | el identificador de la pregunta
+    id: id_example,
+  } satisfies DeletePreguntaByIdRequest;
+
   try {
-    const data = await api.deletePreguntaById();
+    const data = await api.deletePreguntaById(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -113,7 +119,10 @@ example().catch(console.error);
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
 
 ### Return type
 
@@ -430,9 +439,74 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## getPreguntasPorCategoria
+
+> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id)
+
+Obtener las preguntas que pertenecen a una categoria dada
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PreguntasApi,
+} from '';
+import type { GetPreguntasPorCategoriaRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PreguntasApi();
+
+  const body = {
+    // string | el identificador de la pregunta
+    id: id_example,
+  } satisfies GetPreguntasPorCategoriaRequest;
+
+  try {
+    const data = await api.getPreguntasPorCategoria(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
+
+### Return type
+
+[**Array&lt;Pregunta&gt;**](Pregunta.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Pregunta que pertenecen a una categoria |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## updatePreguntaById
 
-> Pregunta updatePreguntaById(pregunta)
+> Pregunta updatePreguntaById(id, pregunta)
 
 Actualizar una pregunta por id
 
@@ -450,6 +524,8 @@ async function example() {
   const api = new PreguntasApi();
 
   const body = {
+    // string | el identificador de la pregunta
+    id: id_example,
     // Pregunta
     pregunta: ...,
   } satisfies UpdatePreguntaByIdRequest;
@@ -471,6 +547,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
 | **pregunta** | [Pregunta](Pregunta.md) |  | |
 
 ### Return type

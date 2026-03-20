@@ -4,6 +4,7 @@ apis/GruposDePreguntasRelacionadasApi.ts
 apis/PreguntasApi.ts
 apis/index.ts
 docs/Categoria.md
+docs/CategoriaResumen.md
 docs/CategoriasApi.md
 docs/Examen.md
 docs/ExamenPreguntasInner.md
@@ -15,6 +16,7 @@ docs/PreguntasApi.md
 docs/Respuesta.md
 index.ts
 models/Categoria.ts
+models/CategoriaResumen.ts
 models/Examen.ts
 models/ExamenPreguntasInner.ts
 models/GrupoPreguntasRelacionadas.ts

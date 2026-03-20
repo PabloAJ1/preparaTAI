@@ -1,4 +1,5 @@
 import { TCategoria } from '../types/categoria.type';
+import { v7 as uuid } from "uuid";
 
 export class Categoria {
 	readonly #props: TCategoria;
@@ -11,7 +12,14 @@ export class Categoria {
 		return this.#props.nombreCategoria;
 	}
 
-	public static crear(props: TCategoria): Categoria {
-		return new Categoria(props);
+	get idCategoria() {
+		return this.#props.idCategoria;
+	}
+
+	public static crear(props: Omit<TCategoria, 'idCategoria'> & Partial<Pick<TCategoria, 'idCategoria'>>): Categoria {
+		return new Categoria({
+			...props,
+			idCategoria: props.idCategoria ?? uuid()
+		});
 	}
 }

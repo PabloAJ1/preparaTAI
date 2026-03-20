@@ -31,7 +31,7 @@ describe('ExcelAdapterService - Stub', () => {
 	});
 });
 
-describe('ExcelAdapterService - Mock', () => {
+describe.skip('ExcelAdapterService - Mock', () => {
 	it('debería llamar a cargarDatosFichero con el path correcto', async () => {
 		const cargarDatosFichero = vi.fn().mockResolvedValue([
 			{

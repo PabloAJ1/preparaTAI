@@ -69,21 +69,6 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/Pregunta'
-
-  /pregunta/getNumeroDePreguntas:
-    get:
-      tags:
-        - preguntas
-      summary: Obtener el numero de preguntas actuales en la base de datos
-      operationId: getNumeroDePreguntas
-      responses:
-        '200':
-          description: Numero de preguntas en la abse de datos
-          content:
-            application/json:
-              schema:
-                  type: integer
-
     put:
       tags:
         - preguntas
@@ -111,6 +96,43 @@ paths:
       responses:
         '204':
           description: Pregunta eliminada por ID
+    
+  /pregunta/getNumeroDePreguntas:
+    get:
+      tags:
+        - preguntas
+      summary: Obtener el numero de preguntas actuales en la base de datos
+      operationId: getNumeroDePreguntas
+      responses:
+        '200':
+          description: Numero de preguntas en la abse de datos
+          content:
+            application/json:
+              schema:
+                  type: integer
+
+  /pregunta/porCategoria/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la pregunta
+        schema:
+          type: string
+    get:
+      tags:
+        - preguntas
+      summary: Obtener las preguntas que pertenecen a una categoria dada
+      operationId: getPreguntasPorCategoria
+      responses:
+        '200':
+          description: Pregunta que pertenecen a una categoria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pregunta'
 
   /categoria:
     get:
@@ -127,6 +149,22 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Categoria'
+
+  /categoria/resumen:
+    get:
+      summary: Obtener categorias con número de preguntas
+      tags:
+        - categorias
+      operationId: getCategoriasResumen
+      responses:
+        '200':
+          description: Lista de categorias con número de preguntas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoriaResumen'
 
   /gruposDePreguntasRelacionadas:
     get:
@@ -174,6 +212,23 @@ components:
       required:
         - id
         - nombre
+
+    CategoriaResumen:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 0000-00000-0000000-0000
+        nombre:
+          type: string
+          example: Java
+        numeroPreguntas:
+          type: integer
+          example: 35
+      required:
+        - id
+        - nombre
+        - numeroPreguntas
 
     Respuesta:
       type: object

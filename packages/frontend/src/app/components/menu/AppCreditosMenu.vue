@@ -11,7 +11,7 @@
 				Actualizado por: <strong class="text-white">carlillos79</strong>
 			</p>
 			<p class="mb-0">
-				Actualizado por: <strong class="text-white">jackercito</strong>
+				Actualizado por: <strong class="text-white">Jackercito</strong>
 			</p>
 		</div>
 	</div>

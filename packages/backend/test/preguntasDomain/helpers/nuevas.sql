@@ -3263,3 +3263,4 @@ INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10803', '');
 INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('10804','Según la Ley Orgánica 3/2007, de 22 de marzo, para la igualdad efectiva de mujeres y hombres, ¿qué se entiende por discriminación indirecta por razón de sexo?','Situación en la que una disposición, criterio o práctica aparentemente neutros ponen a personas de un sexo en desventaja particular con respecto a personas del otro sexo.','2026');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10804', 'Trato desfavorable a una persona por razón de su sexo.');
 INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10804', 'Acoso sexual en el ámbito laboral.');
+INSERT IGNORE INTO incorrectas (id_pregunta, respuesta) VALUES ('10804', '')

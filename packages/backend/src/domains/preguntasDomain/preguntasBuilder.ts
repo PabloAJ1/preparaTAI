@@ -1,5 +1,5 @@
 import { GetNumeroPreguntas } from "./application/useCases/getNumeroDePreguntas"
-import { PreguntaRepositoryMySQL } from "./infrastructure/mysql/preguntaRepositoryMySQL.repository"
+import { PreguntaRepositoryMySQL } from "./infrastructure/mysql/repositories/preguntaRepositoryMySQL.repository"
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMySQL = new PreguntaRepositoryMySQL();

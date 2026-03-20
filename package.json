@@ -6,7 +6,8 @@
 		"dev": "cross-env NODE_ENV=dev tsx watch ./packages/backend/src/main",
 		"run:back": "nx serve backend",
 		"run:front": "nx serve frontend",
-		"generate:api": "npx openapi-generator-cli generate -i .\\libs\\contract\\api\\openapi.yaml -g typescript-fetch -o libs/api-client/src --additional-properties=useSinglePropertyParameters=true,supportsES6=true"
+		"generate:api": "npx openapi-generator-cli generate -i .\\libs\\contract\\api\\openapi.yaml -g typescript-fetch -o libs/api-client/src --additional-properties=useSinglePropertyParameters=true,supportsES6=true",
+		"generate:types": "npx openapi-typescript libs/contract/api/openapi.yaml -o packages/backend/src/types/openapi.d.ts"
 	},
 	"private": true,
 	"devDependencies": {

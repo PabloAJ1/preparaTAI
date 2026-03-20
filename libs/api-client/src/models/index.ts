@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './Categoria';
+export * from './CategoriaResumen';
 export * from './Examen';
 export * from './ExamenPreguntasInner';
 export * from './GrupoPreguntasRelacionadas';

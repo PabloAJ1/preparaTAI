@@ -16,10 +16,13 @@
 import * as runtime from '../runtime';
 import type {
   Categoria,
+  CategoriaResumen,
 } from '../models/index';
 import {
     CategoriaFromJSON,
     CategoriaToJSON,
+    CategoriaResumenFromJSON,
+    CategoriaResumenToJSON,
 } from '../models/index';
 
 /**
@@ -61,6 +64,43 @@ export class CategoriasApi extends runtime.BaseAPI {
      */
     async getAllCategorias(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Categoria>> {
         const response = await this.getAllCategoriasRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getCategoriasResumen without sending the request
+     */
+    async getCategoriasResumenRequestOpts(): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/categoria/resumen`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener categorias con número de preguntas
+     */
+    async getCategoriasResumenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CategoriaResumen>>> {
+        const requestOptions = await this.getCategoriasResumenRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(CategoriaResumenFromJSON));
+    }
+
+    /**
+     * Obtener categorias con número de preguntas
+     */
+    async getCategoriasResumen(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CategoriaResumen>> {
+        const response = await this.getCategoriasResumenRaw(initOverrides);
         return await response.value();
     }
 

@@ -28,9 +28,7 @@ const numeroDePreguntas = ref<number>(0);
 
 onMounted(async () => {
 	try {
-		console.log('1');
 		numeroDePreguntas.value = await api.getNumeroDePreguntas();
-		console.log('2');
 	} catch (error) {
 		console.error('Error obteniendo el número de preguntas:', error);
 	}
@@ -38,27 +36,27 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Hero Section con degradado profesional */
-.hero-dashboard {
-	background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-	border-radius: 24px;
-	padding: 4rem 3rem;
-	color: white;
-	margin-bottom: 2.5rem;
-	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-		0 10px 10px -5px rgba(0, 0, 0, 0.04);
-	position: relative;
-	overflow: hidden;
-}
+    /* Hero Section con degradado profesional */
+    .hero-dashboard {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        border-radius: 24px;
+        padding: 4rem 3rem;
+        color: white;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        position: relative;
+        overflow: hidden;
+    }
 
-.hero-dashboard::after {
-	content: '\f109'; /* Icono de laptop code */
-	font-family: 'Font Awesome 6 Free';
-	font-weight: 900;
-	position: absolute;
-	right: -20px;
-	bottom: -40px;
-	font-size: 14rem;
-	color: rgba(255, 255, 255, 0.05);
-}
+    .hero-dashboard::after {
+        content: "\f109"; /* Icono de laptop code */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        right: -20px;
+        bottom: -40px;
+        font-size: 14rem;
+        color: rgba(255, 255, 255, 0.05);
+    }
+
 </style>

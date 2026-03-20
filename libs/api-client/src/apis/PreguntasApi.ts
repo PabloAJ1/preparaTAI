@@ -32,11 +32,20 @@ export interface CreatePreguntaRequest {
     pregunta: Pregunta;
 }
 
+export interface DeletePreguntaByIdRequest {
+    id: string;
+}
+
 export interface GetOnePreguntasByIdRequest {
     id: string;
 }
 
+export interface GetPreguntasPorCategoriaRequest {
+    id: string;
+}
+
 export interface UpdatePreguntaByIdRequest {
+    id: string;
     pregunta: Pregunta;
 }
 
@@ -95,13 +104,21 @@ export class PreguntasApi extends runtime.BaseAPI {
     /**
      * Creates request options for deletePreguntaById without sending the request
      */
-    async deletePreguntaByIdRequestOpts(): Promise<runtime.RequestOpts> {
+    async deletePreguntaByIdRequestOpts(requestParameters: DeletePreguntaByIdRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling deletePreguntaById().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
 
-        let urlPath = `/pregunta/getNumeroDePreguntas`;
+        let urlPath = `/pregunta/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -114,8 +131,8 @@ export class PreguntasApi extends runtime.BaseAPI {
     /**
      * Eliminar una pregunta por id
      */
-    async deletePreguntaByIdRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const requestOptions = await this.deletePreguntaByIdRequestOpts();
+    async deletePreguntaByIdRaw(requestParameters: DeletePreguntaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.deletePreguntaByIdRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -124,8 +141,8 @@ export class PreguntasApi extends runtime.BaseAPI {
     /**
      * Eliminar una pregunta por id
      */
-    async deletePreguntaById(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deletePreguntaByIdRaw(initOverrides);
+    async deletePreguntaById(requestParameters: DeletePreguntaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deletePreguntaByIdRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -326,9 +343,61 @@ export class PreguntasApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for getPreguntasPorCategoria without sending the request
+     */
+    async getPreguntasPorCategoriaRequestOpts(requestParameters: GetPreguntasPorCategoriaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getPreguntasPorCategoria().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/pregunta/porCategoria/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener las preguntas que pertenecen a una categoria dada
+     */
+    async getPreguntasPorCategoriaRaw(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Pregunta>>> {
+        const requestOptions = await this.getPreguntasPorCategoriaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PreguntaFromJSON));
+    }
+
+    /**
+     * Obtener las preguntas que pertenecen a una categoria dada
+     */
+    async getPreguntasPorCategoria(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Pregunta>> {
+        const response = await this.getPreguntasPorCategoriaRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Creates request options for updatePreguntaById without sending the request
      */
     async updatePreguntaByIdRequestOpts(requestParameters: UpdatePreguntaByIdRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updatePreguntaById().'
+            );
+        }
+
         if (requestParameters['pregunta'] == null) {
             throw new runtime.RequiredError(
                 'pregunta',
@@ -343,7 +412,8 @@ export class PreguntasApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
 
-        let urlPath = `/pregunta/getNumeroDePreguntas`;
+        let urlPath = `/pregunta/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
