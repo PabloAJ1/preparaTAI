@@ -1,22 +1,95 @@
 <template>
-	<div class="d-flex justify-content-between align-items-center mb-4">
-		<div>
-			<h2 class="fw-bold text-dark mb-1">Repasar Temas</h2>
-			<p class="text-secondary small mb-0">
-				Selecciona un bloque para realizar tests de repaso.
+	<div class="temas-header">
+		<div class="temas-titulo">
+			<h2 class="temas-heading">{{ modo === 'repaso' ? 'Repasar Temas' : 'Ejercicios de Práctica' }}</h2>
+			<p class="temas-subtitle">
+				{{ modo === 'repaso' 
+					? 'Selecciona un bloque para realizar tests de repaso.' 
+					: 'Relaciona conceptos con sus definiciones correspondientes.' }}
 			</p>
 		</div>
-		<div class="d-none d-md-block">
-			<div class="input-group">
-				<span class="input-group-text bg-white border-end-0">
-					<i class="fa-solid fa-magnifying-glass text-muted" />
+
+		<div class="temas-search">
+			<div class="search-input-group">
+				<span class="search-icon">
+					<i class="fa-solid fa-magnifying-glass" />
 				</span>
+
 				<input
 					type="text"
-					class="form-control border-start-0 ps-0"
+					class="search-input"
 					placeholder="Buscar tema..."
 				/>
 			</div>
 		</div>
 	</div>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  modo?: 'repaso' | 'practica' ;
+}>();
+</script>
+
+<style scoped lang="scss">
+
+.temas-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.temas-heading {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #1f2937;
+	margin-bottom: 0.25rem;
+}
+
+.temas-subtitle {
+	color: #6b7280;
+	font-size: 0.875rem;
+	margin: 0;
+}
+
+/* Buscador */
+
+.temas-search {
+	display: block;
+}
+
+.search-input-group {
+	display: flex;
+	align-items: center;
+
+	background: white;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.search-icon {
+	display: flex;
+	align-items: center;
+	padding: 0 0.75rem;
+	color: #9ca3af;
+}
+
+.search-input {
+	border: none;
+	outline: none;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.9rem;
+	width: 200px;
+}
+
+/* Responsive (equivalente a d-none d-md-block) */
+
+@media (max-width: 768px) {
+	.temas-search {
+		display: none;
+	}
+}
+
+</style>

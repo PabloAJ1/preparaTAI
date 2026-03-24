@@ -25,6 +25,10 @@ import {
     CategoriaResumenToJSON,
 } from '../models/index';
 
+export interface GetCategoriasResumenRequest {
+    tipo?: string;
+}
+
 /**
  * 
  */
@@ -70,8 +74,12 @@ export class CategoriasApi extends runtime.BaseAPI {
     /**
      * Creates request options for getCategoriasResumen without sending the request
      */
-    async getCategoriasResumenRequestOpts(): Promise<runtime.RequestOpts> {
+    async getCategoriasResumenRequestOpts(requestParameters: GetCategoriasResumenRequest): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
+
+        if (requestParameters['tipo'] != null) {
+            queryParameters['tipo'] = requestParameters['tipo'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -89,8 +97,8 @@ export class CategoriasApi extends runtime.BaseAPI {
     /**
      * Obtener categorias con número de preguntas
      */
-    async getCategoriasResumenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CategoriaResumen>>> {
-        const requestOptions = await this.getCategoriasResumenRequestOpts();
+    async getCategoriasResumenRaw(requestParameters: GetCategoriasResumenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CategoriaResumen>>> {
+        const requestOptions = await this.getCategoriasResumenRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(CategoriaResumenFromJSON));
@@ -99,8 +107,8 @@ export class CategoriasApi extends runtime.BaseAPI {
     /**
      * Obtener categorias con número de preguntas
      */
-    async getCategoriasResumen(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CategoriaResumen>> {
-        const response = await this.getCategoriasResumenRaw(initOverrides);
+    async getCategoriasResumen(requestParameters: GetCategoriasResumenRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CategoriaResumen>> {
+        const response = await this.getCategoriasResumenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

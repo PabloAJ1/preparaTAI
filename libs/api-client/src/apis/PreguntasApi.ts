@@ -42,6 +42,8 @@ export interface GetOnePreguntasByIdRequest {
 
 export interface GetPreguntasPorCategoriaRequest {
     id: string;
+    page?: number;
+    limit?: number;
 }
 
 export interface UpdatePreguntaByIdRequest {
@@ -354,6 +356,14 @@ export class PreguntasApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 

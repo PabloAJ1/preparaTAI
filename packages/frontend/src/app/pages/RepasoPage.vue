@@ -1,11 +1,12 @@
 <template>
-	<AppCabeceraTemas />
+	<AppCabeceraTemas modo="repaso" />
 
 	<div class="row g-4">
 		<AppCategoriaTemas
 			v-for="categoria in categoriasResumen"
 			:key="categoria.id"
 			:categoria="categoria"
+			modo="repaso"
 		/>
 	</div>
 </template>
@@ -20,10 +21,13 @@ const api = new CategoriasApi(
 	new Configuration({ basePath: 'http://localhost:3000/api' })
 );
 
+const tipoCategoria = 'NORMAL';
 const categoriasResumen = ref<CategoriaResumen[]>([]); // inicializamos con array vacío
 onMounted(async () => {
 	try {
-		categoriasResumen.value = await api.getCategoriasResumen();
+		categoriasResumen.value = await api.getCategoriasResumen({
+            tipo: tipoCategoria
+        });
 	} catch (error) {
 		console.error('Error obteniendo el número de preguntas:', error);
 	}

@@ -4,6 +4,11 @@ import helmet from "helmet";
 import logger from "morgan";
 import { ENVIROMENT } from "./config/env";
 import appRouter from "./routes";
+import * as mongoose from "./shared/infrastructure/db/mongo/mysql.connection";
+import { setGlobalOptions, Severity } from "@typegoose/typegoose";
+
+setGlobalOptions({ options: { allowMixed: Severity.ALLOW } });
+mongoose.start();
 
 const app: Express = express();
 
@@ -27,7 +32,7 @@ const corsOptions = {
 };
 
 app.use(helmet.hidePoweredBy());
-app.use(express.text({ type: 'text/plain' })); // 👈 añade esto junto a express.json()
+app.use(express.text({ type: 'text/plain' }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cors(corsOptions));

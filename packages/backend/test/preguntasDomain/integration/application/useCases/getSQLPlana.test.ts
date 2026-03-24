@@ -1,17 +1,19 @@
-import { test, expect, describe, beforeAll, afterAll } from 'vitest';
+import { test, describe } from 'vitest';
 import { ExcelLoader } from '../../../../../src/domains/preguntasDomain/infrastructure/excel/services/excelLoader.service';
 import { SaveFile } from '../../../../../src/domains/preguntasDomain/infrastructure/fileSystem/services/saveFile.service';
-import { ExcelAdapterService } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/adapters/excelAdapter.service';
-import { FileSaveAdapter } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/adapters/fileSaveAdapter.service';
+import { ExcelAdapterService } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/excelAdapter.service';
+import { FileSaveAdapter } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/fileSaveAdapter.service';
 import { PreguntasSQLService } from '../../../../../src/domains/preguntasDomain/infrastructure/sql/service/preguntasSQL.service';
 import { GetSQLPlana } from '../../../../../src/domains/preguntasDomain/application/useCases/getSQLPlana';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > getSQLPLana ... ', () => {
+	const path =
+		'./test/preguntasDomain/helpers/20260323.xlsx';
 	const excelLoader = new ExcelLoader();
-	const excelAdapterService = new ExcelAdapterService(excelLoader);
+	const excelAdapterService = new ExcelAdapterService(excelLoader, path);
 	const preguntasSQLService = new PreguntasSQLService();
 	const saveFile = new SaveFile(
-		'./packages/backend/test/preguntasDomain/helpers/nuevas.sql'
+		'./test/preguntasDomain/helpers/nuevas.sql'
 	);
 	const fileSaveAdapter = new FileSaveAdapter(saveFile);
 	const getSQLPlana = new GetSQLPlana(
@@ -21,9 +23,6 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 	);
 
 	test('deberia leer el fichero y devolver las SQL', async () => {
-		const path =
-			'./packages/backend/test/preguntasDomain/helpers/20260311.xlsx';
-		const result = await getSQLPlana.exec(path);
-		console.log(result);
+		const result = await getSQLPlana.exec();
 	});
 });

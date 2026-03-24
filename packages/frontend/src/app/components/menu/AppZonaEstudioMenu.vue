@@ -22,12 +22,12 @@
 		>
 			<i class="fa-solid fa-gauge-high" /> Practicar
 		</router-link>
-
+		
 		<router-link
-			to="/cuestionarios"
+			to="/examenes"
 			class="list-group-item list-group-item-action list-group-item-dark"
 		>
-			<i class="fa-solid fa-gauge-high" /> Cuestionarios
-		</router-link>
+			<i class="fa-solid fa-gauge-high" /> Examenes
+		</router-link>		
 	</section>
 </template>

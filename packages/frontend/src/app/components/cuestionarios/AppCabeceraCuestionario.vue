@@ -1,16 +1,54 @@
 <template>
-	<div class="d-flex justify-content-between align-items-center mb-4">
-		<h2 class="text-primary fw-bold"><i class="fa-solid fa-clipboard-question"></i> {{ nombre }}</h2>
-		<span class="badge bg-secondary fs-6 rounded-pill">{{ totalPreguntas }} Preguntas</span>
+	<div class="cuestionario-header">
+		<h2 class="cuestionario-titulo">
+			<i class="fa-solid fa-clipboard-question cuestionario-icono" />
+			{{ props.nombre }}
+		</h2>
+
+		<span class="cuestionario-contador">
+			{{ props.totalPreguntas }} Preguntas
+		</span>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { Pregunta } from '@preparatai/api-client';
-
+// 🟢 Corregido para guardar en 'props' y mantener reactividad
 const props = defineProps<{
 	nombre: string;
 	totalPreguntas: number;
 }>();
 </script>
+
+<style scoped lang="scss">
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+
+.cuestionario-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem; // mb-4 equivalente
+}
+
+.cuestionario-titulo {
+	color: $primary-color;
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+.cuestionario-icono {
+	margin-right: 0.75rem;
+}
+
+.cuestionario-contador {
+	background-color: $secondary-color;
+	color: white;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 50rem; // rounded-pill
+}
+</style>

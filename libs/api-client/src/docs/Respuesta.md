@@ -6,7 +6,6 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
 `enunciado` | string
 `correcta` | boolean
 
@@ -17,7 +16,6 @@ import type { Respuesta } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": null,
   "enunciado": null,
   "correcta": null,
 } satisfies Respuesta

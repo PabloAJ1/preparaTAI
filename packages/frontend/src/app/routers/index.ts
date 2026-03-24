@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Layout from '../layouts/index.vue';
+import Layout from '../layouts/indexApp.vue';
 import InicioPage from '../pages/InicioPage.vue'
 import RepasoPage from '../pages/RepasoPage.vue'
 import PracticaPage from '../pages/PracticaPage.vue'
-import CuestionariosPage from '../pages/CuestionariosPage.vue'
+import TestPage from '../pages/TestPage.vue'
+import ExamenesPage from '../pages/ExamenesPage.vue'
 
 const routes = [
 	{
@@ -21,9 +22,12 @@ const routes = [
 				path: '/practicas',
 				component: PracticaPage,
 			},{
+				path: '/examenes',
+				component: ExamenesPage,
+			},{
 				path: '/test/categoria/:id',
 				name: 'TestByCategoria',
-				component: CuestionariosPage,
+				component: TestPage,
 				props: true,
 			},
 		],

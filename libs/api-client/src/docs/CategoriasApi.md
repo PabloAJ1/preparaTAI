@@ -68,7 +68,7 @@ No authorization required
 
 ## getCategoriasResumen
 
-> Array&lt;CategoriaResumen&gt; getCategoriasResumen()
+> Array&lt;CategoriaResumen&gt; getCategoriasResumen(tipo)
 
 Obtener categorias con número de preguntas
 
@@ -85,8 +85,13 @@ async function example() {
   console.log("🚀 Testing  SDK...");
   const api = new CategoriasApi();
 
+  const body = {
+    // string | Tipo de Cateogiras que queremos (Cuestionarios / No Cuestionarios) (optional)
+    tipo: tipo_example,
+  } satisfies GetCategoriasResumenRequest;
+
   try {
-    const data = await api.getCategoriasResumen();
+    const data = await api.getCategoriasResumen(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -99,7 +104,10 @@ example().catch(console.error);
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tipo** | `string` | Tipo de Cateogiras que queremos (Cuestionarios / No Cuestionarios) | [Optional] [Defaults to `&#39;CUESTIONARIOS&#39;`] |
 
 ### Return type
 

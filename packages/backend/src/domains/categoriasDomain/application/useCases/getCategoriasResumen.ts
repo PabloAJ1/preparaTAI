@@ -1,3 +1,4 @@
+import { Categoria } from "../../domain/entities/Categoria";
 import { ICategoriaRepository } from "../../domain/repositories/categoriaRepository.interface";
 import { CategoriaResumenDto } from "../dtos/categoriasResumen.dto";
 import { IPreguntasPort } from "../interfaces/preguntasPort.interface";
@@ -10,8 +11,15 @@ export class GetCategoriasResumen implements IGetCategoriasResumen {
 		private readonly preguntasPort: IPreguntasPort
 	){}
 
-	async exec(): Promise<CategoriaResumenDto[]> {
-		const result = await this.categoriasRepositories.getAllCategoriasNoCuestionarios();
+	async exec(tipoCategoria = 'NORMAL'): Promise<CategoriaResumenDto[]> {
+		let result: Categoria[] = []
+		if(tipoCategoria === 'NORMAL')
+			result = await this.categoriasRepositories.getAllCategoriasNoCuestionarios();
+		else if(tipoCategoria === "CUESTIONARIO")
+			result = await this.categoriasRepositories.getAllCategoriasCuestionarios();
+		else
+			result = await this.categoriasRepositories.getAllCategoriasExamenes();
+		
 		const returnResult: CategoriaResumenDto[] = [];
 
 		for(const categoria of result){

@@ -1,0 +1,98 @@
+<template>
+	<AppCabeceraCuestionario :nombre="id" :total-preguntas="numeroPreguntas" />
+
+	<div id="lista-preguntas">
+		<AppPreguntaCuestionario
+			v-for="(pregunta, index) in listadoPreguntas"
+			:key="pregunta.id"
+			:id="'pregunta-' + index"
+			:pregunta="pregunta"
+			:indice="index"
+		/>
+	</div>
+
+	<!-- Sentinel separado al final de la página -->
+	<div class="sentinel-spacer"></div>
+	<div id="sentinel"></div>
+
+	<div v-if="cargando" class="text-center p-2">Cargando preguntas...</div>
+</template>
+
+<script setup lang="ts">
+import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCuestionario.vue';
+import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
+
+import { ref, onMounted } from 'vue';
+import { Configuration, PreguntasApi, Pregunta } from '@preparatai/api-client';
+
+const page = ref(1);
+const limit = ref(50);
+const cargando = ref(false);
+let finPreguntas = ref(false);
+
+const api = new PreguntasApi(
+	new Configuration({ basePath: 'http://localhost:3000/api' })
+);
+
+const numeroPreguntas = ref(0);
+
+const { id } = defineProps<{
+	id: string;
+}>();
+
+const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío
+
+onMounted(() => {
+	cargarPreguntas();
+});
+
+onMounted(() => {
+	const sentinel = document.querySelector('#sentinel');
+	if (!sentinel) return;
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			if (entries[0].isIntersecting) {
+				cargarPreguntas();
+			}
+		},
+		{
+			root: null,
+			rootMargin: '800px',
+			threshold: 0,
+		}
+	);
+
+	observer.observe(sentinel);
+});
+
+async function cargarPreguntas() {
+	if (cargando.value || finPreguntas.value) return;
+	cargando.value = true;
+
+	try {
+		const preguntas = await api.getPreguntasPorCategoria({
+			id,
+			page: page.value,
+			limit: limit.value,
+		});
+
+		listadoPreguntas.value.push(...preguntas);
+
+		if (preguntas.length < limit.value) finPreguntas.value = true;
+		else page.value++;
+
+		numeroPreguntas.value = listadoPreguntas.value.length;
+	} catch (error) {
+		console.error('Error cargando preguntas:', error);
+	} finally {
+		cargando.value = false;
+	}
+}
+</script>
+
+<style scoped>
+.sentinel-spacer {
+	height: 1px;
+}
+</style>

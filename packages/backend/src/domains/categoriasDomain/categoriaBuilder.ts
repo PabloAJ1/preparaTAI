@@ -1,18 +1,18 @@
 import { GetNumeroPreguntasPorCategoria } from "../preguntasDomain/application/useCases/getNumeroPreguntasPorCategoria";
-import { PreguntaRepositoryMySQL } from "../preguntasDomain/infrastructure/mysql/repositories/preguntaRepositoryMySQL.repository";
+import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 import { GetCategoriasResumen } from "./application/useCases/getCategoriasResumen";
 import { PreguntaAdapterPort } from "./infrastructure/adapters/ports/preguntaAdapterPort";
-import { CategoriasMySQLRepository } from "./infrastructure/mysql/repositories/categoriasMySQLRepository.repository";
+import { CategoriaRepositoryMongo } from "./infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
 
 export const categoriaBuilder = () => {
-	const categoriasMySQLRepository = new CategoriasMySQLRepository();
-		
-	const preguntasMySQLRepository = new PreguntaRepositoryMySQL();
-	const getNumeroPreguntasPorCategoria = new GetNumeroPreguntasPorCategoria(preguntasMySQLRepository);
+	const categoriaRepositoryMongo = new CategoriaRepositoryMongo();
+
+	const preguntaRespositoryMongoDB = new PreguntaRespositoryMongoDB();
+	const getNumeroPreguntasPorCategoria = new GetNumeroPreguntasPorCategoria(preguntaRespositoryMongoDB);
 	const preguntaAdapterPort = new PreguntaAdapterPort(getNumeroPreguntasPorCategoria)
 
 	const getCategoriaResumen = new GetCategoriasResumen(
-		categoriasMySQLRepository,
+		categoriaRepositoryMongo,
 		preguntaAdapterPort
 	)
 

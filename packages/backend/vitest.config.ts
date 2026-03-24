@@ -7,11 +7,6 @@ export default defineConfig({
 		environment: 'node',
 		globals: true,
 		setupFiles: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), './vitest.setup.ts'),
-
-	},
-	resolve: {
-        alias: {
-			 "@": path.resolve(__dirname, "src"),
-		}
+		testTimeout: 30000,
 	}
 });

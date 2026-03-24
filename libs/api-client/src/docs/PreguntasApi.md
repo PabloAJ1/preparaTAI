@@ -441,7 +441,7 @@ No authorization required
 
 ## getPreguntasPorCategoria
 
-> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id)
+> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id, page, limit)
 
 Obtener las preguntas que pertenecen a una categoria dada
 
@@ -461,6 +461,10 @@ async function example() {
   const body = {
     // string | el identificador de la pregunta
     id: id_example,
+    // number | Número de página (empieza en 1) (optional)
+    page: 56,
+    // number | Número de preguntas por página (optional)
+    limit: 56,
   } satisfies GetPreguntasPorCategoriaRequest;
 
   try {
@@ -481,6 +485,8 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
+| **page** | `number` | Número de página (empieza en 1) | [Optional] [Defaults to `1`] |
+| **limit** | `number` | Número de preguntas por página | [Optional] [Defaults to `20`] |
 
 ### Return type
 

@@ -5,7 +5,19 @@ export class MapExcelDtoToEntityPregunta {
 	public static mapMapExcelDtoToEntityPregunta(
 		dtoExcel: IExcelDto
 	): IPreguntaDto {
+		const categorias = ['2026', `Examen-${dtoExcel.fuente}`];
+		if(dtoExcel.categoria1 !== undefined && dtoExcel.categoria1 !== ""){
+			categorias.push(dtoExcel.categoria1)
+			if(dtoExcel.categoria2 !== undefined && dtoExcel.categoria2 !== ""){
+				categorias.push(dtoExcel.categoria1)
+						if(dtoExcel.categoria3 !== undefined && dtoExcel.categoria3 !== ""){
+							categorias.push(dtoExcel.categoria1)			
+				}
+			}
+		}
+
 		return {
+			id: "0",
 			enunciado: dtoExcel.enunciado,
 			respuestas: [
 				{
@@ -25,6 +37,7 @@ export class MapExcelDtoToEntityPregunta {
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'd',
 				},
 			],
+			categorias: categorias
 		};
 	}
 }

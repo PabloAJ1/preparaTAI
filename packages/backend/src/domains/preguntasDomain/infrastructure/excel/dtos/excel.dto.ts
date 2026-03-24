@@ -6,5 +6,8 @@ export interface IExcelDto {
 	respuesta3: string;
 	respuesta4: string;
 	correcta: string;
-	categoria: string;
+	explicacion: string;
+	categoria1: string;
+	categoria2: string;
+	categoria3: string;
 }

@@ -32,7 +32,7 @@ export class PreguntasSQLService implements IPreguntaRepositoryPlano {
 	crear(preguntas: Pregunta[]): string[] {
 		const result = [];
 
-		for (let pregunta of preguntas) {
+		for (const pregunta of preguntas) {
 			const idPregunta = INDICE++;
 			const correcta = pregunta.respuestaCorrecta?.enunciado || '';
 

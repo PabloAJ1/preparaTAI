@@ -34,9 +34,11 @@ export interface paths {
         };
         /** Obtener una pregunta por id */
         get: operations["getOnePreguntasById"];
-        put?: never;
+        /** Actualizar una pregunta por id */
+        put: operations["updatePreguntaById"];
         post?: never;
-        delete?: never;
+        /** Eliminar una pregunta por id */
+        delete: operations["deletePreguntaById"];
         options?: never;
         head?: never;
         patch?: never;
@@ -51,11 +53,9 @@ export interface paths {
         };
         /** Obtener el numero de preguntas actuales en la base de datos */
         get: operations["getNumeroDePreguntas"];
-        /** Actualizar una pregunta por id */
-        put: operations["updatePreguntaById"];
+        put?: never;
         post?: never;
-        /** Eliminar una pregunta por id */
-        delete: operations["deletePreguntaById"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -63,7 +63,12 @@ export interface paths {
     };
     "/pregunta/porCategoria/{id}": {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+            };
             header?: never;
             path: {
                 /** @description el identificador de la pregunta */
@@ -166,7 +171,6 @@ export interface components {
             numeroPreguntas: number;
         };
         Respuesta: {
-            id: string;
             enunciado: string;
             correcta: boolean;
         };
@@ -265,31 +269,14 @@ export interface operations {
             };
         };
     };
-    getNumeroDePreguntas: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Numero de preguntas en la abse de datos */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": number;
-                };
-            };
-        };
-    };
     updatePreguntaById: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                /** @description el identificador de la pregunta */
+                id: string;
+            };
             cookie?: never;
         };
         requestBody: {
@@ -313,7 +300,10 @@ export interface operations {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                /** @description el identificador de la pregunta */
+                id: string;
+            };
             cookie?: never;
         };
         requestBody?: never;
@@ -327,9 +317,34 @@ export interface operations {
             };
         };
     };
-    getPreguntasPorCategoria: {
+    getNumeroDePreguntas: {
         parameters: {
             query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Numero de preguntas en la abse de datos */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": number;
+                };
+            };
+        };
+    };
+    getPreguntasPorCategoria: {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+            };
             header?: never;
             path: {
                 /** @description el identificador de la pregunta */
@@ -345,7 +360,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Pregunta"];
+                    "application/json": components["schemas"]["Pregunta"][];
                 };
             };
         };

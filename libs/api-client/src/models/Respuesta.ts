@@ -24,12 +24,6 @@ export interface Respuesta {
      * @type {string}
      * @memberof Respuesta
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Respuesta
-     */
     enunciado: string;
     /**
      * 
@@ -43,7 +37,6 @@ export interface Respuesta {
  * Check if a given object implements the Respuesta interface.
  */
 export function instanceOfRespuesta(value: object): value is Respuesta {
-    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('enunciado' in value) || value['enunciado'] === undefined) return false;
     if (!('correcta' in value) || value['correcta'] === undefined) return false;
     return true;
@@ -59,7 +52,6 @@ export function RespuestaFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'id': json['id'],
         'enunciado': json['enunciado'],
         'correcta': json['correcta'],
     };
@@ -76,7 +68,6 @@ export function RespuestaToJSONTyped(value?: Respuesta | null, ignoreDiscriminat
 
     return {
         
-        'id': value['id'],
         'enunciado': value['enunciado'],
         'correcta': value['correcta'],
     };

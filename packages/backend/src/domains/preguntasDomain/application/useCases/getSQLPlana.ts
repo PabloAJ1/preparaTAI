@@ -11,8 +11,8 @@ export class GetSQLPlana implements IGetSQLPlana {
 		private readonly fileSaveService: IFileSaveService
 	) {}
 
-	async exec(path: string): Promise<string[]> {
-		const externalData = await this.excelAdapterService.cargarDatos(path);
+	async exec(): Promise<string[]> {
+		const externalData = await this.excelAdapterService.cargarDatos();
 		const sqlString = this.preguntaRepositoryPlano.crear(
 			externalData.map(MapsPregunta.toEntity)
 		);

@@ -119,6 +119,20 @@ paths:
         description: el identificador de la pregunta
         schema:
           type: string
+      - name: page
+        in: query
+        required: false
+        description: Número de página (empieza en 1)
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Número de preguntas por página
+        schema:
+          type: integer
+          default: 20
     get:
       tags:
         - preguntas
@@ -151,6 +165,14 @@ paths:
                   $ref: '#/components/schemas/Categoria'
 
   /categoria/resumen:
+    parameters:
+      - name: tipo
+        in: query
+        required: false
+        description: Tipo de Cateogiras que queremos (Cuestionarios / No Cuestionarios)
+        schema:
+          type: string
+          default: CUESTIONARIOS
     get:
       summary: Obtener categorias con número de preguntas
       tags:
@@ -233,8 +255,6 @@ components:
     Respuesta:
       type: object
       properties:
-        id:
-          type: string
         enunciado:
           type: string
         correcta:
@@ -242,7 +262,6 @@ components:
       required:
         - enunciado
         - correcta
-        - id
 
     Pregunta:
       type: object

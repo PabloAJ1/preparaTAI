@@ -9,6 +9,7 @@ export class AgruparPreguntas {
 			let pregunta = mapa.get(row.idPregunta);
 			if (!pregunta) {
 				pregunta = {
+					categoria: row.categoria,
 					id: row.idPregunta,
 					enunciado: row.enunciado,
 					respuestas: [{
@@ -26,6 +27,18 @@ export class AgruparPreguntas {
 			});
 		}
 
-		return Array.from(mapa.values());
+		const array = Array.from(mapa.values());
+
+		function shuffle(mapa: IPreguntaDto[]): void {
+			mapa.forEach(respuestas => {
+				for (let i = respuestas.respuestas.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[respuestas.respuestas[i], respuestas.respuestas[j]] = [respuestas.respuestas[j], respuestas.respuestas[i]];
+				}
+			})			
+		}
+		shuffle(array)
+
+		return array
 	}
 }

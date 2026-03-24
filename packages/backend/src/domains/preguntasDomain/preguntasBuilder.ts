@@ -1,11 +1,49 @@
+import { CreateListOfCategorias } from "../categoriasDomain/application/useCases/createListOfCategorias";
+import { GetAllCategorias } from "../categoriasDomain/application/useCases/getAllCategorias";
+import { GetListOfCategorias } from "../categoriasDomain/application/useCases/getListOfCategorias";
+import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
+import { CategoriasExternasService } from "./application/services/CategoriasExternas.service";
 import { GetNumeroPreguntas } from "./application/useCases/getNumeroDePreguntas"
-import { PreguntaRepositoryMySQL } from "./infrastructure/mysql/repositories/preguntaRepositoryMySQL.repository"
+import { GetPreguntasFromFile } from "./application/useCases/getPreguntasFromFile";
+import { GetPreguntasPorCateogira } from "./application/useCases/getPreguntasPorCateogira.interface";
+import { GetPreguntasPorCateogiraConPaginacion } from "./application/useCases/getPreguntasPorCateogiraConPaginacion.interface";
+import { CategoriaAdaperServive } from "./infrastructure/adapters/ports/categoriasAdapter.service";
+import { ExcelAdapterService } from "./infrastructure/adapters/ports/excelAdapter.service";
+import { ExcelLoader } from "./infrastructure/excel/services/excelLoader.service";
+import { PreguntaRespositoryMongoDB } from "./infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 
 export const preguntasBuilder = () => {
-	const preguntasRepositoryMySQL = new PreguntaRepositoryMySQL();
-	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMySQL)
+	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
+	const categoriaMongoDBRepository = new CategoriaRepositoryMongo()
+
+	const path = ""
+	const excelLoader = new ExcelLoader();
+	const excelAdapterService = new ExcelAdapterService(excelLoader, path);
+
+	const getAllCategoriasPort = new GetAllCategorias(categoriaMongoDBRepository);
+	const crateListOfCategorias = new CreateListOfCategorias(categoriaMongoDBRepository);
+	const getListOfCategorias = new GetListOfCategorias(categoriaMongoDBRepository)
+	const categoriaAdapertService = new CategoriaAdaperServive(
+		getAllCategoriasPort,
+		crateListOfCategorias,
+		getListOfCategorias
+	)
+	const categoriasExternasService = new CategoriasExternasService(categoriaAdapertService)
+	const getPreguntasFromFileUseCase = new GetPreguntasFromFile(
+		excelAdapterService,
+		preguntasRepositoryMongoDB,
+		categoriasExternasService
+	)
+
+	
+	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMongoDB)
+	const getPreguntasPorCategoria = new GetPreguntasPorCateogira(preguntasRepositoryMongoDB)
+	const getPreguntasPorCategoriaPaginando = new GetPreguntasPorCateogiraConPaginacion(preguntasRepositoryMongoDB)
 
 	return {
-		getNumeroPreguntas
+		getNumeroPreguntas,
+		getPreguntasPorCategoria,
+		getPreguntasFromFileUseCase,
+		getPreguntasPorCategoriaPaginando
 	}
 }

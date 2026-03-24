@@ -3,9 +3,9 @@ import { ICategoriaRepository } from '../../../../../src/domains/categoriasDomai
 import { GetCategoriasResumen } from '../../../../../src/domains/categoriasDomain/application/useCases/getCategoriasResumen';
 import { Categoria } from '../../../../../src/domains/categoriasDomain/domain/entities/Categoria';
 import { IPreguntasPort } from '../../../../../src/domains/categoriasDomain/application/interfaces/preguntasPort.interface';
-import { CategoriasMySQLRepository } from '../../../../../src/domains/categoriasDomain/infrastructure/mysql/repositories/categoriasMySQLRepository.repository';
+import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
 import { PreguntaAdapterPort } from '../../../../../src/domains/categoriasDomain/infrastructure/adapters/ports/preguntaAdapterPort';
-import { PreguntaRepositoryMySQL } from '../../../../../src/domains/preguntasDomain/infrastructure/mysql/preguntaRepositoryMySQL.repository';
+import { PreguntaRepositoryMySQL } from '../../../../../src/domains/preguntasDomain/infrastructure/mysql/repositories/preguntaRepositoryMySQL.repository';
 import { GetNumeroPreguntasPorCategoria } from '../../../../../src/domains/preguntasDomain/application/useCases/getNumeroPreguntasPorCategoria';
 
 describe('#Test > integration > domains > categoriaDomain > application > usesCases > getCategoriaResumen ... ', () => {
@@ -18,6 +18,9 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		const preguntasMock = 15;
 
 		const repoMockCategorias: ICategoriaRepository = {
+			getListOfCategorias: vi.fn(),
+			createListOfCategorias: vi.fn(),
+			createCategoria: vi.fn().mockResolvedValue(categoriasMock),
 			getAllCategorias: vi.fn().mockResolvedValue(categoriasMock),
 			getAllCategoriasNoCuestionarios: vi.fn().mockResolvedValue(categoriasMock),
 			getAllCategoriasCuestionarios: vi.fn().mockResolvedValue(categoriasMock),
@@ -51,7 +54,7 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 	});
 
 	test('deberia devolver un resultado correcto con no mockeados', async () => {
-		const categoriasMySQLRepository = new CategoriasMySQLRepository();
+		const categoriasMySQLRepository = new CategoriaRepositoryMongo();
 		
 		const preguntasMySQLRepository = new PreguntaRepositoryMySQL();
 		const getNumeroPreguntasPorCategoria = new GetNumeroPreguntasPorCategoria(preguntasMySQLRepository);

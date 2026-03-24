@@ -24,6 +24,14 @@ export class Pregunta {
 		return this.respuestas.filter((r) => !r.isCorrect);
 	}
 
+	get idPregunta() {
+		return this.#props.idPregunta;
+	}
+
+	get categorias(){
+		return this.#props.categorias
+	}
+
 	public static crear(
 		props: Omit<TPregunta, 'idPregunta'> &
 			Partial<Pick<TPregunta, 'idPregunta'>>
