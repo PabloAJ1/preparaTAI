@@ -1,9 +1,28 @@
 import { Pregunta } from "../../../../../domains/preguntasDomain/domain/entities/Pregunta";
 import { IPreguntaRepository } from "../../../../../domains/preguntasDomain/domain/repositories/preguntasRepository.interface";
+import { PreguntaNoActualizadaById } from "../../../application/errors/PreguntaNoActualizadaById.error";
+import { PreguntaNoEncontradaById } from "../../../application/errors/PreguntaNoEncontradaById.error";
 import { MapPreguntasMongo } from "../mappers/mapPreguntasMongo.mapper";
 import preguntaModel from "../schemas/pregunta.schema";
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async getPreguntaById(idPregunta: string): Promise<Pregunta> {
+		const doc = await preguntaModel.findOne({ idPregunta: idPregunta });
+		if(!doc) throw new PreguntaNoEncontradaById(idPregunta);
+		return MapPreguntasMongo.toEntity(doc);
+	}
+
+	async updatePreguntaById(pregunta: Pregunta): Promise<Pregunta> {
+		const model = MapPreguntasMongo.toModel(pregunta);
+		const doc = await preguntaModel.findOneAndUpdate(
+			{ idPregunta: model.idPregunta },
+			model,
+			{ returnDocument: 'after' }
+		)
+		if(!doc) throw new PreguntaNoActualizadaById(model.idPregunta)
+		return MapPreguntasMongo.toEntity(doc);
+	}
+
 	async getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]> {
 		const skip = (pagina - 1) * limit;
 

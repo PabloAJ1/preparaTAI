@@ -18,6 +18,7 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		const preguntasMock = 15;
 
 		const repoMockCategorias: ICategoriaRepository = {
+			getAllCategoriasExamenes: vi.fn(),
 			getListOfCategorias: vi.fn(),
 			createListOfCategorias: vi.fn(),
 			createCategoria: vi.fn().mockResolvedValue(categoriasMock),

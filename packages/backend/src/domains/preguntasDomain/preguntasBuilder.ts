@@ -4,13 +4,14 @@ import { GetListOfCategorias } from "../categoriasDomain/application/useCases/ge
 import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
 import { CategoriasExternasService } from "./application/services/CategoriasExternas.service";
 import { GetNumeroPreguntas } from "./application/useCases/getNumeroDePreguntas"
-import { GetPreguntasFromFile } from "./application/useCases/getPreguntasFromFile";
+import { LoadPreguntasFromFile } from "./application/useCases/loadPreguntasFromFile";
 import { GetPreguntasPorCateogira } from "./application/useCases/getPreguntasPorCateogira.interface";
 import { GetPreguntasPorCateogiraConPaginacion } from "./application/useCases/getPreguntasPorCateogiraConPaginacion.interface";
 import { CategoriaAdaperServive } from "./infrastructure/adapters/ports/categoriasAdapter.service";
 import { ExcelAdapterService } from "./infrastructure/adapters/ports/excelAdapter.service";
 import { ExcelLoader } from "./infrastructure/excel/services/excelLoader.service";
 import { PreguntaRespositoryMongoDB } from "./infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
+import { RegistarEstadisticaByPregunta } from "./application/useCases/registarEstadisticaByPregunta";
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -29,21 +30,22 @@ export const preguntasBuilder = () => {
 		getListOfCategorias
 	)
 	const categoriasExternasService = new CategoriasExternasService(categoriaAdapertService)
-	const getPreguntasFromFileUseCase = new GetPreguntasFromFile(
+	const getPreguntasFromFileUseCase = new LoadPreguntasFromFile(
 		excelAdapterService,
 		preguntasRepositoryMongoDB,
 		categoriasExternasService
 	)
 
-	
 	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMongoDB)
 	const getPreguntasPorCategoria = new GetPreguntasPorCateogira(preguntasRepositoryMongoDB)
 	const getPreguntasPorCategoriaPaginando = new GetPreguntasPorCateogiraConPaginacion(preguntasRepositoryMongoDB)
+	const registarEstadisticaByPregunta = new RegistarEstadisticaByPregunta(preguntasRepositoryMongoDB)
 
 	return {
 		getNumeroPreguntas,
 		getPreguntasPorCategoria,
 		getPreguntasFromFileUseCase,
-		getPreguntasPorCategoriaPaginando
+		getPreguntasPorCategoriaPaginando,
+		registarEstadisticaByPregunta
 	}
 }

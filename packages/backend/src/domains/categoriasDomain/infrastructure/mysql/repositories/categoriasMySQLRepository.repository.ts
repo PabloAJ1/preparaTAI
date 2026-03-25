@@ -3,8 +3,12 @@ import { ICategoriaRepository } from "../../../../../domains/categoriasDomain/do
 import { pool } from "../../../../../shared/infrastructure/db/mysql/mysql.connection";
 import { RowDataPacket } from "mysql2";
 import { MapCategoria } from "../mappers/mapCategoria.mapper";
+import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 
 export class CategoriasMySQLRepository implements ICategoriaRepository {
+	getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]> {
+		throw new Error("Method not implemented.");
+	}
 	getAllCategoriasExamenes(): Promise<Categoria[]> {
 		throw new Error("Method not implemented.");
 	}

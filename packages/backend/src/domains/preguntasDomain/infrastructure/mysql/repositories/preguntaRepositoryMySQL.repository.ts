@@ -7,13 +7,6 @@ import { IPreguntaSQL } from '../dtos/preguntaSQL.dto';
 import { MapPreguntas } from '../mappers/mapPreguntas.mapper';
 
 export class PreguntaRepositoryMySQL implements IPreguntaRepository {
-	getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]> {
-		throw new Error('Method not implemented.');
-	}
-	async createPregunta(pregunta: Pregunta): Promise<Pregunta> {
-		throw new Error('No implementado');
-	}
-
 	async getNumeroPreguntasTotales(): Promise<number> {
 		const [result] = await pool.query<({total: number} & RowDataPacket)[]>(
 			"SELECT COUNT(*) as total FROM ptype"
@@ -70,5 +63,18 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 
 		const preguntasDto = AgruparPreguntas.agrupar(result)
 		return preguntasDto.map(MapPreguntas.toEntity)
+	}
+
+	getPreguntaById(idPregunta: string): Promise<Pregunta> {
+		throw new Error('Method not implemented.');
+	}
+	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta> {
+		throw new Error('Method not implemented.');
+	}
+	getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
+	createPregunta(pregunta: Pregunta): Promise<Pregunta> {
+		throw new Error('No implementado');
 	}
 }

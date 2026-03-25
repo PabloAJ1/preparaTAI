@@ -31,6 +31,12 @@ export interface Categoria {
      * @memberof Categoria
      */
     nombre: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Categoria
+     */
+    tipo: string;
 }
 
 /**
@@ -39,6 +45,7 @@ export interface Categoria {
 export function instanceOfCategoria(value: object): value is Categoria {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('nombre' in value) || value['nombre'] === undefined) return false;
+    if (!('tipo' in value) || value['tipo'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +61,7 @@ export function CategoriaFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'id': json['id'],
         'nombre': json['nombre'],
+        'tipo': json['tipo'],
     };
 }
 
@@ -70,6 +78,7 @@ export function CategoriaToJSONTyped(value?: Categoria | null, ignoreDiscriminat
         
         'id': value['id'],
         'nombre': value['nombre'],
+        'tipo': value['tipo'],
     };
 }
 

@@ -87,7 +87,6 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/Pregunta'
-
     delete:
       tags:
         - preguntas
@@ -96,6 +95,35 @@ paths:
       responses:
         '204':
           description: Pregunta eliminada por ID
+
+  /pregunta/{id}/intentos:
+    post:
+      tags:
+        - preguntas
+      summary: Registrar intento de respuesta a una pregunta
+      operationId: registrarIntentoPregunta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identificador de la pregunta
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - acertada
+              properties:
+                acertada:
+                  type: boolean
+                  description: Indica si la respuesta fue correcta
+      responses:
+        '204':
+          description: Intento registrado correctamente, sin contenido de respuesta
     
   /pregunta/getNumeroDePreguntas:
     get:
@@ -231,9 +259,12 @@ components:
           type: string
         nombre:
           type: string
+        tipo:
+          type: string
       required:
         - id
         - nombre
+        - tipo
 
     CategoriaResumen:
       type: object
@@ -263,6 +294,20 @@ components:
         - enunciado
         - correcta
 
+    Estadistica:
+      type: object
+      properties:
+        aciertos:
+          type: integer
+        fallos:
+          type: integer
+        total:
+          type: integer
+      required:
+        - aciertos
+        - fallos
+        - total
+
     Pregunta:
       type: object
       properties:
@@ -278,10 +323,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Categoria'
+        estadisticas:
+            $ref: '#/components/schemas/Estadistica'
       required:
         - id
         - enunciado
         - respuestas
+        - estadisticas
     
     GrupoPreguntasRelacionadas:
       type: object

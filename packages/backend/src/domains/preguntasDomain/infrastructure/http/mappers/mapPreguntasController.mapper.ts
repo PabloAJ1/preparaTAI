@@ -1,5 +1,5 @@
-import { IPreguntaDto } from "@/domains/preguntasDomain/application/dtos/pregunta.dto";
-import { components } from "@/types/openapi"
+import { IPreguntaDto } from "../../../../../domains/preguntasDomain/application/dtos/pregunta.dto";
+import { components } from "../../../../../types/openapi"
 
 type TPreguntas = components["schemas"]["Pregunta"]
 
@@ -14,7 +14,12 @@ export class MapPreguntaController {
 					correcta: r.correcta,
 					enunciado: r.enunciado
 				}
-			})
+			}),
+			estadisticas: {
+				aciertos: dto.estadisticas.aciertos,
+				fallos: dto.estadisticas.fallos,
+				total: dto.estadisticas.total
+			}
 		}
 	}
 }

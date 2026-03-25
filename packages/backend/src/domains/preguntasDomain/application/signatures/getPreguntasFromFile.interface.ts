@@ -1,3 +1,3 @@
-export interface IGetPreguntasFromFile {
+export interface ILoadPreguntasFromFile {
 	exec(): Promise<void>;
 }

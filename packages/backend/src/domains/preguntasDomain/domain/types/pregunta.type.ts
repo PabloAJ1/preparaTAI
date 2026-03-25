@@ -1,3 +1,4 @@
+import { EstadisticaVO } from '../valueObjects/estadistica.vo';
 import { RespuestaVo } from '../valueObjects/RespuestaVo';
 
 export type TPregunta = {
@@ -5,4 +6,5 @@ export type TPregunta = {
 	enunciado: string;
 	categorias: string[];
 	respuestas: RespuestaVo[];
+	estadisticas: EstadisticaVO;
 };

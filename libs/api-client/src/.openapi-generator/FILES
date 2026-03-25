@@ -6,6 +6,7 @@ apis/index.ts
 docs/Categoria.md
 docs/CategoriaResumen.md
 docs/CategoriasApi.md
+docs/Estadistica.md
 docs/Examen.md
 docs/ExamenPreguntasInner.md
 docs/ExamenesApi.md
@@ -13,14 +14,17 @@ docs/GrupoPreguntasRelacionadas.md
 docs/GruposDePreguntasRelacionadasApi.md
 docs/Pregunta.md
 docs/PreguntasApi.md
+docs/RegistrarIntentoPreguntaRequest.md
 docs/Respuesta.md
 index.ts
 models/Categoria.ts
 models/CategoriaResumen.ts
+models/Estadistica.ts
 models/Examen.ts
 models/ExamenPreguntasInner.ts
 models/GrupoPreguntasRelacionadas.ts
 models/Pregunta.ts
+models/RegistrarIntentoPreguntaRequest.ts
 models/Respuesta.ts
 models/index.ts
 runtime.ts

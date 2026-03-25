@@ -26,6 +26,8 @@ export class MapsPregunta {
 					enunciado: r.enunciado,
 				};
 			}),
+			categorias: entity.categorias,
+			estadisticas: entity.estadisticas
 		};
 	}
 }

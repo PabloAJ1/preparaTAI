@@ -6,6 +6,7 @@ export class MapCateogira {
 		return {
 			idCategoria: categoria.idCategoria,
 			nombreCategoria: categoria.nombreCategoria,
+			tipo: categoria.tipoCategoriaString
 		}
 	}
 }

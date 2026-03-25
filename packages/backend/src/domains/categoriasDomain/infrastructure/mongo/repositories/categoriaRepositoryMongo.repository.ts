@@ -2,8 +2,15 @@ import { ICategoriaRepository } from "../../../../../domains/categoriasDomain/do
 import { Categoria } from "../../../../../domains/categoriasDomain/domain/entities/Categoria";
 import { MapCategoriaMongo } from "../mappers/mapCategoriaMongo.mapper";
 import PreguntaModel from "../schemas/categoria.schema";
+import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 
 export class CategoriaRepositoryMongo implements ICategoriaRepository {
+	async getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]> {
+		console.log(tipo.toString());
+		const docs = await PreguntaModel.find({ tipo: tipo.toString() });
+		return docs.map(MapCategoriaMongo.toEntity)
+	}
+
 	async getAllCategoriasExamenes(): Promise<Categoria[]> {
 		const docs = await PreguntaModel.find({ nombreCategoria: /^Examen-/ });
 		return docs.map(MapCategoriaMongo.toEntity)

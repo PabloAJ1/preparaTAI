@@ -20,6 +20,13 @@ import {
     CategoriaToJSON,
     CategoriaToJSONTyped,
 } from './Categoria';
+import type { Estadistica } from './Estadistica';
+import {
+    EstadisticaFromJSON,
+    EstadisticaFromJSONTyped,
+    EstadisticaToJSON,
+    EstadisticaToJSONTyped,
+} from './Estadistica';
 import type { Respuesta } from './Respuesta';
 import {
     RespuestaFromJSON,
@@ -58,6 +65,12 @@ export interface Pregunta {
      * @memberof Pregunta
      */
     categorias?: Array<Categoria>;
+    /**
+     * 
+     * @type {Estadistica}
+     * @memberof Pregunta
+     */
+    estadisticas: Estadistica;
 }
 
 /**
@@ -67,6 +80,7 @@ export function instanceOfPregunta(value: object): value is Pregunta {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('enunciado' in value) || value['enunciado'] === undefined) return false;
     if (!('respuestas' in value) || value['respuestas'] === undefined) return false;
+    if (!('estadisticas' in value) || value['estadisticas'] === undefined) return false;
     return true;
 }
 
@@ -84,6 +98,7 @@ export function PreguntaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'enunciado': json['enunciado'],
         'respuestas': ((json['respuestas'] as Array<any>).map(RespuestaFromJSON)),
         'categorias': json['categorias'] == null ? undefined : ((json['categorias'] as Array<any>).map(CategoriaFromJSON)),
+        'estadisticas': EstadisticaFromJSON(json['estadisticas']),
     };
 }
 
@@ -102,6 +117,7 @@ export function PreguntaToJSONTyped(value?: Pregunta | null, ignoreDiscriminator
         'enunciado': value['enunciado'],
         'respuestas': ((value['respuestas'] as Array<any>).map(RespuestaToJSON)),
         'categorias': value['categorias'] == null ? undefined : ((value['categorias'] as Array<any>).map(CategoriaToJSON)),
+        'estadisticas': EstadisticaToJSON(value['estadisticas']),
     };
 }
 

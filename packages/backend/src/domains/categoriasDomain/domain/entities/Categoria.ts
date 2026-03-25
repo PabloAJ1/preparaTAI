@@ -1,3 +1,4 @@
+import { ETipoCategoria } from '../enums/tipoCategoria.enum';
 import { TCategoria } from '../types/categoria.type';
 import { v7 as uuid } from "uuid";
 
@@ -16,10 +17,15 @@ export class Categoria {
 		return this.#props.idCategoria;
 	}
 
-	public static crear(props: Omit<TCategoria, 'idCategoria'> & Partial<Pick<TCategoria, 'idCategoria'>>): Categoria {
+	get tipoCategoriaString() {
+		return this.#props.tipo.toString()
+	}
+
+	public static crear(props: Omit<TCategoria, 'idCategoria' | 'tipo'> & Partial<Pick<TCategoria, 'idCategoria' | 'tipo'>>): Categoria {
 		return new Categoria({
 			...props,
-			idCategoria: props.idCategoria ?? uuid()
+			idCategoria: props.idCategoria ?? uuid(),
+			tipo: props.tipo ?? ETipoCategoria.DEFAULT
 		});
 	}
 }

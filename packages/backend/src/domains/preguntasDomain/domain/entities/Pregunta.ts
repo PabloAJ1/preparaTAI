@@ -1,5 +1,6 @@
 import { TPregunta } from '../types/pregunta.type';
 import { v7 as uuid } from 'uuid';
+import { EstadisticaVO } from '../valueObjects/estadistica.vo';
 
 export class Pregunta {
 	readonly #props: TPregunta;
@@ -32,13 +33,18 @@ export class Pregunta {
 		return this.#props.categorias
 	}
 
+	get estadisticas(){
+		return this.#props.estadisticas;
+	}
+
 	public static crear(
-		props: Omit<TPregunta, 'idPregunta'> &
-			Partial<Pick<TPregunta, 'idPregunta'>>
+		props: Omit<TPregunta, 'idPregunta' | 'estadisticas'> &
+			Partial<Pick<TPregunta, 'idPregunta' | 'estadisticas'>>
 	) {
 		return new Pregunta({
 			...props,
-			idPregunta: uuid(),
+			idPregunta: props.idPregunta ?? uuid(),
+			estadisticas: props.estadisticas ?? EstadisticaVO.inicializar()
 		});
 	}
 }

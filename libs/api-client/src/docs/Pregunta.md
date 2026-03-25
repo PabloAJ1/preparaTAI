@@ -10,6 +10,7 @@ Name | Type
 `enunciado` | string
 `respuestas` | [Array&lt;Respuesta&gt;](Respuesta.md)
 `categorias` | [Array&lt;Categoria&gt;](Categoria.md)
+`estadisticas` | [Estadistica](Estadistica.md)
 
 ## Example
 
@@ -22,6 +23,7 @@ const example = {
   "enunciado": null,
   "respuestas": null,
   "categorias": null,
+  "estadisticas": null,
 } satisfies Pregunta
 
 console.log(example)

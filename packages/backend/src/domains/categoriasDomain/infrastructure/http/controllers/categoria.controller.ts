@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { IGetCategoriasResumen } from "../../../application/signatures/getCategoriasResumen.interface";
+import { IGetCategoriasByTipo } from "../../../application/signatures/getCategoriasResumen.interface";
 import { components } from "../../../../../types/openapi";
 import { MapCategoriasResumen } from "../mappers/mapCategoriasResumen.mapper";
 import { categoriaBuilder } from "../../../../../domains/categoriasDomain/categoriaBuilder";
@@ -11,7 +11,7 @@ const {
 } = categoriaBuilder();
 
 export const makeHandleGetCategoriasResumen = (
-	getCategoriasResumen: IGetCategoriasResumen
+	getCategoriasResumen: IGetCategoriasByTipo
 ) =>
 	async (
 		req: Request,

@@ -3,9 +3,9 @@ import { IPreguntaRepository } from '../../domain/repositories/preguntasReposito
 import { RespuestaVo } from '../../domain/valueObjects/RespuestaVo';
 import { IExternalDataService } from '../ports/excelAdapterService.interface';
 import { ICategoriasExternasService } from '../signatures/categoriasExternasService.interface';
-import { IGetPreguntasFromFile } from '../signatures/getPreguntasFromFile.interface';
+import { ILoadPreguntasFromFile } from '../signatures/getPreguntasFromFile.interface';
 
-export class GetPreguntasFromFile implements IGetPreguntasFromFile {
+export class LoadPreguntasFromFile implements ILoadPreguntasFromFile {
 	constructor(
 		private readonly fileReader: IExternalDataService,
 		private readonly preguntaRepository: IPreguntaRepository,

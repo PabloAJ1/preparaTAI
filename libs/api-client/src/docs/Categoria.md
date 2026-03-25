@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `id` | string
 `nombre` | string
+`tipo` | string
 
 ## Example
 
@@ -18,6 +19,7 @@ import type { Categoria } from ''
 const example = {
   "id": null,
   "nombre": null,
+  "tipo": null,
 } satisfies Categoria
 
 console.log(example)

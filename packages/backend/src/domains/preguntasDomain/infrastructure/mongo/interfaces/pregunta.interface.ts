@@ -1,3 +1,4 @@
+import { IEstadisticas } from "./estadisticas.interface";
 import { IRespuesta } from "./respuesta.interface";
 
 export interface IPregunta {
@@ -5,4 +6,5 @@ export interface IPregunta {
 	enunciado: string;
 	respuestas: IRespuesta[];
 	categorias: string[];
+	estadisticas: IEstadisticas;
 }

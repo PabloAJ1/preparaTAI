@@ -18,6 +18,7 @@ import type {
   Examen,
   GrupoPreguntasRelacionadas,
   Pregunta,
+  RegistrarIntentoPreguntaRequest,
 } from '../models/index';
 import {
     ExamenFromJSON,
@@ -26,6 +27,8 @@ import {
     GrupoPreguntasRelacionadasToJSON,
     PreguntaFromJSON,
     PreguntaToJSON,
+    RegistrarIntentoPreguntaRequestFromJSON,
+    RegistrarIntentoPreguntaRequestToJSON,
 } from '../models/index';
 
 export interface CreatePreguntaRequest {
@@ -44,6 +47,11 @@ export interface GetPreguntasPorCategoriaRequest {
     id: string;
     page?: number;
     limit?: number;
+}
+
+export interface RegistrarIntentoPreguntaOperationRequest {
+    id: string;
+    registrarIntentoPreguntaRequest: RegistrarIntentoPreguntaRequest;
 }
 
 export interface UpdatePreguntaByIdRequest {
@@ -395,6 +403,60 @@ export class PreguntasApi extends runtime.BaseAPI {
     async getPreguntasPorCategoria(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Pregunta>> {
         const response = await this.getPreguntasPorCategoriaRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Creates request options for registrarIntentoPregunta without sending the request
+     */
+    async registrarIntentoPreguntaRequestOpts(requestParameters: RegistrarIntentoPreguntaOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling registrarIntentoPregunta().'
+            );
+        }
+
+        if (requestParameters['registrarIntentoPreguntaRequest'] == null) {
+            throw new runtime.RequiredError(
+                'registrarIntentoPreguntaRequest',
+                'Required parameter "registrarIntentoPreguntaRequest" was null or undefined when calling registrarIntentoPregunta().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+
+        let urlPath = `/pregunta/{id}/intentos`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: RegistrarIntentoPreguntaRequestToJSON(requestParameters['registrarIntentoPreguntaRequest']),
+        };
+    }
+
+    /**
+     * Registrar intento de respuesta a una pregunta
+     */
+    async registrarIntentoPreguntaRaw(requestParameters: RegistrarIntentoPreguntaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.registrarIntentoPreguntaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Registrar intento de respuesta a una pregunta
+     */
+    async registrarIntentoPregunta(requestParameters: RegistrarIntentoPreguntaOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.registrarIntentoPreguntaRaw(requestParameters, initOverrides);
     }
 
     /**

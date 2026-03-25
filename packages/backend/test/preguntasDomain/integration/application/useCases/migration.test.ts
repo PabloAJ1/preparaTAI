@@ -31,13 +31,12 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 		getCategoriasServicePort
 	)
 
-	test('deberia leer el fichero y devolver las SQL', async () => {
+	test('deberia leer el fichero y no devolver errores', async () => {
 		try{
 			await migrationCaseUse.exec();
 			expect(true).toBeTruthy();
 		}catch(e){
 			throw new Error("No deberia llegar aqui. Err.: " + e)
 		}
-		
 	});
 });

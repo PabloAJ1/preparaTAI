@@ -37,7 +37,8 @@ export class MapExcelDtoToEntityPregunta {
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'd',
 				},
 			],
-			categorias: categorias
+			categorias: categorias,
+			estadisticas: { aciertos: 0, fallos: 0, total: 0}
 		};
 	}
 }

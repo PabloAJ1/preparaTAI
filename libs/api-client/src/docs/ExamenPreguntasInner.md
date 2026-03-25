@@ -10,6 +10,7 @@ Name | Type
 `enunciado` | string
 `respuestas` | [Array&lt;Respuesta&gt;](Respuesta.md)
 `categorias` | [Array&lt;Categoria&gt;](Categoria.md)
+`estadisticas` | [Estadistica](Estadistica.md)
 `textoBase` | string
 `preguntas` | [Array&lt;Pregunta&gt;](Pregunta.md)
 
@@ -24,6 +25,7 @@ const example = {
   "enunciado": null,
   "respuestas": null,
   "categorias": null,
+  "estadisticas": null,
   "textoBase": null,
   "preguntas": null,
 } satisfies ExamenPreguntasInner

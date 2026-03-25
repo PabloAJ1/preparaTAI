@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { ExcelAdapterService } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/adapters/excelAdapter.service';
+import { ExcelAdapterService } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/excelAdapter.service';
 import { IExcelLoader } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/interfaces/excelLoader.interface';
 
 describe('ExcelAdapterService - Stub', () => {
@@ -23,9 +23,9 @@ describe('ExcelAdapterService - Stub', () => {
 				] as any,
 		};
 
-		const service = new ExcelAdapterService(excelLoaderStub);
+		const service = new ExcelAdapterService(excelLoaderStub, 'fake.xlsx');
 
-		const result = await service.cargarDatos('fake.xlsx');
+		const result = await service.cargarDatos();
 
 		expect(result.length).toBe(1);
 	});
@@ -53,9 +53,9 @@ describe.skip('ExcelAdapterService - Mock', () => {
 			cargarDatosFichero,
 		};
 
-		const service = new ExcelAdapterService(excelLoaderMock);
+		const service = new ExcelAdapterService(excelLoaderMock, 'test.xlsx');
 
-		await service.cargarDatos('test.xlsx');
+		await service.cargarDatos();
 
 		expect(cargarDatosFichero).toHaveBeenCalledWith('test.xlsx');
 		expect(cargarDatosFichero).toHaveBeenCalledTimes(1);

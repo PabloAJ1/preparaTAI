@@ -1,4 +1,3 @@
-import { Categoria } from "../../domain/entities/Categoria";
 import { ICategoriaRepository } from "../../domain/repositories/categoriaRepository.interface";
 import { IMigracionCategorias } from "../signatures/migracionCategorias.interface";
 

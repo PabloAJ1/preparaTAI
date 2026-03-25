@@ -1,18 +1,32 @@
 import { Categoria as CategoriaEntity } from "../../../../../domains/categoriasDomain/domain/entities/Categoria";
+import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 import { ICategoria } from "../interfaces/categoria.interface";
 
 export class MapCategoriaMongo {
 	static toModel(categoria: CategoriaEntity): ICategoria {
 		return {
 			idCategoria: categoria.idCategoria,
-			nombreCategoria: categoria.nombreCategoria
+			nombreCategoria: categoria.nombreCategoria,
+			tipo: categoria.tipoCategoriaString
 		}
 	}
 
 	static toEntity(categoria: ICategoria): CategoriaEntity {
 		return CategoriaEntity.crear({
 			nombreCategoria: categoria.nombreCategoria,
-			idCategoria: categoria.idCategoria
+			idCategoria: categoria.idCategoria,
+			tipo : MapCategoriaMongo.#toEnum(categoria.tipo)
 		})
+	}
+
+	static #toEnum(tipo: string): ETipoCategoria{
+		switch(tipo.toLocaleLowerCase()){
+			case "examen":
+				return ETipoCategoria.EXAMEN;
+			case "cuestionario":
+				return ETipoCategoria.CUESTIONARIO
+			default:
+				return ETipoCategoria.DEFAULT
+		}
 	}
 }

@@ -1,3 +1,4 @@
+import { IEstadosticasDto } from './estadisticas.dto';
 import { IRespuestaDto } from './respuesta.dto';
 
 export interface IPreguntaDto {
@@ -5,4 +6,5 @@ export interface IPreguntaDto {
 	enunciado: string;
 	respuestas: IRespuestaDto[];
 	categorias: string[];
+	estadisticas: IEstadosticasDto
 }

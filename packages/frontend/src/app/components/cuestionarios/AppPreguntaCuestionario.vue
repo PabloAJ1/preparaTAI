@@ -1,14 +1,15 @@
 <template>
 	<div :id="props.id" class="cuestionario-card">
 		<AppEnunciadoCodeCuestionario
-			v-if="props.pregunta"
-			:enunciado="props.pregunta.enunciado"
+			v-if="preguntaLocal"
+			:enunciado="preguntaLocal.enunciado"
 			:indice="props.indice"
+			:estadisticas="preguntaLocal.estadisticas"
 		/>
 
 		<div class="respuestas-lista">
 			<AppRespuestaCuestionario
-				v-for="respuesta in props.pregunta.respuestas"
+				v-for="respuesta in preguntaLocal.respuestas"
 				:key="respuesta.enunciado"
 				:respuesta="respuesta"
 				:respondida="respondida"
@@ -20,8 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Pregunta, Respuesta } from '@preparatai/api-client';
+import { ref, reactive } from 'vue';
+import {
+	Pregunta,
+	Respuesta,
+	PreguntasApi,
+	Configuration,
+} from '@preparatai/api-client';
 import AppRespuestaCuestionario from './AppRespuestaCuestionario.vue';
 import AppEnunciadoCodeCuestionario from './AppEnunciadoCodeCuestionario.vue';
 
@@ -31,13 +37,59 @@ const props = defineProps<{
 	id: string;
 }>();
 
+const preguntaLocal = reactive({ ...props.pregunta });
 const respondida = ref(false);
 const respuestaSeleccionada = ref<Respuesta | null>(null);
+const api = new PreguntasApi(
+	new Configuration({ basePath: 'http://localhost:3000/api' })
+);
 
-function verificarRespuesta(respuesta: Respuesta) {
+async function verificarRespuesta(respuesta: Respuesta) {
 	if (respondida.value) return;
 	respuestaSeleccionada.value = respuesta;
 	respondida.value = true;
+
+	// actualizar estadísticas localmente
+	preguntaLocal.estadisticas.total++;
+	if (respuesta.correcta) {
+		preguntaLocal.estadisticas.aciertos++;
+	} else {
+		preguntaLocal.estadisticas.fallos++;
+	}
+
+	// enviar al servidor
+	actualizarEstadisticas(respuesta.correcta);
+
+	// bajar a la siguiente pregunta
+	scrollToNext();
+}
+
+function actualizarEstadisticas(correcta: boolean) {
+	api
+		.registrarIntentoPregunta({
+			id: props.pregunta.id,
+			registrarIntentoPreguntaRequest: { acertada: correcta },
+		})
+		.catch((error) => {
+			console.error('Error registrando intento en servidor', error);
+		});
+}
+
+function scrollToNext() {
+	setTimeout(() => {
+		const actual = document.getElementById(props.id);
+
+		if (!actual) return;
+
+		const siguiente = actual.nextElementSibling as HTMLElement;
+
+		if (siguiente) {
+			siguiente.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
+	}, 300);
 }
 </script>
 
@@ -51,6 +103,8 @@ $bg-hover: #f8fafc;
 	border-radius: 0.6rem;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 	margin-bottom: 2rem;
+	scroll-margin-top: 1rem; // o 16px
+
 }
 
 .respuestas-lista {

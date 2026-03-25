@@ -44,6 +44,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/pregunta/{id}/intentos": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Registrar intento de respuesta a una pregunta */
+        post: operations["registrarIntentoPregunta"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/pregunta/getNumeroDePreguntas": {
         parameters: {
             query?: never;
@@ -105,7 +122,10 @@ export interface paths {
     };
     "/categoria/resumen": {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Tipo de Cateogiras que queremos (Cuestionarios / No Cuestionarios) */
+                tipo?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -161,6 +181,7 @@ export interface components {
         Categoria: {
             id: string;
             nombre: string;
+            tipo: string;
         };
         CategoriaResumen: {
             /** @example 0000-00000-0000000-0000 */
@@ -174,11 +195,17 @@ export interface components {
             enunciado: string;
             correcta: boolean;
         };
+        Estadistica: {
+            aciertos: number;
+            fallos: number;
+            total: number;
+        };
         Pregunta: {
             id: string;
             enunciado: string;
             respuestas: components["schemas"]["Respuesta"][];
             categorias?: components["schemas"]["Categoria"][];
+            estadisticas: components["schemas"]["Estadistica"];
         };
         GrupoPreguntasRelacionadas: {
             id: string;
@@ -317,6 +344,34 @@ export interface operations {
             };
         };
     };
+    registrarIntentoPregunta: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Identificador de la pregunta */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description Indica si la respuesta fue correcta */
+                    acertada: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Intento registrado correctamente, sin contenido de respuesta */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     getNumeroDePreguntas: {
         parameters: {
             query?: never;
@@ -387,7 +442,10 @@ export interface operations {
     };
     getCategoriasResumen: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Tipo de Cateogiras que queremos (Cuestionarios / No Cuestionarios) */
+                tipo?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;

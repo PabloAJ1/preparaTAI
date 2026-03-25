@@ -1,4 +1,4 @@
-import { CategoriaResumenDto } from "@/domains/categoriasDomain/application/dtos/categoriasResumen.dto";
+import { CategoriaResumenDto } from "../../../../../domains/categoriasDomain/application/dtos/categoriasResumen.dto";
 import { components } from "../../../../../types/openapi";
 
 type TCategoriaResumen = components["schemas"]["CategoriaResumen"]
