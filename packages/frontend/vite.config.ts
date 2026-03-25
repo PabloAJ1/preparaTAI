@@ -9,6 +9,13 @@ export default defineConfig(() => ({
 	server: {
 		port: 6200,
 		host: 'localhost',
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000', // tu backend local
+				changeOrigin: true,
+				secure: false,
+			},
+		},
 	},
 	preview: {
 		port: 5300,
@@ -41,8 +48,11 @@ export default defineConfig(() => ({
 	},
 	resolve: {
 		alias: {
-		// Asegúrate de que la ruta apunte correctamente al index.ts de tu lib
-			'@preparatai/api-client': path.resolve(__dirname, '../../libs/api-client/src/index.ts')
-		}
-	}
+			// Asegúrate de que la ruta apunte correctamente al index.ts de tu lib
+			'@preparatai/api-client': path.resolve(
+				__dirname,
+				'../../libs/api-client/src/index.ts'
+			),
+		},
+	},
 }));

@@ -21,7 +21,6 @@ export const getCadenaConexionMongo = (envVar: string) => {
 
     const servidor = process.env.MONGO_ATLAS === "true" ? "mongodb+srv" : "mongodb"
     const conexion = `${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}`
-    const replicaSet = `?replicaSet=${process.env.MONGO_SERVER_REPLICA_SET}`;
     const atlasOptions = process.env.MONGO_ATLAS  === "true" ? "?connectTimeoutMS=5000&retryWrites=true&w=majority&appName=Cluster0" : ""
 
     switch (envVar) {
@@ -29,13 +28,15 @@ export const getCadenaConexionMongo = (envVar: string) => {
         case "dev":
             mongoConnectionString = `${servidor}://${conexion}${atlasOptions}`;
             break;
-        case "PROD":
-            mongoConnectionString = `${servidor}://${conexion}${replicaSet}`;
+        case "production":
+            mongoConnectionString = `${servidor}://${conexion}?authSource=admin`;
             break;
         case "ATLAS_PROD":
             mongoConnectionString = `${servidor}://${conexion}${atlasOptions}`
             break;
     }
+
+	console.log("Conectando a Mongo:", mongoConnectionString);
     return mongoConnectionString;
 };
 

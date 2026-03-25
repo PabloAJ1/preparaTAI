@@ -12,11 +12,13 @@ const possiblePaths = [
 ];
 
 const envPath = possiblePaths.find(p => fs.existsSync(p));
-if (envPath) {
+if (process.env.NODE_ENV !== "production" && envPath) {
 	dotenv.config({ path: envPath });
 	console.info(`✅ Variables de entorno cargadas desde: ${envPath}`);
 } else {
   	console.warn(`⚠️ No se encontró el archivo de entorno (${envFile}) en ninguna ruta válida.`);
+	if(process.env.NODE_ENV === "production")
+		console.info(`✅ Variables de entorno cargadas para desarrollo`);
 }
 
 export const ENVIROMENT = process.env.ENVIROMENT;

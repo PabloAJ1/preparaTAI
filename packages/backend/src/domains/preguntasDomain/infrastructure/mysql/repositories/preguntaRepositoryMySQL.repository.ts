@@ -77,4 +77,7 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 	createPregunta(pregunta: Pregunta): Promise<Pregunta> {
 		throw new Error('No implementado');
 	}
+	reiniciarAllEstadisticas(): Promise<void> {
+		throw new Error('No implementado');
+	}
 }

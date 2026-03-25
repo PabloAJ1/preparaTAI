@@ -6,6 +6,19 @@ import { MapPreguntasMongo } from "../mappers/mapPreguntasMongo.mapper";
 import preguntaModel from "../schemas/pregunta.schema";
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async reiniciarAllEstadisticas(): Promise<void> {
+		await preguntaModel.updateMany(
+			{}, // filtro vacío para seleccionar todas las preguntas
+			{
+				$set: {
+				'estadisticas.aciertos': 0,
+				'estadisticas.fallos': 0,
+				'estadisticas.total': 0,
+				},
+			}
+		);
+	}
+
 	async getPreguntaById(idPregunta: string): Promise<Pregunta> {
 		const doc = await preguntaModel.findOne({ idPregunta: idPregunta });
 		if(!doc) throw new PreguntaNoEncontradaById(idPregunta);

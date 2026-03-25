@@ -18,7 +18,7 @@ import { ref, onMounted } from 'vue';
 import { Configuration, CategoriasApi, CategoriaResumen } from '@preparatai/api-client';
 
 const api = new CategoriasApi(
-	new Configuration({ basePath: 'http://localhost:3000/api' })
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
 const tipoCategoria = 'EXAMEN';

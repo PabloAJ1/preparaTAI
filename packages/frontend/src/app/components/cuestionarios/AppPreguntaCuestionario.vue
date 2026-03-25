@@ -41,7 +41,7 @@ const preguntaLocal = reactive({ ...props.pregunta });
 const respondida = ref(false);
 const respuestaSeleccionada = ref<Respuesta | null>(null);
 const api = new PreguntasApi(
-	new Configuration({ basePath: 'http://localhost:3000/api' })
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
 async function verificarRespuesta(respuesta: Respuesta) {

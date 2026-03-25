@@ -103,6 +103,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/pregunta/estadisticas/reiniciar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Reincia las estadisticas de las preguntas */
+        get: operations["reiniciarContadorDeEstadisticas"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/categoria": {
         parameters: {
             query?: never;
@@ -417,6 +434,24 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["Pregunta"][];
                 };
+            };
+        };
+    };
+    reiniciarContadorDeEstadisticas: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Estadisticas reiniciadas */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

@@ -176,6 +176,16 @@ paths:
                 items:
                   $ref: '#/components/schemas/Pregunta'
 
+  /pregunta/estadisticas/reiniciar:
+    get:
+      tags:
+        - preguntas
+      summary: Reincia las estadisticas de las preguntas 
+      operationId: reiniciarContadorDeEstadisticas
+      responses:
+        '204':
+          description: Estadisticas reiniciadas
+
   /categoria:
     get:
       summary: Obtener categorias

@@ -9,4 +9,5 @@ export interface IPreguntaRepository {
 	getAllPreguntas(): Promise<Pregunta[]>
 	getPreguntaById(idPregunta: string): Promise<Pregunta>;
 	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta>;
+	reiniciarAllEstadisticas(): Promise<void>;
 }

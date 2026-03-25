@@ -6,6 +6,7 @@ import RepasoPage from '../pages/RepasoPage.vue'
 import PracticaPage from '../pages/PracticaPage.vue'
 import TestPage from '../pages/TestPage.vue'
 import ExamenesPage from '../pages/ExamenesPage.vue'
+import GestionDBPage from '../pages/GestionDBPage.vue'
 
 const routes = [
 	{
@@ -29,7 +30,10 @@ const routes = [
 				name: 'TestByCategoria',
 				component: TestPage,
 				props: true,
-			},
+			},{
+				path: '/gestionDB',
+				component: GestionDBPage,
+			}
 		],
 	},
 ]

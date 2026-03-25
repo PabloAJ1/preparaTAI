@@ -12,6 +12,7 @@ import { ExcelAdapterService } from "./infrastructure/adapters/ports/excelAdapte
 import { ExcelLoader } from "./infrastructure/excel/services/excelLoader.service";
 import { PreguntaRespositoryMongoDB } from "./infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 import { RegistarEstadisticaByPregunta } from "./application/useCases/registarEstadisticaByPregunta";
+import { ReiniciarEstadisticas } from "./application/useCases/reiniciarEstadisticas.interface";
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -40,12 +41,14 @@ export const preguntasBuilder = () => {
 	const getPreguntasPorCategoria = new GetPreguntasPorCateogira(preguntasRepositoryMongoDB)
 	const getPreguntasPorCategoriaPaginando = new GetPreguntasPorCateogiraConPaginacion(preguntasRepositoryMongoDB)
 	const registarEstadisticaByPregunta = new RegistarEstadisticaByPregunta(preguntasRepositoryMongoDB)
+	const reiniciarEstadisticas = new ReiniciarEstadisticas(preguntasRepositoryMongoDB)
 
 	return {
 		getNumeroPreguntas,
 		getPreguntasPorCategoria,
 		getPreguntasFromFileUseCase,
 		getPreguntasPorCategoriaPaginando,
-		registarEstadisticaByPregunta
+		registarEstadisticaByPregunta,
+		reiniciarEstadisticas
 	}
 }

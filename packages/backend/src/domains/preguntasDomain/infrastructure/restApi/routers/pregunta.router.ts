@@ -2,7 +2,8 @@ import { Router, RequestHandler } from "express";
 import { 
 	handleGetNumeroPreguntas,
 	handleGetPreguntasPorCategoria,
-	handleRegistarEstadisticaByPregunta
+	handleRegistarEstadisticaByPregunta,
+	handleReiniciarEstadisticas
 } from "../../http/controllers/pregunta.controller";
 
 export const preguntaRoute: Router = Router();
@@ -14,6 +15,10 @@ preguntaRoute
 preguntaRoute
     .route("/porCategoria/:categoria")
 	.get(handleGetPreguntasPorCategoria as RequestHandler)
+	
+preguntaRoute
+    .route("/estadisticas/reiniciar")
+	.post(handleReiniciarEstadisticas as RequestHandler);
 
 preguntaRoute
     .route("/:id/intentos")

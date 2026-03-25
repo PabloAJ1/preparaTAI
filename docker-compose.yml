@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: mongodbPreparaTic
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: preparaTAI
+      MONGO_INITDB_ROOT_PASSWORD: preparaTAI
+      MONGO_INITDB_DATABASE: preparaTAI
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data-tai:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: preparaTAIApp
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      ENVIROMENT: production
+      HOST: 0.0.0.0
+      MONGO_ATLAS: false
+      MONGO_USER: preparaTAI
+      MONGO_PASSWORD: preparaTAI
+      MONGO_SERVER: mongo:27017
+      MONGO_DB: preparaTAI
+      VITE_API_BASE_URL: /api
+    ports:
+      - '3005:3000'
+
+volumes:
+  mongo-data-tai:
+
+networks:
+  default:
+    name: prepraTicNetwork

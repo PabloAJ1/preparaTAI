@@ -13,6 +13,7 @@ All URIs are relative to */api*
 | [**getOnePreguntasById**](PreguntasApi.md#getonepreguntasbyid) | **GET** /pregunta/{id} | Obtener una pregunta por id |
 | [**getPreguntasPorCategoria**](PreguntasApi.md#getpreguntasporcategoria) | **GET** /pregunta/porCategoria/{id} | Obtener las preguntas que pertenecen a una categoria dada |
 | [**registrarIntentoPregunta**](PreguntasApi.md#registrarintentopreguntaoperation) | **POST** /pregunta/{id}/intentos | Registrar intento de respuesta a una pregunta |
+| [**reiniciarContadorDeEstadisticas**](PreguntasApi.md#reiniciarcontadordeestadisticas) | **GET** /pregunta/estadisticas/reiniciar | Reincia las estadisticas de las preguntas |
 | [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PUT** /pregunta/{id} | Actualizar una pregunta por id |
 
 
@@ -575,6 +576,63 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Intento registrado correctamente, sin contenido de respuesta |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## reiniciarContadorDeEstadisticas
+
+> reiniciarContadorDeEstadisticas()
+
+Reincia las estadisticas de las preguntas
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PreguntasApi,
+} from '';
+import type { ReiniciarContadorDeEstadisticasRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PreguntasApi();
+
+  try {
+    const data = await api.reiniciarContadorDeEstadisticas();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+`void` (Empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Estadisticas reiniciadas |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

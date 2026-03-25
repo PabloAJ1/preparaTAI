@@ -2,11 +2,12 @@
 	<section>
 		<div class="sidebar-header mt-2">Administración</div>
 
-		<a
+		<router-link
+			to="/gestionDB"
 			class="list-group-item list-group-item-action list-group-item-dark"
 		>
-			<i class="fa-solid fa-database"></i> Banco de Preguntas
-		</a>
+			<i class="fa-solid  fa-database" /> Gestion DB
+		</router-link>
 
 		<a
 			class="list-group-item list-group-item-action list-group-item-dark"

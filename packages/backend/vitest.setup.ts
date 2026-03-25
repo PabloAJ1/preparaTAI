@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 import path from 'path';
 import * as url from 'url';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { setGlobalOptions, Severity } from "@typegoose/typegoose";
 import mongoose from "mongoose";
 import * as mongooseDev from "./src/shared/infrastructure/db/mongo/mysql.connection";
 
@@ -27,7 +26,6 @@ if (process.env.ENVIROMENT === "TEST") {
 	});
 	await mongoose.connect(mongoServer.getUri());
 } else if(process.env.ENVIROMENT === "dev") {
-	setGlobalOptions({ options: { allowMixed: Severity.ALLOW } });
 	mongooseDev.start();
 }
 

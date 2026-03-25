@@ -460,6 +460,42 @@ export class PreguntasApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for reiniciarContadorDeEstadisticas without sending the request
+     */
+    async reiniciarContadorDeEstadisticasRequestOpts(): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/pregunta/estadisticas/reiniciar`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Reincia las estadisticas de las preguntas
+     */
+    async reiniciarContadorDeEstadisticasRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.reiniciarContadorDeEstadisticasRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Reincia las estadisticas de las preguntas
+     */
+    async reiniciarContadorDeEstadisticas(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.reiniciarContadorDeEstadisticasRaw(initOverrides);
+    }
+
+    /**
      * Creates request options for updatePreguntaById without sending the request
      */
     async updatePreguntaByIdRequestOpts(requestParameters: UpdatePreguntaByIdRequest): Promise<runtime.RequestOpts> {

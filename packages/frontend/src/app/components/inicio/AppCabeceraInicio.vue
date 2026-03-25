@@ -23,7 +23,7 @@
 import { ref, onMounted } from 'vue';
 import { PreguntasApi, Configuration } from '@preparatai/api-client';
 const api = new PreguntasApi(
-	new Configuration({ basePath: 'http://localhost:3000/api' })
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
 const numeroDePreguntas = ref<number>(0);

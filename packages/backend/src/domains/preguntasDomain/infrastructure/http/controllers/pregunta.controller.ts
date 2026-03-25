@@ -5,6 +5,7 @@ import { components } from '../../../../../types/openapi';
 import { MapPreguntaController } from '../mappers/mapPreguntasController.mapper';
 import { IGetPreguntasPorCateogiraConPaginacion } from '../../../application/signatures/getPreguntasPorCateogiraConPaginacion.interface';
 import { IRegistarEstadisticaByPregunta } from '../../../application/signatures/registarEstadisticaByPregunta.interface';
+import { IReiniciarEstadisticas } from '../../../application/signatures/reiniciarEstadisticas.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
 
@@ -12,6 +13,7 @@ const {
 	getNumeroPreguntas,
 	getPreguntasPorCategoriaPaginando,
 	registarEstadisticaByPregunta,
+	reiniciarEstadisticas
 } = preguntasBuilder();
 
 export const makeHandleGetNumeroPreguntas =
@@ -65,9 +67,26 @@ export const makeHandleRegistarEstadisticaByPregunta =
 		}
 	};
 
+export const makeHandleReiniciarEstadisticas =
+	(reiniciarEstadisticas: IReiniciarEstadisticas) =>
+	async (
+		_req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
+		try {
+			await reiniciarEstadisticas.exec();
+			res.status(204).end();
+		} catch (err) {
+			next(err);
+		}
+	};
+
 export const handleGetNumeroPreguntas =
 	makeHandleGetNumeroPreguntas(getNumeroPreguntas);
 export const handleGetPreguntasPorCategoria =
 	makeHandleGetPreguntasPorCategoria(getPreguntasPorCategoriaPaginando);
 export const handleRegistarEstadisticaByPregunta =
 	makeHandleRegistarEstadisticaByPregunta(registarEstadisticaByPregunta);
+export const handleReiniciarEstadisticas =
+	makeHandleReiniciarEstadisticas(reiniciarEstadisticas);

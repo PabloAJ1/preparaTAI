@@ -31,7 +31,7 @@ const cargando = ref(false);
 let finPreguntas = ref(false);
 
 const api = new PreguntasApi(
-	new Configuration({ basePath: 'http://localhost:3000/api' })
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
 const numeroPreguntas = ref(0);
