@@ -11,7 +11,7 @@ export class GetCategoriasByTipo implements IGetCategoriasByTipo {
 		private readonly preguntasPort: IPreguntasPort
 	) {}
 
-	async exec(tipoCategoria: 'CUESTIONARIO' | 'NORMAL' | 'EXAMEN' = 'NORMAL'): Promise<CategoriaResumenDto[]> {
+	async exec(tipoCategoria: 'PRACTICA' | 'NORMAL' | 'EXAMEN' = 'NORMAL'): Promise<CategoriaResumenDto[]> {
 		const result = await this.categoriasRepositories.getCategoriasByType(this.#tipoStringToEnum(tipoCategoria));
 		const returnResult: CategoriaResumenDto[] = [];
 
@@ -25,12 +25,12 @@ export class GetCategoriasByTipo implements IGetCategoriasByTipo {
 	}
 
 	#tipoStringToEnum(
-		tipo: 'CUESTIONARIO' | 'NORMAL' | 'EXAMEN'
+		tipo: 'PRACTICA' | 'NORMAL' | 'EXAMEN'
 	): ETipoCategoria {
 		if (tipo === 'NORMAL')
 			return ETipoCategoria.DEFAULT
-		else if (tipo === 'CUESTIONARIO')
-			return ETipoCategoria.CUESTIONARIO
+		else if (tipo === 'PRACTICA')
+			return ETipoCategoria.PRACTICA
 		else return ETipoCategoria.EXAMEN
 	}
 }

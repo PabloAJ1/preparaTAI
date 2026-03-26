@@ -19,6 +19,7 @@
 					type="text"
 					class="search-input"
 					placeholder="Buscar tema..."
+					v-model="textoBusqueda"
 				/>
 			</div>
 		</div>
@@ -26,9 +27,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 const props = defineProps<{
-  modo?: 'repaso' | 'practica' ;
+  modo?: 'repaso' | 'practica' | 'examen' ;
 }>();
+
+const emit = defineEmits<{
+	(e: 'buscar', texto: string): void
+}>()
+
+const textoBusqueda = ref('')
+watch(textoBusqueda, (valor) => {
+	emit('buscar', valor)
+})
+
 </script>
 
 <style scoped lang="scss">

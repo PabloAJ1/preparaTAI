@@ -1,5 +1,5 @@
 export enum ETipoCategoria {
 	EXAMEN = "EXAMEN",
-	CUESTIONARIO = "CUESIONARIO",
+	PRACTICA = "PRACTICA",
 	DEFAULT = "DEFAULT"
 }

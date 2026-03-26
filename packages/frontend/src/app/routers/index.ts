@@ -26,7 +26,7 @@ const routes = [
 				path: '/examenes',
 				component: ExamenesPage,
 			},{
-				path: '/test/categoria/:id',
+				path: '/test/categoria/:modo/:id',
 				name: 'TestByCategoria',
 				component: TestPage,
 				props: true,

@@ -7,13 +7,17 @@
 			:estadisticas="preguntaLocal.estadisticas"
 		/>
 
-		<div class="respuestas-lista">
+		<div 
+			class="respuestas-lista"
+			:class="{ 'modo-practica': props.modo === 'practica' }"
+		>
 			<AppRespuestaCuestionario
 				v-for="respuesta in preguntaLocal.respuestas"
 				:key="respuesta.enunciado"
 				:respuesta="respuesta"
 				:respondida="respondida"
 				:seleccionada="respuestaSeleccionada"
+				:modo="props.modo"
 				@seleccionar="verificarRespuesta"
 			/>
 		</div>
@@ -35,6 +39,7 @@ const props = defineProps<{
 	pregunta: Pregunta;
 	indice: number;
 	id: string;
+	modo: string;
 }>();
 
 const preguntaLocal = reactive({ ...props.pregunta });
@@ -107,11 +112,22 @@ $bg-hover: #f8fafc;
 
 }
 
+$respuesta-gap: 0.5rem;
+
 .respuestas-lista {
 	margin-top: 1rem;
 	border: 1px solid $border-color;
 	border-radius: 0.5rem;
-	overflow: hidden; // Para que las esquinas de los hijos no pisen el redondeado del padre
+	overflow: hidden;
 	background: white;
+	display: flex;
+	flex-direction: column;
+
+	&.modo-practica {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: $respuesta-gap;
+		padding: $respuesta-gap;
+	}
 }
 </style>

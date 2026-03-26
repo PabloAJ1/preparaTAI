@@ -8,7 +8,11 @@
 					</div>
 				</div>
 
-				<h5 class="categoria-title">
+				<h5 
+					class="categoria-title"
+					:title="categoria.nombre"
+					:aria-label="categoria.nombre"
+				>
 					{{ categoria.nombre }}
 				</h5>
 
@@ -19,7 +23,8 @@
 				<router-link
 					v-if="categoria?.id"
 					:class="linkClase"
-					:to="{ name: 'TestByCategoria', params: { id: categoria.id } }"
+					:modo="modo"
+					:to="{ name: 'TestByCategoria', params: { id: categoria.id, modo: modo } }"
 				>
 					Comenzar
 					<i class="fa-solid fa-arrow-right categoria-link-icon" />
@@ -41,21 +46,25 @@ const props = defineProps<{
 const icono = computed(() => {
 	switch (props.modo) {
 		case 'practica':
-			return 'fa-solid fa-puzzle-piece'; // icono para compacto
+			return 'fa-solid fa-puzzle-piece';
+		case 'examen':
+			return 'fa-solid fa-pencil'; // icono para examen
 		case 'repaso':
 		default:
-			return 'fa-solid fa-book'; // icono por defecto/resumen
+			return 'fa-solid fa-book';
 	}
 });
 
 const linkClase = computed(() => ({
 	'categoria-link-repaso': props.modo === 'repaso',
 	'categoria-link-practica': props.modo === 'practica',
+	'categoria-link-examen': props.modo === 'examen',
 }));
 
 const iconoClase = computed(() => ({
 	'categoria-icon-repaso': props.modo === 'repaso',
 	'categoria-icon-practica': props.modo === 'practica',
+	'categoria-icon-examen': props.modo === 'examen',
 }));
 </script>
 
@@ -113,9 +122,20 @@ const iconoClase = computed(() => ({
 }
 
 .categoria-title {
+	min-height: 2.6rem;
 	font-weight: 700;
 	color: #1f2937;
 	margin-bottom: 0.5rem;
+
+	font-size: 1.1rem;
+	margin-top: 0.5rem;
+	text-overflow: ellipsis;
+	max-width: 100%;
+
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .categoria-count {
@@ -149,6 +169,18 @@ const iconoClase = computed(() => ({
 	color: #198754;
 	&:hover {
 		color: color.adjust(#198754, $lightness: -10%);
+	}
+}
+
+.categoria-icon-examen {
+	background: rgba(220, 38, 38, 0.1); // rojo claro de fondo
+	color: #dc2626; // rojo
+}
+
+.categoria-link-examen {
+	color: #dc2626;
+	&:hover {
+		color: color.adjust(#dc2626, $lightness: -10%);
 	}
 }
 </style>

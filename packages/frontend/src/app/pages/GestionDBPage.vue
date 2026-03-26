@@ -36,16 +36,15 @@ const reiniciarEstadisticas = async () => {
 };
 
 const backupDatabase = () => {
-	console.log('Haciendo backup de la base de datos...');
+	console.log('Proximamente...');
 	// Aquí iría la llamada al backend
 };
 
 const cargarPreguntas = (event: Event) => {
-	const target = event.target as HTMLInputElement;
+	/*const target = event.target as HTMLInputElement;
 	if (!target.files?.length) return;
-	const file = target.files[0];
-	console.log('Cargando preguntas desde:', file.name);
-	// Aquí iría la lógica para leer el archivo y enviar al backend
+	const file = target.files[0];*/
+	console.log('Proximamente...');
 };
 </script>
 

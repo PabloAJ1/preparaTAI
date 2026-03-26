@@ -20,8 +20,8 @@ export const makeHandleGetCategoriasResumen = (
 	) => {
 		try{ 
 			const tipo = req.query.tipo as string
-			const tipoMap: Record<string, "CUESTIONARIO" | "EXAMEN" | "NORMAL"> = {
-				CUESTIONARIO: "CUESTIONARIO",
+			const tipoMap: Record<string, "PRACTICA" | "EXAMEN" | "NORMAL"> = {
+				PRACTICA: "PRACTICA",
 				EXAMEN: "EXAMEN",
 				NORMAL: "NORMAL",
 			};

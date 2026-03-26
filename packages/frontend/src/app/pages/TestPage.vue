@@ -8,6 +8,7 @@
 			:id="'pregunta-' + index"
 			:pregunta="pregunta"
 			:indice="index"
+			:modo="modo"
 		/>
 	</div>
 
@@ -36,8 +37,9 @@ const api = new PreguntasApi(
 
 const numeroPreguntas = ref(0);
 
-const { id } = defineProps<{
+const { id, modo } = defineProps<{
 	id: string;
+	modo: string;
 }>();
 
 const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío

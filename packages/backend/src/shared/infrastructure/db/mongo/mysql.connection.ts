@@ -35,8 +35,6 @@ export const getCadenaConexionMongo = (envVar: string) => {
             mongoConnectionString = `${servidor}://${conexion}${atlasOptions}`
             break;
     }
-
-	console.log("Conectando a Mongo:", mongoConnectionString);
     return mongoConnectionString;
 };
 

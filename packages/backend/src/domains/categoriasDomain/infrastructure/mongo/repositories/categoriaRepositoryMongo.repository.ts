@@ -6,7 +6,6 @@ import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 
 export class CategoriaRepositoryMongo implements ICategoriaRepository {
 	async getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]> {
-		console.log(tipo.toString());
 		const docs = await PreguntaModel.find({ tipo: tipo.toString() });
 		return docs.map(MapCategoriaMongo.toEntity)
 	}

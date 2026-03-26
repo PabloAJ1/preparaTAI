@@ -15,10 +15,10 @@ preguntaRoute
 preguntaRoute
     .route("/porCategoria/:categoria")
 	.get(handleGetPreguntasPorCategoria as RequestHandler)
-	
+
 preguntaRoute
     .route("/estadisticas/reiniciar")
-	.post(handleReiniciarEstadisticas as RequestHandler);
+	.get(handleReiniciarEstadisticas as RequestHandler);
 
 preguntaRoute
     .route("/:id/intentos")

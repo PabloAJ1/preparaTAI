@@ -1,17 +1,20 @@
 <template>
 	<div
 		class="respuesta-item"
-		:class="{
-			'is-success':
-				respondida &&
-				respuesta.correcta &&
-				seleccionada?.enunciado === respuesta.enunciado,
-			'is-error':
-				respondida &&
-				!respuesta.correcta &&
-				seleccionada?.enunciado === respuesta.enunciado,
-			'is-disabled': respondida,
-		}"
+		:class="[
+			{
+				'is-success':
+					respondida &&
+					respuesta.correcta &&
+					seleccionada?.enunciado === respuesta.enunciado,
+				'is-error':
+					respondida &&
+					!respuesta.correcta &&
+					seleccionada?.enunciado === respuesta.enunciado,
+				'is-disabled': respondida,
+			},
+			{ 'modo-practica': modo === 'practica' },
+		]"
 		@click="!respondida && $emit('seleccionar', respuesta)"
 	>
 		<div class="respuesta-icon">
@@ -32,6 +35,7 @@ const props = defineProps<{
 	respuesta: Respuesta;
 	respondida: boolean;
 	seleccionada: Respuesta | null;
+	modo: string;
 }>();
 
 defineEmits<{
@@ -77,13 +81,22 @@ $error-icon: #ef4444;
 	cursor: pointer;
 	transition: all 0.2s ease;
 
-	// Ponemos borde superior a todas las opciones excepto a la primera
-	&:not(:first-child) {
+	&:not(.modo-practica):not(:first-child) {
 		border-top: 1px solid $border-color;
+	}
+
+	&.modo-practica {
+		border: 1px solid $border-color;
+		border-radius: 0.4rem;
 	}
 
 	&:hover:not(.is-disabled) {
 		background-color: #f8fafc;
+	}
+
+	&.modo-practica:hover:not(.is-disabled) {
+		transform: translateY(-1px);
+		box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 	}
 
 	// --- Estados Especiales ---

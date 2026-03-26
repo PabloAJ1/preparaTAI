@@ -58,7 +58,21 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 				p.justif AS justificacion
 			FROM ptype AS p
 			INNER JOIN incorrectas AS i
-				ON p.id = i.id_pregunta`
+				ON p.id = i.id_pregunta
+			UNION
+			SELECT 
+				p.id + 10000 AS idPregunta,
+				p.pregunta AS enunciado,
+				p.respuesta AS respuestaCorrecta,
+				i.respuesta AS respuestaIncorrecta,
+				p.categoria AS categoria,
+				p.bloque AS bloque,
+				p.tema AS tema,
+				"" AS justificacion
+			FROM rtype AS p
+			INNER JOIN rtype AS i
+				ON p.categoria = i.categoria
+			WHERE p.id != i.id`
 		);
 
 		const preguntasDto = AgruparPreguntas.agrupar(result)

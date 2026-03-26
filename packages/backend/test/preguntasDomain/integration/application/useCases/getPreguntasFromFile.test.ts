@@ -8,7 +8,7 @@ import { GetListOfCategorias } from '../../../../../src/domains/categoriasDomain
 import { CreateListOfCategorias } from '../../../../../src/domains/categoriasDomain/application/useCases/createListOfCategorias';
 import { CategoriaAdaperServive } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/categoriasAdapter.service';
 import { CategoriasExternasService } from '../../../../../src/domains/preguntasDomain/application/services/CategoriasExternas.service';
-import { GetPreguntasFromFile } from '../../../../../src/domains/preguntasDomain/application/useCases/getPreguntasFromFile';
+import { LoadPreguntasFromFile } from '../../../../../src/domains/preguntasDomain/application/useCases/loadPreguntasFromFile';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > migration ... ', () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -27,7 +27,7 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 		getListOfCategorias
 	)
 	const categoriasExternasService = new CategoriasExternasService(categoriaAdapertService)
-	const getPreguntasFromFileUseCase = new GetPreguntasFromFile(
+	const getPreguntasFromFileUseCase = new LoadPreguntasFromFile(
 		excelAdapterService,
 		preguntasRepositoryMongoDB,
 		categoriasExternasService

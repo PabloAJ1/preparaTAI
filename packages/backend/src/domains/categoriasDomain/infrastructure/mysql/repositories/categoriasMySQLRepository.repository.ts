@@ -19,7 +19,10 @@ export class CategoriasMySQLRepository implements ICategoriaRepository {
 		throw new Error("Method not implemented.");
 	}
 	async getAllCategorias(): Promise<Categoria[]> {
-		return await this.#getAllCategoriasWithFilter("");
+		const categoriasRType = await this.#getAllCategoriasRTypeWithFilter()
+		const categoriasPType = await this.#getAllCategoriasWithFilter("")
+		
+		return categoriasRType.concat(categoriasPType)
 	}
 	
 	async getAllCategoriasCuestionarios(): Promise<Categoria[]> {
@@ -34,7 +37,15 @@ export class CategoriasMySQLRepository implements ICategoriaRepository {
 		const [result] = await pool.query<({nombreCategoria: string} & RowDataPacket)[]>(
 			"SELECT DISTINCT categoria as nombreCategoria FROM ptype" + filter
 		);
-		return result.map(MapCategoria.toEntityNew)
+		return result.map(categoria => MapCategoria.toEntityNew(categoria, false));
+	}
+
+	async #getAllCategoriasRTypeWithFilter(): Promise<Categoria[]> {
+		const [result] = await pool.query<({nombreCategoria: string} & RowDataPacket)[]>(
+			"SELECT DISTINCT categoria as nombreCategoria FROM rtype"
+		);
+		return result.map(categoria => MapCategoria.toEntityNew(categoria, true));
+
 	}
 
 	async createCategoria(categoria: Categoria): Promise<Categoria> {
