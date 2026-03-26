@@ -5,7 +5,10 @@ export class MapExcelDtoToEntityPregunta {
 	public static mapMapExcelDtoToEntityPregunta(
 		dtoExcel: IExcelDto
 	): IPreguntaDto {
-		const categorias = ['2026', `Examen-${dtoExcel.fuente}`];
+		const tipoCategoria = dtoExcel.fuente.toLocaleLowerCase().includes("practica-")
+			? `${dtoExcel.fuente}`
+			: `Examen-${dtoExcel.fuente}`
+		const categorias = ['2026', tipoCategoria];
 		if(dtoExcel.categoria1 !== undefined && dtoExcel.categoria1 !== ""){
 			categorias.push(dtoExcel.categoria1)
 			if(dtoExcel.categoria2 !== undefined && dtoExcel.categoria2 !== ""){

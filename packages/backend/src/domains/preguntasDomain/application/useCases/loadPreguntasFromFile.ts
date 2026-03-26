@@ -12,6 +12,9 @@ export class LoadPreguntasFromFile implements ILoadPreguntasFromFile {
 		private readonly categoriasExternasService: ICategoriasExternasService
 	) {}
 
+	/**
+	 * Esto lo cambiaré para que en vez de mandarse un array de string, mande un array de dtos
+	 */
 	async exec(): Promise<void> {
 		const preguntasDto = await this.fileReader.cargarDatos();
 		const categorias = await this.categoriasExternasService.getCategorias(preguntasDto)
@@ -26,7 +29,7 @@ export class LoadPreguntasFromFile implements ILoadPreguntasFromFile {
 					})
 				}),
 				categorias: preguntaExterna.categorias
-					.map(c => categorias.get(c)?.idCategoria)
+					.map(c => categorias.get(c.replace("Practica-", ""))?.idCategoria)
 					.filter((id): id is string => id !== undefined)
 			})
 

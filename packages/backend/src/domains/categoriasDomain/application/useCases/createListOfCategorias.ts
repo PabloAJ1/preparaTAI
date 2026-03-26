@@ -13,7 +13,7 @@ export class CreateListOfCategorias implements ICreateListOfCategorias {
 	async exec(listaCategorias: string[]): Promise<ICategoriaDto[]>{
 		const listaCategoriasEntities = listaCategorias.map(c => {
 			return Categoria.crear({
-				nombreCategoria: c,
+				nombreCategoria: c.replace("Examen-", "").replace("Practica-", ""),
 				tipo: this.#toEnumTipo(c)
 			})
 		})
@@ -23,10 +23,12 @@ export class CreateListOfCategorias implements ICreateListOfCategorias {
 	}
 
 	#toEnumTipo(nombreCategoria: string): ETipoCategoria {
-		if(nombreCategoria.toLocaleLowerCase().includes("examen")){
+		if(nombreCategoria.toLocaleLowerCase().includes("examen") 
+			|| nombreCategoria.toLocaleLowerCase().includes("cuestionario")
+		){
 			return ETipoCategoria.EXAMEN;
-		} else if(nombreCategoria.toLocaleLowerCase().includes("cuestionario")){
-				return ETipoCategoria.CUESTIONARIO
+		} else if(nombreCategoria.toLocaleLowerCase().includes("practica")){
+				return ETipoCategoria.PRACTICA
 		} else {
 				return ETipoCategoria.DEFAULT
 		}
