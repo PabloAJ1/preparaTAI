@@ -1,0 +1,62 @@
+[{
+	"textoPre": "Preguntas XQuery. Todas las preguntas se refieren a un XML con esta estructura. Una misma asignatura puedede un profesor. Cada pregunta incluye el XML que se espera como resultado de la consulta.",
+	"codigo": "<?xml version='1.0' encoding='UTF-8'?>\n<datos>\n<alumno id='001'>\n<nombre>María Pérez</nombre>\n<email>maria.perez@example.com</email>\n<asignaturas>\n<asignatura codigo='MAT101'>\n<nombre>Matemáticas I</nombre>\n<profesor>Dr. Juan García</profesor>\n</asignatura>\n<asignatura codigo='FIS101'>\n<nombre>Física I</nombre>\n<profesor>Dra. Ana López</profesor>\n</asignatura>\n</asignaturas>\n</alumno>\n<alumno id='002'>\n<nombre>Juan Rodríguez</nombre>\n<email>juan.rodriguez@example.com</email>\n<asignaturas>\n<asignatura codigo='MAT101'>\n<nombre>Matemáticas I</nombre>\n<profesor>Dr. Juan García</profesor>\n</asignatura>\n<asignatura codigo='QUI101'>\n<nombre>Química I</nombre>\n<profesor>Dra. Laura Fernández</profesor>\n</asignatura>\n<asignatura codigo='FIS101'>\n<nombre>Física I</nombre>\n<profesor>Dra. Laura Fernández</profesor>\n</asignatura>\n</asignaturas>\n</alumno>\n</datos>",
+	"textoPos": "Lista de personas (profesores y alumnos)\n<code><?xml version='1.0' encoding='UTF-8'?>\n<personas>\n<persona>María Pérez</persona>\n<persona>Dr. Juan García</persona>\n<persona>Dra. Ana López</persona>\n<persona>Juan Rodríguez</persona>\n<persona>Dra. Laura Fernández</persona>\n</personas></code>",
+	"lenguaje": "XML",
+	"preguntas": [{
+		"respuesta1": "let $ps := //alumno/nombre|//profesor//nombre\nfor $p in distinct-values($ps)\nreturn <personas>{$p}</personas>",
+		"respuesta2": "<personas>{\nlet $ps := //nombre[parent::alumno]|//profesor\nfor $p in distinct-values($ps)\nreturn <persona>{$p}</persona>\n}\n</personas>"	,
+		"respuesta3": "<personas>{\nlet $as := //alumno\nlet $ps := //profesor\nfor $p in distinct-values($ps) and distinct-values($as)\nreturn <persona>{$p}</persona>\n}</personas>",
+		"respuesta4": "<personas>{\nlet $ps := //nombre[child::alumno] | //profesor\nfor $p in distinct-values($ps)\nreturn <persona>{$p}</persona>\n}\n</personas>",
+		"correcta": "",
+		"justificacion": "",
+		"categoria1": "",
+		"categoria2": "",
+		"categoria3": "",
+		"tipoCategoria": "GRUPOPREGUNTAS"
+	},{
+		"respuesta1": "",
+		"respuesta2": "",
+		"respuesta3": "",
+		"respuesta4": "",
+		"correcta": "",
+		"justificacion": "",
+		"categoria1": "",
+		"categoria2": "",
+		"categoria3": "",
+		"tipoCategoria": "GRUPOPREGUNTAS"
+	},{
+		"respuesta1": "",
+		"respuesta2": "",
+		"respuesta3": "",
+		"respuesta4": "",
+		"correcta": "",
+		"justificacion": "",
+		"categoria1": "",
+		"categoria2": "",
+		"categoria3": "",
+		"tipoCategoria": "GRUPOPREGUNTAS"
+	},{
+		"respuesta1": "",
+		"respuesta2": "",
+		"respuesta3": "",
+		"respuesta4": "",
+		"correcta": "",
+		"justificacion": "",
+		"categoria1": "",
+		"categoria2": "",
+		"categoria3": "",
+		"tipoCategoria": "GRUPOPREGUNTAS"
+	},{
+		"respuesta1": "",
+		"respuesta2": "",
+		"respuesta3": "",
+		"respuesta4": "",
+		"correcta": "",
+		"justificacion": "",
+		"categoria1": "",
+		"categoria2": "",
+		"categoria3": "",
+		"tipoCategoria": "GRUPOPREGUNTAS"
+	}]
+}]

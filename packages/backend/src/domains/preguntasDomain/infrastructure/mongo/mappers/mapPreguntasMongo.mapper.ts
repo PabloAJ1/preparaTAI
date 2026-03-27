@@ -20,7 +20,8 @@ export class MapPreguntasMongo {
 				aciertos: entity.estadisticas.aciertos,
 				fallos: entity.estadisticas.fallos,
 				total: entity.estadisticas.total,
-			}
+			},
+			randomKey: Math.random()
 		}
 	}
 

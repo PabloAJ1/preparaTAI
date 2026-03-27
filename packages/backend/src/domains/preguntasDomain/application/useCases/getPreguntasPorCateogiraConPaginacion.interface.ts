@@ -11,12 +11,14 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 	async exec(
 		idCategoria: string,
 		page = 1, 
-		limit = 50
+		limit = 50,
+		seed = 0
 	): Promise<IPreguntaDto[]>{
-		const preguntas = await this.preguntaRepository.getPreguntasPorCategoriaPaginando(
+		const preguntas = await this.preguntaRepository.getPreguntasPorCategoriaPaginandoConSeed(
 			idCategoria,
 			page,
-			limit
+			limit,
+			seed
 		);
 
 		const preguntasConRespuestaMezclada = preguntas.map(p => {

@@ -44,6 +44,9 @@ importers:
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
+      seedrandom:
+        specifier: ^3.0.5
+        version: 3.0.5
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -117,6 +120,9 @@ importers:
       '@types/prismjs':
         specifier: ^1.26.6
         version: 1.26.6
+      '@types/seedrandom':
+        specifier: ^3.0.8
+        version: 3.0.8
       '@typescript-eslint/parser':
         specifier: ^7.16.0
         version: 7.18.0(eslint@9.39.4(jiti@2.4.2))(typescript@5.8.3)
@@ -2290,6 +2296,9 @@ packages:
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
+
+  '@types/seedrandom@3.0.8':
+    resolution: {integrity: sha512-TY1eezMU2zH2ozQoAFAQFOPpvP15g+ZgSfTZt31AUUH/Rxtnz3H+A/Sv1Snw2/amp//omibc+AEkTaA8KUeOLQ==}
 
   '@types/semver@7.7.1':
     resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
@@ -5396,6 +5405,9 @@ packages:
   secure-compare@3.0.1:
     resolution: {integrity: sha512-AckIIV90rPDcBcglUwXPF3kg0P0qmPsPXAj6BBEENQE1p5yA1xfmDJzfi1Tappj37Pv2mVbKpL3Z1T+Nn7k1Qw==}
 
+  seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
+
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
@@ -8500,6 +8512,8 @@ snapshots:
   '@types/qs@6.15.0': {}
 
   '@types/range-parser@1.2.7': {}
+
+  '@types/seedrandom@3.0.8': {}
 
   '@types/semver@7.7.1': {}
 
@@ -12118,6 +12132,8 @@ snapshots:
   scule@1.3.0: {}
 
   secure-compare@3.0.1: {}
+
+  seedrandom@3.0.5: {}
 
   semver@5.7.2:
     optional: true

@@ -22,9 +22,10 @@
 <script setup lang="ts">
 import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCuestionario.vue';
 import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
-
-import { ref, onMounted } from 'vue';
+import { useTestAttempt } from '../composables/useTestAttempt';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { Configuration, PreguntasApi, Pregunta } from '@preparatai/api-client';
+import { useInfiniteScroll } from '../composables/useInfiniteScroll';
 
 const page = ref(1);
 const limit = ref(50);
@@ -41,31 +42,18 @@ const { id, modo } = defineProps<{
 	id: string;
 	modo: string;
 }>();
-
+const { getAttempt, clearAttempt } = useTestAttempt(id);
+const { seed } = getAttempt();
 const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío
 
 onMounted(() => {
 	cargarPreguntas();
 });
 
-onMounted(() => {
-	const sentinel = document.querySelector('#sentinel');
-	if (!sentinel) return;
+useInfiniteScroll(cargarPreguntas);
 
-	const observer = new IntersectionObserver(
-		(entries) => {
-			if (entries[0].isIntersecting) {
-				cargarPreguntas();
-			}
-		},
-		{
-			root: null,
-			rootMargin: '800px',
-			threshold: 0,
-		}
-	);
-
-	observer.observe(sentinel);
+onUnmounted(() => {
+	clearAttempt();
 });
 
 async function cargarPreguntas() {
@@ -77,6 +65,7 @@ async function cargarPreguntas() {
 			id,
 			page: page.value,
 			limit: limit.value,
+			seed: Number(seed),
 		});
 
 		listadoPreguntas.value.push(...preguntas);

@@ -85,6 +85,8 @@ export interface paths {
                 page?: number;
                 /** @description Número de preguntas por página */
                 limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: string;
             };
             header?: never;
             path: {
@@ -416,6 +418,8 @@ export interface operations {
                 page?: number;
                 /** @description Número de preguntas por página */
                 limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: string;
             };
             header?: never;
             path: {

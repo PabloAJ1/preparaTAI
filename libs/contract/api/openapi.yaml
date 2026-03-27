@@ -161,6 +161,13 @@ paths:
         schema:
           type: integer
           default: 20
+      - name: seed
+        in: query
+        required: false
+        description: Semilla para randomizar las preguntas
+        schema:
+          type: integer
+          default: 0
     get:
       tags:
         - preguntas

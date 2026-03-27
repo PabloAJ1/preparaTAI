@@ -7,4 +7,5 @@ export interface IPregunta {
 	respuestas: IRespuesta[];
 	categorias: string[];
 	estadisticas: IEstadisticas;
+	randomKey: number;
 }

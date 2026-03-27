@@ -47,6 +47,7 @@ export interface GetPreguntasPorCategoriaRequest {
     id: string;
     page?: number;
     limit?: number;
+    seed?: number;
 }
 
 export interface RegistrarIntentoPreguntaOperationRequest {
@@ -371,6 +372,10 @@ export class PreguntasApi extends runtime.BaseAPI {
 
         if (requestParameters['limit'] != null) {
             queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['seed'] != null) {
+            queryParameters['seed'] = requestParameters['seed'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

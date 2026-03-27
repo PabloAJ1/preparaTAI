@@ -34,10 +34,12 @@ export const makeHandleGetPreguntasPorCategoria =
 			const categoria = decodeURIComponent(req.params.categoria);
 			const page = parseInt(req.query.page as string) || 1;
 			const limit = parseInt(req.query.limit as string) || 20;
+			const seed = parseInt(req.query.seed as string) || 0;
 			const preguntas = await getPreguntasPorCategoria.exec(
 				categoria,
 				page,
-				limit
+				limit,
+				seed
 			);
 
 			res.json(preguntas.map(MapPreguntaController.toType));

@@ -1,9 +1,9 @@
-import { Pregunta } from "../../../../../domains/preguntasDomain/domain/entities/Pregunta";
-import { IPreguntaRepository } from "../../../../../domains/preguntasDomain/domain/repositories/preguntasRepository.interface";
-import { PreguntaNoActualizadaById } from "../../../application/errors/PreguntaNoActualizadaById.error";
-import { PreguntaNoEncontradaById } from "../../../application/errors/PreguntaNoEncontradaById.error";
-import { MapPreguntasMongo } from "../mappers/mapPreguntasMongo.mapper";
-import preguntaModel from "../schemas/pregunta.schema";
+import { Pregunta } from '../../../../../domains/preguntasDomain/domain/entities/Pregunta';
+import { IPreguntaRepository } from '../../../../../domains/preguntasDomain/domain/repositories/preguntasRepository.interface';
+import { PreguntaNoActualizadaById } from '../../../application/errors/PreguntaNoActualizadaById.error';
+import { PreguntaNoEncontradaById } from '../../../application/errors/PreguntaNoEncontradaById.error';
+import { MapPreguntasMongo } from '../mappers/mapPreguntasMongo.mapper';
+import preguntaModel from '../schemas/pregunta.schema';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 	async reiniciarAllEstadisticas(): Promise<void> {
@@ -11,9 +11,9 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 			{}, // filtro vacío para seleccionar todas las preguntas
 			{
 				$set: {
-				'estadisticas.aciertos': 0,
-				'estadisticas.fallos': 0,
-				'estadisticas.total': 0,
+					'estadisticas.aciertos': 0,
+					'estadisticas.fallos': 0,
+					'estadisticas.total': 0,
 				},
 			}
 		);
@@ -21,7 +21,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 
 	async getPreguntaById(idPregunta: string): Promise<Pregunta> {
 		const doc = await preguntaModel.findOne({ idPregunta: idPregunta });
-		if(!doc) throw new PreguntaNoEncontradaById(idPregunta);
+		if (!doc) throw new PreguntaNoEncontradaById(idPregunta);
 		return MapPreguntasMongo.toEntity(doc);
 	}
 
@@ -31,22 +31,65 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 			{ idPregunta: model.idPregunta },
 			model,
 			{ returnDocument: 'after' }
-		)
-		if(!doc) throw new PreguntaNoActualizadaById(model.idPregunta)
+		);
+		if (!doc) throw new PreguntaNoActualizadaById(model.idPregunta);
 		return MapPreguntasMongo.toEntity(doc);
 	}
 
-	async getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]> {
+	async getPreguntasPorCategoriaPaginando(
+		idCategoria: string,
+		pagina: number,
+		limit: number
+	): Promise<Pregunta[]> {
 		const skip = (pagina - 1) * limit;
 
 		const docs = await preguntaModel
-			.find({ 
-				categorias: { $in: [idCategoria] }, 
-				respuestas: { $elemMatch: { correcta: true } }
+			.find({
+				categorias: { $in: [idCategoria] },
+				respuestas: { $elemMatch: { correcta: true } },
 			})
 			.skip(skip)
 			.limit(limit)
 			.lean();
+		return docs.map(MapPreguntasMongo.toEntity);
+	}
+
+	/**
+	 * 
+	 * @param idCategoria id interno de la categoria sobre la que hacemos el test
+	 * @param pagina numero de pagina sobre la que consultamos (estamos paginando los resultados para no cargar todos en el front)
+	 * @param limit numero de respuestas que queremos
+	 * @param seed semilla que utilizamo para pseudorandomizar las preguntas, en un mismo test será el mismo
+	 * @returns devuelve el numero de preguntas en base a la consulta que se realiza
+	 * @remarks Esta funcion es valida para una cantidad de preguntas inferior a 5000, a partir de ahi se puede volver lenta, aunque seria valida
+	 * 			hasta los 50.000. A partir de ahí si o si habria que emplear otro sistema como cursores, eliminado el problema que es el skip
+	 */
+	async getPreguntasPorCategoriaPaginandoConSeed(
+		idCategoria: string,
+		pagina: number,
+		limit: number,
+		seed: number
+	): Promise<Pregunta[]> {
+		const seedNormalizado = seed / 2 ** 32;
+		const docs = await preguntaModel.aggregate([
+			{
+				$match: {
+					categorias: { $in: [idCategoria] },
+					respuestas: { $elemMatch: { correcta: true } },
+				},
+			},
+			{
+				$addFields: {
+					ordenRandom: {
+						$mod: [{ $add: ['$randomKey', seedNormalizado] }, 1],
+					},
+				},
+			},
+			{ $sort: { ordenRandom: 1 } },
+			{ $skip: (pagina - 1) * limit },
+			{ $limit: limit },
+		]);
+
 		return docs.map(MapPreguntasMongo.toEntity);
 	}
 
@@ -55,29 +98,31 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 		const doc = await preguntaModel.create(modelPregunta);
 		return MapPreguntasMongo.toEntity(doc);
 	}
-	
+
 	async getNumeroPreguntasTotales(): Promise<number> {
 		const result = await preguntaModel.find().countDocuments();
-		return result
+		return result;
 	}
 
 	async getNumeroPreguntasPorCategoria(idCategoria: string): Promise<number> {
-		const result = await preguntaModel.find({ categorias: { $in: [idCategoria] } }).countDocuments();
-		return result
+		const result = await preguntaModel
+			.find({ categorias: { $in: [idCategoria] } })
+			.countDocuments();
+		return result;
 	}
 
 	async getPreguntasPorCategoria(idCategoria: string): Promise<Pregunta[]> {
 		/**
 		 * Habria que revisar que todas las respuestas tengan una correcta por lo menos, esto creo que viene de la conversion del excel
 		 */
-		const docs = await preguntaModel.find({ 
-			categorias: { $in: [idCategoria] }, 
-			respuestas: { $elemMatch: { correcta: true } }
-		})
+		const docs = await preguntaModel.find({
+			categorias: { $in: [idCategoria] },
+			respuestas: { $elemMatch: { correcta: true } },
+		});
 		return docs.map(MapPreguntasMongo.toEntity);
 	}
-	
+
 	getAllPreguntas(): Promise<Pregunta[]> {
-		throw new Error("Method not implemented.");
+		throw new Error('Method not implemented.');
 	}
 }

@@ -443,7 +443,7 @@ No authorization required
 
 ## getPreguntasPorCategoria
 
-> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id, page, limit)
+> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id, page, limit, seed)
 
 Obtener las preguntas que pertenecen a una categoria dada
 
@@ -467,6 +467,8 @@ async function example() {
     page: 56,
     // number | Número de preguntas por página (optional)
     limit: 56,
+    // number | Semilla para randomizar las preguntas (optional)
+    seed: 56,
   } satisfies GetPreguntasPorCategoriaRequest;
 
   try {
@@ -489,6 +491,7 @@ example().catch(console.error);
 | **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
 | **page** | `number` | Número de página (empieza en 1) | [Optional] [Defaults to `1`] |
 | **limit** | `number` | Número de preguntas por página | [Optional] [Defaults to `20`] |
+| **seed** | `number` | Semilla para randomizar las preguntas | [Optional] [Defaults to `0`] |
 
 ### Return type
 
