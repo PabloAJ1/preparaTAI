@@ -23,6 +23,7 @@ services:
     depends_on:
       - mongo
     environment:
+      NODE_ENV: production
       ENVIROMENT: production
       HOST: 0.0.0.0
       MONGO_ATLAS: false

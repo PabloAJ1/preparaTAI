@@ -5,8 +5,19 @@ export function useTestAttempt(cuestionarioId: string) {
 		let attempt = sessionStorage.getItem(attemptKey);
 
 		if (!attempt) {
-			const attemptId = crypto.randomUUID();
-			const seed = crypto.getRandomValues(new Uint32Array(1))[0];
+			let seed = 0;
+			try {
+			seed = crypto.getRandomValues(new Uint32Array(1))[0];
+			} catch {
+			seed = Math.floor(Math.random() * 1000000);
+			}
+
+			let attemptId = '';
+			try {
+			attemptId = crypto.randomUUID();
+			} catch {
+			attemptId = 'attempt-' + Date.now();
+			}
 
 			attempt = JSON.stringify({
 				attemptId,

@@ -28,16 +28,30 @@ defineProps<{ collapsed: boolean }>();
 	width: 260px;
 	background-color: #1e293b;
 	color: white;
-	border-right: 1px solid #e5e7eb;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	padding: 1rem 0;
-	z-index: 1000;
+	z-index: 1200;
 
 	transition: transform 0.3s ease;
 
-	&.collapsed {
+	/* oculto por defecto en móvil */
+	transform: translateX(-100%);
+}
+
+/* visible cuando NO está colapsado */
+.sidebar:not(.collapsed) {
+	transform: translateX(0);
+}
+
+/* en escritorio siempre visible */
+@media (min-width: 768px) {
+	.sidebar {
+		transform: translateX(0);
+	}
+
+	/* 👇 permitir colapsar también en desktop */
+	.sidebar.collapsed {
 		transform: translateX(-100%);
 	}
 }

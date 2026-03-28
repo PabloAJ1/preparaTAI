@@ -1,27 +1,21 @@
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, Ref } from "vue";
 
-export function useInfiniteScroll(callback: () => void) {
+export function useInfiniteScroll(
+	callback: () => void,
+	sentinelRef: Ref<HTMLElement | null>
+) {
 	let observer: IntersectionObserver | null = null;
 
 	onMounted(() => {
-		const sentinel = document.querySelector('#sentinel');
+		if (!sentinelRef.value) return;
 
-		if (!sentinel) return;
-
-		observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting) {
-					callback();
-				}
-			},
-			{
-				root: null,
-				rootMargin: '800px',
-				threshold: 0,
+		observer = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting) {
+				callback();
 			}
-		);
+		});
 
-		observer.observe(sentinel);
+		observer.observe(sentinelRef.value);
 	});
 
 	onUnmounted(() => {

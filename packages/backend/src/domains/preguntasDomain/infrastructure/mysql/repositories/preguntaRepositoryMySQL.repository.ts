@@ -7,6 +7,10 @@ import { IPreguntaSQL } from '../dtos/preguntaSQL.dto';
 import { MapPreguntas } from '../mappers/mapPreguntas.mapper';
 
 export class PreguntaRepositoryMySQL implements IPreguntaRepository {
+	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
+	
 	async getNumeroPreguntasTotales(): Promise<number> {
 		const [result] = await pool.query<({total: number} & RowDataPacket)[]>(
 			"SELECT COUNT(*) as total FROM ptype"

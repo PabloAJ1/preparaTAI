@@ -1,7 +1,7 @@
 <template>
 	<AppCabeceraTemas :modo="modo" @buscar="textoBusqueda = $event" />
 
-	<div class="row g-4">
+	<div class="grid-categorias">
 		<AppCategoriaTemas
 			v-for="categoria in categoriasFiltradas"
 			:key="categoria.id"
@@ -53,3 +53,33 @@ const categoriasFiltradas = computed(() => {
 	);
 });
 </script>
+
+<style lang="scss">
+.grid-categorias {
+	display: grid;
+	grid-template-columns: 1fr; /* móvil: 1 por fila */
+	gap: 16px;
+	padding: 8px;
+}
+
+/* móviles grandes */
+@media (min-width: 480px) {
+	.grid-categorias {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* tablets */
+@media (min-width: 768px) {
+	.grid-categorias {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+	.grid-categorias {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+</style>

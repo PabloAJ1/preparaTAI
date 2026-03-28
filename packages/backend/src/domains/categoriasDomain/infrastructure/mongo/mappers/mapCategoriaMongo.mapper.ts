@@ -22,9 +22,10 @@ export class MapCategoriaMongo {
 	static #toEnum(tipo: string): ETipoCategoria{
 		switch(tipo.toLocaleLowerCase()){
 			case "examen":
-				return ETipoCategoria.EXAMEN;
 			case "cuestionario":
-				return ETipoCategoria.CUESTIONARIO
+				return ETipoCategoria.EXAMEN
+			case "practica":
+				return ETipoCategoria.PRACTICA
 			default:
 				return ETipoCategoria.DEFAULT
 		}

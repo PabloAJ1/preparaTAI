@@ -12,12 +12,6 @@
 </template>
 
 <style scoped lang="scss">
-
-.sidebar-brand {
-	padding: 1.25rem 1.5rem;
-	border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
 .brand-container {
 	display: flex;
 	align-items: center;
@@ -40,9 +34,29 @@
 	letter-spacing: 0.05em;
 }
 
+.sidebar-brand {
+    padding: 1.5rem 1.5rem 1.5rem;
+    background: rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    color: #fff;
+    display: block;
+}
+
 .brand-version {
-	font-size: 0.75rem;
-	color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    color: #60a5fa;
+    font-weight: 500;
+    background: rgba(96, 165, 250, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 4px;
 }
 
 </style>

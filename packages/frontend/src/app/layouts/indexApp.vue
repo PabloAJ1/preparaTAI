@@ -3,6 +3,13 @@
 		<!-- Sidebar fijo -->
 		<AppMenu :collapsed="sidebarCollapsed" />
 
+		<!-- 👇 OVERLAY AQUÍ -->
+		<div 
+			v-if="!sidebarCollapsed"
+			class="overlay"
+			@click="toggleSidebar"
+		/>
+
 		<!-- Contenido principal -->
 		<div id="page-content-wrapper" :class="{ expanded: sidebarCollapsed }">
 			<nav class="navbar">
@@ -23,14 +30,25 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import AppMenu from '../components/menu/AppMenu.vue';
 
-const sidebarCollapsed = ref(false);
+const sidebarCollapsed = ref(window.innerWidth < 768);
 
 function toggleSidebar() {
   sidebarCollapsed.value = !sidebarCollapsed.value;
 }
+
+const router = useRouter();
+
+onMounted(() => {
+  router.afterEach(() => {
+    if (window.innerWidth < 768) {
+      sidebarCollapsed.value = true;
+    }
+  });
+});
 </script>
 
 <style scoped lang="scss">
@@ -41,40 +59,21 @@ function toggleSidebar() {
 	overflow-x: hidden; // evita scroll horizontal
 }
 
-/* Sidebar */
-.sidebar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 260px;
-	background-color: #1e293b;
-	color: white;
-	border-right: 1px solid #e5e7eb;
-	display: flex;
-	flex-direction: column;
-	overflow-y: auto;
-	padding: 1rem 0;
-	z-index: 1000; // debajo de navbar si navbar también tiene z-index
-
-	transition: transform 0.3s ease;
-
-	&.collapsed {
-		transform: translateX(-100%);
-	}
+#page-content-wrapper {
+	width: 100%;
+	min-height: 100vh;
+	transition: all 0.3s ease;
 }
 
-/* Contenido principal */
-#page-content-wrapper {
-	margin-left: 260px; // mismo ancho del sidebar
-	width: calc(100% - 260px);
-	min-height: 100vh;
-	background-color: #f8fafc;
-	background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-	background-size: 30px 30px;
-	transition: margin-left 0.3s ease, width 0.3s ease;
+/* en escritorio deja espacio al sidebar */
+@media (min-width: 768px) {
+	#page-content-wrapper {
+		margin-left: 260px;
+		width: calc(100% - 260px);
+	}
 
-	&.expanded {
+	/* 👇 cuando el sidebar está oculto */
+	#page-content-wrapper.expanded {
 		margin-left: 0;
 		width: 100%;
 	}
@@ -84,7 +83,7 @@ function toggleSidebar() {
 .navbar {
 	position: sticky;
 	top: 0;
-	z-index: 200; // por encima del contenido
+	z-index: 1100; // por encima del contenido
 	background-color: #ffffff;
 	border-bottom: 1px solid #e5e7eb;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -112,6 +111,19 @@ function toggleSidebar() {
 
 	&:hover {
 		color: #2563eb;
+	}
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.4);
+	z-index: 900;
+}
+
+@media (min-width: 768px) {
+	.overlay {
+		display: none;
 	}
 }
 </style>

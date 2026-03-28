@@ -14,12 +14,13 @@
 
 	<!-- Sentinel separado al final de la página -->
 	<div class="sentinel-spacer"></div>
-	<div id="sentinel"></div>
+	<div id="sentinel" ref="sentinelRef"></div>
 
 	<div v-if="cargando" class="text-center p-2">Cargando preguntas...</div>
 </template>
 
 <script setup lang="ts">
+
 import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCuestionario.vue';
 import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
 import { useTestAttempt } from '../composables/useTestAttempt';
@@ -42,24 +43,25 @@ const { id, modo } = defineProps<{
 	id: string;
 	modo: string;
 }>();
+
 const { getAttempt, clearAttempt } = useTestAttempt(id);
 const { seed } = getAttempt();
 const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío
+const sentinelRef = ref<HTMLElement | null>(null);
 
 onMounted(() => {
 	cargarPreguntas();
 });
 
-useInfiniteScroll(cargarPreguntas);
+useInfiniteScroll(cargarPreguntas, sentinelRef);
 
 onUnmounted(() => {
 	clearAttempt();
 });
 
 async function cargarPreguntas() {
-	if (cargando.value || finPreguntas.value) return;
+	
 	cargando.value = true;
-
 	try {
 		const preguntas = await api.getPreguntasPorCategoria({
 			id,
@@ -67,6 +69,7 @@ async function cargarPreguntas() {
 			limit: limit.value,
 			seed: Number(seed),
 		});
+		console.log('preguntas recibidas:', preguntas);
 
 		listadoPreguntas.value.push(...preguntas);
 
