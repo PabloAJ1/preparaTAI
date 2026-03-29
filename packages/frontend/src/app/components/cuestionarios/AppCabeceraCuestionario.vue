@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-// 🟢 Corregido para guardar en 'props' y mantener reactividad
 const props = defineProps<{
 	nombre: string;
 	totalPreguntas: number;
@@ -27,7 +26,7 @@ $secondary-color: #6c757d;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1.5rem; // mb-4 equivalente
+	margin-bottom: 1.5rem;
 }
 
 .cuestionario-titulo {

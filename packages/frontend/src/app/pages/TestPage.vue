@@ -14,7 +14,7 @@
 
 	<!-- Sentinel separado al final de la página -->
 	<div class="sentinel-spacer"></div>
-	<div id="sentinel" ref="sentinelRef"></div>
+	<div v-if="!finPreguntas" id="sentinel" ref="sentinelRef"></div>
 
 	<div v-if="cargando" class="text-center p-2">Cargando preguntas...</div>
 </template>
@@ -24,7 +24,7 @@
 import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCuestionario.vue';
 import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
 import { useTestAttempt } from '../composables/useTestAttempt';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onUnmounted } from 'vue';
 import { Configuration, PreguntasApi, Pregunta } from '@preparatai/api-client';
 import { useInfiniteScroll } from '../composables/useInfiniteScroll';
 
@@ -48,10 +48,6 @@ const { getAttempt, clearAttempt } = useTestAttempt(id);
 const { seed } = getAttempt();
 const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío
 const sentinelRef = ref<HTMLElement | null>(null);
-
-onMounted(() => {
-	cargarPreguntas();
-});
 
 useInfiniteScroll(cargarPreguntas, sentinelRef);
 

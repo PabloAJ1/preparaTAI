@@ -72,7 +72,8 @@ const iconoClase = computed(() => ({
 @use 'sass:color';
 
 .categoria-card-wrapper {
-	width: 25%;
+	width: 100%;
+	height: 100%;
 }
 
 .categoria-card {

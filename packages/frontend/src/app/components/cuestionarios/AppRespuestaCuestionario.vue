@@ -80,6 +80,7 @@ $error-icon: #ef4444;
 	background-color: white;
 	cursor: pointer;
 	transition: all 0.2s ease;
+	touch-action: manipulation;
 
 	&:not(.modo-practica):not(:first-child) {
 		border-top: 1px solid $border-color;
@@ -96,7 +97,7 @@ $error-icon: #ef4444;
 
 	&.modo-practica:hover:not(.is-disabled) {
 		transform: translateY(-1px);
-		box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 	}
 
 	// --- Estados Especiales ---
@@ -127,6 +128,13 @@ $error-icon: #ef4444;
 	}
 }
 
+@media (max-width: 640px) {
+	.respuesta-item {
+		min-height: 60px;
+		padding: 1.2rem;
+	}
+}
+
 .respuesta-icon {
 	display: flex;
 	align-items: center;
@@ -149,6 +157,12 @@ $error-icon: #ef4444;
 	flex: 1;
 	color: $text-color;
 	font-size: 1rem;
+
+	hyphens: auto;
+	line-height: 1.4;
+	min-width: 0; // 👈 MUY importante en flexbox
+	word-break: break-word;       // 👈 clave
+	overflow-wrap: anywhere;      // 👈 aún mejor para casos extremos
 }
 
 .font-monospace {

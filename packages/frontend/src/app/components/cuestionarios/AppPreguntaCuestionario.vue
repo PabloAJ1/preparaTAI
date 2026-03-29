@@ -120,14 +120,22 @@ $respuesta-gap: 0.5rem;
 	border-radius: 0.5rem;
 	overflow: hidden;
 	background: white;
+
 	display: flex;
 	flex-direction: column;
 
 	&.modo-practica {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr; // móvil
 		gap: $respuesta-gap;
 		padding: $respuesta-gap;
 	}
 }
+
+@media (min-width: 640px) {
+	.respuestas-lista.modo-practica {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
 </style>

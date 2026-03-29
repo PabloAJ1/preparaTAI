@@ -11,6 +11,6 @@ const CategoriaSchema = new Schema<ICategoriaDocument>({
 	timestamps: false 
 });
 
-const PreguntaModel = model<ICategoriaDocument>('Categoria', CategoriaSchema);
+const CategoriaModel = model<ICategoriaDocument>('Categoria', CategoriaSchema);
 
-export default PreguntaModel;
+export default CategoriaModel;

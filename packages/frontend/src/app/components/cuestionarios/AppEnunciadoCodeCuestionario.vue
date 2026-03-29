@@ -72,29 +72,69 @@ $primary-color: #0d6efd;
 $text-dark: #212529;
 
 .pregunta-texto-intro {
-	//Recuerda! El texto justificado no es bueno para la dixlesia (pregunta de examen...)
-	text-align: justify;
+	text-align: left;
+	line-height: 1.4;
 }
 
-.pregunta-numero { 
-	background-color: $primary-color; 
-	color: white; 
-	padding: 0.35rem 0.65rem; 
-	font-size: 0.85rem; 
-	font-weight: 700; 
-	border-radius: 0.375rem; 
-	margin-right: 1rem; 
-	line-height: 1; 
+.pregunta-numero {
+	display: none;
+}
+
+@media (min-width: 640px) {
+	.pregunta-numero {
+		display: inline-block;
+		background-color: $primary-color; 
+		color: white; 
+		padding: 0.35rem 0.65rem; 
+		font-size: 0.85rem; 
+		font-weight: 700; 
+		border-radius: 0.375rem; 
+		margin-right: 1rem; 
+		line-height: 1; 
+	}
 }
 
 .pregunta-cabecera {
 	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 1rem;
+	flex-direction: column; // 👈 mobile first
+	gap: 0.75rem;
 
 	background-color: white;
-	padding: 1.5rem 0 0 1.5rem;
+	padding: 1rem;
+}
+
+.pregunta-stats {
+	display: flex;
+	justify-content: flex-start;
+	gap: 0.75rem;
+
+	background: transparent;
+	padding: 0;
+	font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+	.pregunta-cabecera {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: 1.5rem 0 0 1.5rem;
+	}
+
+	.pregunta-stats {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 0.35rem;
+
+		background: #f8f9fa;
+		border-radius: 8px;
+		padding: 0.1rem 0.65rem;
+		font-size: 0.65rem;
+		min-width: 55px;
+
+		margin-right: 0.5rem;
+	}
 }
 
 .pregunta-main {
@@ -104,25 +144,10 @@ $text-dark: #212529;
 .pregunta-titulo {
 	display: flex;
 	align-items: flex-start;
-	font-size: 1.10rem;
+	font-size: 1rem;
 	font-weight: 700;
 	color: $text-dark;
 	margin: 0;
-}
-
-.pregunta-stats {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 0.35rem;
-
-	background: #f8f9fa;
-	border-radius: 8px;
-	padding: 0.1rem 0.65rem;
-	font-size: 0.65rem;
-	min-width: 55px;
-
-	margin-right: 0.5rem;
 }
 
 .stat {
