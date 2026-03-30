@@ -3,11 +3,15 @@ import { IGetCategoriasByTipo } from "../../../application/signatures/getCategor
 import { components } from "../../../../../types/openapi";
 import { MapCategoriasResumen } from "../mappers/mapCategoriasResumen.mapper";
 import { categoriaBuilder } from "../../../../../domains/categoriasDomain/categoriaBuilder";
+import { IGetCategoriasById } from "../../../application/signatures/getCategoriaById.interface";
+import { MapCategorias } from "../mappers/mapCategorias.mapper";
 
 type TCategoriaResumen = components["schemas"]["CategoriaResumen"]
+type TCategoria = components["schemas"]["Categoria"]
 
 const {
-	getCategoriaResumen
+	getCategoriaResumen,
+	getCategoriaById
 } = categoriaBuilder();
 
 export const makeHandleGetCategoriasResumen = (
@@ -37,4 +41,22 @@ export const makeHandleGetCategoriasResumen = (
 		}
 	}
 
+export const makeHandleGetCategoriaById = (
+	getCategoriaById: IGetCategoriasById
+) => 
+	async (
+		req: Request,
+		res: Response<TCategoria>,
+		next: NextFunction
+	) => {
+		try{
+			const idCategoria = req.params.id;
+			const categoria = await getCategoriaById.exec(idCategoria)
+			res.json(MapCategorias.toReturnType(categoria))
+		}catch(err){
+			next(err)
+		}
+	}
+
 export const handleGetCategoriasResumen = makeHandleGetCategoriasResumen(getCategoriaResumen);
+export const handleGetCategoriaById = makeHandleGetCategoriaById(getCategoriaById);

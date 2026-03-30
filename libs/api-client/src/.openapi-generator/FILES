@@ -13,6 +13,7 @@ docs/ExamenesApi.md
 docs/GrupoPreguntasRelacionadas.md
 docs/GruposDePreguntasRelacionadasApi.md
 docs/Pregunta.md
+docs/PreguntaUpdate.md
 docs/PreguntasApi.md
 docs/RegistrarIntentoPreguntaRequest.md
 docs/Respuesta.md
@@ -24,6 +25,7 @@ models/Examen.ts
 models/ExamenPreguntasInner.ts
 models/GrupoPreguntasRelacionadas.ts
 models/Pregunta.ts
+models/PreguntaUpdate.ts
 models/RegistrarIntentoPreguntaRequest.ts
 models/Respuesta.ts
 models/index.ts

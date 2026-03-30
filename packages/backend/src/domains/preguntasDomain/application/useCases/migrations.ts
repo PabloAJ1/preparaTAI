@@ -1,4 +1,5 @@
 import { Pregunta } from "../../domain/entities/Pregunta";
+import { EEstado } from "../../domain/enums/estado.enum";
 import { IPreguntaRepository } from "../../domain/repositories/preguntasRepository.interface";
 import { ICategoriaAdapterService } from "../ports/categoriaAdapterService.interface";
 import { IMigrationDB } from "../signatures/migrations.interface";
@@ -24,7 +25,8 @@ export class MigrationDB implements IMigrationDB {
 				categorias: categoriaId ? [categoriaId] : [],
 				enunciado: data.enunciado,
 				respuestas: data.respuestas,
-				idPregunta: data.idPregunta
+				idPregunta: data.idPregunta,
+				estado: EEstado.VERIFICADO //Suponemos que las preguntas que estan en el PreparaTAI v.2 est´ñan todas bastante verificadas
 			})
 
 			await this.preguntaRepositoryDestiny.createPregunta(newPregunta)

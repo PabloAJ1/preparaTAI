@@ -1,5 +1,6 @@
 import { Pregunta as PreguntaEntity } from "../../../../../domains/preguntasDomain/domain/entities/Pregunta";
 import { RespuestaVo } from "../../../../../domains/preguntasDomain/domain/valueObjects/RespuestaVo";
+import { EstadoHelper } from "../../../domain/helpers/estado.helper";
 import { EstadisticaVO } from "../../../domain/valueObjects/estadistica.vo";
 import { IPregunta } from "../interfaces/pregunta.interface";
 import { IPreguntaDocument } from "../schemas/pregunta.schema";
@@ -10,6 +11,7 @@ export class MapPreguntasMongo {
 			categorias: entity.categorias,
 			enunciado: entity.enunciado,
 			idPregunta: entity.idPregunta,
+			descartada: entity.isDescartada,
 			respuestas: entity.respuestas.map(r => { 
 					return {
 					correcta: r.isCorrect,
@@ -21,7 +23,8 @@ export class MapPreguntasMongo {
 				fallos: entity.estadisticas.fallos,
 				total: entity.estadisticas.total,
 			},
-			randomKey: Math.random()
+			randomKey: Math.random(),
+			estado: entity.estado
 		}
 	}
 
@@ -33,6 +36,7 @@ export class MapPreguntasMongo {
 				correcta: r.correcta,
 				enunciado: r.enunciado
 			})),
+			descartada: model.descartada ?? false,
 			idPregunta: model.idPregunta,
 			estadisticas: model.estadisticas
 				? EstadisticaVO.crear({
@@ -40,7 +44,8 @@ export class MapPreguntasMongo {
 					fallos: model.estadisticas.fallos,
 					total: model.estadisticas.total,
 				})
-				: EstadisticaVO.inicializar()
+				: EstadisticaVO.inicializar(),
+			estado: EstadoHelper.fromString(model.estado)
 		})
 	}
 }

@@ -1,6 +1,6 @@
 import { ICategoriaDto } from "../dtos/categoria.dto";
-import { IPreguntaDto } from "../dtos/pregunta.dto";
+import { IPreguntaMigrationDto } from "../dtos/preguntaMigration.interface";
 
 export interface ICategoriasExternasService {
-	getCategorias(categorias: IPreguntaDto[]): Promise<Map<string, ICategoriaDto>>
+	getCategorias(categorias: IPreguntaMigrationDto[]): Promise<Map<string, ICategoriaDto>>
 }

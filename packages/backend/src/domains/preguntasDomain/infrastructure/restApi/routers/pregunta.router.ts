@@ -3,7 +3,9 @@ import {
 	handleGetNumeroPreguntas,
 	handleGetPreguntasPorCategoria,
 	handleRegistarEstadisticaByPregunta,
-	handleReiniciarEstadisticas
+	handleReiniciarEstadisticas,
+	handleEnterrarPregunta,
+	handleEditarEnunciadoPregunta,
 } from "../../http/controllers/pregunta.controller";
 
 export const preguntaRoute: Router = Router();
@@ -21,7 +23,15 @@ preguntaRoute
 	.get(handleReiniciarEstadisticas as RequestHandler);
 
 preguntaRoute
+    .route("/:id")
+	.patch(handleEditarEnunciadoPregunta as RequestHandler);
+
+preguntaRoute
     .route("/:id/intentos")
 	.post(handleRegistarEstadisticaByPregunta as RequestHandler);
+
+preguntaRoute
+    .route("/:id/enterrar")
+	.post(handleEnterrarPregunta as RequestHandler);
 
 export default preguntaRoute;

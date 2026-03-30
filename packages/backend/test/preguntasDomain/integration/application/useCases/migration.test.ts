@@ -6,9 +6,10 @@ import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasD
 import { GetAllCategorias } from '../../../../../src/domains/categoriasDomain/application/useCases/getAllCategorias';
 import { CategoriaAdaperServive } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/categoriasAdapter.service';
 import { ICreateListOfCategorias } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/interfaces/createListOfCategorias.interface';
+import { IGetListOfCategorias } from '../../../../../src/domains/categoriasDomain/application/signatures/getListOfCategorias.interface';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > migration ... ', () => {
-	const mockServiceListPort: ICreateListOfCategorias = {
+	const mockServiceListPort: IGetListOfCategorias = {
 		exec: vi.fn(),
 	};
 	const mockServiceCreatePort: ICreateListOfCategorias = {

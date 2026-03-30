@@ -1,5 +1,5 @@
-import { IPreguntaDto } from '../dtos/pregunta.dto';
+import { IPreguntaMigrationDto } from '../dtos/preguntaMigration.interface';
 
 export interface IExternalDataService {
-	cargarDatos(): Promise<IPreguntaDto[]>;
+	cargarDatos(): Promise<IPreguntaMigrationDto[]>;
 }

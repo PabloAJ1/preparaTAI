@@ -1,4 +1,4 @@
-import { IPreguntaDto } from '../../../application/dtos/pregunta.dto';
+import { IPreguntaMigrationDto } from '../../../application/dtos/preguntaMigration.interface';
 import { IExternalDataService } from '../../../application/ports/excelAdapterService.interface';
 import { IExcelLoader } from '../interfaces/excelLoader.interface';
 import { MapExcelDtoToEntityPregunta } from '../mappers/mapExcelDtoToEntityPregunta.mapper';
@@ -9,7 +9,7 @@ export class ExcelAdapterService implements IExternalDataService {
 		private readonly outputPath: string,
 	) {}
 
-	async cargarDatos(): Promise<IPreguntaDto[]> {
+	async cargarDatos(): Promise<IPreguntaMigrationDto[]> {
 		const excelData = await this.excelLoader.cargarDatosFichero(this.outputPath);
 		const datos =  excelData.map(
 			MapExcelDtoToEntityPregunta.mapMapExcelDtoToEntityPregunta

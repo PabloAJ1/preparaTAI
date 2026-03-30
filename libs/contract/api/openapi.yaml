@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/Pregunta'
-    put:
+    patch:
       tags:
         - preguntas
       summary: Actualizar una pregunta por id
@@ -79,7 +79,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pregunta'
+              $ref: '#/components/schemas/PreguntaUpdate'
       responses:
         '200':
           description: Pregunta actualizada por ID
@@ -121,6 +121,23 @@ paths:
                 acertada:
                   type: boolean
                   description: Indica si la respuesta fue correcta
+      responses:
+        '204':
+          description: Intento registrado correctamente, sin contenido de respuesta
+
+  /pregunta/{id}/enterrar:
+    post:
+      tags:
+        - preguntas
+      summary: Entierra la pregunta para que no salga
+      operationId: enterrarPregunta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identificador de la pregunta
+          schema:
+            type: string
       responses:
         '204':
           description: Intento registrado correctamente, sin contenido de respuesta
@@ -233,6 +250,27 @@ paths:
                 items:
                   $ref: '#/components/schemas/CategoriaResumen'
 
+  /categoria/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la categoria
+        schema:
+          type: string
+    get:
+      tags:
+        - categorias
+      summary: Obtener una categoria por id
+      operationId: getOneCategoriaById
+      responses:
+        '200':
+          description: Categoria por ID
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Categoria'
+
   /gruposDePreguntasRelacionadas:
     get:
       summary: Obtener Grupos de Preguntas GrupoPreguntasRelacionadas
@@ -332,6 +370,10 @@ components:
           type: string
         enunciado:
           type: string
+        estado:
+          type: string
+        descartada:
+          type: boolean
         respuestas:
           type: array
           items:
@@ -347,7 +389,16 @@ components:
         - enunciado
         - respuestas
         - estadisticas
-    
+        - descartada
+        - estado
+
+    PreguntaUpdate:
+      type: object
+      properties:
+        enunciado:
+          type: string
+      required:
+        - enunciado
     GrupoPreguntasRelacionadas:
       type: object
       properties:

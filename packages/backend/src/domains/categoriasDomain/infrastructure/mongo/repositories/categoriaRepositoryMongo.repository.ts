@@ -3,11 +3,16 @@ import { Categoria } from "../../../../../domains/categoriasDomain/domain/entiti
 import { MapCategoriaMongo } from "../mappers/mapCategoriaMongo.mapper";
 import CategoriaModel from "../schemas/categoria.schema";
 import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
+import { CategoriaNoEncontradaById } from "../../../application/errors/CategoriaNoEncontradaById.error";
 
 export class CategoriaRepositoryMongo implements ICategoriaRepository {
+	async getCategoriasById(idCategoria: string): Promise<Categoria> {
+		const doc = await CategoriaModel.findOne({ idCategoria: idCategoria });
+		if(!doc) throw new CategoriaNoEncontradaById(idCategoria);
+		return MapCategoriaMongo.toEntity(doc)
+	}
+
 	async getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]> {
-		console.log(tipo.toString());
-		console.log("Filtro:", tipo, tipo.toString());
 		const docs = await CategoriaModel.find({ tipo: tipo.toString() });
 		return docs.map(MapCategoriaMongo.toEntity)
 	}
@@ -31,6 +36,8 @@ export class CategoriaRepositoryMongo implements ICategoriaRepository {
 	async createCategoria(categoria: Categoria): Promise<Categoria> {
 		const categoriaModel = MapCategoriaMongo.toModel(categoria);
 		const doc = await CategoriaModel.create(categoriaModel);
+
+		console.log(doc);
 
 		return MapCategoriaMongo.toEntity(doc);
 	}

@@ -11,7 +11,7 @@ export class CategoriaAdaperServive implements ICategoriaAdapterService {
 		private readonly getListOfCategorias: IGetListOfCategorias,
 	){}
 
-	async crearListadoDeCategoriasPorNombre(categorias: string[]): Promise<ICategoriaDto[]> {
+	async crearListadoDeCategoriasPorNombre(categorias: ICategoriaDto[]): Promise<ICategoriaDto[]> {
 		const categoriasCreadas = await this.crateListOfCategorias.exec(categorias);
 		return categoriasCreadas;
 	}

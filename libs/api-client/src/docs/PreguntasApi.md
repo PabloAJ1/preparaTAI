@@ -6,6 +6,7 @@ All URIs are relative to */api*
 |------------- | ------------- | -------------|
 | [**createPregunta**](PreguntasApi.md#createpregunta) | **POST** /pregunta | Guardar una pregunta |
 | [**deletePreguntaById**](PreguntasApi.md#deletepreguntabyid) | **DELETE** /pregunta/{id} | Eliminar una pregunta por id |
+| [**enterrarPregunta**](PreguntasApi.md#enterrarpregunta) | **POST** /pregunta/{id}/enterrar | Entierra la pregunta para que no salga |
 | [**getAllExamenes**](PreguntasApi.md#getallexamenes) | **GET** /examenes | Obtener un listado de los Examenes |
 | [**getAllGruposDePreguntasRelacionadas**](PreguntasApi.md#getallgruposdepreguntasrelacionadas) | **GET** /gruposDePreguntasRelacionadas | Obtener Grupos de Preguntas GrupoPreguntasRelacionadas |
 | [**getAllPreguntas**](PreguntasApi.md#getallpreguntas) | **GET** /pregunta | Obtener preguntas |
@@ -14,7 +15,7 @@ All URIs are relative to */api*
 | [**getPreguntasPorCategoria**](PreguntasApi.md#getpreguntasporcategoria) | **GET** /pregunta/porCategoria/{id} | Obtener las preguntas que pertenecen a una categoria dada |
 | [**registrarIntentoPregunta**](PreguntasApi.md#registrarintentopreguntaoperation) | **POST** /pregunta/{id}/intentos | Registrar intento de respuesta a una pregunta |
 | [**reiniciarContadorDeEstadisticas**](PreguntasApi.md#reiniciarcontadordeestadisticas) | **GET** /pregunta/estadisticas/reiniciar | Reincia las estadisticas de las preguntas |
-| [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PUT** /pregunta/{id} | Actualizar una pregunta por id |
+| [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PATCH** /pregunta/{id} | Actualizar una pregunta por id |
 
 
 
@@ -144,6 +145,71 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Pregunta eliminada por ID |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## enterrarPregunta
+
+> enterrarPregunta(id)
+
+Entierra la pregunta para que no salga
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PreguntasApi,
+} from '';
+import type { EnterrarPreguntaRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PreguntasApi();
+
+  const body = {
+    // string | Identificador de la pregunta
+    id: id_example,
+  } satisfies EnterrarPreguntaRequest;
+
+  try {
+    const data = await api.enterrarPregunta(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | Identificador de la pregunta | [Defaults to `undefined`] |
+
+### Return type
+
+`void` (Empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Intento registrado correctamente, sin contenido de respuesta |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -642,7 +708,7 @@ No authorization required
 
 ## updatePreguntaById
 
-> Pregunta updatePreguntaById(id, pregunta)
+> Pregunta updatePreguntaById(id, preguntaUpdate)
 
 Actualizar una pregunta por id
 
@@ -662,8 +728,8 @@ async function example() {
   const body = {
     // string | el identificador de la pregunta
     id: id_example,
-    // Pregunta
-    pregunta: ...,
+    // PreguntaUpdate
+    preguntaUpdate: ...,
   } satisfies UpdatePreguntaByIdRequest;
 
   try {
@@ -684,7 +750,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
-| **pregunta** | [Pregunta](Pregunta.md) |  | |
+| **preguntaUpdate** | [PreguntaUpdate](PreguntaUpdate.md) |  | |
 
 ### Return type
 

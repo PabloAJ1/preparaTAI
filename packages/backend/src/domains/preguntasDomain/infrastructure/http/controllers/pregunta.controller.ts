@@ -6,14 +6,19 @@ import { MapPreguntaController } from '../mappers/mapPreguntasController.mapper'
 import { IGetPreguntasPorCateogiraConPaginacion } from '../../../application/signatures/getPreguntasPorCateogiraConPaginacion.interface';
 import { IRegistarEstadisticaByPregunta } from '../../../application/signatures/registarEstadisticaByPregunta.interface';
 import { IReiniciarEstadisticas } from '../../../application/signatures/reiniciarEstadisticas.interface';
+import { IEnterrarPregunta } from '../../../application/signatures/enterrarPregunta.interface';
+import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
+type TPreguntaUpdate = components['schemas']['PreguntaUpdate'];
 
 const {
 	getNumeroPreguntas,
 	getPreguntasPorCategoriaPaginando,
 	registarEstadisticaByPregunta,
-	reiniciarEstadisticas
+	reiniciarEstadisticas,
+	enterrarPregunta,
+	editarEnunciadoPreguntaById,
 } = preguntasBuilder();
 
 export const makeHandleGetNumeroPreguntas =
@@ -84,6 +89,33 @@ export const makeHandleReiniciarEstadisticas =
 		}
 	};
 
+export const makeHandleEnterrarPregunta =
+	(enterrarPregunta: IEnterrarPregunta) =>
+	async (req: Request, res: Response<number>, next: NextFunction) => {
+		try {
+			const idPregunta = req.params.id;
+			await enterrarPregunta.exec(idPregunta);
+			res.status(204).end();
+		} catch (err) {
+			next(err);
+		}
+	};
+
+export const makeHandleEditarEnunciadoPregunta =
+	(editarEnunciadoPreguntaById: UpdatePreguntaById) =>
+	async (req: Request, res: Response<TPreguntas>, next: NextFunction) => {
+		try {
+			const cuerpo: TPreguntaUpdate = req.body;
+			const preguntaEditada = await editarEnunciadoPreguntaById.exec({
+				...cuerpo,
+				id: req.params.id
+			})
+			res.json(MapPreguntaController.toType(preguntaEditada));
+		} catch (err) {
+			next(err);
+		}
+	};
+
 export const handleGetNumeroPreguntas =
 	makeHandleGetNumeroPreguntas(getNumeroPreguntas);
 export const handleGetPreguntasPorCategoria =
@@ -92,3 +124,7 @@ export const handleRegistarEstadisticaByPregunta =
 	makeHandleRegistarEstadisticaByPregunta(registarEstadisticaByPregunta);
 export const handleReiniciarEstadisticas =
 	makeHandleReiniciarEstadisticas(reiniciarEstadisticas);
+export const handleEnterrarPregunta =
+	makeHandleEnterrarPregunta(enterrarPregunta);
+export const handleEditarEnunciadoPregunta =
+	makeHandleEditarEnunciadoPregunta(editarEnunciadoPreguntaById);

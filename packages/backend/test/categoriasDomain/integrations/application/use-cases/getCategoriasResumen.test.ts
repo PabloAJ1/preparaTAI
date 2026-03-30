@@ -1,6 +1,6 @@
 import { test, expect, describe, vi } from 'vitest';
 import { ICategoriaRepository } from '../../../../../src/domains/categoriasDomain/domain/repositories/categoriaRepository.interface';
-import { GetCategoriasResumen } from '../../../../../src/domains/categoriasDomain/application/useCases/getCategoriasResumen';
+import { GetCategoriasByTipo } from '../../../../../src/domains/categoriasDomain/application/useCases/getCategoriasResumen';
 import { Categoria } from '../../../../../src/domains/categoriasDomain/domain/entities/Categoria';
 import { IPreguntasPort } from '../../../../../src/domains/categoriasDomain/application/interfaces/preguntasPort.interface';
 import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
@@ -18,6 +18,7 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		const preguntasMock = 15;
 
 		const repoMockCategorias: ICategoriaRepository = {
+			getCategoriasByType: vi.fn(),
 			getAllCategoriasExamenes: vi.fn(),
 			getListOfCategorias: vi.fn(),
 			createListOfCategorias: vi.fn(),
@@ -31,7 +32,7 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 			getNumeroPreguntasPorCategoria: vi.fn().mockResolvedValue(preguntasMock),
 		};
 
-		const getCategoriaResumen = new GetCategoriasResumen(
+		const getCategoriaResumen = new GetCategoriasByTipo(
 			repoMockCategorias,
 			repoMockPreguntas
 		)
@@ -62,7 +63,7 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		const preguntaAdapterPort = new PreguntaAdapterPort(getNumeroPreguntasPorCategoria)
 
 
-		const getCategoriaResumen = new GetCategoriasResumen(
+		const getCategoriaResumen = new GetCategoriasByTipo(
 			categoriasMySQLRepository,
 			preguntaAdapterPort
 		)

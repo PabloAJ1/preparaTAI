@@ -8,6 +8,8 @@ Name | Type
 ------------ | -------------
 `id` | string
 `enunciado` | string
+`estado` | string
+`descartada` | boolean
 `respuestas` | [Array&lt;Respuesta&gt;](Respuesta.md)
 `categorias` | [Array&lt;Categoria&gt;](Categoria.md)
 `estadisticas` | [Estadistica](Estadistica.md)
@@ -21,6 +23,8 @@ import type { Pregunta } from ''
 const example = {
   "id": null,
   "enunciado": null,
+  "estado": null,
+  "descartada": null,
   "respuestas": null,
   "categorias": null,
   "estadisticas": null,

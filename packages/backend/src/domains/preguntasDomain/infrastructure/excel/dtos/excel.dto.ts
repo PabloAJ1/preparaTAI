@@ -1,4 +1,6 @@
 export interface IExcelDto {
+	estado: string;
+	tipo: string;
 	fuente: string;
 	enunciado: string;
 	respuesta1: string;

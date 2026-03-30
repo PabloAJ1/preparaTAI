@@ -7,5 +7,6 @@ export * from './Examen';
 export * from './ExamenPreguntasInner';
 export * from './GrupoPreguntasRelacionadas';
 export * from './Pregunta';
+export * from './PreguntaUpdate';
 export * from './RegistrarIntentoPreguntaRequest';
 export * from './Respuesta';

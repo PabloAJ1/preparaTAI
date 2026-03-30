@@ -6,6 +6,7 @@ All URIs are relative to */api*
 |------------- | ------------- | -------------|
 | [**getAllCategorias**](CategoriasApi.md#getallcategorias) | **GET** /categoria | Obtener categorias |
 | [**getCategoriasResumen**](CategoriasApi.md#getcategoriasresumen) | **GET** /categoria/resumen | Obtener categorias con número de preguntas |
+| [**getOneCategoriaById**](CategoriasApi.md#getonecategoriabyid) | **GET** /categoria/{id} | Obtener una categoria por id |
 
 
 
@@ -127,6 +128,71 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Lista de categorias con número de preguntas |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getOneCategoriaById
+
+> Categoria getOneCategoriaById(id)
+
+Obtener una categoria por id
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CategoriasApi,
+} from '';
+import type { GetOneCategoriaByIdRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new CategoriasApi();
+
+  const body = {
+    // string | el identificador de la categoria
+    id: id_example,
+  } satisfies GetOneCategoriaByIdRequest;
+
+  try {
+    const data = await api.getOneCategoriaById(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | el identificador de la categoria | [Defaults to `undefined`] |
+
+### Return type
+
+[**Categoria**](Categoria.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Categoria por ID |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

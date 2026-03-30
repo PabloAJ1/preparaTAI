@@ -76,7 +76,7 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 			FROM rtype AS p
 			INNER JOIN rtype AS i
 				ON p.categoria = i.categoria
-			WHERE p.id != i.id`
+			WHERE p.id != i.id and p.respuesta != i.respuesta`
 		);
 
 		const preguntasDto = AgruparPreguntas.agrupar(result)

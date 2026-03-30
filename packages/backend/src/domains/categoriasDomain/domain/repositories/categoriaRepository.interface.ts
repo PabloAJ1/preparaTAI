@@ -5,6 +5,7 @@ export interface ICategoriaRepository {
 	createCategoria(categoria: Categoria): Promise<Categoria>;
 	getAllCategorias(): Promise<Categoria[]>
 	getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]>
+	getCategoriasById(idCategoria: string): Promise<Categoria>
 	getAllCategoriasNoCuestionarios(): Promise<Categoria[]>
 	getAllCategoriasCuestionarios(): Promise<Categoria[]>
 	getAllCategoriasExamenes(): Promise<Categoria[]>

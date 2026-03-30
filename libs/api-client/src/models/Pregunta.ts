@@ -55,6 +55,18 @@ export interface Pregunta {
     enunciado: string;
     /**
      * 
+     * @type {string}
+     * @memberof Pregunta
+     */
+    estado: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Pregunta
+     */
+    descartada: boolean;
+    /**
+     * 
      * @type {Array<Respuesta>}
      * @memberof Pregunta
      */
@@ -79,6 +91,8 @@ export interface Pregunta {
 export function instanceOfPregunta(value: object): value is Pregunta {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('enunciado' in value) || value['enunciado'] === undefined) return false;
+    if (!('estado' in value) || value['estado'] === undefined) return false;
+    if (!('descartada' in value) || value['descartada'] === undefined) return false;
     if (!('respuestas' in value) || value['respuestas'] === undefined) return false;
     if (!('estadisticas' in value) || value['estadisticas'] === undefined) return false;
     return true;
@@ -96,6 +110,8 @@ export function PreguntaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': json['id'],
         'enunciado': json['enunciado'],
+        'estado': json['estado'],
+        'descartada': json['descartada'],
         'respuestas': ((json['respuestas'] as Array<any>).map(RespuestaFromJSON)),
         'categorias': json['categorias'] == null ? undefined : ((json['categorias'] as Array<any>).map(CategoriaFromJSON)),
         'estadisticas': EstadisticaFromJSON(json['estadisticas']),
@@ -115,6 +131,8 @@ export function PreguntaToJSONTyped(value?: Pregunta | null, ignoreDiscriminator
         
         'id': value['id'],
         'enunciado': value['enunciado'],
+        'estado': value['estado'],
+        'descartada': value['descartada'],
         'respuestas': ((value['respuestas'] as Array<any>).map(RespuestaToJSON)),
         'categorias': value['categorias'] == null ? undefined : ((value['categorias'] as Array<any>).map(CategoriaToJSON)),
         'estadisticas': EstadisticaToJSON(value['estadisticas']),

@@ -29,6 +29,10 @@ export interface GetCategoriasResumenRequest {
     tipo?: string;
 }
 
+export interface GetOneCategoriaByIdRequest {
+    id: string;
+}
+
 /**
  * 
  */
@@ -109,6 +113,51 @@ export class CategoriasApi extends runtime.BaseAPI {
      */
     async getCategoriasResumen(requestParameters: GetCategoriasResumenRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CategoriaResumen>> {
         const response = await this.getCategoriasResumenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getOneCategoriaById without sending the request
+     */
+    async getOneCategoriaByIdRequestOpts(requestParameters: GetOneCategoriaByIdRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getOneCategoriaById().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/categoria/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener una categoria por id
+     */
+    async getOneCategoriaByIdRaw(requestParameters: GetOneCategoriaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Categoria>> {
+        const requestOptions = await this.getOneCategoriaByIdRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoriaFromJSON(jsonValue));
+    }
+
+    /**
+     * Obtener una categoria por id
+     */
+    async getOneCategoriaById(requestParameters: GetOneCategoriaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Categoria> {
+        const response = await this.getOneCategoriaByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

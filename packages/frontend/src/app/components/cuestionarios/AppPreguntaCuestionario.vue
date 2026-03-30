@@ -5,6 +5,8 @@
 			:enunciado="preguntaLocal.enunciado"
 			:indice="props.indice"
 			:estadisticas="preguntaLocal.estadisticas"
+			:id-pregunta="pregunta.id"
+			:estado="pregunta.estado"
 		/>
 
 		<div 

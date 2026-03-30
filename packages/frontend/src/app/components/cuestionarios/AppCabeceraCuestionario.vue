@@ -2,7 +2,7 @@
 	<div class="cuestionario-header">
 		<h2 class="cuestionario-titulo">
 			<i class="fa-solid fa-clipboard-question cuestionario-icono" />
-			{{ props.nombre }}
+			{{ nombreCategoria }}
 		</h2>
 
 		<span class="cuestionario-contador">
@@ -12,10 +12,25 @@
 </template>
 
 <script setup lang="ts">
+import { CategoriasApi, Configuration } from '@preparatai/api-client';
+import { onMounted, ref } from 'vue';
+
+
+const api = new CategoriasApi(
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
+);
+
 const props = defineProps<{
 	nombre: string;
 	totalPreguntas: number;
 }>();
+const nombreCategoria = ref("");
+
+onMounted(async () => {
+	const categoria = await api.getOneCategoriaById({ id: props.nombre });
+	nombreCategoria.value = categoria.nombre
+})
+
 </script>
 
 <style scoped lang="scss">

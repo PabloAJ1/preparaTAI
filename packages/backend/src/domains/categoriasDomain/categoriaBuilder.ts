@@ -1,5 +1,6 @@
 import { GetNumeroPreguntasPorCategoria } from "../preguntasDomain/application/useCases/getNumeroPreguntasPorCategoria";
 import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
+import { GetCategoriasById } from "./application/useCases/getCategoriaById";
 import { GetCategoriasByTipo } from "./application/useCases/getCategoriasResumen";
 import { PreguntaAdapterPort } from "./infrastructure/adapters/ports/preguntaAdapterPort";
 import { CategoriaRepositoryMongo } from "./infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
@@ -16,7 +17,10 @@ export const categoriaBuilder = () => {
 		preguntaAdapterPort
 	)
 
+	const getCategoriaById = new GetCategoriasById(categoriaRepositoryMongo)
+
 	return {
-		getCategoriaResumen
+		getCategoriaResumen,
+		getCategoriaById
 	}
 }

@@ -27,7 +27,9 @@ export class MapsPregunta {
 				};
 			}),
 			categorias: entity.categorias,
-			estadisticas: entity.estadisticas
+			estadisticas: entity.estadisticas,
+			descartada: entity.isDescartada,
+			estado: entity.estado
 		};
 	}
 }

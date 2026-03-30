@@ -1,6 +1,6 @@
 import { ICategoriaRepository } from "../../domain/repositories/categoriaRepository.interface";
 import { ICategoriaDto } from "../dtos/categoria.dto";
-import { MapCateogira } from "../mappers/mapCategorias.mapper";
+import { MapCategoria } from "../mappers/mapCategorias.mapper";
 import { IGetAllCategorias } from "../signatures/getAllCategorias.interface";
 
 export class GetAllCategorias implements IGetAllCategorias {
@@ -10,6 +10,6 @@ export class GetAllCategorias implements IGetAllCategorias {
 
 	async exec(): Promise<ICategoriaDto[]> {
 		const result = await this.categoriasRepositories.getAllCategorias();
-		return result.map(MapCateogira.toDto)
+		return result.map(MapCategoria.toDto)
 	}
 }

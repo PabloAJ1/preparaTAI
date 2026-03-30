@@ -1,26 +1,27 @@
-import { IPreguntaDto } from '../../../application/dtos/pregunta.dto';
+import { ICategoriaDto } from '../../../application/dtos/categoria.dto';
+import { IPreguntaMigrationDto } from '../../../application/dtos/preguntaMigration.interface';
 import { IExcelDto } from '../../excel/dtos/excel.dto';
 
 export class MapExcelDtoToEntityPregunta {
 	public static mapMapExcelDtoToEntityPregunta(
 		dtoExcel: IExcelDto
-	): IPreguntaDto {
-		const tipoCategoria = dtoExcel.fuente.toLocaleLowerCase().includes("practica-")
-			? `${dtoExcel.fuente}`
-			: `Examen-${dtoExcel.fuente}`
-		const categorias = ['2026', tipoCategoria];
-		if(dtoExcel.categoria1 !== undefined && dtoExcel.categoria1 !== ""){
-			categorias.push(dtoExcel.categoria1)
-			if(dtoExcel.categoria2 !== undefined && dtoExcel.categoria2 !== ""){
-				categorias.push(dtoExcel.categoria1)
-						if(dtoExcel.categoria3 !== undefined && dtoExcel.categoria3 !== ""){
-							categorias.push(dtoExcel.categoria1)			
-				}
-			}
-		}
+	): IPreguntaMigrationDto {
+		const categorias: ICategoriaDto[] = [
+			...(dtoExcel.tipo !== 'DEFAULT' ? [dtoExcel.fuente] : []),
+			dtoExcel.categoria1,
+			dtoExcel.categoria2,
+			dtoExcel.categoria3,
+		]
+		.filter((cat): cat is string => !!cat)
+		.map((nombre, index) => ({
+			idCategoria: '0',
+			nombreCategoria: nombre,
+			tipo: index === 0 ? dtoExcel.tipo ?? 'DEFAULT' : 'DEFAULT', // <-- fallback
+
+		}));
 
 		return {
-			id: "0",
+			id: '0',
 			enunciado: dtoExcel.enunciado,
 			respuestas: [
 				{
@@ -41,7 +42,7 @@ export class MapExcelDtoToEntityPregunta {
 				},
 			],
 			categorias: categorias,
-			estadisticas: { aciertos: 0, fallos: 0, total: 0}
+			estado: dtoExcel.estado,
 		};
 	}
 }

@@ -8,4 +8,6 @@ export interface IPregunta {
 	categorias: string[];
 	estadisticas: IEstadisticas;
 	randomKey: number;
+	descartada: boolean;
+	estado: string;
 }

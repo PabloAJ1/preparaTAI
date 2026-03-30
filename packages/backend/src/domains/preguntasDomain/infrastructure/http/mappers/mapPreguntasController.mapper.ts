@@ -19,7 +19,9 @@ export class MapPreguntaController {
 				aciertos: dto.estadisticas.aciertos,
 				fallos: dto.estadisticas.fallos,
 				total: dto.estadisticas.total
-			}
+			},
+			descartada: dto.descartada,
+			estado: dto.estado,
 		}
 	}
 }

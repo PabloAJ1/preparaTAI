@@ -11,9 +11,7 @@ export const start = async (): Promise<void> => {
 			'Variable de entorno establecida en: ',
 			process.env.ENVIROMENT
 		);
-		const mongoConnectionString = getCadenaConexionMongo(
-			process.env.ENVIROMENT
-		);
+		const mongoConnectionString = getCadenaConexionMongo();
 		mongoose.Promise = global.Promise;
 		await mongoose
 			.connect(mongoConnectionString, { autoIndex: true })
@@ -26,8 +24,9 @@ export const start = async (): Promise<void> => {
 	}
 };
 
-export const getCadenaConexionMongo = (envVar: string) => {
-	const conexion = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}?authSource=admin`;
+export const getCadenaConexionMongo = () => {
+	const conexion = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
+	console.log(conexion);
 	return conexion;
 };
 

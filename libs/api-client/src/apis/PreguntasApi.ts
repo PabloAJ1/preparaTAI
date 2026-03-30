@@ -18,6 +18,7 @@ import type {
   Examen,
   GrupoPreguntasRelacionadas,
   Pregunta,
+  PreguntaUpdate,
   RegistrarIntentoPreguntaRequest,
 } from '../models/index';
 import {
@@ -27,6 +28,8 @@ import {
     GrupoPreguntasRelacionadasToJSON,
     PreguntaFromJSON,
     PreguntaToJSON,
+    PreguntaUpdateFromJSON,
+    PreguntaUpdateToJSON,
     RegistrarIntentoPreguntaRequestFromJSON,
     RegistrarIntentoPreguntaRequestToJSON,
 } from '../models/index';
@@ -36,6 +39,10 @@ export interface CreatePreguntaRequest {
 }
 
 export interface DeletePreguntaByIdRequest {
+    id: string;
+}
+
+export interface EnterrarPreguntaRequest {
     id: string;
 }
 
@@ -57,7 +64,7 @@ export interface RegistrarIntentoPreguntaOperationRequest {
 
 export interface UpdatePreguntaByIdRequest {
     id: string;
-    pregunta: Pregunta;
+    preguntaUpdate: PreguntaUpdate;
 }
 
 /**
@@ -154,6 +161,50 @@ export class PreguntasApi extends runtime.BaseAPI {
      */
     async deletePreguntaById(requestParameters: DeletePreguntaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deletePreguntaByIdRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Creates request options for enterrarPregunta without sending the request
+     */
+    async enterrarPreguntaRequestOpts(requestParameters: EnterrarPreguntaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling enterrarPregunta().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/pregunta/{id}/enterrar`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Entierra la pregunta para que no salga
+     */
+    async enterrarPreguntaRaw(requestParameters: EnterrarPreguntaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.enterrarPreguntaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Entierra la pregunta para que no salga
+     */
+    async enterrarPregunta(requestParameters: EnterrarPreguntaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.enterrarPreguntaRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -511,10 +562,10 @@ export class PreguntasApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['pregunta'] == null) {
+        if (requestParameters['preguntaUpdate'] == null) {
             throw new runtime.RequiredError(
-                'pregunta',
-                'Required parameter "pregunta" was null or undefined when calling updatePreguntaById().'
+                'preguntaUpdate',
+                'Required parameter "preguntaUpdate" was null or undefined when calling updatePreguntaById().'
             );
         }
 
@@ -530,10 +581,10 @@ export class PreguntasApi extends runtime.BaseAPI {
 
         return {
             path: urlPath,
-            method: 'PUT',
+            method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: PreguntaToJSON(requestParameters['pregunta']),
+            body: PreguntaUpdateToJSON(requestParameters['preguntaUpdate']),
         };
     }
 

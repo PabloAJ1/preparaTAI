@@ -18,7 +18,8 @@ export class GetCategoriasByTipo implements IGetCategoriasByTipo {
 		for (const categoria of result) {
 			const numeroPreguntas =
 				await this.preguntasPort.getNumeroPreguntasPorCategoria(categoria);
-			returnResult.push(MapCateogiraResumen.toDto(categoria, numeroPreguntas));
+			if(numeroPreguntas > 0)
+				returnResult.push(MapCateogiraResumen.toDto(categoria, numeroPreguntas));
 		}
 
 		return returnResult;

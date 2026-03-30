@@ -6,6 +6,9 @@ import { MapCategoria } from "../mappers/mapCategoria.mapper";
 import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 
 export class CategoriasMySQLRepository implements ICategoriaRepository {
+	getCategoriasById(idCategoria: string): Promise<Categoria> {
+		throw new Error("Method not implemented.");
+	}
 	getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]> {
 		throw new Error("Method not implemented.");
 	}

@@ -34,14 +34,14 @@ export interface paths {
         };
         /** Obtener una pregunta por id */
         get: operations["getOnePreguntasById"];
-        /** Actualizar una pregunta por id */
-        put: operations["updatePreguntaById"];
+        put?: never;
         post?: never;
         /** Eliminar una pregunta por id */
         delete: operations["deletePreguntaById"];
         options?: never;
         head?: never;
-        patch?: never;
+        /** Actualizar una pregunta por id */
+        patch: operations["updatePreguntaById"];
         trace?: never;
     };
     "/pregunta/{id}/intentos": {
@@ -55,6 +55,23 @@ export interface paths {
         put?: never;
         /** Registrar intento de respuesta a una pregunta */
         post: operations["registrarIntentoPregunta"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/pregunta/{id}/enterrar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Entierra la pregunta para que no salga */
+        post: operations["enterrarPregunta"];
         delete?: never;
         options?: never;
         head?: never;
@@ -86,7 +103,7 @@ export interface paths {
                 /** @description Número de preguntas por página */
                 limit?: number;
                 /** @description Semilla para randomizar las preguntas */
-                seed?: string;
+                seed?: number;
             };
             header?: never;
             path: {
@@ -159,6 +176,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/categoria/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description el identificador de la categoria */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** Obtener una categoria por id */
+        get: operations["getOneCategoriaById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/gruposDePreguntasRelacionadas": {
         parameters: {
             query?: never;
@@ -222,9 +259,14 @@ export interface components {
         Pregunta: {
             id: string;
             enunciado: string;
+            estado: string;
+            descartada: boolean;
             respuestas: components["schemas"]["Respuesta"][];
             categorias?: components["schemas"]["Categoria"][];
             estadisticas: components["schemas"]["Estadistica"];
+        };
+        PreguntaUpdate: {
+            enunciado: string;
         };
         GrupoPreguntasRelacionadas: {
             id: string;
@@ -315,33 +357,6 @@ export interface operations {
             };
         };
     };
-    updatePreguntaById: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description el identificador de la pregunta */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Pregunta"];
-            };
-        };
-        responses: {
-            /** @description Pregunta actualizada por ID */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Pregunta"];
-                };
-            };
-        };
-    };
     deletePreguntaById: {
         parameters: {
             query?: never;
@@ -363,6 +378,33 @@ export interface operations {
             };
         };
     };
+    updatePreguntaById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description el identificador de la pregunta */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PreguntaUpdate"];
+            };
+        };
+        responses: {
+            /** @description Pregunta actualizada por ID */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Pregunta"];
+                };
+            };
+        };
+    };
     registrarIntentoPregunta: {
         parameters: {
             query?: never;
@@ -381,6 +423,27 @@ export interface operations {
                 };
             };
         };
+        responses: {
+            /** @description Intento registrado correctamente, sin contenido de respuesta */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    enterrarPregunta: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Identificador de la pregunta */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
         responses: {
             /** @description Intento registrado correctamente, sin contenido de respuesta */
             204: {
@@ -419,7 +482,7 @@ export interface operations {
                 /** @description Número de preguntas por página */
                 limit?: number;
                 /** @description Semilla para randomizar las preguntas */
-                seed?: string;
+                seed?: number;
             };
             header?: never;
             path: {
@@ -498,6 +561,29 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CategoriaResumen"][];
+                };
+            };
+        };
+    };
+    getOneCategoriaById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description el identificador de la categoria */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Categoria por ID */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Categoria"];
                 };
             };
         };

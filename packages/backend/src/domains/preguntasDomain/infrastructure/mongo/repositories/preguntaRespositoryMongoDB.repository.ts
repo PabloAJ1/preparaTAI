@@ -76,6 +76,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 				$match: {
 					categorias: { $in: [idCategoria] },
 					respuestas: { $elemMatch: { correcta: true } },
+					descartada: false,
 				},
 			},
 			{
