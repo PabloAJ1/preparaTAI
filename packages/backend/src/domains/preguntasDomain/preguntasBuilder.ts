@@ -15,6 +15,7 @@ import { RegistarEstadisticaByPregunta } from './application/useCases/registarEs
 import { ReiniciarEstadisticas } from './application/useCases/reiniciarEstadisticas.interface';
 import { EnterrarPregunta } from './application/useCases/enterrarPregunta';
 import { UpdatePreguntaById } from './application/useCases/updatePreguntaById.interface';
+import { DesenterrarPreguntas } from './application/useCases/desenterrarPreguntas';
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -62,6 +63,8 @@ export const preguntasBuilder = () => {
 		preguntasRepositoryMongoDB
 	);
 
+	const desenterrarPreguntas = new DesenterrarPreguntas(preguntasRepositoryMongoDB);
+
 	return {
 		getNumeroPreguntas,
 		getPreguntasPorCategoria,
@@ -71,5 +74,6 @@ export const preguntasBuilder = () => {
 		reiniciarEstadisticas,
 		enterrarPregunta,
 		editarEnunciadoPreguntaById,
+		desenterrarPreguntas
 	};
 };

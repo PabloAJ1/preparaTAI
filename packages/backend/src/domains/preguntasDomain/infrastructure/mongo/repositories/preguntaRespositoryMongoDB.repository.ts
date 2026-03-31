@@ -1,11 +1,20 @@
+import { QueryFilter } from 'mongoose';
 import { Pregunta } from '../../../../../domains/preguntasDomain/domain/entities/Pregunta';
 import { IPreguntaRepository } from '../../../../../domains/preguntasDomain/domain/repositories/preguntasRepository.interface';
 import { PreguntaNoActualizadaById } from '../../../application/errors/PreguntaNoActualizadaById.error';
 import { PreguntaNoEncontradaById } from '../../../application/errors/PreguntaNoEncontradaById.error';
 import { MapPreguntasMongo } from '../mappers/mapPreguntasMongo.mapper';
-import preguntaModel from '../schemas/pregunta.schema';
+import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	getPreguntasEnterradas(): Promise<Pregunta[]> {
+		const query: QueryFilter<IPreguntaDocument> = {
+			descartada: true
+		}
+
+		return this.#getPreguntasByQuery(query)
+	}
+
 	async reiniciarAllEstadisticas(): Promise<void> {
 		await preguntaModel.updateMany(
 			{}, // filtro vacío para seleccionar todas las preguntas
@@ -116,14 +125,20 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 		/**
 		 * Habria que revisar que todas las respuestas tengan una correcta por lo menos, esto creo que viene de la conversion del excel
 		 */
-		const docs = await preguntaModel.find({
+		const query: QueryFilter<IPreguntaDocument> = {
 			categorias: { $in: [idCategoria] },
 			respuestas: { $elemMatch: { correcta: true } },
-		});
-		return docs.map(MapPreguntasMongo.toEntity);
+		}
+
+		return this.#getPreguntasByQuery(query)
 	}
 
 	getAllPreguntas(): Promise<Pregunta[]> {
 		throw new Error('Method not implemented.');
+	}
+
+	async #getPreguntasByQuery(query: QueryFilter<IPreguntaDocument>): Promise<Pregunta[]> {
+		const docs = await preguntaModel.find(query);
+		return docs.map(MapPreguntasMongo.toEntity);
 	}
 }

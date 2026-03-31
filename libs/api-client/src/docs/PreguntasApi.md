@@ -6,6 +6,7 @@ All URIs are relative to */api*
 |------------- | ------------- | -------------|
 | [**createPregunta**](PreguntasApi.md#createpregunta) | **POST** /pregunta | Guardar una pregunta |
 | [**deletePreguntaById**](PreguntasApi.md#deletepreguntabyid) | **DELETE** /pregunta/{id} | Eliminar una pregunta por id |
+| [**desenterrarTodasLasPreguntas**](PreguntasApi.md#desenterrartodaslaspreguntas) | **GET** /pregunta/todas/desenterrar | Desentierrar todas las preguntas de la base de datos |
 | [**enterrarPregunta**](PreguntasApi.md#enterrarpregunta) | **POST** /pregunta/{id}/enterrar | Entierra la pregunta para que no salga |
 | [**getAllExamenes**](PreguntasApi.md#getallexamenes) | **GET** /examenes | Obtener un listado de los Examenes |
 | [**getAllGruposDePreguntasRelacionadas**](PreguntasApi.md#getallgruposdepreguntasrelacionadas) | **GET** /gruposDePreguntasRelacionadas | Obtener Grupos de Preguntas GrupoPreguntasRelacionadas |
@@ -145,6 +146,63 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Pregunta eliminada por ID |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## desenterrarTodasLasPreguntas
+
+> desenterrarTodasLasPreguntas()
+
+Desentierrar todas las preguntas de la base de datos
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PreguntasApi,
+} from '';
+import type { DesenterrarTodasLasPreguntasRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PreguntasApi();
+
+  try {
+    const data = await api.desenterrarTodasLasPreguntas();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+`void` (Empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Todas las preguntas fueron desenterradas |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

@@ -1,0 +1,40 @@
+:root {
+	//Colores primarios y secundarios para todo lo relatico a los repasos
+	--color-repasos: var(--blue-600);
+	--color-repaso-bg: rgba(59, 130, 246, 0.1);	
+
+	//Colores primarios y secundarios para todo lo relatico a las practicas 
+	--color-practicas: var(--green-600);
+	--color-practicas-bg: rgba(25, 135, 84, 0.1);
+
+	//Colores primarios y secundarios para todo lo relatico a los examenes
+	--color-examenes: var(--blue-600);
+	--color-examenes-bg: rgba(59, 130, 246, 0.1);	
+
+	//Respuestas, aciertos, fallos y stats
+	--color-stat-aciertos: var(--green-600);
+	--color-stat-fallos: var(--red-600);
+	--color-stat-intentos: var(--blue-gray-100); 	
+	--color-stat-warning: var(--yellow-500);
+
+	//Estado Respuestas
+	--color-respuesta-border: var(--blue-50);
+	--color-respuesta-text: var(--dark-blue-500);
+	--color-respuesta-muted: var(--blue-gray-150);
+
+	--color-respuesta-success-bg: var(--green-50);
+	--color-respuesta-success-border: var(--green-250);
+	--color-respuesta-success-icon: var(--green-500);
+
+	--color-respuesta-error-bg: var(--red-50);
+	--color-respuesta-error-border: var(--red-150);
+	--color-respuesta-error-icon: var(--red-500);
+
+	//Editar preguntas
+	--color-editar-pregunta-guardar-bg: var(--green-150);
+	--color-editar-pregunta-guardar: var(--green-800);
+	--color-editar-pregunta-guardar-hover: var(--green-250);
+	--color-editar-pregunta-cancelar-bg: var(--red-75);
+	--color-editar-pregunta-cancelar: var(--red-800)
+	--color-editar-pregunta-cancelar-hover: var(--red-150);
+}

@@ -164,6 +164,42 @@ export class PreguntasApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for desenterrarTodasLasPreguntas without sending the request
+     */
+    async desenterrarTodasLasPreguntasRequestOpts(): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/pregunta/todas/desenterrar`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Desentierrar todas las preguntas de la base de datos
+     */
+    async desenterrarTodasLasPreguntasRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.desenterrarTodasLasPreguntasRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Desentierrar todas las preguntas de la base de datos
+     */
+    async desenterrarTodasLasPreguntas(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.desenterrarTodasLasPreguntasRaw(initOverrides);
+    }
+
+    /**
      * Creates request options for enterrarPregunta without sending the request
      */
     async enterrarPreguntaRequestOpts(requestParameters: EnterrarPreguntaRequest): Promise<runtime.RequestOpts> {

@@ -61,23 +61,23 @@ const iconoClase = computed(() => {
 
 <style scoped lang="scss">
 // Paleta de colores SCSS
-$border-color: #e2e8f0;
-$text-color: #1e293b;
-$muted-color: #94a3b8;
+$border-color: var(--color-respuesta-border);
+$text-color: var(--color-respuesta-text);
+$muted-color: var(--color-respuesta-muted);
 
-$success-bg: #f0fdf4;
-$success-border: #bbf7d0;
-$success-icon: #22c55e;
+$success-bg: var(--color-respuesta-success-bg);
+$success-border: var(--color-respuesta-success-border);
+$success-icon: var(---color-respuesta-success-icon);
 
-$error-bg: #fef2f2;
-$error-border: #fecaca;
-$error-icon: #ef4444;
+$error-bg: var(--color-respuesta-error-bg);
+$error-border: var(--color-respuesta-error-border);
+$error-icon: var(--color-respuesta-error-icon);
 
 .respuesta-item {
 	display: flex;
 	align-items: center;
 	padding: 1rem;
-	background-color: white;
+	background-color: var(--color-white);
 	cursor: pointer;
 	transition: all 0.2s ease;
 	touch-action: manipulation;
@@ -92,12 +92,12 @@ $error-icon: #ef4444;
 	}
 
 	&:hover:not(.is-disabled) {
-		background-color: #f8fafc;
+		background-color: var(--color-white)
 	}
 
 	&.modo-practica:hover:not(.is-disabled) {
 		transform: translateY(-1px);
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 6px var(--shadow-md);
 	}
 
 	// --- Estados Especiales ---

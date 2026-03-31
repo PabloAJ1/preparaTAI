@@ -39,13 +39,13 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .hero-dashboard {
-	background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+	background: linear-gradient(135deg, var(--color-temas-heading) 0%, var(--color-modal));
 	border-radius: 24px;
 	padding: 4rem 3rem;
-	color: white;
+	color: var(--color-white);
 	margin-bottom: 2.5rem;
-	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-		0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	box-shadow: 0 20px 25px -5px var(--shadow-md),
+		0 10px 10px -5px var(--shadow-sm);
 	position: relative;
 	overflow: hidden;
 
@@ -65,7 +65,7 @@ onMounted(async () => {
 	}
 
 	.hero-version {
-		color: #38bdf8;
+		color: var(--color-hero-version);
 	}
 
 	.hero-description {
@@ -82,7 +82,7 @@ onMounted(async () => {
 		right: -20px;
 		bottom: -40px;
 		font-size: 14rem;
-		color: rgba(255, 255, 255, 0.05);
+		color: var(--overlay-white-sm);
 	}
 }
 </style>

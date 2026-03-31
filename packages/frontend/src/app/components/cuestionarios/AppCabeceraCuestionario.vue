@@ -34,8 +34,8 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-$primary-color: #0d6efd;
-$secondary-color: #6c757d;
+$secondary-color: var(--color-sidebar-header);
+$primary-color: var(--blue-600);
 
 .cuestionario-header {
 	display: flex;
@@ -59,7 +59,7 @@ $secondary-color: #6c757d;
 
 .cuestionario-contador {
 	background-color: $secondary-color;
-	color: white;
+	color: var(--color-white);
 	padding: 0.5rem 1rem;
 	font-size: 1rem;
 	font-weight: 600;

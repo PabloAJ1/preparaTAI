@@ -62,15 +62,29 @@
 				<span class="label">int.</span>
 			</div>
 
-			<div class="stat warning" v-if="mostrarWarning">
-				<span class="valor">⚠️</span>				
+			<div
+				v-if="mostrarWarning"
+				class="stat warning"
+				@click="abrirModalWarning"
+			>
+				<span class="valor">⚠️</span>
 			</div>
 		</div>
 	</div>
+
+	<AppWarningModal
+		:visible="mostrarModalWarning"
+		titulo="Advertencia"
+		@close="cerrarModalWarning"
+	>
+		<p>Esta pregunta ha sido corregida por una IA, toma precauciones a la hora de tomarla como funete de verdad.</p>
+		<p>Si crees que está mal, reportala. Gracias</p>
+	</AppWarningModal>
 </template>
 
 <script setup lang="ts">
 import AppEnunciadoEditable from './AppEnunciadoEditable.vue';
+import AppWarningModal from './AppWarningModal.vue';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
 import { computed, nextTick, onMounted, ref } from 'vue';
@@ -109,6 +123,8 @@ const mostrarWarning = computed(() => {
 	return props.estado === 'GPT';
 });
 
+const mostrarModalWarning = ref(false);
+
 onMounted(() => {
 	if (codeEl.value) {
 		hljs.highlightElement(codeEl.value);
@@ -145,11 +161,19 @@ const cancelarEdicion = () => {
 	textoEditado.value = textoAntes.value;
 	editando.value = false;
 };
+
+function abrirModalWarning() {
+	mostrarModalWarning.value = true;
+}
+
+function cerrarModalWarning() {
+	mostrarModalWarning.value = false;
+}
 </script>
 
 <style scoped lang="scss">
-$primary-color: #0d6efd;
-$text-dark: #212529;
+$primary-color: var(--blue-600);
+$text-dark: var(--color-temas-heading);
 
 .pregunta-texto-intro {
 	text-align: left;
@@ -160,26 +184,12 @@ $text-dark: #212529;
 	display: none;
 }
 
-@media (min-width: 640px) {
-	.pregunta-numero {
-		display: inline-block;
-		background-color: $primary-color;
-		color: white;
-		padding: 0.35rem 0.65rem;
-		font-size: 0.85rem;
-		font-weight: 700;
-		border-radius: 0.375rem;
-		margin-right: 1rem;
-		line-height: 1;
-	}
-}
-
 .pregunta-cabecera {
 	display: flex;
 	flex-direction: column; // 👈 mobile first
 	gap: 0.75rem;
 
-	background-color: white;
+	background-color: var(--color-white);
 	padding: 1rem;
 }
 
@@ -191,30 +201,6 @@ $text-dark: #212529;
 	background: transparent;
 	padding: 0;
 	font-size: 0.75rem;
-}
-
-@media (min-width: 640px) {
-	.pregunta-cabecera {
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: space-between;
-		padding: 1.5rem 0 0 1.5rem;
-	}
-
-	.pregunta-stats {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 0.35rem;
-
-		background: #f8f9fa;
-		border-radius: 8px;
-		padding: 0.1rem 0.65rem;
-		font-size: 0.65rem;
-		min-width: 55px;
-
-		margin-right: 0.5rem;
-	}
 }
 
 .pregunta-main {
@@ -230,6 +216,42 @@ $text-dark: #212529;
 	margin: 0;
 }
 
+@media (min-width: 640px) {
+	.pregunta-numero {
+		display: inline-block;
+		background-color: $primary-color;
+		color: var(--color-white);
+		padding: 0.35rem 0.65rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		border-radius: 0.375rem;
+		margin-right: 1rem;
+		line-height: 1;
+	}
+
+	.pregunta-cabecera {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: 1.5rem 0 0 1.5rem;
+	}
+
+	.pregunta-stats {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 0.35rem;
+
+		background: var(--color-respuesta-border);
+		border-radius: 8px;
+		padding: 0.1rem 0.65rem;
+		font-size: 0.65rem;
+		min-width: 55px;
+
+		margin-right: 0.5rem;
+	}
+}
+
 .stat {
 	display: flex;
 	align-items: center;
@@ -242,27 +264,28 @@ $text-dark: #212529;
 }
 
 .stat.aciertos {
-	color: #198754;
+	color: var(--color-stat-aciertos);
 }
 
 .stat.fallos {
-	color: #dc3545;
+	color: var(--color-stat-fallos);
 }
 
 .stat.total {
-	color: #6c757d;
+	color: var(--color-stat-intentos);
 }
 
 .stat.warning {
-	color: #f59e0b;
-	margin-left: .5rem;
+	color: var(--color-stat-warning);
+	margin-left: 0.5rem;
+	cursor: pointer;
 }
 
 .bloque-editor {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 0.5rem;
 }
 
 .bloque-codigo {

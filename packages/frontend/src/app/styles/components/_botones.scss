@@ -1,0 +1,15 @@
+.btn-guardar {
+	background-color: var(--color-editar-pregunta-guardar-bg);
+	color: var(--color-editar-pregunta-guardar);
+}
+.btn-cancelar {
+	background-color: var(--color-editar-pregunta-cancelar-bg);
+	color: var(--color-editar-pregunta-cancelar);
+}
+
+.btn-guardar:hover {
+	background-color: var(--color-editar-pregunta-guardar-hover);
+}
+.btn-cancelar:hover {
+	background-color: var(--color-editar-pregunta-cancelar-hover);
+}

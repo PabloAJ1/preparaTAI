@@ -3,7 +3,7 @@
 		<div class="nav-item">
 			<a class="nav-link">
 				<div class="nav-card-pro">
-					<div class="icon-wrapper icon-blue">
+					<div class="icon-wrapper icon-repaso">
 						<i class="fa-solid fa-book-open-reader" />
 					</div>
 
@@ -73,25 +73,25 @@
 	padding: 2.5rem 1.5rem;
 	height: 100%;
 
-	box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
-				0 4px 6px -2px rgba(0,0,0,0.05);
+	box-shadow: 0 10px 15px -3px var(--shadow-md),
+				0 4px 6px -2px var(--shadow-sm);
 
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover {
 		transform: translateY(-12px);
-		box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+		box-shadow: 0 25px 50px -12px var(--shadow-lg)
 	}
 }
 
 .nav-title {
 	font-weight: 700;
-	color: #1f2937;
+	color: var(--color-temas-heading);
 	margin-bottom: 0.5rem;
 }
 
 .nav-text {
-	color: #6b7280;
+	color: var(--color-btn-toggle-loyouts);
 	font-size: 0.875rem;
 	margin-bottom: 0;
 }
@@ -112,21 +112,20 @@
 
 /* Colores de iconos */
 
-.icon-blue {
-	background: #e0f2fe;
-	color: #0284c7;
+.icon-repaso {
+	background: var(--color-repasos-bg);
+	color: var(--color-repasos);
 }
 
 .icon-green {
-	background: #dcfce7;
-	color: #16a34a;
+	background: var(--color-practicas-bg);
+	color: var(--color-practicas)
 }
 
 .icon-amber {
-	background: #fef3c7;
-	color: #d97706;
+	background: var(--color-examenes-bg);
+	color: var(--color-examenes);
 }
-
 /* Responsive */
 
 @media (max-width: 900px) {

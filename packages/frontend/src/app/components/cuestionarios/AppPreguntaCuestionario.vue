@@ -1,33 +1,47 @@
 <template>
-	<div :id="props.id" class="cuestionario-card">
-		<AppEnunciadoCodeCuestionario
-			v-if="preguntaLocal"
-			:enunciado="preguntaLocal.enunciado"
-			:indice="props.indice"
-			:estadisticas="preguntaLocal.estadisticas"
-			:id-pregunta="pregunta.id"
-			:estado="pregunta.estado"
-		/>
+	<div class="cuestionario-card-wrapper">
+		<!-- Overlay gris + texto -->
+		<AppSwipeOverlay :progreso="swipeProgress" texto="Enterrar" />
 
-		<div 
-			class="respuestas-lista"
-			:class="{ 'modo-practica': props.modo === 'practica' }"
+		<div
+			:id="props.id"
+			class="cuestionario-card"
+			:style="cardStyle"
+			@touchstart="onTouchStart"
+			@touchmove="onTouchMove"
+			@touchend="onTouchEnd"
+			@mousedown="onMouseDown"
 		>
-			<AppRespuestaCuestionario
-				v-for="respuesta in preguntaLocal.respuestas"
-				:key="respuesta.enunciado"
-				:respuesta="respuesta"
-				:respondida="respondida"
-				:seleccionada="respuestaSeleccionada"
-				:modo="props.modo"
-				@seleccionar="verificarRespuesta"
+			<AppEnunciadoCodeCuestionario
+				v-if="preguntaLocal"
+				:enunciado="preguntaLocal.enunciado"
+				:indice="props.indice"
+				:estadisticas="preguntaLocal.estadisticas"
+				:id-pregunta="pregunta.id"
+				:estado="pregunta.estado"
 			/>
+
+			<div
+				class="respuestas-lista"
+				:class="{ 'modo-practica': props.modo === 'practica' }"
+				:style="{ pointerEvents: isSwiping ? 'none' : 'auto' }"
+			>
+				<AppRespuestaCuestionario
+					v-for="respuesta in preguntaLocal.respuestas"
+					:key="respuesta.enunciado"
+					:respuesta="respuesta"
+					:respondida="respondida"
+					:seleccionada="respuestaSeleccionada"
+					:modo="props.modo"
+					@seleccionar="verificarRespuesta"
+				/>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import {
 	Pregunta,
 	Respuesta,
@@ -36,12 +50,17 @@ import {
 } from '@preparatai/api-client';
 import AppRespuestaCuestionario from './AppRespuestaCuestionario.vue';
 import AppEnunciadoCodeCuestionario from './AppEnunciadoCodeCuestionario.vue';
+import AppSwipeOverlay from './AppSwipeOverlay.vue';
 
 const props = defineProps<{
 	pregunta: Pregunta;
 	indice: number;
 	id: string;
 	modo: string;
+}>();
+
+const emit = defineEmits<{
+	(e: 'descartar', id: string): void;
 }>();
 
 const preguntaLocal = reactive({ ...props.pregunta });
@@ -84,44 +103,116 @@ function actualizarEstadisticas(correcta: boolean) {
 
 function scrollToNext() {
 	setTimeout(() => {
-		const actual = document.getElementById(props.id);
+		const wrapper = document.getElementById(props.id)?.parentElement;
+		if (!wrapper) return;
 
-		if (!actual) return;
+		// buscar la siguiente tarjeta dentro del contenedor principal
+		const tarjetas = Array.from(
+			document.querySelectorAll('.cuestionario-card')
+		);
+		const index = tarjetas.findIndex((el) => el.id === props.id);
 
-		const siguiente = actual.nextElementSibling as HTMLElement;
-
-		if (siguiente) {
-			siguiente.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			});
+		if (index >= 0 && index < tarjetas.length - 1) {
+			const siguiente = tarjetas[index + 1] as HTMLElement;
+			siguiente.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}, 300);
+}
+
+const offsetX = ref(0);
+const startX = ref(0);
+const dragging = ref(false);
+const SWIPE_THRESHOLD = 320;
+const isSwiping = computed(() => Math.abs(offsetX.value) > 12);
+
+// Computamos progreso del swipe hacia izquierda (0 a -1)
+const swipeProgress = computed(() => {
+	if (offsetX.value < 0) {
+		const p = offsetX.value / SWIPE_THRESHOLD;
+		return p < -1 ? -1 : p;
+	}
+	return 0;
+});
+
+// Estilo dinámico de la tarjeta según swipe
+const cardStyle = computed(() => ({
+	transform: `translateX(${offsetX.value}px)`,
+	opacity: 1 - Math.min(-swipeProgress.value * 0.2, 0.2),
+	transition: dragging.value
+		? 'none'
+		: 'transform 0.2s ease, opacity 0.2s ease',
+}));
+
+// --- Drag / Swipe ---
+function startDrag(x: number) {
+	startX.value = x;
+	dragging.value = true;
+}
+function moveDrag(x: number) {
+	if (!dragging.value) return;
+	offsetX.value = x - startX.value;
+}
+function endDrag() {
+	if (!dragging.value) return;
+	dragging.value = false;
+	if (offsetX.value < -SWIPE_THRESHOLD) descartarPregunta();
+	else offsetX.value = 0;
+}
+function onTouchStart(e: TouchEvent) {
+	startDrag(e.touches[0].clientX);
+}
+function onTouchMove(e: TouchEvent) {
+	moveDrag(e.touches[0].clientX);
+}
+function onTouchEnd() {
+	endDrag();
+}
+function onMouseDown(e: MouseEvent) {
+	startDrag(e.clientX);
+	window.addEventListener('mousemove', onMouseMove);
+	window.addEventListener('mouseup', onMouseUp);
+}
+function onMouseMove(e: MouseEvent) {
+	moveDrag(e.clientX);
+}
+function onMouseUp() {
+	endDrag();
+	window.removeEventListener('mousemove', onMouseMove);
+	window.removeEventListener('mouseup', onMouseUp);
+}
+
+function descartarPregunta() {
+	offsetX.value = offsetX.value > 0 ? 500 : -500;
+	setTimeout(() => emit('descartar', props.pregunta.id), 200);
 }
 </script>
 
 <style scoped lang="scss">
 // Definimos variables de color para que sea fácil de mantener
-$border-color: #e2e8f0;
-$bg-hover: #f8fafc;
+$border-color: var(--color-border-color-respuesta);
+$bg-hover: var(--color-white);
+$respuesta-gap: 0.5rem;
 
 .cuestionario-card {
-	background: white;
+	position: relative;
+	background: var(--color-white);
 	border-radius: 0.6rem;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px var(--shadow-md);
 	margin-bottom: 2rem;
-	scroll-margin-top: 1rem; // o 16px
-
+	scroll-margin-top: 1rem;
+	touch-action: pan-y;
 }
 
-$respuesta-gap: 0.5rem;
+.cuestionario-card-wrapper {
+	position: relative;
+}
 
 .respuestas-lista {
 	margin-top: 1rem;
 	border: 1px solid $border-color;
 	border-radius: 0.5rem;
 	overflow: hidden;
-	background: white;
+	background: var(--color-white);
 
 	display: flex;
 	flex-direction: column;
@@ -140,4 +231,7 @@ $respuesta-gap: 0.5rem;
 	}
 }
 
+.pregunta-card-inner {
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
 </style>

@@ -8,6 +8,7 @@ import { IRegistarEstadisticaByPregunta } from '../../../application/signatures/
 import { IReiniciarEstadisticas } from '../../../application/signatures/reiniciarEstadisticas.interface';
 import { IEnterrarPregunta } from '../../../application/signatures/enterrarPregunta.interface';
 import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById.interface';
+import { IDesenterrarPreguntas } from '../../../application/signatures/desenterrarPreguntas.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
 type TPreguntaUpdate = components['schemas']['PreguntaUpdate'];
@@ -19,6 +20,7 @@ const {
 	reiniciarEstadisticas,
 	enterrarPregunta,
 	editarEnunciadoPreguntaById,
+	desenterrarPreguntas,
 } = preguntasBuilder();
 
 export const makeHandleGetNumeroPreguntas =
@@ -55,19 +57,12 @@ export const makeHandleGetPreguntasPorCategoria =
 
 export const makeHandleRegistarEstadisticaByPregunta =
 	(registarEstadisticaByPregunta: IRegistarEstadisticaByPregunta) =>
-	async (
-		req: Request,
-		res: Response,
-		next: NextFunction
-	) => {
+	async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const idPregunta = req.params.id;
 			const { acertada } = req.body;
 
-			await registarEstadisticaByPregunta.exec(
-				idPregunta,
-				acertada
-			);
+			await registarEstadisticaByPregunta.exec(idPregunta, acertada);
 			res.status(204).end();
 		} catch (err) {
 			next(err);
@@ -76,11 +71,7 @@ export const makeHandleRegistarEstadisticaByPregunta =
 
 export const makeHandleReiniciarEstadisticas =
 	(reiniciarEstadisticas: IReiniciarEstadisticas) =>
-	async (
-		_req: Request,
-		res: Response,
-		next: NextFunction
-	) => {
+	async (_req: Request, res: Response, next: NextFunction) => {
 		try {
 			await reiniciarEstadisticas.exec();
 			res.status(204).end();
@@ -108,9 +99,20 @@ export const makeHandleEditarEnunciadoPregunta =
 			const cuerpo: TPreguntaUpdate = req.body;
 			const preguntaEditada = await editarEnunciadoPreguntaById.exec({
 				...cuerpo,
-				id: req.params.id
-			})
+				id: req.params.id,
+			});
 			res.json(MapPreguntaController.toType(preguntaEditada));
+		} catch (err) {
+			next(err);
+		}
+	};
+
+export const makeHandleDesenterrarPreguntas =
+	(desenterrarPreguntas: IDesenterrarPreguntas) =>
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			await desenterrarPreguntas.exec();
+			res.status(204).end();
 		} catch (err) {
 			next(err);
 		}
@@ -122,9 +124,13 @@ export const handleGetPreguntasPorCategoria =
 	makeHandleGetPreguntasPorCategoria(getPreguntasPorCategoriaPaginando);
 export const handleRegistarEstadisticaByPregunta =
 	makeHandleRegistarEstadisticaByPregunta(registarEstadisticaByPregunta);
-export const handleReiniciarEstadisticas =
-	makeHandleReiniciarEstadisticas(reiniciarEstadisticas);
+export const handleReiniciarEstadisticas = makeHandleReiniciarEstadisticas(
+	reiniciarEstadisticas
+);
 export const handleEnterrarPregunta =
 	makeHandleEnterrarPregunta(enterrarPregunta);
-export const handleEditarEnunciadoPregunta =
-	makeHandleEditarEnunciadoPregunta(editarEnunciadoPreguntaById);
+export const handleEditarEnunciadoPregunta = makeHandleEditarEnunciadoPregunta(
+	editarEnunciadoPreguntaById
+);
+export const handleDesenterrarPreguntas =
+	makeHandleDesenterrarPreguntas(desenterrarPreguntas);

@@ -74,7 +74,7 @@ watch(valorInterno, (nuevo) => {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #ccc;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px var(--shadow-md);
   resize: vertical; /* permite ajustar altura si quieres */
   font-family: inherit;
   margin-bottom: 0.5rem; /* espacio antes de los botones */
@@ -94,10 +94,4 @@ watch(valorInterno, (nuevo) => {
   border-radius: 0.3rem;
   cursor: pointer;
 }
-
-.btn-guardar { background-color: #d4edda; color: #155724; }
-.btn-cancelar { background-color: #f8d7da; color: #721c24; }
-
-.btn-guardar:hover { background-color: #c3e6cb; }
-.btn-cancelar:hover { background-color: #f5c6cb; }
 </style>

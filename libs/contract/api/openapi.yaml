@@ -142,6 +142,16 @@ paths:
         '204':
           description: Intento registrado correctamente, sin contenido de respuesta
     
+  /pregunta/todas/desenterrar:
+    get:
+      tags:
+        - preguntas
+      summary: Desentierrar todas las preguntas de la base de datos
+      operationId: desenterrarTodasLasPreguntas
+      responses:
+        '204':
+          description: Todas las preguntas fueron desenterradas
+
   /pregunta/getNumeroDePreguntas:
     get:
       tags:

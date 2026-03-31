@@ -84,9 +84,9 @@ onMounted(() => {
 	position: sticky;
 	top: 0;
 	z-index: 1100; // por encima del contenido
-	background-color: #ffffff;
-	border-bottom: 1px solid #e5e7eb;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	background-color: var(--color-white);
+	border-bottom: 1px solid var(--color-bg);
+	box-shadow: 0 1px 3px var(--shadow-md);
 	padding: 0.5rem 1rem;
 	display: flex;
 	align-items: center;
@@ -103,7 +103,7 @@ onMounted(() => {
 .btn-toggle {
 	background: none;
 	border: none;
-	color: #6b7280;
+	color: var(--color-btn-toggle-loyouts);
 	font-size: 1.25rem;
 	cursor: pointer;
 	display: flex;
@@ -117,7 +117,7 @@ onMounted(() => {
 .overlay {
 	position: fixed;
 	inset: 0;
-	background: rgba(0,0,0,0.4);
+	background: var(--shadow-md);
 	z-index: 900;
 }
 

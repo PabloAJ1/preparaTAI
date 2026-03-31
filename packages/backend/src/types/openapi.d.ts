@@ -78,6 +78,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/pregunta/todas/desenterrar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Desentierrar todas las preguntas de la base de datos */
+        get: operations["desenterrarTodasLasPreguntas"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/pregunta/getNumeroDePreguntas": {
         parameters: {
             query?: never;
@@ -446,6 +463,24 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Intento registrado correctamente, sin contenido de respuesta */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    desenterrarTodasLasPreguntas: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Todas las preguntas fueron desenterradas */
             204: {
                 headers: {
                     [name: string]: unknown;

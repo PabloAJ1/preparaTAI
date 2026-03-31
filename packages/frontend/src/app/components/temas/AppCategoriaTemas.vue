@@ -77,19 +77,19 @@ const iconoClase = computed(() => ({
 }
 
 .categoria-card {
-	background: white;
+	background: var(--color-white);
 	border-radius: 16px;
 	border: none;
 	height: 100%;
 
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 10px 15px -3px var(--shadow-md),
+		0 4px 6px -2px var(--shadow-sm);
 
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 
 	&:hover {
 		transform: translateY(-6px);
-		box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 20px 30px -10px var(-color-shadow-fat);
 	}
 }
 
@@ -110,22 +110,16 @@ const iconoClase = computed(() => ({
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	width: 48px;
 	height: 48px;
-
 	border-radius: 50%;
-
-	background: rgba(59, 130, 246, 0.1);
-	color: #2563eb;
-
 	font-size: 1.25rem;
 }
 
 .categoria-title {
 	min-height: 2.6rem;
 	font-weight: 700;
-	color: #1f2937;
+	color: var(--color-temas-heading);
 	margin-bottom: 0.5rem;
 
 	font-size: 1.1rem;
@@ -140,7 +134,7 @@ const iconoClase = computed(() => ({
 }
 
 .categoria-count {
-	color: #6b7280;
+	color: var(--color-btn-toggle-loyouts);
 	margin-bottom: 1rem;
 }
 
@@ -149,39 +143,39 @@ const iconoClase = computed(() => ({
 }
 
 .categoria-icon-repaso {
-	background: rgba(59, 130, 246, 0.1);
-	color: #2563eb;
+	background: var(--color-repasos-bg);
+	color: var(--color-repasos);
 }
 
 .categoria-icon-practica {
-	background: rgba(25, 135, 84, 0.1);
-	color: #198754;
+	background: var(--color-practicas-bg);
+	color: var(--color-practicas)
 }
 
 /* Links/botones */
 .categoria-link-repaso {
-	color: #2563eb;
+	color: var(--color-repasos);
 	&:hover {
-		color: #1d4ed8;
+		color: var(--color-repasos);
 	}
 }
 
 .categoria-link-practica {
-	color: #198754;
+	color: var(--color-practicas);
 	&:hover {
-		color: color.adjust(#198754, $lightness: -10%);
+			color: color-mix(in srgb, var(--color-practicas) 90%, var(--color-black));
 	}
 }
 
 .categoria-icon-examen {
-	background: rgba(220, 38, 38, 0.1); // rojo claro de fondo
-	color: #dc2626; // rojo
+	background: var(--color-examenes-bg);
+	color: var(--color-examenesn);
 }
 
 .categoria-link-examen {
-	color: #dc2626;
+	color: var(--color-examenes);
 	&:hover {
-		color: color.adjust(#dc2626, $lightness: -10%);
+		color: color-mix(in srgb, var(--color-examenes) 90%, var(--color-black));
 	}
 }
 </style>

@@ -9,6 +9,7 @@
 			:pregunta="pregunta"
 			:indice="index"
 			:modo="modo"
+			@descartar="eliminarPregunta"
 		/>
 	</div>
 
@@ -79,6 +80,13 @@ async function cargarPreguntas() {
 		cargando.value = false;
 	}
 }
+
+function eliminarPregunta(id: string) {
+  listadoPreguntas.value = listadoPreguntas.value.filter(p => p.id !== id)
+  api.enterrarPregunta({id: id})
+}
+
+
 </script>
 
 <style scoped>

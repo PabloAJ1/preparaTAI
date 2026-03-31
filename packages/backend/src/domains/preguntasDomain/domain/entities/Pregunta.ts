@@ -58,6 +58,10 @@ export class Pregunta {
 		this.#props.descartada = true;
 	}
 
+	desenterrarPregunta(){
+		this.#props.descartada = false;
+	}
+
 	public static crear(
 		props: Omit<TPregunta, 'idPregunta' | 'estadisticas' | 'descartada' | 'estado'> &
 			Partial<Pick<TPregunta, 'idPregunta' | 'estadisticas' | 'descartada' | 'estado'>>

@@ -27,7 +27,8 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 				enunciado: p.enunciado,
 				idPregunta: p.idPregunta,
 				respuestas: SelectorRespuestasService.generarRespuestas(p),
-				estadisticas: p.estadisticas
+				estadisticas: p.estadisticas,
+				estado: p.estado
 			})
 		})
 

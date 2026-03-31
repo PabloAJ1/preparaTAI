@@ -8,6 +8,11 @@
 				<i class="fa-solid fa-rotate-right"></i>
 				<p>Reiniciar estadísticas</p>
 			</div>
+			<!-- Reiniciar estadísticas -->
+			<div class="admin-card" @click="desenterrarPreguntas">
+				<i class="fa-solid fa-arrow-up-from-ground-water"></i>
+				<p>Desenterrar preguntas</p>
+			</div>
 
 			<!-- Backup de la base de datos -->
 			<div class="admin-card" @click="backupDatabase">
@@ -35,6 +40,13 @@ const reiniciarEstadisticas = async () => {
 	await api.reiniciarContadorDeEstadisticas();
 };
 
+const desenterrarPreguntas = async () => {
+	const api = new PreguntasApi(
+		new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
+	);
+	await api.desenterrarTodasLasPreguntas();
+};
+
 const backupDatabase = () => {
 	console.log('Proximamente...');
 	// Aquí iría la llamada al backend
@@ -51,7 +63,7 @@ const cargarPreguntas = (event: Event) => {
 <style lang="scss" scoped>
 .admin-page {
 	padding: 2rem;
-	background-color: #f0f2f5;
+	background-color: var(--color-bg);
 	min-height: 100vh;
 
 	.admin-title {
@@ -68,9 +80,9 @@ const cargarPreguntas = (event: Event) => {
 		justify-content: center;
 
 		.admin-card {
-			background-color: #fff;
+			background-color: var(--color-white);
 			border-radius: 0.75rem;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 4px 12px var(--shadow-md);
 			width: 200px;
 			height: 200px;
 			display: flex;
@@ -84,17 +96,17 @@ const cargarPreguntas = (event: Event) => {
 			i {
 				font-size: 2.5rem;
 				margin-bottom: 1rem;
-				color: #4a90e2;
+				color: var(--color-admin-card);
 			}
 
 			p {
 				font-weight: 600;
-				color: #333;
+				color: var(--color-smoke)
 			}
 
 			&:hover {
 				transform: translateY(-5px);
-				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+				box-shadow: 0 8px 20px var(--shadow-md);
 			}
 
 			&.file-upload input[type='file'] {

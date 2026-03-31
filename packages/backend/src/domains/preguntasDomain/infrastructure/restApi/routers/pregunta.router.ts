@@ -6,6 +6,7 @@ import {
 	handleReiniciarEstadisticas,
 	handleEnterrarPregunta,
 	handleEditarEnunciadoPregunta,
+	handleDesenterrarPreguntas,
 } from "../../http/controllers/pregunta.controller";
 
 export const preguntaRoute: Router = Router();
@@ -33,5 +34,9 @@ preguntaRoute
 preguntaRoute
     .route("/:id/enterrar")
 	.post(handleEnterrarPregunta as RequestHandler);
+	
+preguntaRoute
+    .route("/todas/desenterrar")
+	.get(handleDesenterrarPreguntas as RequestHandler);
 
 export default preguntaRoute;

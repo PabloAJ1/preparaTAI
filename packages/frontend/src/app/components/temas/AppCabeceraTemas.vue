@@ -55,12 +55,12 @@ watch(textoBusqueda, (valor) => {
 .temas-heading {
 	font-size: 1.75rem;
 	font-weight: 700;
-	color: #1f2937;
+	color: var(--color-temas-heading);
 	margin-bottom: 0.25rem;
 }
 
 .temas-subtitle {
-	color: #6b7280;
+	color: var(--color-btn-toggle-loyouts);
 	font-size: 0.875rem;
 	margin: 0;
 }
@@ -75,8 +75,8 @@ watch(textoBusqueda, (valor) => {
 	display: flex;
 	align-items: center;
 
-	background: white;
-	border: 1px solid #e5e7eb;
+	background:  var(--color-white);
+	border: 1px solid var(--color-list-group-item-dark);
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -85,7 +85,7 @@ watch(textoBusqueda, (valor) => {
 	display: flex;
 	align-items: center;
 	padding: 0 0.75rem;
-	color: #9ca3af;
+	color: var(--color-search-icon);
 }
 
 .search-input {
