@@ -25,7 +25,7 @@ export const start = async (): Promise<void> => {
 };
 
 export const getCadenaConexionMongo = () => {
-	const conexion = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
+	const conexion = `${process.env.MONGO_TYPE}://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
 	console.log(conexion);
 	return conexion;
 };

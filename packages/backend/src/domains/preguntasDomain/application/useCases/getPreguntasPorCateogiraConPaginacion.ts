@@ -20,7 +20,6 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 			limit,
 			seed
 		);
-
 		const preguntasConRespuestaMezclada = preguntas.map(p => {
 			return Pregunta.crear({
 				categorias: p.categorias,
@@ -31,7 +30,6 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 				estado: p.estado
 			})
 		})
-
 		const preguntasMapeadas = preguntasConRespuestaMezclada.map(MapsPregunta.toDto)
 		return preguntasMapeadas;
 	}

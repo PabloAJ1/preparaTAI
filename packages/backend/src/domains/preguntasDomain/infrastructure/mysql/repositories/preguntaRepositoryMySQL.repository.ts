@@ -7,6 +7,9 @@ import { IPreguntaSQL } from '../dtos/preguntaSQL.dto';
 import { MapPreguntas } from '../mappers/mapPreguntas.mapper';
 
 export class PreguntaRepositoryMySQL implements IPreguntaRepository {
+	getPreguntasEnterradas(): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
 	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]> {
 		throw new Error('Method not implemented.');
 	}
