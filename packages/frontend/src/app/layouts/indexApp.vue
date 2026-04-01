@@ -85,7 +85,7 @@ onMounted(() => {
 	top: 0;
 	z-index: 1100; // por encima del contenido
 	background-color: var(--color-white);
-	border-bottom: 1px solid var(--color-bg);
+	border-bottom: 1px solid var(--color-main-bg);
 	box-shadow: 0 1px 3px var(--shadow-md);
 	padding: 0.5rem 1rem;
 	display: flex;
@@ -103,7 +103,7 @@ onMounted(() => {
 .btn-toggle {
 	background: none;
 	border: none;
-	color: var(--color-btn-toggle-loyouts);
+	color: var(--color-menu-icons);
 	font-size: 1.25rem;
 	cursor: pointer;
 	display: flex;

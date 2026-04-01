@@ -5,9 +5,39 @@ import { PreguntaNoActualizadaById } from '../../../application/errors/PreguntaN
 import { PreguntaNoEncontradaById } from '../../../application/errors/PreguntaNoEncontradaById.error';
 import { MapPreguntasMongo } from '../mappers/mapPreguntasMongo.mapper';
 import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
+import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
-	getPreguntasEnterradas(): Promise<Pregunta[]> {
+	async createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
+		const total = preguntas.length;
+		const tamanioChunk = 1000
+		const totalCliclos = Math.trunc(total / tamanioChunk) + 1
+		let ciclo = 1;
+
+		const preguntasModel = preguntas.map(MapPreguntasMongo.toModel)
+		const batches = chunkArrayService(preguntasModel, tamanioChunk);
+
+		for (const batch of batches) {
+			console.info(`Iniciando ciclo ${ciclo}/${totalCliclos}`);
+			const operaciones = batch.map((pregunta) => ({
+				updateOne: {
+					filter: { idPregunta: pregunta.idPregunta },
+					update: { $set: pregunta },
+					upsert: true
+				}
+			}));
+
+			await preguntaModel.bulkWrite(operaciones);
+			console.info(`Sincronizado el ${ciclo * 100 / totalCliclos} %`);
+			ciclo++;
+		}
+	}
+
+	async limpiarDB(): Promise<void> {
+		await preguntaModel.deleteMany({})
+	}
+
+	async getPreguntasEnterradas(): Promise<Pregunta[]> {
 		const query: QueryFilter<IPreguntaDocument> = {
 			descartada: true
 		}

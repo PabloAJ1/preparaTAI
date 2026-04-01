@@ -172,9 +172,6 @@ function cerrarModalWarning() {
 </script>
 
 <style scoped lang="scss">
-$primary-color: var(--blue-600);
-$text-dark: var(--color-temas-heading);
-
 .pregunta-texto-intro {
 	text-align: left;
 	line-height: 1.4;
@@ -188,8 +185,6 @@ $text-dark: var(--color-temas-heading);
 	display: flex;
 	flex-direction: column; // 👈 mobile first
 	gap: 0.75rem;
-
-	background-color: var(--color-white);
 	padding: 1rem;
 }
 
@@ -212,14 +207,14 @@ $text-dark: var(--color-temas-heading);
 	align-items: flex-start;
 	font-size: 1rem;
 	font-weight: 700;
-	color: $text-dark;
+	color: var(--color-texto-enunciado);
 	margin: 0;
 }
 
 @media (min-width: 640px) {
 	.pregunta-numero {
 		display: inline-block;
-		background-color: $primary-color;
+		background-color: var(--blue-600);
 		color: var(--color-white);
 		padding: 0.35rem 0.65rem;
 		font-size: 0.85rem;

@@ -2,6 +2,7 @@ import { Pregunta } from '../entities/Pregunta';
 
 export interface IPreguntaRepository {
 	createPregunta(pregunta: Pregunta): Promise<Pregunta>;
+	createBulkPreguntas(preguntas: Pregunta[]): Promise<void>;
 	getNumeroPreguntasTotales(): Promise<number>;
 	getNumeroPreguntasPorCategoria(nombreCategoria: string): Promise<number>;
 	getPreguntasPorCategoria(nombreCategoria: string): Promise<Pregunta[]>;
@@ -12,4 +13,5 @@ export interface IPreguntaRepository {
 	getPreguntaById(idPregunta: string): Promise<Pregunta>;
 	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta>;
 	reiniciarAllEstadisticas(): Promise<void>;
+	limpiarDB(): Promise<void>
 }

@@ -6,8 +6,8 @@ export const start = async (): Promise<void> => {
 			'Error en la conexión. No se ha establecido la variable de entorno'
 		);
 	else {
-		console.warn('Iniciando la conexion con MongoDB');
-		console.warn(
+		console.info('Iniciando la conexion con MongoDB');
+		console.info(
 			'Variable de entorno establecida en: ',
 			process.env.ENVIROMENT
 		);
@@ -26,7 +26,6 @@ export const start = async (): Promise<void> => {
 
 export const getCadenaConexionMongo = () => {
 	const conexion = `${process.env.MONGO_TYPE}://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_SERVER}/${process.env.MONGO_DB}${process.env.MONGO_AUTH}`;
-	console.log(conexion);
 	return conexion;
 };
 

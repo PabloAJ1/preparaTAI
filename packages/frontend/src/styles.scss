@@ -1,27 +1,5 @@
+@use './app/styles/main.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-@import './app/styles/main.scss';
-
-:root {
-	--color-white: #fff;
-	--color-bg: #e5e7eb;
-	--color-black: #000;
-
-	--color-btn-toggle-loyouts: #6b7280;
-	--color-sidebar-header: #64748b; 
-	--color-list-group-item-dark: #cbd5e1;
-	--color-border-color-respuesta: #e2e8f0;
-	--color-search-icon: #9ca3af;	
-	--color-list-group-item-dark-active-border: #60a5fa;
-	--color-hero-version: #38bdf8;
-	--color-admin-card: #4a90e2;
-	--color-modal: #374151;
-	--color-temas-heading: #1f2937;
-	--color-categoria-icon-bg: rgba(59, 130, 246, 0.1);	
-	--color-brand-version: rgba(96, 165, 250, 0.1);
-	
-	--color-smoke: #333;
-	--color-swipe-overlay: rgba(128, 128, 128, 0.5);
-}
 
 html {
 	-webkit-text-size-adjust: 100%;
@@ -62,7 +40,7 @@ pre {
 
 body {
 	font-family: 'Inter', sans-serif;
-	background-color: var(--color-bg);
+	background-color: var(--color-main-bg);
 	overflow-x: hidden;
 }
 

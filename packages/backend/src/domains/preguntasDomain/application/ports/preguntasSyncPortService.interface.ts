@@ -1,5 +1,5 @@
-import { IPreguntaAtlasDto } from "../dtos/preguntasAtlas.dto";
+import { IPreguntaExternasDto } from "../dtos/preguntasExternas.dto";
 
 export interface IPreguntasSyncPortService {
-	readAllPreguntas(): Promise<IPreguntaAtlasDto>
+	readAllPreguntas(): Promise<IPreguntaExternasDto[]>
 }

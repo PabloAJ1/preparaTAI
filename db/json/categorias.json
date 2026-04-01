@@ -1,0 +1,1148 @@
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81115b"),
+    "idCategoria" : "019d3eee-bed4-73fd-9c17-e792fe6cbb93",
+    "nombreCategoria" : "Soluciones de Ciberseguridad",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81115d"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-395ae7ec3d9c",
+    "nombreCategoria" : "Errores HTTP",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81115f"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-3fbdfa3f7423",
+    "nombreCategoria" : "Puertos TCP/UDP",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811161"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-411fc13d17a3",
+    "nombreCategoria" : "Claves de Registro Windows",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811163"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-471fa9078469",
+    "nombreCategoria" : "Velocidad ethernet",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811165"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-4bcb41436f9a",
+    "nombreCategoria" : "Velocidades USB",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811167"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-4c1788a7f207",
+    "nombreCategoria" : "Errors HTTP 5XX",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811169"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-50d3fc6db3ae",
+    "nombreCategoria" : "Errors HTTP 1XX",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81116b"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-56384c7e6bfc",
+    "nombreCategoria" : "Errors HTTP 2XX",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81116d"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-5b3279202cde",
+    "nombreCategoria" : "Errors HTTP 3XX",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81116f"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-5d69b70f1d3b",
+    "nombreCategoria" : "Errors HTTP 4XX",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811171"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-616dd5701663",
+    "nombreCategoria" : "IEEE 802",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811173"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-65356273b096",
+    "nombreCategoria" : "Catalogo de servicios",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811175"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-6b1a19b1a0ff",
+    "nombreCategoria" : "Patrones de Diseño - Creacionales",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811177"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-6f068c0fa789",
+    "nombreCategoria" : "Patrones de Diseño - Estructurales",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811179"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-7320d7d5849e",
+    "nombreCategoria" : "Patrones de Diseño - Comportamiento",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81117b"),
+    "idCategoria" : "019d3eee-bed5-77dd-a4f5-753b76e66d54",
+    "nombreCategoria" : "Directrices wcag 2.2",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81117d"),
+    "idCategoria" : "019d3eee-beda-75e0-87a5-f63eba00a3ee",
+    "nombreCategoria" : "Administración Linux",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81117f"),
+    "idCategoria" : "019d3eee-beda-75e0-87a5-f805a94bdf14",
+    "nombreCategoria" : "Administración Windows",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811181"),
+    "idCategoria" : "019d3eee-beda-75e0-87a5-ffe5da6a2d43",
+    "nombreCategoria" : "IPv4 Header",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811183"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-022277bbd41b",
+    "nombreCategoria" : "CUESTIONARIO 19/TAI–LI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811185"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-04e90c84389a",
+    "nombreCategoria" : "CUESTIONARIO 19/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811187"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-0aa81704accb",
+    "nombreCategoria" : "CUESTIONARIO 18/TAI–LI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811189"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-0f10ca390b8c",
+    "nombreCategoria" : "CUESTIONARIO 18/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81118b"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-10f97c79504f",
+    "nombreCategoria" : "CUESTIONARIO 17/TAI–LI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81118d"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-1451624a1b2b",
+    "nombreCategoria" : "CUESTIONARIO 17/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81118f"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-1be8660cbc17",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–LI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811191"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-1fc969f79e46",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811193"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-2238ad7b5012",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–LI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811195"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-25fd98b91004",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811197"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-2ad27f9a34d7",
+    "nombreCategoria" : "CUESTIONARIO 14/TAI–PI - Supuesto II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba811199"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-2e6af11f55a9",
+    "nombreCategoria" : "Versiones Linux",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81119b"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-33e9bd5fd353",
+    "nombreCategoria" : "Administración Bases de Datos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81119d"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-34abb976844b",
+    "nombreCategoria" : "Políticas, sistemas y procedimientos de backup y su recuperación.",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba81119f"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-3bcf567d9b64",
+    "nombreCategoria" : "Docker",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111a1"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-3c9be8f98d60",
+    "nombreCategoria" : "CUESTIONARIO 14/TAI–PI - B2/3/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111a3"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-4002282b3ff6",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–LI - B2",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111a5"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-460c4a0bdfb9",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–LI - B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111a7"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-488380f2067f",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–PI - B2",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111a9"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-4f83c44d58fb",
+    "nombreCategoria" : "CUESTIONARIO 15/TAI–PI - B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111ab"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-51bcd5ffeb90",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–LI - B2",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111ad"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-54d954b40728",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–LI - B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111af"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-59518ee31ecd",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–PI - B2",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111b1"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-5e2c1b8bacb1",
+    "nombreCategoria" : "CUESTIONARIO 16/TAI–PI - B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111b3"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-63aa21a99f37",
+    "nombreCategoria" : "CUESTIONARIO 17/TAI–LI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111b5"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-665b23ca9482",
+    "nombreCategoria" : "CUESTIONARIO 17/TAI–PI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111b7"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-6a7b6326b044",
+    "nombreCategoria" : "CUESTIONARIO 18/TAI–PI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111b9"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-6eb32930479d",
+    "nombreCategoria" : "CUESTIONARIO 18/TAI–LI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111bb"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-726885c044fb",
+    "nombreCategoria" : "CUESTIONARIO 19/TAI–PI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111bd"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-756daec70bb7",
+    "nombreCategoria" : "CUESTIONARIO 19/TAI–LI - B2/4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111bf"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-7bcc78965587",
+    "nombreCategoria" : "Clases de Redes IPV4",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111c1"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-7db18526942f",
+    "nombreCategoria" : "Prefijos IPV6",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111c3"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-8130b6420bb5",
+    "nombreCategoria" : "Teoria IPv4 y IPv6",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111c5"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-87fb7e4d0c3f",
+    "nombreCategoria" : "Perifericos, conectores y almacenamiento",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111c7"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-8bc5872c3d8c",
+    "nombreCategoria" : "CUESTIONARIO 19/TAI–LI - B3",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111c9"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-8c06d7d20248",
+    "nombreCategoria" : "CUESTIONARIO 18/TAI–LI - B3",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111cb"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-93f6ee04c429",
+    "nombreCategoria" : "CUESTIONARIO 17/TAI–LI - B3",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111cd"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-9764ac615470",
+    "nombreCategoria" : "Agenda 2030",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111cf"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-99dc059ac83b",
+    "nombreCategoria" : "Agenda España 2030",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111d1"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-9e66681127c1",
+    "nombreCategoria" : "ENS",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111d3"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-a272c8d26c9a",
+    "nombreCategoria" : "Normas Técnicas Interoperabilidad",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111d5"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-a55a0c1a61f6",
+    "nombreCategoria" : "CUESTIONARIO TAI 2022 - TAI-LI B2-B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111d7"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-a9b5d051c608",
+    "nombreCategoria" : "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO I",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111d9"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-ac8aa1b020b0",
+    "nombreCategoria" : "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111db"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-b3c7872e7bed",
+    "nombreCategoria" : "CUESTIONARIO TAI 2022 - TAI-PI B2-B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111dd"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-b530305ea014",
+    "nombreCategoria" : "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO I",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111df"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-b803045f5fd9",
+    "nombreCategoria" : "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO II",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111e1"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-bf26b86008a7",
+    "nombreCategoria" : "CUESTIONARIO TAI 2024 - TAI-LI B2-B4",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7a8f06fb2bacba8111e3"),
+    "idCategoria" : "019d3eee-beda-75e0-87a6-c23c82297a84",
+    "nombreCategoria" : "CUESTIONARIO TAI PI 2024 - Primera Parte",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc797c"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-6932879f77a4",
+    "nombreCategoria" : "Técnico especialista de Sistemas y Tecnología de la Información para el Servicio Aragones de SaluEjercicio_1",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc797d"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-6d691bcfed89",
+    "nombreCategoria" : "Ley Orgánica 3/2018",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc797e"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-7203263dd37e",
+    "nombreCategoria" : "CE",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc797f"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-7589e91c176e",
+    "nombreCategoria" : "PowerShell",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7980"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-789f1e0091f8",
+    "nombreCategoria" : "Clonacion",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7981"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-7e041e165277",
+    "nombreCategoria" : "Archivos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7982"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-8365d5db49b9",
+    "nombreCategoria" : "Redes",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7983"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-878b24a64a78",
+    "nombreCategoria" : "Hardware",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7984"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-897d7c4c8d8d",
+    "nombreCategoria" : "Windows AD",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7985"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-8f46f94cdb24",
+    "nombreCategoria" : "Ley 6/2020",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7986"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-92e0e76516cf",
+    "nombreCategoria" : "STIC-400",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7987"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-969f89b19e89",
+    "nombreCategoria" : "SQL",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7988"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-991c22172869",
+    "nombreCategoria" : "Windows",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7989"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-9ee5b6ad36cd",
+    "nombreCategoria" : "VDI",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798a"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-a1030546948c",
+    "nombreCategoria" : "Virtualizacion",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798b"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-a5211c94a0f2",
+    "nombreCategoria" : "ISS",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798c"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-ab4308a63782",
+    "nombreCategoria" : "Sistemas Operativos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798d"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-af21db8e9fc8",
+    "nombreCategoria" : "Gestión de incidentes",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798e"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-b220b5960d75",
+    "nombreCategoria" : "TIA 568-B",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc798f"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-b64c85242eb3",
+    "nombreCategoria" : "Cableado",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7990"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-b9f691d3786c",
+    "nombreCategoria" : "Seguridad",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7991"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-bfcbf09b86d0",
+    "nombreCategoria" : "Permisos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7992"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-c1c56075ca68",
+    "nombreCategoria" : "Gestión unificada de usuarios",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7993"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-c588ac9707c3",
+    "nombreCategoria" : "Almacenamiento",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7994"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-c949e51bfc8e",
+    "nombreCategoria" : "Windows Server",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7995"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-cfbfc91a9f46",
+    "nombreCategoria" : "Antivirus",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7996"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-d2a281c93fe2",
+    "nombreCategoria" : "Seguridad Informática",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7997"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-d517555e0265",
+    "nombreCategoria" : "Certificados Electronicos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7998"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-d9696740faba",
+    "nombreCategoria" : "Historia",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc7999"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-dd11dec9d8be",
+    "nombreCategoria" : "Informatica Basica",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799a"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-e389de9dd78e",
+    "nombreCategoria" : "Backups",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799b"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-e4051c002f23",
+    "nombreCategoria" : "Perifericos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799c"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-eba44e687d4c",
+    "nombreCategoria" : "Web Services",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799d"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-ee36f0641b29",
+    "nombreCategoria" : "Office365",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799e"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-f263d622a1fb",
+    "nombreCategoria" : "Servidores de aplicaciones",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc799f"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-f4457a5d1bb4",
+    "nombreCategoria" : "Aplicaciones",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a0"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-f80c008fbf9a",
+    "nombreCategoria" : "Criptografica",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a1"),
+    "idCategoria" : "019d3eef-50e4-7524-89ab-fdfa3fa40e14",
+    "nombreCategoria" : "Escritorio Remoto de Windows",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a2"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-02a64203d7a2",
+    "nombreCategoria" : "Firewalls",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a3"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-05c9b1239b10",
+    "nombreCategoria" : "TIA-568",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a4"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-09589445b404",
+    "nombreCategoria" : "WiFi",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a5"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-0f204edcf32d",
+    "nombreCategoria" : "IEEE 802.11",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a6"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-12bf04568d19",
+    "nombreCategoria" : "Dispositivos de Red",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a7"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-15fc31aaaf2f",
+    "nombreCategoria" : "Reglamento (UE) 910/2014",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a8"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-1a785a2f7bbd",
+    "nombreCategoria" : "Autenticacion",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79a9"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-1e90811e72a1",
+    "nombreCategoria" : "Calculo de Redes",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79aa"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-20ac4b3fca21",
+    "nombreCategoria" : "IFCM01",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ab"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-27154fcc6a14",
+    "nombreCategoria" : "Hilos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ac"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-288b2f925a3e",
+    "nombreCategoria" : "Gestion de la memoria",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ad"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-2cdad5c45355",
+    "nombreCategoria" : "Linux",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ae"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-30cf3424d03a",
+    "nombreCategoria" : "Binario",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79af"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-36518e2374f3",
+    "nombreCategoria" : "Hexadecimal",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b0"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-392a815b9c3c",
+    "nombreCategoria" : "Conversion",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b1"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-3f6361a0c03b",
+    "nombreCategoria" : "Servidores",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b2"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-403a257f5f10",
+    "nombreCategoria" : "TCP",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b3"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-45847d114165",
+    "nombreCategoria" : "IP",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b4"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-4a42369f650c",
+    "nombreCategoria" : "Switch",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b5"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-4dbfbcb12374",
+    "nombreCategoria" : "Proteccion de datos",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b6"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-53560bd53119",
+    "nombreCategoria" : "RGPD",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b7"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-5687212820bb",
+    "nombreCategoria" : "OSI",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b8"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-5aae36a1b28b",
+    "nombreCategoria" : "PHP",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79b9"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-5e9ac3690748",
+    "nombreCategoria" : "XML",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ba"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-609783e5268e",
+    "nombreCategoria" : "CSS",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79bb"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-663dc358f0f9",
+    "nombreCategoria" : "JS",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79bc"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-69d508ca387a",
+    "nombreCategoria" : "CUERPO DE DIPLOMADOS EN METEOROLOGÍA DEL ESTADO ",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79bd"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-6ec83fd702a1",
+    "nombreCategoria" : "CUERPO DE OBSERVADORES DE METEOROLOGÍA DEL ESTADO POR EL SISTEMA GENERAL DE ACCESO LIBRE",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79be"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-729e2e6edc14",
+    "nombreCategoria" : "Ley 39/2006",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79bf"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-750b5bc77109",
+    "nombreCategoria" : "Ley 50/1997",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c0"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-795b54b9ae36",
+    "nombreCategoria" : "Ley 39/2015",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c1"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-7c0e1d65059e",
+    "nombreCategoria" : "Ley 53/1984",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c2"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-811772edcf99",
+    "nombreCategoria" : "Ley 3/2007",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c3"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-87e1c9127385",
+    "nombreCategoria" : "MySQL",
+    "tipo" : "DEFAULT",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c4"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-8bc63147b6df",
+    "nombreCategoria" : "0486-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c5"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-8fed8ad4d5bc",
+    "nombreCategoria" : "0487-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c6"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-932acee5a594",
+    "nombreCategoria" : "0488-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c7"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-9420a61b613f",
+    "nombreCategoria" : "0489-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c8"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-9a54d0b2aca8",
+    "nombreCategoria" : "0490-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79c9"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-9c60b8f84244",
+    "nombreCategoria" : "IFCS02-484-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ca"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-a0d1b64663bf",
+    "nombreCategoria" : "IFCS02-0485-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79cb"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-a41ac8916336",
+    "nombreCategoria" : "IFCS02-485A-2024",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79cc"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-aa3bbc79144d",
+    "nombreCategoria" : "MATERIAL ORIENTATIVO Plaza de Programador/a",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79cd"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-aef5e3cc8ea1",
+    "nombreCategoria" : "PRUEBAS SELECTiVAS PARA EL ACCESO A PUESTOS VACANTES DE PERSONAL FUNCiONAR10 DEL CUERPO ADMiNISTRATiVO DE LA ADMINISTRAC:ON DE LA COMUNIDAD AUTONOMA DE EXTREMADURA.",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79ce"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-b20ef05ac180",
+    "nombreCategoria" : "BLOQUE III TEMA 7: ARQUITECTURA CLIENTE / SERVIDOR",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79cf"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-b4f5797062b5",
+    "nombreCategoria" : "IFCS03-0615-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d0"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-b8e52115d778",
+    "nombreCategoria" : "IFCS03-0615-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d1"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-bcdd922f8892",
+    "nombreCategoria" : "IFCS02-0001",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d2"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-c1faecccdac4",
+    "nombreCategoria" : "IFCS02-486-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d3"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-c50b464f116b",
+    "nombreCategoria" : "IFCS02-0487-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d4"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-c937de8e0fdf",
+    "nombreCategoria" : "IFCS02-08-2023",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d5"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-cef81c1278fc",
+    "nombreCategoria" : "IFCS02-0488-2022",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7ab49cdbbb3599cc79d6"),
+    "idCategoria" : "019d3eef-50e4-7524-89ac-d03cbda229d9",
+    "nombreCategoria" : "IFCS03-04-2025",
+    "tipo" : "EXAMEN",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7d7905f75b598b0e4dc9"),
+    "idCategoria" : "019d3efa-2230-716c-91a3-3c44b8370d49",
+    "nombreCategoria" : "Directirces WCAG 2.2 (nivel 1)",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7d7905f75b598b0e4dca"),
+    "idCategoria" : "019d3efa-2230-716c-91a3-41d1a4b62b84",
+    "nombreCategoria" : "Directirces WCAG 2.2 (nivel 2)",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7d7905f75b598b0e4dcb"),
+    "idCategoria" : "019d3efa-2230-716c-91a3-447ccc71c813",
+    "nombreCategoria" : "Nivel de cumplimiento WCAG 2.2",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("69ca7d7905f75b598b0e4dcc"),
+    "idCategoria" : "019d3efa-2230-716c-91a3-4b9d55a31bc4",
+    "nombreCategoria" : "Identificacion de Leyes",
+    "tipo" : "PRACTICA",
+    "__v" : NumberInt(0)
+}

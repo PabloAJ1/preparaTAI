@@ -119,7 +119,7 @@ const iconoClase = computed(() => ({
 .categoria-title {
 	min-height: 2.6rem;
 	font-weight: 700;
-	color: var(--color-temas-heading);
+	color: var(--color-text-tertiary);
 	margin-bottom: 0.5rem;
 
 	font-size: 1.1rem;
@@ -134,7 +134,7 @@ const iconoClase = computed(() => ({
 }
 
 .categoria-count {
-	color: var(--color-btn-toggle-loyouts);
+	color: var(--color-text-subs);
 	margin-bottom: 1rem;
 }
 
@@ -142,22 +142,23 @@ const iconoClase = computed(() => ({
 	margin-left: 0.5rem;
 }
 
+
+/* Links/botones */
 .categoria-icon-repaso {
 	background: var(--color-repasos-bg);
 	color: var(--color-repasos);
 }
 
-.categoria-icon-practica {
-	background: var(--color-practicas-bg);
-	color: var(--color-practicas)
-}
-
-/* Links/botones */
 .categoria-link-repaso {
 	color: var(--color-repasos);
 	&:hover {
-		color: var(--color-repasos);
+		color: color-mix(in srgb, var(--color-repasos) 90%, var(--color-black));
 	}
+}
+
+.categoria-icon-practica {
+	background: var(--color-practicas-bg);
+	color: var(--color-practicas)
 }
 
 .categoria-link-practica {
@@ -169,7 +170,7 @@ const iconoClase = computed(() => ({
 
 .categoria-icon-examen {
 	background: var(--color-examenes-bg);
-	color: var(--color-examenesn);
+	color: var(--color-examenes);
 }
 
 .categoria-link-examen {

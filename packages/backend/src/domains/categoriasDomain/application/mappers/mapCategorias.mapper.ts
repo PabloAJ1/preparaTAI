@@ -17,4 +17,12 @@ export class MapCategoria {
 			tipo: TipoCategortiaHelper.fromString(dto.tipo)
 		})
 	}
+
+	static toEntityWithId(dto: ICategoriaDto): Categoria {
+		return Categoria.crear({
+			nombreCategoria: dto.nombreCategoria,
+			tipo: TipoCategortiaHelper.fromString(dto.tipo),
+			idCategoria: dto.idCategoria
+		})
+	}
 }

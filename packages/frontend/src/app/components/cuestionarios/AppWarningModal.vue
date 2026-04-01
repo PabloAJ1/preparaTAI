@@ -98,13 +98,13 @@ onUnmounted(() => window.removeEventListener('keydown', handleKey))
 	font-size: 1.2rem;
 	cursor: pointer;
 
-	color: var(--color-btn-toggle-loyouts);
+	color: var(--color-bt-close);
 
 	transition: color 0.15s;
 }
 
 .btn-close:hover {
-	color: var(--color-temas-heading)
+	color: var(--color-text-tertiary)
 }
 
 /* body */

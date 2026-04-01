@@ -3,7 +3,7 @@ import path from 'path';
 import * as url from 'url';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from "mongoose";
-import * as mongooseDev from "./src/shared/infrastructure/db/mongo/mysql.connection";
+import * as mongooseDev from "./src/shared/infrastructure/db/mongo/mongo.connection";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const envPath = path.resolve(__dirname, 'environment/.env.dev');

@@ -315,6 +315,16 @@ paths:
                 items:
                   $ref: '#/components/schemas/Examen'
 
+  /shared/inicializarDB:
+    get:
+      tags:
+        - admin
+      summary: Borrar la bd actual y la inicializa
+      operationId: inicializarDB
+      responses:
+        '204':
+          description: Base de datos inicializada
+
 components:
   schemas:
     Categoria:

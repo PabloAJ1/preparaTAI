@@ -4,6 +4,7 @@
 		<AppZonaEstudioMenu />
 		<AppAdministracionMenu />
 		<AppSistemaMenu />
+		<AppThemeToggle />
 		<AppCreditosMenu />
 	</div>
 </template>
@@ -14,6 +15,7 @@ import AppAdministracionMenu from './AppAdministracionMenu.vue';
 import AppCreditosMenu from './AppCreditosMenu.vue';
 import AppSistemaMenu from './AppSistemaMenu.vue';
 import AppZonaEstudioMenu from './AppZonaEstudioMenu.vue';
+import AppThemeToggle from './AppThemeToggle.vue';
 
 defineProps<{ collapsed: boolean }>();
 </script>

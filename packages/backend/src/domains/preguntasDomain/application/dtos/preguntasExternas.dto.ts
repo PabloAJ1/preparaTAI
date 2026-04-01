@@ -1,6 +1,6 @@
 import { IRespuestaDto } from './respuesta.dto';
 
-export interface IPreguntaAtlasDto {
+export interface IPreguntaExternasDto {
 	id: string;
 	enunciado: string;
 	estado: string;

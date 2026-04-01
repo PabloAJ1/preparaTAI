@@ -6,6 +6,24 @@ import { ETipoCategoria } from "../../../domain/enums/tipoCategoria.enum";
 import { CategoriaNoEncontradaById } from "../../../application/errors/CategoriaNoEncontradaById.error";
 
 export class CategoriaRepositoryMongo implements ICategoriaRepository {
+	async createBulkPreguntas(categoria: Categoria[]): Promise<void> {
+		const categoriasModel = categoria.map(MapCategoriaMongo.toModel)
+		
+		const operaciones = categoriasModel.map((categoria) => ({
+			updateOne: {
+				filter: { idCategoria: categoria.idCategoria },
+				update: { $set: categoria },
+				upsert: true
+			}
+		}));
+
+		await CategoriaModel.bulkWrite(operaciones);
+	}
+
+	async limpiarDB(): Promise<void> {
+		await CategoriaModel.deleteMany({})
+	}
+
 	async getCategoriasById(idCategoria: string): Promise<Categoria> {
 		const doc = await CategoriaModel.findOne({ idCategoria: idCategoria });
 		if(!doc) throw new CategoriaNoEncontradaById(idCategoria);

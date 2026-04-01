@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { ExcelAdapterService } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/excelAdapter.service';
-import { IExcelLoader } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/interfaces/excelLoader.interface';
+import { IExcelLoader } from '../../../../../../src/domains/preguntasDomain/infrastructure/adapters/signatures/excelLoader.interface';
 
 describe('ExcelAdapterService - Stub', () => {
 	it('debería devolver el elemento mapeado', async () => {

@@ -8,30 +8,23 @@
 				<i class="fa-solid fa-rotate-right"></i>
 				<p>Reiniciar estadísticas</p>
 			</div>
-			<!-- Reiniciar estadísticas -->
+			<!-- Desenterrar preguntas -->
 			<div class="admin-card" @click="desenterrarPreguntas">
 				<i class="fa-solid fa-arrow-up-from-ground-water"></i>
 				<p>Desenterrar preguntas</p>
 			</div>
 
-			<!-- Backup de la base de datos -->
-			<div class="admin-card" @click="backupDatabase">
-				<i class="fa-solid fa-database"></i>
-				<p>Backup de la base de datos</p>
-			</div>
-
-			<!-- Cargar preguntas desde un fichero -->
-			<div class="admin-card file-upload">
-				<i class="fa-solid fa-file-import"></i>
-				<p>Cargar preguntas</p>
-				<input type="file" @change="cargarPreguntas" accept=".json,.csv" />
+			<!-- Inicializar DB -->
+			<div class="admin-card file-upload" @click="confirmarInicializacion">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+				<p>Inicializar DB</p>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script lang="ts" setup>
-import { Configuration, PreguntasApi } from '@preparatai/api-client';
+import { AdminApi, Configuration, PreguntasApi } from '@preparatai/api-client';
 
 const reiniciarEstadisticas = async () => {
 	const api = new PreguntasApi(
@@ -47,23 +40,26 @@ const desenterrarPreguntas = async () => {
 	await api.desenterrarTodasLasPreguntas();
 };
 
-const backupDatabase = () => {
-	console.log('Proximamente...');
-	// Aquí iría la llamada al backend
+const inicializarDB = async () => {
+	const api = new AdminApi(
+		new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
+	);
+	await api.inicializarDB();
 };
 
-const cargarPreguntas = (event: Event) => {
-	/*const target = event.target as HTMLInputElement;
-	if (!target.files?.length) return;
-	const file = target.files[0];*/
-	console.log('Proximamente...');
-};
+function confirmarInicializacion() {
+  const confirmado = window.confirm("¿Estás seguro de que quieres inicializar la base de datos? Esta acción borrara todos los datos y no se puede deshacer.");
+  if (confirmado) {
+    inicializarDB();
+  }
+}
+
 </script>
 
 <style lang="scss" scoped>
 .admin-page {
 	padding: 2rem;
-	background-color: var(--color-bg);
+	background-color: var(--color-main-bg);
 	min-height: 100vh;
 
 	.admin-title {
@@ -96,7 +92,7 @@ const cargarPreguntas = (event: Event) => {
 			i {
 				font-size: 2.5rem;
 				margin-bottom: 1rem;
-				color: var(--color-admin-card);
+				color: var(--color-admin-icons);
 			}
 
 			p {

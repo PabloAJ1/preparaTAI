@@ -1,8 +1,10 @@
+apis/AdminApi.ts
 apis/CategoriasApi.ts
 apis/ExamenesApi.ts
 apis/GruposDePreguntasRelacionadasApi.ts
 apis/PreguntasApi.ts
 apis/index.ts
+docs/AdminApi.md
 docs/Categoria.md
 docs/CategoriaResumen.md
 docs/CategoriasApi.md

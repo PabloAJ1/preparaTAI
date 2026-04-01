@@ -39,10 +39,10 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .hero-dashboard {
-	background: linear-gradient(135deg, var(--color-temas-heading) 0%, var(--color-modal));
+	background: linear-gradient(135deg, var(--color-cabecera-bg) 0%, var(--color-modal));
 	border-radius: 24px;
 	padding: 4rem 3rem;
-	color: var(--color-white);
+	color: var(--color-cuestionario-bg);
 	margin-bottom: 2.5rem;
 	box-shadow: 0 20px 25px -5px var(--shadow-md),
 		0 10px 10px -5px var(--shadow-sm);
@@ -62,16 +62,18 @@ onMounted(async () => {
 		font-size: 3rem;
 		font-weight: 700;
 		margin-bottom: 1rem;
+		color: var(--color-text-main);
 	}
 
 	.hero-version {
-		color: var(--color-hero-version);
+		color: var(--color-text-versions);
 	}
 
 	.hero-description {
 		font-size: 1.25rem;
 		opacity: 0.75;
 		margin-bottom: 0;
+		color: var(--color-text-sencondary);
 	}
 
 	&::after {

@@ -86,12 +86,12 @@
 
 .nav-title {
 	font-weight: 700;
-	color: var(--color-temas-heading);
+	color: var(--color-text-tertiary);
 	margin-bottom: 0.5rem;
 }
 
 .nav-text {
-	color: var(--color-btn-toggle-loyouts);
+	color: var(--color-text-subs);
 	font-size: 0.875rem;
 	margin-bottom: 0;
 }

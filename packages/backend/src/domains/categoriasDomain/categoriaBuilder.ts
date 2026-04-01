@@ -2,7 +2,7 @@ import { GetNumeroPreguntasPorCategoria } from "../preguntasDomain/application/u
 import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 import { GetCategoriasById } from "./application/useCases/getCategoriaById";
 import { GetCategoriasByTipo } from "./application/useCases/getCategoriasResumen";
-import { PreguntaAdapterPort } from "./infrastructure/adapters/ports/preguntaAdapterPort";
+import { PreguntaAdapterPort } from "./infrastructure/adapters/ports/preguntaAdapter.service";
 import { CategoriaRepositoryMongo } from "./infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
 
 export const categoriaBuilder = () => {

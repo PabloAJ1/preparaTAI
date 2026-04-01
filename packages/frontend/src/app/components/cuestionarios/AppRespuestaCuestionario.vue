@@ -77,7 +77,7 @@ $error-icon: var(--color-respuesta-error-icon);
 	display: flex;
 	align-items: center;
 	padding: 1rem;
-	background-color: var(--color-white);
+	background-color: var(--color-cuestionario-bg);
 	cursor: pointer;
 	transition: all 0.2s ease;
 	touch-action: manipulation;
@@ -92,7 +92,7 @@ $error-icon: var(--color-respuesta-error-icon);
 	}
 
 	&:hover:not(.is-disabled) {
-		background-color: var(--color-white)
+		background-color: var(--color-cuestionario-bg-hover)
 	}
 
 	&.modo-practica:hover:not(.is-disabled) {

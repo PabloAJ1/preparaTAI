@@ -28,12 +28,6 @@
 	flex-direction: column;
 }
 
-.brand-title {
-	font-weight: 700;
-	font-size: 0.9rem;
-	letter-spacing: 0.05em;
-}
-
 .sidebar-brand {
     padding: 1.5rem 1.5rem 1.5rem;
     background: var(--shadow-md);
@@ -50,9 +44,9 @@
 
 .brand-version {
     font-size: 0.75rem;
-    color: var(--color-list-group-item-dark-active-border);
+    color: var(--color-text-versions);
     font-weight: 500;
-    background: var(--color-brand-version);
+    background: var(--overlay-blue-md);
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;

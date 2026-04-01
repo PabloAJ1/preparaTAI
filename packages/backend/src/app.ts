@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import logger from 'morgan';
 import { ENVIROMENT } from './config/env';
 import appRouter from './routes';
-import * as mongoose from './shared/infrastructure/db/mongo/mysql.connection';
+import * as mongoose from './shared/infrastructure/db/mongo/mongo.connection';
 import { join } from 'node:path';
 
 mongoose.start();

@@ -22,7 +22,7 @@ const props = defineProps<{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: var(--color-swipe-overlay);
+	background: var(--overlay-grey-md);
 	display: flex;
 	justify-content: center;
 	align-items: center;

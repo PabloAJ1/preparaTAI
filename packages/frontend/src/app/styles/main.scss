@@ -1,6 +1,6 @@
-@use './base/base';
-@use './theme/semantic';
-@use './theme/dark';
-@use './theme/uitokens';
-@use './components/botones';
-@use './components/menu';
+@forward './base/base';
+@forward './theme/semantic';
+@forward './theme/dark';
+@forward './theme/uitokens';
+@forward './components/botones';
+@forward './components/menu';

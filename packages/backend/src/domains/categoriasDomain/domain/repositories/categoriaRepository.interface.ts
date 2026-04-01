@@ -3,6 +3,7 @@ import { ETipoCategoria } from "../enums/tipoCategoria.enum";
 
 export interface ICategoriaRepository {
 	createCategoria(categoria: Categoria): Promise<Categoria>;
+	createBulkPreguntas(categoria: Categoria[]): Promise<void>;
 	getAllCategorias(): Promise<Categoria[]>
 	getCategoriasByType(tipo: ETipoCategoria): Promise<Categoria[]>
 	getCategoriasById(idCategoria: string): Promise<Categoria>
@@ -11,4 +12,5 @@ export interface ICategoriaRepository {
 	getAllCategoriasExamenes(): Promise<Categoria[]>
 	getListOfCategorias(listaCategorias: string[]): Promise<Categoria[]>
 	createListOfCategorias(listaCategorias: Categoria[]): Promise<Categoria[]>
+	limpiarDB(): Promise<void>
 }

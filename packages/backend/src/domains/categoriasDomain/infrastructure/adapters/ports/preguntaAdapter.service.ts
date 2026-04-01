@@ -1,5 +1,5 @@
-import { IPreguntasPort } from "../../../../../domains/categoriasDomain/application/interfaces/preguntasPort.interface";
-import { Categoria } from "../../../../../domains/categoriasDomain/domain/entities/Categoria";
+import { IPreguntasPort } from "../../../application/interfaces/preguntasPort.interface";
+import { Categoria } from "../../../domain/entities/Categoria";
 import { IGetNumeroPreguntasPorCategoriaPort } from "../signatures/preguntaPort.interface";
 
 export class PreguntaAdapterPort implements IPreguntasPort {

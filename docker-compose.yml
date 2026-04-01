@@ -31,6 +31,11 @@ services:
       MONGO_DB: preparaTAI
       MONGO_AUTH: ?authSource=admin
       MONGO_TYPE: mongodb
+      MONGO_EXT_TYPE: mongodb+srv
+      MONGO_EXT_USER: preparaTAI
+      MONGO_EXT_PASSWORD: VnuZEU_PY4BXeTj
+      MONGO_EXT_SERVER: cluster0.vz2bbku.mongodb.net
+      MONGO_EXT_DB: preparaTAI
       VITE_API_BASE_URL: /api
     ports:
       - '3005:3000'

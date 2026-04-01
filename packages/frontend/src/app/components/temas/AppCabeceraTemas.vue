@@ -55,12 +55,12 @@ watch(textoBusqueda, (valor) => {
 .temas-heading {
 	font-size: 1.75rem;
 	font-weight: 700;
-	color: var(--color-temas-heading);
+	color: var(--color-cabecera-bg);
 	margin-bottom: 0.25rem;
 }
 
 .temas-subtitle {
-	color: var(--color-btn-toggle-loyouts);
+	color: var(--color-text-subs);
 	font-size: 0.875rem;
 	margin: 0;
 }
@@ -76,7 +76,7 @@ watch(textoBusqueda, (valor) => {
 	align-items: center;
 
 	background:  var(--color-white);
-	border: 1px solid var(--color-list-group-item-dark);
+	border: 1px solid var(--color-search-bg);
 	border-radius: 8px;
 	overflow: hidden;
 }

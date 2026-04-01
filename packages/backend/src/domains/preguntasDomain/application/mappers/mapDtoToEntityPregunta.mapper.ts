@@ -1,6 +1,8 @@
 import { Pregunta } from '../../domain/entities/Pregunta';
+import { EstadoHelper } from '../../domain/helpers/estado.helper';
 import { RespuestaVo } from '../../domain/valueObjects/RespuestaVo';
 import { IPreguntaDto } from '../dtos/pregunta.dto';
+import { IPreguntaExternasDto } from '../dtos/preguntasExternas.dto';
 
 export class MapsPregunta {
 	public static toEntity(dto: IPreguntaDto): Pregunta {
@@ -31,5 +33,20 @@ export class MapsPregunta {
 			descartada: entity.isDescartada,
 			estado: entity.estado
 		};
+	}
+
+	public static externalToPregunta(dto: IPreguntaExternasDto): Pregunta{
+		return Pregunta.crear({
+			enunciado: dto.enunciado,
+			categorias: dto.categorias,
+			respuestas: dto.respuestas.map((r) => {
+				return RespuestaVo.crear({
+					correcta: r.correcta,
+					enunciado: r.enunciado,
+				});
+			}),
+			idPregunta: dto.id,
+			estado: EstadoHelper.fromString(dto.estado),
+		});
 	}
 }

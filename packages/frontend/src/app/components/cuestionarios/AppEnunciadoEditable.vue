@@ -72,7 +72,7 @@ watch(valorInterno, (nuevo) => {
   flex: 1;
   font-size: 1rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem; /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
   border: 1px solid #ccc;
   box-shadow: 0 1px 3px var(--shadow-md);
   resize: vertical; /* permite ajustar altura si quieres */

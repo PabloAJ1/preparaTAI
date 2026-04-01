@@ -189,13 +189,11 @@ function descartarPregunta() {
 
 <style scoped lang="scss">
 // Definimos variables de color para que sea fácil de mantener
-$border-color: var(--color-border-color-respuesta);
-$bg-hover: var(--color-white);
 $respuesta-gap: 0.5rem;
 
 .cuestionario-card {
 	position: relative;
-	background: var(--color-white);
+	background: var(--color-cuestionario-bg);
 	border-radius: 0.6rem;
 	box-shadow: 0 1px 3px var(--shadow-md);
 	margin-bottom: 2rem;
@@ -209,10 +207,10 @@ $respuesta-gap: 0.5rem;
 
 .respuestas-lista {
 	margin-top: 1rem;
-	border: 1px solid $border-color;
+	border: 1px solid var(--color-border-color-respuesta);
 	border-radius: 0.5rem;
 	overflow: hidden;
-	background: var(--color-white);
+	background: var(--color-cuestionario-bg);
 
 	display: flex;
 	flex-direction: column;

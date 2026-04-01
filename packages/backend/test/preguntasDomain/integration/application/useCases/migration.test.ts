@@ -5,7 +5,7 @@ import { MigrationDB } from '../../../../../src/domains/preguntasDomain/applicat
 import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
 import { GetAllCategorias } from '../../../../../src/domains/categoriasDomain/application/useCases/getAllCategorias';
 import { CategoriaAdaperServive } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/categoriasAdapter.service';
-import { ICreateListOfCategorias } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/interfaces/createListOfCategorias.interface';
+import { ICreateListOfCategorias } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/signatures/createListOfCategorias.interface';
 import { IGetListOfCategorias } from '../../../../../src/domains/categoriasDomain/application/signatures/getListOfCategorias.interface';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > migration ... ', () => {
