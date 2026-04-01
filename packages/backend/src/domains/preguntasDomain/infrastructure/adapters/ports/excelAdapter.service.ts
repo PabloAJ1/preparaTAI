@@ -1,6 +1,6 @@
 import { IPreguntaMigrationDto } from '../../../application/dtos/preguntaMigration.interface';
 import { IExternalDataService } from '../../../application/ports/excelAdapterService.interface';
-import { IExcelLoader } from '../interfaces/excelLoader.interface';
+import { IExcelLoader } from '../signatures/excelLoader.interface';
 import { MapExcelDtoToEntityPregunta } from '../mappers/mapExcelDtoToEntityPregunta.mapper';
 
 export class ExcelAdapterService implements IExternalDataService {

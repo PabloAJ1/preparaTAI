@@ -1,8 +1,8 @@
 import { ICategoriaDto } from "../../../application/dtos/categoria.dto";
 import { ICategoriaAdapterService } from "../../../application/ports/categoriaAdapterService.interface";
-import { ICreateListOfCategorias } from "../interfaces/createListOfCategorias.interface";
-import { IGetAllCategorias } from "../interfaces/getCategorias.interface";
-import { IGetListOfCategorias } from "../interfaces/getListOfCategorias.interface";
+import { ICreateListOfCategorias } from "../signatures/createListOfCategorias.interface";
+import { IGetAllCategorias } from "../signatures/getCategorias.interface";
+import { IGetListOfCategorias } from "../signatures/getListOfCategorias.interface";
 
 export class CategoriaAdaperServive implements ICategoriaAdapterService {
 	constructor(

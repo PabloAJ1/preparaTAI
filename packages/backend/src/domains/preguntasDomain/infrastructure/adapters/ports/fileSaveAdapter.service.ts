@@ -1,5 +1,5 @@
 import { IFileSaveService } from '../../../application/ports/fileAdapterService.interface';
-import { ISaveFile } from '../interfaces/saveFile.interface';
+import { ISaveFile } from '../signatures/saveFile.interface';
 
 export class FileSaveAdapter implements IFileSaveService {
 	constructor(private readonly saveFile: ISaveFile) {}

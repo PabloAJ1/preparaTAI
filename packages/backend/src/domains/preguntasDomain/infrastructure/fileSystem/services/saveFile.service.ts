@@ -1,5 +1,5 @@
 import { writeFile } from 'node:fs/promises';
-import { ISaveFile } from '../../adapters/interfaces/saveFile.interface';
+import { ISaveFile } from '../../adapters/signatures/saveFile.interface';
 
 export class SaveFile implements ISaveFile {
 	constructor(private readonly filePath: string) {}

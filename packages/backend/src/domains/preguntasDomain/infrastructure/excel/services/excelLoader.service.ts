@@ -1,7 +1,7 @@
 import { readFile, utils, set_fs } from 'xlsx';
 import fs from 'node:fs';
 import { IExcelDto } from '../dtos/excel.dto';
-import { IExcelLoader } from '../../adapters/interfaces/excelLoader.interface';
+import { IExcelLoader } from '../../adapters/signatures/excelLoader.interface';
 
 export class ExcelLoader implements IExcelLoader {
 	async cargarDatosFichero(path: string): Promise<IExcelDto[]> {
