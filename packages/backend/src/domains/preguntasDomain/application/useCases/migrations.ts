@@ -26,7 +26,7 @@ export class MigrationDB implements IMigrationDB {
 				enunciado: data.enunciado,
 				respuestas: data.respuestas,
 				idPregunta: data.idPregunta,
-				estado: EEstado.VERIFICADO //Suponemos que las preguntas que estan en el PreparaTAI v.2 est´ñan todas bastante verificadas
+				estado: EEstado.VERIFICADO //Suponemos que las preguntas que estan en el PreparaTAI v.2 están todas bastante verificadas
 			})
 
 			await this.preguntaRepositoryDestiny.createPregunta(newPregunta)

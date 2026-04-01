@@ -15,7 +15,7 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
 	const categoriaMongoDBRepository = new CategoriaRepositoryMongo()
 
-	const path = "./test/preguntasDomain/helpers/practicas.xlsx"
+	const path = "./test/preguntasDomain/helpers/practicas_20260401.xlsx"
 	const excelLoader = new ExcelLoader();
 	const excelAdapterService = new ExcelAdapterService(excelLoader, path);
 
