@@ -1,47 +1,34 @@
 <template>
-	<div class="cuestionario-card-wrapper">
-		<!-- Overlay gris + texto -->
-		<AppSwipeOverlay :progreso="swipeProgress" texto="Enterrar" />
+	<div class="cuestionario-card">
+		<AppEnunciadoCodeCuestionario
+			v-if="preguntaLocal"
+			:enunciado="preguntaLocal.enunciado"
+			:indice="props.indice"
+			:estadisticas="preguntaLocal.estadisticas"
+			:id-pregunta="pregunta.id"
+			:estado="pregunta.estado"
+		/>
 
 		<div
-			:id="props.id"
-			class="cuestionario-card"
-			:style="cardStyle"
-			@touchstart="onTouchStart"
-			@touchmove="onTouchMove"
-			@touchend="onTouchEnd"
-			@mousedown="onMouseDown"
+			class="respuestas-lista"
+			:class="{ 'modo-practica': props.modo === 'practica' }"
+			:style="{ pointerEvents: 'auto' }"
 		>
-			<AppEnunciadoCodeCuestionario
-				v-if="preguntaLocal"
-				:enunciado="preguntaLocal.enunciado"
-				:indice="props.indice"
-				:estadisticas="preguntaLocal.estadisticas"
-				:id-pregunta="pregunta.id"
-				:estado="pregunta.estado"
+			<AppRespuestaCuestionario
+				v-for="respuesta in preguntaLocal.respuestas"
+				:key="respuesta.enunciado"
+				:respuesta="respuesta"
+				:respondida="respondida"
+				:seleccionada="respuestaSeleccionada"
+				:modo="props.modo"
+				@seleccionar="verificarRespuesta"
 			/>
-
-			<div
-				class="respuestas-lista"
-				:class="{ 'modo-practica': props.modo === 'practica' }"
-				:style="{ pointerEvents: isSwiping ? 'none' : 'auto' }"
-			>
-				<AppRespuestaCuestionario
-					v-for="respuesta in preguntaLocal.respuestas"
-					:key="respuesta.enunciado"
-					:respuesta="respuesta"
-					:respondida="respondida"
-					:seleccionada="respuestaSeleccionada"
-					:modo="props.modo"
-					@seleccionar="verificarRespuesta"
-				/>
-			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive } from 'vue';
 import {
 	Pregunta,
 	Respuesta,
@@ -50,7 +37,6 @@ import {
 } from '@preparatai/api-client';
 import AppRespuestaCuestionario from './AppRespuestaCuestionario.vue';
 import AppEnunciadoCodeCuestionario from './AppEnunciadoCodeCuestionario.vue';
-import AppSwipeOverlay from './AppSwipeOverlay.vue';
 
 const props = defineProps<{
 	pregunta: Pregunta;
@@ -118,73 +104,6 @@ function scrollToNext() {
 		}
 	}, 300);
 }
-
-const offsetX = ref(0);
-const startX = ref(0);
-const dragging = ref(false);
-const SWIPE_THRESHOLD = 320;
-const isSwiping = computed(() => Math.abs(offsetX.value) > 12);
-
-// Computamos progreso del swipe hacia izquierda (0 a -1)
-const swipeProgress = computed(() => {
-	if (offsetX.value < 0) {
-		const p = offsetX.value / SWIPE_THRESHOLD;
-		return p < -1 ? -1 : p;
-	}
-	return 0;
-});
-
-// Estilo dinámico de la tarjeta según swipe
-const cardStyle = computed(() => ({
-	transform: `translateX(${offsetX.value}px)`,
-	opacity: 1 - Math.min(-swipeProgress.value * 0.2, 0.2),
-	transition: dragging.value
-		? 'none'
-		: 'transform 0.2s ease, opacity 0.2s ease',
-}));
-
-// --- Drag / Swipe ---
-function startDrag(x: number) {
-	startX.value = x;
-	dragging.value = true;
-}
-function moveDrag(x: number) {
-	if (!dragging.value) return;
-	offsetX.value = x - startX.value;
-}
-function endDrag() {
-	if (!dragging.value) return;
-	dragging.value = false;
-	if (offsetX.value < -SWIPE_THRESHOLD) descartarPregunta();
-	else offsetX.value = 0;
-}
-function onTouchStart(e: TouchEvent) {
-	startDrag(e.touches[0].clientX);
-}
-function onTouchMove(e: TouchEvent) {
-	moveDrag(e.touches[0].clientX);
-}
-function onTouchEnd() {
-	endDrag();
-}
-function onMouseDown(e: MouseEvent) {
-	startDrag(e.clientX);
-	window.addEventListener('mousemove', onMouseMove);
-	window.addEventListener('mouseup', onMouseUp);
-}
-function onMouseMove(e: MouseEvent) {
-	moveDrag(e.clientX);
-}
-function onMouseUp() {
-	endDrag();
-	window.removeEventListener('mousemove', onMouseMove);
-	window.removeEventListener('mouseup', onMouseUp);
-}
-
-function descartarPregunta() {
-	offsetX.value = offsetX.value > 0 ? 500 : -500;
-	setTimeout(() => emit('descartar', props.pregunta.id), 200);
-}
 </script>
 
 <style scoped lang="scss">
@@ -199,10 +118,6 @@ $respuesta-gap: 0.5rem;
 	margin-bottom: 2rem;
 	scroll-margin-top: 1rem;
 	touch-action: pan-y;
-}
-
-.cuestionario-card-wrapper {
-	position: relative;
 }
 
 .respuestas-lista {
