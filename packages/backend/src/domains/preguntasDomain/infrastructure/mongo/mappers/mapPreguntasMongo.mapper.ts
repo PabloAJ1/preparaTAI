@@ -1,7 +1,7 @@
 import { Pregunta as PreguntaEntity } from "../../../../../domains/preguntasDomain/domain/entities/Pregunta";
 import { RespuestaVo } from "../../../../../domains/preguntasDomain/domain/valueObjects/RespuestaVo";
 import { EstadoHelper } from "../../../domain/helpers/estado.helper";
-import { EstadisticaVO } from "../../../domain/valueObjects/estadistica.vo";
+import { EstadisticaVO } from "../../../domain/valueObjects/Estadistica.vo";
 import { IPregunta } from "../interfaces/pregunta.interface";
 import { IPreguntaDocument } from "../schemas/pregunta.schema";
 

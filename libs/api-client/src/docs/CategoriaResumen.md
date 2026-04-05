@@ -9,6 +9,7 @@ Name | Type
 `id` | string
 `nombre` | string
 `numeroPreguntas` | number
+`estadisticas` | [Estadistica](Estadistica.md)
 
 ## Example
 
@@ -20,6 +21,7 @@ const example = {
   "id": 0000-00000-0000000-0000,
   "nombre": Java,
   "numeroPreguntas": 35,
+  "estadisticas": null,
 } satisfies CategoriaResumen
 
 console.log(example)

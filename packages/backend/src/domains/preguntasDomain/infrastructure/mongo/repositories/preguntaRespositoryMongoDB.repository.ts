@@ -8,6 +8,29 @@ import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
 import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
+		const doc = await preguntaModel.aggregate([
+			{
+				$match: {
+					categorias: { $in: [idCategoria] },
+				},
+			},
+			{
+				$group: {
+					_id: null,
+					numeroPreguntas: { $sum: 1 },
+					aciertos: { $sum: { $ifNull: ["$estadisticas.aciertos", 0] } },
+					fallos: { $sum: { $ifNull: ["$estadisticas.fallos", 0] } },
+				}
+			}
+		]);
+		return doc[0] || {
+			numeroPreguntas: 0,
+			aciertos: 0,
+			fallos: 0,
+		};
+	}
+
 	async createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
 		const total = preguntas.length;
 		const tamanioChunk = 1000

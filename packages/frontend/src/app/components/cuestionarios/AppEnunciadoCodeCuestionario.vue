@@ -18,8 +18,7 @@
 						<AppEnunciadoEditable
 							v-model="textoEditado"
 							@guardar="guardarEnunciado"
-							@cancelar="cancelarEdicion"
-						/>
+							@cancelar="cancelarEdicion" />
 					</div>
 				</template>
 
@@ -31,8 +30,7 @@
 					v-if="mostrarBotonEditar && !editando"
 					class="btn-editar"
 					title="Editar enunciado"
-					@click="modoEditar"
-				>
+					@click="modoEditar">
 					✏️
 				</button>
 			</h5>
@@ -65,9 +63,14 @@
 			<div
 				v-if="mostrarWarning"
 				class="stat warning"
-				@click="abrirModalWarning"
-			>
+				@click="abrirModalWarning">
 				<span class="valor">⚠️</span>
+			</div>
+			<div
+				class="stat descartar"
+				@click="descartarPregunta"
+				title="Descartar / Marcar para revisar">
+				<span class="valor">❗</span>
 			</div>
 		</div>
 	</div>
@@ -75,9 +78,11 @@
 	<AppWarningModal
 		:visible="mostrarModalWarning"
 		titulo="Advertencia"
-		@close="cerrarModalWarning"
-	>
-		<p>Esta pregunta ha sido corregida por una IA, toma precauciones a la hora de tomarla como funete de verdad.</p>
+		@close="cerrarModalWarning">
+		<p>
+			Esta pregunta ha sido corregida por una IA, toma precauciones a la hora de
+			tomarla como funete de verdad.
+		</p>
 		<p>Si crees que está mal, reportala. Gracias</p>
 	</AppWarningModal>
 </template>
@@ -119,7 +124,6 @@ const codeEl = ref<HTMLElement>();
 const textareaEl = ref<HTMLTextAreaElement>();
 
 const mostrarWarning = computed(() => {
-	console.log(props.estado);
 	return props.estado === 'GPT';
 });
 
@@ -168,6 +172,14 @@ function abrirModalWarning() {
 
 function cerrarModalWarning() {
 	mostrarModalWarning.value = false;
+}
+
+const emit = defineEmits<{
+	(e: 'descartar', id: string): void;
+}>();
+
+function descartarPregunta() {
+	emit('descartar', props.idPregunta);
 }
 </script>
 
@@ -274,6 +286,16 @@ function cerrarModalWarning() {
 	color: var(--color-stat-warning);
 	margin-left: 0.5rem;
 	cursor: pointer;
+}
+
+.stat.descartar {
+	color: var(--color-stat-warning); // o rojo si quieres peligro
+	cursor: pointer;
+	margin-left: 0.25rem;
+}
+
+.stat.descartar:hover {
+	transform: scale(1.1);
 }
 
 .bloque-editor {

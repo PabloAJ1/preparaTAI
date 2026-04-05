@@ -30,8 +30,6 @@ export const makeHandleGetCategoriasResumen = (
 				NORMAL: "NORMAL",
 			};
 			const tipoCategoria = tipoMap[tipo?.toUpperCase() ?? "NORMAL"];
-
-
 			const result = await getCategoriasResumen.exec(tipoCategoria);
 			const resultMapeado = result.map(MapCategoriasResumen.toReturnType)
 

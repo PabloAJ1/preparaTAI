@@ -164,8 +164,4 @@ $error-icon: var(--color-respuesta-error-icon);
 	word-break: break-word;       // 👈 clave
 	overflow-wrap: anywhere;      // 👈 aún mejor para casos extremos
 }
-
-.font-monospace {
-	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
 </style>

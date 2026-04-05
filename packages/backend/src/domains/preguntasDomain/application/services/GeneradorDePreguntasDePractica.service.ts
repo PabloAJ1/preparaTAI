@@ -1,5 +1,5 @@
 import { Pregunta } from "../../domain/entities/Pregunta";
-import { EstadisticaVO } from "../../domain/valueObjects/estadistica.vo";
+import { EstadisticaVO } from "../../domain/valueObjects/Estadistica.vo";
 import { RespuestaVo } from "../../domain/valueObjects/RespuestaVo";
 import { ICategoriaDto } from "../dtos/categoria.dto";
 import { IPreguntaMigrationDto } from "../dtos/preguntaMigration.interface";

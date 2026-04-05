@@ -247,6 +247,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/shared/inicializarDB": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Borrar la bd actual y la inicializa */
+        get: operations["inicializarDB"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -263,6 +280,7 @@ export interface components {
             nombre: string;
             /** @example 35 */
             numeroPreguntas: number;
+            estadisticas: components["schemas"]["Estadistica"];
         };
         Respuesta: {
             enunciado: string;
@@ -660,6 +678,24 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["Examen"][];
                 };
+            };
+        };
+    };
+    inicializarDB: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Base de datos inicializada */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

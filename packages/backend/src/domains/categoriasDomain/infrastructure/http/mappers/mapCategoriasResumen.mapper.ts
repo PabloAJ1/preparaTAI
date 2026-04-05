@@ -8,7 +8,12 @@ export class MapCategoriasResumen {
 		return {
 			id: dto.id,
 			nombre: dto.nombre,
-			numeroPreguntas: dto.numeroPreguntas
+			numeroPreguntas: dto.numeroPreguntas,
+			estadisticas: {
+				aciertos: dto.estadisticas.aciertos,
+				fallos: dto.estadisticas.fallos,
+				total: dto.estadisticas.aciertos + dto.estadisticas.fallos
+			}
 		}
 	}
 }

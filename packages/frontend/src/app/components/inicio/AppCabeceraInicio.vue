@@ -78,7 +78,6 @@ onMounted(async () => {
 
 	&::after {
 		content: "\f109";
-		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 		position: absolute;
 		right: -20px;

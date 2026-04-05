@@ -6,29 +6,50 @@
 					<div class="categoria-icon" :class="iconoClase">
 						<i :class="icono" />
 					</div>
+
+					<h5
+						class="categoria-title"
+						:title="categoria.nombre"
+						:aria-label="categoria.nombre">
+						{{ categoria.nombre }}
+					</h5>
 				</div>
 
-				<h5 
-					class="categoria-title"
-					:title="categoria.nombre"
-					:aria-label="categoria.nombre"
-				>
-					{{ categoria.nombre }}
-				</h5>
+				<div class="categoria-info">
+					<div class="categoria-count">
+						{{ categoria.numeroPreguntas }} pregunta/s
+					</div>
 
-				<h6 class="categoria-count">
-					{{ categoria.numeroPreguntas }} pregunta/s
-				</h6>
+					<div class="categoria-stats">
+						<div class="stat stat-ok">
+							<i class="fa-solid fa-check"></i>
+							{{ categoria.estadisticas.aciertos }}
+						</div>
 
-				<router-link
-					v-if="categoria?.id"
-					:class="linkClase"
-					:modo="modo"
-					:to="{ name: 'TestByCategoria', params: { id: categoria.id, modo: modo } }"
-				>
-					Comenzar
-					<i class="fa-solid fa-arrow-right categoria-link-icon" />
-				</router-link>
+						<div class="stat stat-ko">
+							<i class="fa-solid fa-xmark"></i>
+							{{ categoria.estadisticas.fallos }}
+						</div>
+					</div>
+
+					<router-link
+						v-if="categoria?.id"
+						:class="linkClase"
+						:modo="modo"
+						:to="{
+							name: 'TestByCategoria',
+							params: { id: categoria.id, modo: modo },
+						}"
+						class="categoria-link">
+						Comenzar
+						<i class="fa-solid fa-arrow-right categoria-link-icon" />
+					</router-link>
+
+					<div class="categoria-percent" :style="{ color: colorPorcentaje }">
+						<i class="fa-solid fa-chart-simple"></i>
+						{{ porcentajeAcierto }}%
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -66,6 +87,23 @@ const iconoClase = computed(() => ({
 	'categoria-icon-practica': props.modo === 'practica',
 	'categoria-icon-examen': props.modo === 'examen',
 }));
+
+const porcentajeAcierto = computed(() => {
+	const stats = props.categoria.estadisticas;
+	if (!stats || stats.total === 0) return 0;
+
+	return Math.round((stats.aciertos / stats.total) * 100);
+});
+
+const colorPorcentaje = computed(() => {
+	const p = porcentajeAcierto.value;
+
+	if (p === 0) return 'var(--color-stat-intentos)';
+
+	const hue = p * 1.2; // 0 → 120
+
+	return `hsl(${hue}, 65%, 42%)`;
+});
 </script>
 
 <style scoped lang="scss">
@@ -82,14 +120,13 @@ const iconoClase = computed(() => ({
 	border: none;
 	height: 100%;
 
-	box-shadow: 0 10px 15px -3px var(--shadow-md),
-		0 4px 6px -2px var(--shadow-sm);
+	box-shadow: 0 10px 15px -3px var(--shadow-md), 0 4px 6px -2px var(--shadow-sm);
 
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 
 	&:hover {
 		transform: translateY(-6px);
-		box-shadow: 0 20px 30px -10px var(-color-shadow-fat);
+		box-shadow: 0 20px 30px -10px var(--color-shadow-fat);
 	}
 }
 
@@ -101,10 +138,11 @@ const iconoClase = computed(() => ({
 
 .categoria-header {
 	display: flex;
-	justify-content: space-between;
 	align-items: flex-start;
-	margin-bottom: 1rem;
+	gap: 0.75rem;
+	margin-bottom: 0.75rem;
 }
+
 
 .categoria-icon {
 	display: flex;
@@ -114,16 +152,18 @@ const iconoClase = computed(() => ({
 	height: 48px;
 	border-radius: 50%;
 	font-size: 1.25rem;
+	flex-shrink: 0;   // 👈 evita que se estreche
 }
 
 .categoria-title {
-	min-height: 2.6rem;
+	margin: 0;
+
 	font-weight: 700;
 	color: var(--color-text-tertiary);
-	margin-bottom: 0.5rem;
-
 	font-size: 1.1rem;
-	margin-top: 0.5rem;
+
+	line-height: 1.3;
+
 	text-overflow: ellipsis;
 	max-width: 100%;
 
@@ -133,15 +173,25 @@ const iconoClase = computed(() => ({
 	overflow: hidden;
 }
 
+.categoria-info {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto auto;
+	gap: 0.5rem 1rem;
+	align-items: center;
+}
+
 .categoria-count {
 	color: var(--color-text-subs);
 	margin-bottom: 1rem;
+		grid-column: 1;
+	grid-row: 1;
 }
 
 .categoria-link-icon {
-	margin-left: 0.5rem;
+	grid-column: 1;
+	grid-row: 2;
 }
-
 
 /* Links/botones */
 .categoria-icon-repaso {
@@ -158,13 +208,13 @@ const iconoClase = computed(() => ({
 
 .categoria-icon-practica {
 	background: var(--color-practicas-bg);
-	color: var(--color-practicas)
+	color: var(--color-practicas);
 }
 
 .categoria-link-practica {
 	color: var(--color-practicas);
 	&:hover {
-			color: color-mix(in srgb, var(--color-practicas) 90%, var(--color-black));
+		color: color-mix(in srgb, var(--color-practicas) 90%, var(--color-black));
 	}
 }
 
@@ -178,5 +228,42 @@ const iconoClase = computed(() => ({
 	&:hover {
 		color: color-mix(in srgb, var(--color-examenes) 90%, var(--color-black));
 	}
+}
+
+.categoria-stats {
+	grid-column: 2;
+	grid-row: 1;
+
+	display: flex;          // 👈 falta
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 0.15rem;           // 👈 controla separación
+}
+
+.stat {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	font-weight: 600;
+}
+
+.stat-ok {
+	color: var(--color-stat-aciertos);
+}
+
+.stat-ko {
+	color: var(--color-stat-fallos);
+}
+
+.categoria-percent {
+	grid-column: 2;
+	grid-row: 2;
+
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+
+	color: var(--color-stat-intentos);
 }
 </style>

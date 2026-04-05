@@ -9,7 +9,7 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const envPath = path.resolve(__dirname, 'environment/.env.dev');
 dotenv.config({ path: envPath });
 
-console.log('ENVIROMENT cargado en setupFiles:', process.env.ENVIROMENT);
+console.info('ENVIROMENT cargado en setupFiles:', process.env.ENVIROMENT);
 
 let mongoServer: MongoMemoryServer;
 if (process.env.ENVIROMENT === "TEST") {

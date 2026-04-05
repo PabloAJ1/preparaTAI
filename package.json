@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"license": "MIT",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=dev tsx watch ./packages/backend/src/main",
+		"dev": "cross-env NODE_ENV=dev tsx watch --watch ./packages/backend/src/main",
 		"run:back": "nx serve backend",
 		"run:front": "nx serve frontend",
 		"build:back": "nx build backend",

@@ -353,10 +353,13 @@ components:
         numeroPreguntas:
           type: integer
           example: 35
+        estadisticas:
+          $ref: '#/components/schemas/Estadistica'
       required:
         - id
         - nombre
         - numeroPreguntas
+        - estadisticas
 
     Respuesta:
       type: object

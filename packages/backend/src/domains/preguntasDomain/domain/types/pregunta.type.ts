@@ -1,5 +1,5 @@
 import { EEstado } from '../enums/estado.enum';
-import { EstadisticaVO } from '../valueObjects/estadistica.vo';
+import { EstadisticaVO } from '../valueObjects/Estadistica.vo';
 import { RespuestaVo } from '../valueObjects/RespuestaVo';
 
 export type TPregunta = {

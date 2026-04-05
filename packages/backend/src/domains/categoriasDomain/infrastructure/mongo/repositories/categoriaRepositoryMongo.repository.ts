@@ -55,8 +55,6 @@ export class CategoriaRepositoryMongo implements ICategoriaRepository {
 		const categoriaModel = MapCategoriaMongo.toModel(categoria);
 		const doc = await CategoriaModel.create(categoriaModel);
 
-		console.log(doc);
-
 		return MapCategoriaMongo.toEntity(doc);
 	}
 

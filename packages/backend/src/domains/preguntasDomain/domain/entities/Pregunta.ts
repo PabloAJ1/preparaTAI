@@ -1,6 +1,6 @@
 import { TPregunta } from '../types/pregunta.type';
 import { v7 as uuid } from 'uuid';
-import { EstadisticaVO } from '../valueObjects/estadistica.vo';
+import { EstadisticaVO } from '../valueObjects/Estadistica.vo';
 import { EEstado } from '../enums/estado.enum';
 
 export class Pregunta {

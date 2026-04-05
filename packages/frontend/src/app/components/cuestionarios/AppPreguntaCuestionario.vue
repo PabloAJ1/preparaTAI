@@ -1,5 +1,5 @@
 <template>
-	<div class="cuestionario-card">
+	<div :id="props.id" class="cuestionario-card">
 		<AppEnunciadoCodeCuestionario
 			v-if="preguntaLocal"
 			:enunciado="preguntaLocal.enunciado"
@@ -7,13 +7,12 @@
 			:estadisticas="preguntaLocal.estadisticas"
 			:id-pregunta="pregunta.id"
 			:estado="pregunta.estado"
+			@descartar="$emit('descartar', $event)"
 		/>
 
 		<div
 			class="respuestas-lista"
-			:class="{ 'modo-practica': props.modo === 'practica' }"
-			:style="{ pointerEvents: 'auto' }"
-		>
+			:class="{ 'modo-practica': props.modo === 'practica' }">
 			<AppRespuestaCuestionario
 				v-for="respuesta in preguntaLocal.respuestas"
 				:key="respuesta.enunciado"
@@ -21,8 +20,7 @@
 				:respondida="respondida"
 				:seleccionada="respuestaSeleccionada"
 				:modo="props.modo"
-				@seleccionar="verificarRespuesta"
-			/>
+				@seleccionar="verificarRespuesta" />
 		</div>
 	</div>
 </template>
@@ -45,16 +43,16 @@ const props = defineProps<{
 	modo: string;
 }>();
 
-const emit = defineEmits<{
-	(e: 'descartar', id: string): void;
-}>();
-
 const preguntaLocal = reactive({ ...props.pregunta });
 const respondida = ref(false);
 const respuestaSeleccionada = ref<Respuesta | null>(null);
 const api = new PreguntasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
+
+const emit = defineEmits<{
+	(e: 'descartar', id: string): void;
+}>();
 
 async function verificarRespuesta(respuesta: Respuesta) {
 	if (respondida.value) return;
@@ -89,9 +87,6 @@ function actualizarEstadisticas(correcta: boolean) {
 
 function scrollToNext() {
 	setTimeout(() => {
-		const wrapper = document.getElementById(props.id)?.parentElement;
-		if (!wrapper) return;
-
 		// buscar la siguiente tarjeta dentro del contenedor principal
 		const tarjetas = Array.from(
 			document.querySelectorAll('.cuestionario-card')
@@ -142,9 +137,5 @@ $respuesta-gap: 0.5rem;
 	.respuestas-lista.modo-practica {
 		grid-template-columns: repeat(2, 1fr);
 	}
-}
-
-.pregunta-card-inner {
-	transition: transform 0.3s ease, opacity 0.3s ease;
 }
 </style>

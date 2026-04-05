@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Estadistica } from './Estadistica';
+import {
+    EstadisticaFromJSON,
+    EstadisticaFromJSONTyped,
+    EstadisticaToJSON,
+    EstadisticaToJSONTyped,
+} from './Estadistica';
+
 /**
  * 
  * @export
@@ -37,6 +45,12 @@ export interface CategoriaResumen {
      * @memberof CategoriaResumen
      */
     numeroPreguntas: number;
+    /**
+     * 
+     * @type {Estadistica}
+     * @memberof CategoriaResumen
+     */
+    estadisticas: Estadistica;
 }
 
 /**
@@ -46,6 +60,7 @@ export function instanceOfCategoriaResumen(value: object): value is CategoriaRes
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('nombre' in value) || value['nombre'] === undefined) return false;
     if (!('numeroPreguntas' in value) || value['numeroPreguntas'] === undefined) return false;
+    if (!('estadisticas' in value) || value['estadisticas'] === undefined) return false;
     return true;
 }
 
@@ -62,6 +77,7 @@ export function CategoriaResumenFromJSONTyped(json: any, ignoreDiscriminator: bo
         'id': json['id'],
         'nombre': json['nombre'],
         'numeroPreguntas': json['numeroPreguntas'],
+        'estadisticas': EstadisticaFromJSON(json['estadisticas']),
     };
 }
 
@@ -79,6 +95,7 @@ export function CategoriaResumenToJSONTyped(value?: CategoriaResumen | null, ign
         'id': value['id'],
         'nombre': value['nombre'],
         'numeroPreguntas': value['numeroPreguntas'],
+        'estadisticas': EstadisticaToJSON(value['estadisticas']),
     };
 }
 

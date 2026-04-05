@@ -14,12 +14,12 @@ export class GetCategoriasByTipo implements IGetCategoriasByTipo {
 	async exec(tipoCategoria: 'PRACTICA' | 'NORMAL' | 'EXAMEN' = 'NORMAL'): Promise<CategoriaResumenDto[]> {
 		const result = await this.categoriasRepositories.getCategoriasByType(this.#tipoStringToEnum(tipoCategoria));
 		const returnResult: CategoriaResumenDto[] = [];
-
 		for (const categoria of result) {
-			const numeroPreguntas =
+			const estadisticas =
 				await this.preguntasPort.getNumeroPreguntasPorCategoria(categoria);
-			if(numeroPreguntas > 0)
-				returnResult.push(MapCateogiraResumen.toDto(categoria, numeroPreguntas));
+
+			if(estadisticas.numeroPreguntas > 0)
+				returnResult.push(MapCateogiraResumen.toDto(categoria, estadisticas));
 		}
 
 		return returnResult;

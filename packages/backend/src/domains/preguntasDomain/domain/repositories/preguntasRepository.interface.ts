@@ -5,6 +5,7 @@ export interface IPreguntaRepository {
 	createBulkPreguntas(preguntas: Pregunta[]): Promise<void>;
 	getNumeroPreguntasTotales(): Promise<number>;
 	getNumeroPreguntasPorCategoria(nombreCategoria: string): Promise<number>;
+	getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{numeroPreguntas: number, aciertos: number, fallos: number}>
 	getPreguntasPorCategoria(nombreCategoria: string): Promise<Pregunta[]>;
 	getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]>;
 	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]>;
