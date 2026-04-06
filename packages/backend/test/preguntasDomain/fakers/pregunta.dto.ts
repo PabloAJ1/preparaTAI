@@ -25,6 +25,7 @@ export const generarPreguntaDto = (props = {}): IPreguntaDto => {
 			total: 0,
 		},
 		descartada: false,
+		estado: fakerES.helpers.arrayElement(["Verficada", "Revisada", "GPT"]),
 		...props
 	}
 }

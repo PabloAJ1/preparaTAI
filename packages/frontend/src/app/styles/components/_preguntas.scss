@@ -1,0 +1,15 @@
+:root {
+	//Estado Respuestas
+	--color-respuesta-border: var(--blue-50);
+	--color-respuesta-text: var(--dark-blue-500);
+	--color-respuesta-selected-text: var(--dark-blue-500);
+	--color-respuesta-muted: var(--dark-blue-500);
+
+	--color-respuesta-success-bg: var(--green-50);
+	--color-respuesta-success-border: var(--green-250);
+	--color-respuesta-success-icon: var(--green-500);
+
+	--color-respuesta-error-bg: var(--red-50);
+	--color-respuesta-error-border: var(--red-150);
+	--color-respuesta-error-icon: var(--red-500);
+}

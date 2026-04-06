@@ -5,7 +5,10 @@ import { IGrupoPreguntasMongo } from "../interfaces/grupoPreguntas.interface";
 export class MapPreguntasMongo {
 	static toModel(entity: GrupoPreguntasEntity): IGrupoPreguntasMongo {
 		return {
-			codigo: entity.codigo,
+			codigo: {
+				codigo: entity.codigo.codigo,
+				lenguaje: entity.codigo.lenguaje
+			},
 			id: entity.idGrupoPreguntas,
 			preguntas: entity.preguntas,
 			textoPre: entity.textoPre,

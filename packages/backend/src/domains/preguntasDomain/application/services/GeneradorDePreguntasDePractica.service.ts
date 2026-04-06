@@ -58,7 +58,7 @@ export class GeneradorDePreguntasDePracticaService implements IGeneradorDePregun
 		}
 		return preguntasFinales;
 	}
-	
+
 	#agruparPorCategoria(preguntas: IPreguntaMigrationDto[]): Map<string, IPreguntaMigrationDto[]> {
 		const mapa = new Map<string, IPreguntaMigrationDto[]>();
 

@@ -1,11 +1,11 @@
 
 import { IGrupoPreguntasPobladaDto } from '../../../applications/dtos/grupoPreguntasPoblada.dto';
-import { LoadPreguntasFromFilePort } from '../../../applications/interfaces/loadPreguntasFromFilePort.interface';
+import { ILoadPreguntasFromFilePort } from '../../../applications/interfaces/loadPreguntasFromFilePort.interface';
 import { IPreguntaDto } from '../dtos/pregunta.dto';
 import { IExcelLoader } from '../interfaces/excelLoader.interface';
 
 
-export class ExcelAdapterService implements LoadPreguntasFromFilePort {
+export class ExcelAdapterService implements ILoadPreguntasFromFilePort {
 	constructor(
 		private readonly excelLoader: IExcelLoader,
 		private readonly outputPath: string,
@@ -26,6 +26,7 @@ export class ExcelAdapterService implements LoadPreguntasFromFilePort {
 						lenguaje: linea.lenguaje,
 					},
 					preguntas: [],
+					id: 'nuevo',
 				});
 			}
 

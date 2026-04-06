@@ -50,12 +50,13 @@ body {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	color: var(--color-sidebar-header);
+	color: var(--menu-text-strong);
 }
+
 
 .list-group-item-dark {
 	background-color: transparent;
-	color: var(--color-list-group-item-dark);
+	color: var(--menu-text);
 	border: none;
 	padding: 10px 15px;
 	font-size: 0.95rem;
@@ -63,16 +64,16 @@ body {
 	display: flex;
 	align-items: center;
 	border-left: 3px solid transparent;
-	margin: 2px 10px;
+	margin: 2px 0;
 	border-radius: 6px;
 	white-space: nowrap;
 }
 
 .list-group-item-dark:hover,
 .list-group-item-dark.active {
-	background-color: var(--overlay-white-md);
+	background-color: var(--menu-overlay-item);
 	color: var(--color-white);
-	border-left-color: var(--color-list-group-item-dark-active-border);
+	border-left-color: var(--menu-select-item-hover);
 }
 
 .list-group-item i {

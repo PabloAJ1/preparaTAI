@@ -1,5 +1,5 @@
 import { IGrupoPreguntasPobladaDto } from "../dtos/grupoPreguntasPoblada.dto";
 
-export interface LoadPreguntasFromFilePort {
+export interface ILoadPreguntasFromFilePort {
 	loadFile(): Promise<IGrupoPreguntasPobladaDto[]>
 }

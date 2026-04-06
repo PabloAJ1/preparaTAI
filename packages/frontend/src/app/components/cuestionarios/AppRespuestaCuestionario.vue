@@ -6,11 +6,16 @@
 				'is-success':
 					respondida &&
 					respuesta.correcta &&
-					seleccionada?.enunciado === respuesta.enunciado,
+					(
+						seleccionada?.enunciado === respuesta.enunciado ||
+						mostrarCorrecta
+					),
+
 				'is-error':
 					respondida &&
 					!respuesta.correcta &&
 					seleccionada?.enunciado === respuesta.enunciado,
+
 				'is-disabled': respondida,
 			},
 			{ 'modo-practica': modo === 'practica' },
@@ -36,6 +41,7 @@ const props = defineProps<{
 	respondida: boolean;
 	seleccionada: Respuesta | null;
 	modo: string;
+	mostrarCorrecta: boolean;
 }>();
 
 defineEmits<{
@@ -49,9 +55,11 @@ const iconoClase = computed(() => {
 
 	if (!props.respondida) return 'fa-regular fa-circle text-muted';
 
-	if (props.respuesta.correcta && isSelected) {
+	if (props.respuesta.correcta && (isSelected || props.mostrarCorrecta)) {
 		return 'fa-solid fa-circle-check text-success';
-	} else if (!props.respuesta.correcta && isSelected) {
+	}
+
+	if (!props.respuesta.correcta && isSelected) {
 		return 'fa-solid fa-circle-xmark text-danger';
 	}
 
@@ -62,7 +70,6 @@ const iconoClase = computed(() => {
 <style scoped lang="scss">
 // Paleta de colores SCSS
 $border-color: var(--color-respuesta-border);
-$text-color: var(--color-respuesta-text);
 $muted-color: var(--color-respuesta-muted);
 
 $success-bg: var(--color-respuesta-success-bg);
@@ -110,6 +117,7 @@ $error-icon: var(--color-respuesta-error-icon);
 	&.is-success {
 		background-color: $success-bg;
 		border-color: $success-border; // Sobrescribe el border-top del elemento
+		color: var(--color-respuesta-selected-text);
 
 		// Si la siguiente respuesta existe, arreglamos su borde superior para que no se pisen
 		& + .respuesta-item {
@@ -121,6 +129,7 @@ $error-icon: var(--color-respuesta-error-icon);
 	&.is-error {
 		background-color: $error-bg;
 		border-color: $error-border;
+		color: var(--color-respuesta-selected-text);
 
 		& + .respuesta-item {
 			border-top-color: $error-border;
@@ -153,15 +162,21 @@ $error-icon: var(--color-respuesta-error-icon);
 	}
 }
 
+.respuesta-icon i.text-muted {
+  color: var(--color-respuesta-muted) !important;
+}
+
 .respuesta-texto {
 	flex: 1;
-	color: $text-color;
 	font-size: 1rem;
-
 	hyphens: auto;
 	line-height: 1.4;
-	min-width: 0; // 👈 MUY importante en flexbox
-	word-break: break-word;       // 👈 clave
-	overflow-wrap: anywhere;      // 👈 aún mejor para casos extremos
+	min-width: 0;
+	word-break: break-word; 
+	overflow-wrap: anywhere;
+}
+
+.respuesta-item {
+  color: var(--color-respuesta-text);
 }
 </style>

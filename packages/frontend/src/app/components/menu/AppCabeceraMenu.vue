@@ -19,7 +19,7 @@
 }
 
 .brand-icon {
-	color: var(--color-white);
+	color: var(--menu-text-head);
 	font-size: 1.25rem;
 }
 
@@ -30,24 +30,22 @@
 
 .sidebar-brand {
     padding: 1.5rem 1.5rem 1.5rem;
-    background: var(--shadow-md);
-    border-bottom: 1px solid var(--overlay-white-sm);
+    background: var(--menu-cabecera-shadow);
+    border-bottom: 1px solid var(--menu-separador-color);
 }
 
 .brand-title {
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: -0.5px;
-    color: var(--color-white);
+    color: var(--menu-text-head);
     display: block;
 }
 
 .brand-version {
     font-size: 0.75rem;
-    color: var(--color-text-versions);
+    color: var(--menu-text-versions);
     font-weight: 500;
-    background: var(--overlay-blue-md);
-    padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
     margin-top: 4px;

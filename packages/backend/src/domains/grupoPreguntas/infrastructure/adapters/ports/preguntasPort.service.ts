@@ -22,7 +22,11 @@ export class PreguntasPortService implements IPreguntasServicePort{
 				nombreCategoria: categoria,
 				tipo: 'GRUPOPREGUNTAS'
 			}
-			categoriasConId.push((await this.buscarOCrearCategoria.exec(cat)).idCategoria)
+			const findCategoria = await this.buscarOCrearCategoria.exec(cat)
+
+			console.log(findCategoria);
+			console.log(cat);
+			categoriasConId.push(findCategoria.idCategoria)
 		}
 		
 

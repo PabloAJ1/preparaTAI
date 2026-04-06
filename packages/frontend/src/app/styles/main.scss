@@ -1,6 +1,13 @@
 @forward './base/base';
 @forward './theme/semantic';
-@forward './theme/dark';
 @forward './theme/uitokens';
 @forward './components/botones';
 @forward './components/menu';
+@forward './components/navbar';
+@forward './components/preguntas';
+@forward './components/cards';
+
+@forward './theme/dark';
+@forward './components/darknavbar';
+@forward './components/darkcards';
+@forward './components/darkpreguntas';

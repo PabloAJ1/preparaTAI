@@ -1,9 +1,7 @@
 <template>
 	<div id="wrapper">
-		<!-- Sidebar fijo -->
 		<AppMenu :collapsed="sidebarCollapsed" />
 
-		<!-- 👇 OVERLAY AQUÍ -->
 		<div 
 			v-if="!sidebarCollapsed"
 			class="overlay"
@@ -56,7 +54,7 @@ onMounted(() => {
 #wrapper {
 	display: flex;
 	width: 100%;
-	overflow-x: hidden; // evita scroll horizontal
+	overflow-x: hidden;
 }
 
 #page-content-wrapper {
@@ -65,14 +63,12 @@ onMounted(() => {
 	transition: all 0.3s ease;
 }
 
-/* en escritorio deja espacio al sidebar */
 @media (min-width: 768px) {
 	#page-content-wrapper {
 		margin-left: 260px;
 		width: calc(100% - 260px);
 	}
 
-	/* 👇 cuando el sidebar está oculto */
 	#page-content-wrapper.expanded {
 		margin-left: 0;
 		width: 100%;
@@ -83,10 +79,10 @@ onMounted(() => {
 .navbar {
 	position: sticky;
 	top: 0;
-	z-index: 1100; // por encima del contenido
-	background-color: var(--color-white);
-	border-bottom: 1px solid var(--color-main-bg);
-	box-shadow: 0 1px 3px var(--shadow-md);
+	z-index: 1100;
+	background-color: var(--color-navbar-bg);
+	border-bottom: 1px solid var(--color-bottom-border);
+	box-shadow: 0 1px 3px var(--color-box-shadow);
 	padding: 0.5rem 1rem;
 	display: flex;
 	align-items: center;
@@ -110,7 +106,7 @@ onMounted(() => {
 	align-items: center;
 
 	&:hover {
-		color: #2563eb;
+		color: var(--color-menu-icons-hover);
 	}
 }
 

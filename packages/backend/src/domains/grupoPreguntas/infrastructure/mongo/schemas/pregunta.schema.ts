@@ -14,6 +14,6 @@ const GrupoPreguntaSchema = new Schema<IGrupoPreguntaDocument>({
     timestamps: false 
 });
 
-const PreguntaModel = model<IGrupoPreguntaDocument>('Pregunta', GrupoPreguntaSchema);
+const GrupoPreguntasModel = model<IGrupoPreguntaDocument>('GrupoPreguntas', GrupoPreguntaSchema);
 
-export default PreguntaModel;
+export default GrupoPreguntasModel;

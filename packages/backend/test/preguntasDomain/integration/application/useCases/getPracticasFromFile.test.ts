@@ -15,7 +15,7 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
 	const categoriaMongoDBRepository = new CategoriaRepositoryMongo()
 
-	const path = "./test/preguntasDomain/helpers/practicas_20260401.xlsx"
+	const path = "./test/preguntasDomain/helpers/practicas_20260406.xlsx"
 	const excelLoader = new ExcelLoader();
 	const excelAdapterService = new ExcelAdapterService(excelLoader, path);
 
@@ -37,8 +37,6 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 	)
 
 	test('deberia leer el fichero y devolver las SQL', async () => {
-					await getPreguntasFromFileUseCase.exec();
-
 		try{
 			await getPreguntasFromFileUseCase.exec();
 			expect(true).toBeTruthy();

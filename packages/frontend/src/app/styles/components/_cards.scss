@@ -1,0 +1,27 @@
+:root {
+	//Colores genericos
+	--color-cards-bg: var(--blue-10);
+	--color-cuestionario-text-primary: var(--blue-600);
+	--color-cuestionario-text-secundary: var(--gray-800);
+	--color-cuestionario-text-tertiary: var(--dark-blue-100);
+	--color-cuestionario-bg: var(--gray-5);
+	--color-cuestionario-bg-hover: var(--white);
+
+	//Estadisticas categorias
+	--color-stat-aciertos: var(--green-600);
+	--color-stat-fallos: var(--red-600);
+	--color-stat-intentos: var(--blue-gray-100); 	
+	--color-stat-warning: var(--yellow-500);
+
+	//Colores primarios y secundarios para todo lo relativo a los repasos
+	--color-repasos: var(--blue-600);
+	--color-repasos-bg: rgba(59, 130, 246, 0.1);	
+
+	//Colores primarios y secundarios para todo lo relativo a las practicas 
+	--color-practicas: var(--green-600);
+	--color-practicas-bg: rgba(25, 135, 84, 0.1);
+
+	//Colores primarios y secundarios para todo lo relativo a los examenes
+	--color-examenes: var(--red-600);
+	--color-examenes-bg: rgba(246, 59, 84, 0.1);	
+}

@@ -1,12 +1,8 @@
 <template>
 	<div class="temas-header">
-		<div class="temas-titulo">
-			<h2 class="temas-heading">{{ modo === 'repaso' ? 'Repasar Temas' : 'Ejercicios de Práctica' }}</h2>
-			<p class="temas-subtitle">
-				{{ modo === 'repaso' 
-					? 'Selecciona un bloque para realizar tests de repaso.' 
-					: 'Relaciona conceptos con sus definiciones correspondientes.' }}
-			</p>
+		<div class="cabecera-categorias" :class="cabeceraStyle">
+			<i :class="icono" />
+			<h2 class="temas-heading">{{ titulo }}</h2>
 		</div>
 
 		<div class="temas-search">
@@ -27,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 const props = defineProps<{
   modo?: 'repaso' | 'practica' | 'examen' ;
 }>();
@@ -40,6 +36,36 @@ const textoBusqueda = ref('')
 watch(textoBusqueda, (valor) => {
 	emit('buscar', valor)
 })
+
+const titulo = computed(() => {
+	switch (props.modo) {
+		case 'practica':
+			return 'Ejercicios de Práctica';
+		case 'examen':
+			return 'Preguntas de Examenes';
+		case 'repaso':
+		default:
+			return 'Repasar Temas';
+	}
+});
+
+const cabeceraStyle = computed(() => ({
+	'tema-color-repaso': props.modo === 'repaso',
+	'tema-color-practica': props.modo === 'practica',
+	'tema-color-examen': props.modo === 'examen',
+}));
+
+const icono = computed(() => {
+	switch (props.modo) {
+		case 'practica':
+			return 'fa-solid fa-puzzle-piece';
+		case 'examen':
+			return 'fa-solid fa-pencil'; // icono para examen
+		case 'repaso':
+		default:
+			return 'fa-solid fa-book';
+	}
+});
 
 </script>
 
@@ -55,18 +81,26 @@ watch(textoBusqueda, (valor) => {
 .temas-heading {
 	font-size: 1.75rem;
 	font-weight: 700;
-	color: var(--color-cabecera-bg);
-	margin-bottom: 0.25rem;
+	margin-left: 1rem;
 }
 
-.temas-subtitle {
-	color: var(--color-text-subs);
-	font-size: 0.875rem;
-	margin: 0;
+.tema-color-repaso {
+	color: var(--color-cabecera-repaso);
+}
+.tema-color-examen {
+	color: var(--color-cabecera-examen);
+}
+.tema-color-practica {
+	color: var(--color-cabecera-practica);
+}
+
+.cabecera-categorias {
+	display: flex;
+	align-items: center;
+	font-size: 1.25rem;
 }
 
 /* Buscador */
-
 .temas-search {
 	display: block;
 }
@@ -75,8 +109,8 @@ watch(textoBusqueda, (valor) => {
 	display: flex;
 	align-items: center;
 
-	background:  var(--color-white);
-	border: 1px solid var(--color-search-bg);
+	background:  var(--color-search-bg);
+	border: 1px solid var(--color-search-border);
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -94,6 +128,12 @@ watch(textoBusqueda, (valor) => {
 	padding: 0.5rem 0.75rem;
 	font-size: 0.9rem;
 	width: 200px;
+	background:  var(--color-search-bg);
+	color: var(--color-search-text);
+	
+	&::placeholder{
+		color: var(--color-search-text-placeholder); 
+	}
 }
 
 /* Responsive (equivalente a d-none d-md-block) */

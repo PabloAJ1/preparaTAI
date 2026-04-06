@@ -1,5 +1,5 @@
 import { IGrupoPreguntasRepository } from "../../domain/repositories/grupoPreguntas.interface";
-import { LoadPreguntasFromFilePort } from "../interfaces/loadPreguntasFromFilePort.interface";
+import { ILoadPreguntasFromFilePort } from "../interfaces/loadPreguntasFromFilePort.interface";
 import { IPreguntasServicePort } from "../interfaces/preguntasServicePort.interface";
 import { MapGrupoPreguntas } from "../mappers/mapGrupoPreguntas.mapper.mapper";
 import { ILoadGrupoPreguntasFromFile } from "../signatures/loadGrupoPreguntasFromFile.interface";
@@ -7,7 +7,7 @@ import { ILoadGrupoPreguntasFromFile } from "../signatures/loadGrupoPreguntasFro
 export class LoadGrupoPreguntasFromFile implements ILoadGrupoPreguntasFromFile {
 	constructor(
 		private readonly grupoPreguntasRepository: IGrupoPreguntasRepository,
-		private readonly loadGrupoPreguntasFromFile: LoadPreguntasFromFilePort,
+		private readonly loadGrupoPreguntasFromFile: ILoadPreguntasFromFilePort,
 		private readonly preguntasServicePort: IPreguntasServicePort,
 
 	){}

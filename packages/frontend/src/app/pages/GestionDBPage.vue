@@ -66,7 +66,7 @@ function confirmarInicializacion() {
 		font-size: 2rem;
 		margin-bottom: 2rem;
 		text-align: center;
-		color: #333;
+		color: var(--color-text-main);
 	}
 
 	.admin-cards {
@@ -76,7 +76,7 @@ function confirmarInicializacion() {
 		justify-content: center;
 
 		.admin-card {
-			background-color: var(--color-white);
+			background-color: var(--color-card-admin-bg);
 			border-radius: 0.75rem;
 			box-shadow: 0 4px 12px var(--shadow-md);
 			width: 200px;
@@ -97,7 +97,7 @@ function confirmarInicializacion() {
 
 			p {
 				font-weight: 600;
-				color: var(--color-smoke)
+				color: var(--color-text-main)
 			}
 
 			&:hover {

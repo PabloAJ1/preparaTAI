@@ -16,7 +16,7 @@ export class CodigoVo {
 	}
 
 	static crearConPropiedades(codigo: string, lenguajeStr: string){
-		const lenguaje = ELenguaje[lenguajeStr.toUpperCase() as keyof typeof ELenguaje];
+		const lenguaje = ELenguaje[lenguajeStr as keyof typeof ELenguaje]; 
 		return this.crearDesdeProps({
 			codigo: codigo,
 			lenguaje: lenguaje ?? ELenguaje.OTROS

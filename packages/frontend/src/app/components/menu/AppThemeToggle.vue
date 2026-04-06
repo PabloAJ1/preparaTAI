@@ -6,13 +6,13 @@
 		</label>
 
 		<span class="theme-label">
-			{{ isDark ? "Modo oscuro" : "Modo claro" }}
+			<i :class="icono" />
 		</span>
 	</div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue"
+import { ref, onMounted, computed } from "vue"
 
 const isDark = ref(false)
 
@@ -24,6 +24,13 @@ onMounted(() => {
 		document.documentElement.dataset.theme = "dark"
 	}
 })
+
+const icono = computed(() => {
+	if(isDark.value)
+		return 'fa-regular fa-moon';
+	else
+		return 'fa-solid fa-sun';
+});
 
 function toggleTheme() {
 	const theme = isDark.value ? "dark" : "light"
@@ -59,7 +66,7 @@ function toggleTheme() {
 .slider {
 	position: absolute;
 	cursor: pointer;
-	background-color: #ccc;
+	background-color: var(--menu-toggle-bg);
 	border-radius: 20px;
 	top: 0;
 	left: 0;
@@ -75,13 +82,13 @@ function toggleTheme() {
 	width: 16px;
 	left: 2px;
 	bottom: 2px;
-	background-color: white;
+	background-color: var(--menu-toggle-bg-before);
 	border-radius: 50%;
 	transition: 0.3s;
 }
 
 input:checked + .slider {
-	background-color: #2563eb;
+	background-color: var(--menu-toggle-checked);
 }
 
 input:checked + .slider::before {

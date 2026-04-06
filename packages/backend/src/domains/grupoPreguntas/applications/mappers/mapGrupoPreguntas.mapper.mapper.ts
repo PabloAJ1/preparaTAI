@@ -21,4 +21,17 @@ export class MapGrupoPreguntas {
 			textoPre: grupoPreguntas.textoPre,
 		}) 
 	}
+
+	static toDto(entity: GrupoPreguntas): IGrupoPreguntasDto {
+		return {
+			codigo: {
+				codigo: entity.codigo.codigo,
+				lenguaje: entity.codigo.lenguaje
+			},
+			id: entity.idGrupoPreguntas,
+			textoPos: entity.textoPos,
+			textoPre: entity.textoPre,
+			idPreguntas: entity.preguntas
+		}
+	}
 }

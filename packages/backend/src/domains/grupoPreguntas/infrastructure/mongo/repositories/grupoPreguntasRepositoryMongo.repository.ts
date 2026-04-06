@@ -24,6 +24,7 @@ export class GrupoPreguntasRepositoryMongo implements IGrupoPreguntasRepository 
 
 	async createGrupoPreguntas(grupo: GrupoPreguntas): Promise<GrupoPreguntas> {
 		const grupoModel = MapPreguntasMongo.toModel(grupo);
+		console.log(grupoModel);
 		const doc = await preguntaModel.create(grupoModel);
 		return MapPreguntasMongo.toEntity(doc);
 	}

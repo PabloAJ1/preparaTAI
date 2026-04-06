@@ -1,7 +1,17 @@
 :root {
-	--menu-bg:  var(--dark-blue-500);
-	--menu-text: var(--blue-50);
+	--menu-bg:  var(--dark-blue-1000);
+	--menu-text: var(--blue-80);
+	--menu-text-strong: var(--gray-65);
+	--menu-text-head: var(--blue-gray-100)
 	--menu-text-secondary: var(--blue-gray-400);
 	--menu-header: var(--blue-gray-400);
 	--menu-item-group: var(--blue-gray-50);
+	--menu-text-versions: var(--blue-400);
+	--menu-separador-color: var(--overlay-white-sm);
+	--menu-cabecera-shadow: var(--shadow-md);
+	--menu-toggle-bg: var(--gray-150);
+	--menu-toggle-bg-before: var(--gray-5);
+	--menu-toggle-checked: var(--blue-600);
+	--menu-overlay-item: var(--overlay-white-md);
+	--menu-select-item-hover: var(--blue-gray-100);
 }

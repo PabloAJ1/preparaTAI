@@ -1,15 +1,24 @@
 <template>
-	<AppCabeceraCuestionario :nombre="id" :total-preguntas="numeroPreguntas" />
+	<AppCabeceraCuestionario 
+		:nombre="id" 
+		:total-preguntas="numeroPreguntas" 
+		:modo="modo" 
+		@toggleMostrarPreguntas="handleToggleMostrarPreguntas"
+		@toggleAutoScroll="handleToggleAutoScroll"
+	/>
 
 	<TransitionGroup name="fade-slide" tag="div" id="lista-preguntas">
 		<AppPreguntaCuestionario
 			v-for="(pregunta, index) in listadoPreguntas"
-			:key="pregunta.id"
 			:id="'pregunta-' + index"
+			:key="pregunta.id"
 			:pregunta="pregunta"
 			:indice="index"
 			:modo="modo"
-			@descartar="eliminarPregunta" />
+			:mostrarPreguntas="mostrarPreguntas"
+			:autoScroll="autoScroll"
+			@descartar="eliminarPregunta" 
+		/>
 	</TransitionGroup>
 	<!-- Sentinel separado al final de la página -->
 	<div class="sentinel-spacer"></div>
@@ -22,7 +31,7 @@
 import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCuestionario.vue';
 import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
 import { useTestAttempt } from '../composables/useTestAttempt';
-import { ref, onUnmounted } from 'vue';
+import { ref, onUnmounted, onMounted } from 'vue';
 import { Configuration, PreguntasApi, Pregunta } from '@preparatai/api-client';
 import { useInfiniteScroll } from '../composables/useInfiniteScroll';
 
@@ -46,8 +55,27 @@ const { getAttempt, clearAttempt } = useTestAttempt(id);
 const { seed } = getAttempt();
 const listadoPreguntas = ref<Pregunta[]>([]); // inicializamos con array vacío
 const sentinelRef = ref<HTMLElement | null>(null);
+const mostrarPreguntas = ref(true)
+const autoScroll = ref(true)
+
+function handleToggleMostrarPreguntas(valor: boolean) {
+	mostrarPreguntas.value = valor
+}
+
+function handleToggleAutoScroll(valor: boolean) {
+	autoScroll.value = valor
+}
 
 useInfiniteScroll(cargarPreguntas, sentinelRef);
+
+onMounted(async () => {
+	// cargar preferencias
+	mostrarPreguntas.value =
+		localStorage.getItem("mostrarPreguntas") !== "false"
+
+	autoScroll.value =
+		localStorage.getItem("autoScroll") !== "false"
+})
 
 onUnmounted(() => {
 	clearAttempt();
@@ -84,24 +112,5 @@ function eliminarPregunta(id: string) {
 <style scoped>
 .sentinel-spacer {
 	height: 1px;
-}
-
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-	transition: all 0.3s ease;
-}
-
-.fade-slide-enter-from {
-	opacity: 0;
-	transform: translateY(10px);
-}
-
-.fade-slide-leave-to {
-	opacity: 0;
-	transform: translateX(-80px);
-}
-
-.fade-slide-move {
-	transition: transform 0.3s ease;
 }
 </style>

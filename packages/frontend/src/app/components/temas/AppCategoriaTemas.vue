@@ -115,7 +115,7 @@ const colorPorcentaje = computed(() => {
 }
 
 .categoria-card {
-	background: var(--color-white);
+	background: var(--color-cards-bg);
 	border-radius: 16px;
 	border: none;
 	height: 100%;
@@ -157,16 +157,12 @@ const colorPorcentaje = computed(() => {
 
 .categoria-title {
 	margin: 0;
-
 	font-weight: 700;
-	color: var(--color-text-tertiary);
+	color: var(--color-cuestionario-text-secundary);
 	font-size: 1.1rem;
-
 	line-height: 1.3;
-
 	text-overflow: ellipsis;
 	max-width: 100%;
-
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -182,9 +178,9 @@ const colorPorcentaje = computed(() => {
 }
 
 .categoria-count {
-	color: var(--color-text-subs);
+	color: var(--color-cuestionario-text-tertiary);
 	margin-bottom: 1rem;
-		grid-column: 1;
+	grid-column: 1;
 	grid-row: 1;
 }
 
@@ -233,11 +229,10 @@ const colorPorcentaje = computed(() => {
 .categoria-stats {
 	grid-column: 2;
 	grid-row: 1;
-
-	display: flex;          // 👈 falta
+	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	gap: 0.15rem;           // 👈 controla separación
+	gap: 0.15rem;
 }
 
 .stat {

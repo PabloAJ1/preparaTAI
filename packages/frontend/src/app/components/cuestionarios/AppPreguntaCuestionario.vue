@@ -7,6 +7,7 @@
 			:estadisticas="preguntaLocal.estadisticas"
 			:id-pregunta="pregunta.id"
 			:estado="pregunta.estado"
+			:modo="modo"
 			@descartar="$emit('descartar', $event)"
 		/>
 
@@ -20,7 +21,9 @@
 				:respondida="respondida"
 				:seleccionada="respuestaSeleccionada"
 				:modo="props.modo"
-				@seleccionar="verificarRespuesta" />
+				:mostrar-correcta="mostrarPreguntas"
+				@seleccionar="verificarRespuesta" 
+			/>
 		</div>
 	</div>
 </template>
@@ -41,6 +44,8 @@ const props = defineProps<{
 	indice: number;
 	id: string;
 	modo: string;
+	mostrarPreguntas: boolean;
+	autoScroll: boolean;
 }>();
 
 const preguntaLocal = reactive({ ...props.pregunta });
@@ -86,6 +91,9 @@ function actualizarEstadisticas(correcta: boolean) {
 }
 
 function scrollToNext() {
+	if (!props.autoScroll) return;
+	
+
 	setTimeout(() => {
 		// buscar la siguiente tarjeta dentro del contenedor principal
 		const tarjetas = Array.from(

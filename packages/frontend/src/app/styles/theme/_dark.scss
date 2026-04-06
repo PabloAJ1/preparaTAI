@@ -1,80 +1,33 @@
 [data-theme="dark"] {
 	//Colores principales
 	--color-main-bg: var(--dark-blue-800);
-	
+	--color-text-main: var(--blue-80);
+	--color-text-tertiary: var(--blue-80);
+
 	//Colores primarios genericos de los cuestionarios
 	--color-cuestionario-text-primary: var(--blue-480);
 	--color-cuestionario-bg: var(--dark-blue-700);
 	--color-cuestionario-bg-hover: var(--dark-blue-800);
 
-	//Estado Respuestas
-	--color-respuesta-text: var(--blue-gray-20);
-	--color-respuesta-muted: var(--blue-gray-20); // No funciona :S
-
-	/*
-	--color-smoke: var(--gray-800);
-	--color-white: var(--white);
-	--color-black: var(--black);
-	--color-text-main: var(--blue-50);
-	--color-text-sencondary: var(--blue-80);
-	--color-text-tertiary: var(--dark-blue-300);
-	--color-text-versions: var(--blue-400);
-	--color-text-subs: var(--dark-blue-100);
-	--color-modal: var(--dark-blue-300);
-
-	//Colores primarios genericos de los cuestionarios
-	--color-cuestionario-border-color: var(--blue-50);
-
-	//Colores primarios y secundarios para todo lo relativo a los repasos
-	--color-repasos: var(--blue-600);
-	--color-repasos-bg: rgba(59, 130, 246, 0.1);	
-
-	//Colores primarios y secundarios para todo lo relativo a las practicas 
-	--color-practicas: var(--green-600);
-	--color-practicas-bg: rgba(25, 135, 84, 0.1);
-
-	//Colores primarios y secundarios para todo lo relativo a los examenes
-	--color-examenes: var(--red-600);
-	--color-examenes-bg: rgba(246, 59, 84, 0.1);	
-
-	//Respuestas, aciertos, fallos y stats
-	--color-stat-aciertos: var(--green-600);
-	--color-stat-fallos: var(--red-600);
-	--color-stat-intentos: var(--blue-gray-100); 	
-	--color-stat-warning: var(--yellow-500);
-
-	//Estado Respuestas
-	--color-respuesta-border: var(--blue-50);
-	--color-respuesta-text: var(--dark-blue-500);
-	--color-respuesta-muted: var(--blue-gray-150);
-
-	--color-respuesta-success-bg: var(--green-50);
-	--color-respuesta-success-border: var(--green-250);
-	--color-respuesta-success-icon: var(--green-500);
-
-	--color-respuesta-error-bg: var(--red-50);
-	--color-respuesta-error-border: var(--red-150);
-	--color-respuesta-error-icon: var(--red-500);
-
-	//Editar preguntas
-	--color-editar-pregunta-guardar-bg: var(--green-150);
-	--color-editar-pregunta-guardar: var(--green-800);
-	--color-editar-pregunta-guardar-hover: var(--green-250);
-	--color-editar-pregunta-cancelar-bg: var(--red-75);
-	--color-editar-pregunta-cancelar: var(--red-800);
-	--color-editar-pregunta-cancelar-hover: var(--red-150);
-
-	//Iconos
-	--color-admin-icons: var(--blue-480);
+	//Navbar superior
+	--color-navbar-bg: var(--blue-10);
+	--color-bottom-border: var(--gray-65);
+	--color-box-shadow: var(--shadow-md);
 	--color-menu-icons: var(--dark-blue-100);
+	--color-menu-icons-hover: var(--blue-600);
 
-	//Cabecera
-	--color-cabecera-bg: var(--dark-blue-500);
-	
+	//Categoiras
+	--color-cabecera-repaso: var(--ice-blue-500);
+	--color-cabecera-practica: var(--green-550);
+	--color-cabecera-examen: var(--red-250);
+
 	//Barra de busqueda
-	--color-search-icon: var(--blue-gray-100);
-	--color-search-bg: var(--blue-gray-50);
+	--color-search-icon: var(--blue-gray-50);
+	--color-search-border: var(--dark-blue-800);
+	--color-search-bg: var(--dark-blue-300);
+	--color-search-text: var(--blue-10);
+	--color-search-text-placeholder: var(--blue-gray-50);
 
-	//Otros
-	--color-bt-close: var(--dark-blue-100);*/
+	//Admin page
+	--color-card-admin-bg: var(--dark-blue-700)
 }

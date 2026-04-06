@@ -23,10 +23,11 @@
 
 .menu-footer-content {
 	font-size: 0.7rem;
-	border-top: 1px solid var(--color-white);
+	border-top: 1px solid var(--menu-separador-color);
 	padding-top: 0.75rem;
 	opacity: 0.75;
 	color: var(--menu-text);
+	background: var(--menu-cabecera-shadow);
 }
 
 .menu-footer-content p {
@@ -34,7 +35,7 @@
 }
 
 .menu-footer-content strong {
-	color: var(--color-white);
+	color: var(--menu-text-strong);
 }
 </style>
 
