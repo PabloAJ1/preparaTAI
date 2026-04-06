@@ -7,6 +7,9 @@ import { IPreguntaSQL } from '../dtos/preguntaSQL.dto';
 import { MapPreguntas } from '../mappers/mapPreguntas.mapper';
 
 export class PreguntaRepositoryMySQL implements IPreguntaRepository {
+	getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
+		throw new Error('Method not implemented.');
+	}
 	createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
 		throw new Error('Method not implemented.');
 	}

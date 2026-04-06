@@ -15,6 +15,7 @@ export class MapGrupoPreguntasPoblado {
 			textoPre: grupoPregunta.textoPre,
 			textoPos: grupoPregunta.textoPos,
 			preguntas: preguntas,
+			id: grupoPregunta.idGrupoPreguntas
 		};
 	}
 }

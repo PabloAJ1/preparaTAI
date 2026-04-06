@@ -37,6 +37,7 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 			await migrationCaseUse.exec();
 			expect(true).toBeTruthy();
 		}catch(e){
+			console.error(e)
 			throw new Error("No deberia llegar aqui. Err.: " + e)
 		}
 	});
