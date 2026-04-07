@@ -7,6 +7,7 @@ import PracticaPage from '../pages/PracticaPage.vue'
 import TestPage from '../pages/TestPage.vue'
 import ExamenesPage from '../pages/ExamenesPage.vue'
 import GestionDBPage from '../pages/GestionDBPage.vue'
+import GrupoPreguntasPage from '../pages/GrupoPreguntasPage.vue';
 
 const routes = [
 	{
@@ -25,6 +26,9 @@ const routes = [
 			},{
 				path: '/examenes',
 				component: ExamenesPage,
+			},{
+				path: '/grupoPreguntas',
+				component: GrupoPreguntasPage,
 			},{
 				path: '/test/categoria/:modo/:id',
 				name: 'TestByCategoria',

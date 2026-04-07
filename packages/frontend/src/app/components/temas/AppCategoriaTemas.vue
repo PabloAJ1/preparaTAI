@@ -61,7 +61,7 @@ import { computed } from 'vue';
 
 const props = defineProps<{
 	categoria: CategoriaResumen;
-	modo?: 'repaso' | 'practica' | 'examen';
+	modo?: 'repaso' | 'practica' | 'examen' | 'grupo';
 }>();
 
 const icono = computed(() => {
