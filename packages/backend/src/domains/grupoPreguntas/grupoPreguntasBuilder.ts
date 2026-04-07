@@ -1,0 +1,33 @@
+import { BuscarOCrearCategoria } from "../categoriasDomain/application/useCases/buscarOCrearCategoria";
+import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
+import { CrearPregunta } from "../preguntasDomain/application/useCases/createPregunta";
+import { GetVariasPreguntasPorIds } from "../preguntasDomain/application/useCases/getVariasPreguntasPorIds";
+import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
+import { GetGrupoPreguntasByIdCategoria } from "./applications/useCases/getGrupoPreguntasByIdCategoria.interface";
+import { PreguntasPortService } from "./infrastructure/adapters/ports/preguntasPort.service";
+import { GrupoPreguntasRepositoryMongo } from "./infrastructure/mongo/repositories/grupoPreguntasRepositoryMongo.repository"
+
+export const grupoPreguntasBuilder = () => {
+	const grupoPreguntasRepositoryMongo = new GrupoPreguntasRepositoryMongo();
+	const preguntasRepositoryMongo = new PreguntaRespositoryMongoDB();
+	const categoriaRepositoryMongo = new CategoriaRepositoryMongo();
+
+	const buscarOCrearCategoria = new BuscarOCrearCategoria(categoriaRepositoryMongo);
+	const createPregunta = new CrearPregunta(preguntasRepositoryMongo);
+	const getVariasPreguntasPorId = new GetVariasPreguntasPorIds(preguntasRepositoryMongo)
+
+	const preguntasPortService = new PreguntasPortService(
+		getVariasPreguntasPorId,
+		createPregunta,
+		buscarOCrearCategoria
+	)
+
+	const getGrupoPreguntasByIdCategoria = new GetGrupoPreguntasByIdCategoria(
+		grupoPreguntasRepositoryMongo,
+		preguntasPortService
+	)
+
+	return {
+		getGrupoPreguntasByIdCategoria
+	}
+}

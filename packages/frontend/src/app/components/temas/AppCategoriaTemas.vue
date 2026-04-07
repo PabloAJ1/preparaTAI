@@ -34,10 +34,11 @@
 
 					<router-link
 						v-if="categoria?.id"
+						:key="$route.name"
 						:class="linkClase"
 						:modo="modo"
 						:to="{
-							name: 'TestByCategoria',
+							name: modo !== 'grupo' ? 'TestByCategoria' : 'TestByGrupo',
 							params: { id: categoria.id, modo: modo },
 						}"
 						class="categoria-link">
@@ -80,12 +81,14 @@ const linkClase = computed(() => ({
 	'categoria-link-repaso': props.modo === 'repaso',
 	'categoria-link-practica': props.modo === 'practica',
 	'categoria-link-examen': props.modo === 'examen',
+	'categoria-link-grupo': props.modo === 'grupo',
 }));
 
 const iconoClase = computed(() => ({
 	'categoria-icon-repaso': props.modo === 'repaso',
 	'categoria-icon-practica': props.modo === 'practica',
 	'categoria-icon-examen': props.modo === 'examen',
+	'categoria-icon-grupos': props.modo === 'grupo',
 }));
 
 const porcentajeAcierto = computed(() => {
@@ -223,6 +226,18 @@ const colorPorcentaje = computed(() => {
 	color: var(--color-examenes);
 	&:hover {
 		color: color-mix(in srgb, var(--color-examenes) 90%, var(--color-black));
+	}
+}
+
+.categoria-icon-grupos {
+	background: var(--color-grupos-bg);
+	color: var(--color-grupos);
+}
+
+.categoria-link-grupo {
+	color: var(--color-grupos);
+	&:hover {
+		color: color-mix(in srgb, var(--color-grupos) 90%, var(--color-black));
 	}
 }
 

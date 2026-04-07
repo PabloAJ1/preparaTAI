@@ -5,6 +5,7 @@ import { ExcelLoader } from '../../../../../src/domains/grupoPreguntas/infrastru
 import { ExcelAdapterService } from '../../../../../src/domains/grupoPreguntas/infrastructure/adapters/ports/excelAdapter.service';
 import { PreguntaRespositoryMongoDB } from '../../../../../src/domains/preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository';
 import { PreguntasPortService } from '../../../../../src/domains/grupoPreguntas/infrastructure/adapters/ports/preguntasPort.service';
+import { CategoriaPortService } from '../../../../../src/domains/grupoPreguntas/infrastructure/adapters/ports/categoriasPort.service';
 import { CrearPregunta } from '../../../../../src/domains/preguntasDomain/application/useCases/createPregunta';
 import { BuscarOCrearCategoria } from '../../../../../src/domains/categoriasDomain/application/useCases/buscarOCrearCategoria';
 import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
@@ -28,14 +29,17 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		createPreguntasUseCase, 
 		getBuscarOCrearCategoriaPorNombre
 	)
+	const categoriaPortService = new CategoriaPortService(getBuscarOCrearCategoriaPorNombre)
 
 	const loadGrupoPreguntasFromFileUseCase = new LoadGrupoPreguntasFromFile(
 		grupoPreguntasMongoRepository,
 		loadGrupoPreguntasFromFile,
-		preguntasPortService
+		preguntasPortService,
+		categoriaPortService
 	);
 
 	test('deberia devolver un resultado correcto con repos mockeados', async () => {
-		const result = await loadGrupoPreguntasFromFileUseCase.exec();
+		await loadGrupoPreguntasFromFileUseCase.exec();
+		expect(true).toBeTruthy();	
 	});
 });

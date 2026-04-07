@@ -28,6 +28,13 @@
 			class="list-group-item list-group-item-action list-group-item-dark"
 		>
 			<i class="fa-solid fa-file-signature" /> Examenes
+		</router-link>
+
+		<router-link
+			to="/grupoPreguntas"
+			class="list-group-item list-group-item-action list-group-item-dark"
+		>
+			<i class="fa-solid fa-layer-group" /> Grupo de Preguntas
 		</router-link>		
 	</section>
 </template>

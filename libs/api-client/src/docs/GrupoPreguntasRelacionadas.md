@@ -7,7 +7,11 @@
 Name | Type
 ------------ | -------------
 `id` | string
-`textoBase` | string
+`idGrupoPregunta` | string
+`textoPre` | string
+`textoPos` | string
+`codigo` | string
+`lenguaje` | string
 `preguntas` | [Array&lt;Pregunta&gt;](Pregunta.md)
 
 ## Example
@@ -18,7 +22,11 @@ import type { GrupoPreguntasRelacionadas } from ''
 // TODO: Update the object below with actual values
 const example = {
   "id": null,
-  "textoBase": null,
+  "idGrupoPregunta": null,
+  "textoPre": null,
+  "textoPos": null,
+  "codigo": null,
+  "lenguaje": null,
   "preguntas": null,
 } satisfies GrupoPreguntasRelacionadas
 

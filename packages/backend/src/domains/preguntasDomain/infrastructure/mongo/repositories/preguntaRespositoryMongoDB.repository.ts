@@ -8,6 +8,10 @@ import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
 import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async getVariasPreguntasPorIds(idsPreguntas: string[]): Promise<Pregunta[]> {
+		return this.#getPreguntasByQuery({ idPregunta: { $in: idsPreguntas} })
+	}
+
 	async getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
 		const doc = await preguntaModel.aggregate([
 			{
@@ -157,7 +161,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 	}
 
 	async createPregunta(pregunta: Pregunta): Promise<Pregunta> {
-		const modelPregunta = MapPreguntasMongo.toModel(pregunta);
+		const modelPregunta = MapPreguntasMongo.toModel(pregunta);;
 		const doc = await preguntaModel.create(modelPregunta);
 		return MapPreguntasMongo.toEntity(doc);
 	}

@@ -8,7 +8,7 @@ export class MapsPregunta {
 	public static toEntity(dto: IPreguntaDto): Pregunta {
 		return Pregunta.crear({
 			enunciado: dto.enunciado,
-			categorias: [],
+			categorias: dto.categorias ?? [],
 			respuestas: dto.respuestas.map((r) => {
 				return RespuestaVo.crear({
 					correcta: r.correcta,

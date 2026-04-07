@@ -13,7 +13,11 @@ Name | Type
 `respuestas` | [Array&lt;Respuesta&gt;](Respuesta.md)
 `categorias` | [Array&lt;Categoria&gt;](Categoria.md)
 `estadisticas` | [Estadistica](Estadistica.md)
-`textoBase` | string
+`idGrupoPregunta` | string
+`textoPre` | string
+`textoPos` | string
+`codigo` | string
+`lenguaje` | string
 `preguntas` | [Array&lt;Pregunta&gt;](Pregunta.md)
 
 ## Example
@@ -30,7 +34,11 @@ const example = {
   "respuestas": null,
   "categorias": null,
   "estadisticas": null,
-  "textoBase": null,
+  "idGrupoPregunta": null,
+  "textoPre": null,
+  "textoPos": null,
+  "codigo": null,
+  "lenguaje": null,
   "preguntas": null,
 } satisfies ExamenPreguntasInner
 

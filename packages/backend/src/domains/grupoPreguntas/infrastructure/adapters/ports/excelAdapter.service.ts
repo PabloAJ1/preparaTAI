@@ -19,8 +19,9 @@ export class ExcelAdapterService implements ILoadPreguntasFromFilePort {
 			// Si no existe el grupo, lo creamos
 			if (!gruposMap.has(linea.id)) {
 				gruposMap.set(linea.id, {
+					idGrupoPregunta: linea.examen,
 					textoPre: linea.Pre,
-					textoPos: "",
+					textoPos: linea.Pos,
 					codigo: {
 						codigo: linea.Code,
 						lenguaje: linea.lenguaje,
@@ -46,7 +47,7 @@ export class ExcelAdapterService implements ILoadPreguntasFromFilePort {
 					enunciado: linea.respuesta4,
 					correcta: linea.correcta === "a"
 				}],
-				enunciado: linea.Post,
+				enunciado: linea.Pregunta,
 				estadisticas: { aciertos: 0, fallos: 0, total: 0},
 				id: "nuevo"
 			};

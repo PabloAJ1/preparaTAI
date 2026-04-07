@@ -11,27 +11,34 @@ export class GetCategoriasByTipo implements IGetCategoriasByTipo {
 		private readonly preguntasPort: IPreguntasPort
 	) {}
 
-	async exec(tipoCategoria: 'PRACTICA' | 'NORMAL' | 'EXAMEN' = 'NORMAL'): Promise<CategoriaResumenDto[]> {
-		const result = await this.categoriasRepositories.getCategoriasByType(this.#tipoStringToEnum(tipoCategoria));
+	async exec(
+		tipoCategoria:
+			| 'PRACTICA'
+			| 'NORMAL'
+			| 'EXAMEN'
+			| 'GRUPOPREGUNTAS' = 'NORMAL'
+	): Promise<CategoriaResumenDto[]> {
+		const result = await this.categoriasRepositories.getCategoriasByType(
+			this.#tipoStringToEnum(tipoCategoria)
+		);
+
 		const returnResult: CategoriaResumenDto[] = [];
 		for (const categoria of result) {
 			const estadisticas =
 				await this.preguntasPort.getNumeroPreguntasPorCategoria(categoria);
 
-			if(estadisticas.numeroPreguntas > 0)
+			if (estadisticas.numeroPreguntas > 0)
 				returnResult.push(MapCateogiraResumen.toDto(categoria, estadisticas));
 		}
-
 		return returnResult;
 	}
 
 	#tipoStringToEnum(
-		tipo: 'PRACTICA' | 'NORMAL' | 'EXAMEN'
+		tipo: 'PRACTICA' | 'NORMAL' | 'EXAMEN' | 'GRUPOPREGUNTAS'
 	): ETipoCategoria {
-		if (tipo === 'NORMAL')
-			return ETipoCategoria.DEFAULT
-		else if (tipo === 'PRACTICA')
-			return ETipoCategoria.PRACTICA
-		else return ETipoCategoria.EXAMEN
+		if (tipo === 'NORMAL') return ETipoCategoria.DEFAULT;
+		else if (tipo === 'PRACTICA') return ETipoCategoria.PRACTICA;
+		else if (tipo === 'GRUPOPREGUNTAS') return ETipoCategoria.GRUPOPREGUNTAS;
+		else return ETipoCategoria.EXAMEN;
 	}
 }

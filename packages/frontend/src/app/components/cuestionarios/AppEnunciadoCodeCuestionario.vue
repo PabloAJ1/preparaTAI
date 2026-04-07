@@ -27,7 +27,7 @@
 			</h5>
 
 			<pre v-if="codigo" class="bloque-codigo">
-				<code ref="codeEl">{{ codigo }}</code>
+				<AppCodeCuestionario :codigo="codigo" />
 			</pre>
 
 			<p class="pregunta-texto">
@@ -46,8 +46,6 @@
 
 <script setup lang="ts">
 import AppEnunciadoEditable from './AppEnunciadoEditable.vue';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github-dark.css';
 import { computed, nextTick, onMounted, ref } from 'vue';
 import {
 	Configuration,
@@ -55,6 +53,7 @@ import {
 	type Estadistica,
 } from '@preparatai/api-client';
 import AppEstadisticasCuestionario from './AppEstadisticasCuestionario.vue';
+import AppCodeCuestionario from './AppCodeCuestionario.vue';
 
 const api = new PreguntasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
@@ -78,14 +77,7 @@ const textoDespues = partes[2]?.trim() || '';
 const checkPantallaGrande = () => {
 	mostrarBotonEditar.value = window.innerWidth >= 1024; // puedes ajustar a tu breakpoint
 };
-const codeEl = ref<HTMLElement>();
 const textareaEl = ref<HTMLTextAreaElement>();
-
-onMounted(() => {
-	if (codeEl.value) {
-		hljs.highlightElement(codeEl.value);
-	}
-});
 
 onMounted(() => {
 	checkPantallaGrande();
@@ -122,11 +114,18 @@ const colorNumero = computed(() => ({
 	'tema-color-repaso': props.modo === 'repaso',
 	'tema-color-practica': props.modo === 'practica',
 	'tema-color-examen': props.modo === 'examen',
+	'tema-color-grupo': props.modo === 'grupo',
 }));
 </script>
 
 <style scoped lang="scss">
 .pregunta-texto-intro {
+	text-align: left;
+	line-height: 1.4;
+	color: var(--color-text-main);
+}
+
+.pregunta-texto {
 	text-align: left;
 	line-height: 1.4;
 	color: var(--color-text-main);
@@ -138,7 +137,7 @@ const colorNumero = computed(() => ({
 
 .pregunta-cabecera {
 	display: flex;
-	flex-direction: column; // 👈 mobile first
+	flex-direction: column;
 	gap: 0.75rem;
 	padding: 1rem;
 }
@@ -176,6 +175,9 @@ const colorNumero = computed(() => ({
 	}
 	.tema-color-practica {
 		background-color: var(--color-cabecera-practica);
+	}
+	.tema-color-grupo {
+		background-color: var(--color-cabecera-grupo);
 	}
 
 	.pregunta-cabecera {

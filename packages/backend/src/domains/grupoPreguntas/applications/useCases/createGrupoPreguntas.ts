@@ -7,7 +7,7 @@ export class CreateGrupoPreguntas implements ICreateGrupoPreguntas {
 	constructor(private readonly grupoPreguntasRepository: IGrupoPreguntasRepository){}
 	
 	async exec(grupoPreguntasPoblada: IGrupoPreguntasDto): Promise<IGrupoPreguntasDto> {
-		const grupoEntity = MapGrupoPreguntas.toNewEntity(grupoPreguntasPoblada);
+		const grupoEntity = await MapGrupoPreguntas.toNewEntity(grupoPreguntasPoblada);
 		const grupoSaved = await this.grupoPreguntasRepository.createGrupoPreguntas(grupoEntity);
 
 		return MapGrupoPreguntas.toDto(grupoSaved)

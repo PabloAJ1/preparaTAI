@@ -4,7 +4,8 @@ export interface IExcelDto {
 	Pre: string;
 	Code: string;
 	lenguaje: string;
-	Post: string;
+	Pos: string;
+	Pregunta: string;
 	respuesta1: string;
 	respuesta2: string;
 	respuesta3: string;

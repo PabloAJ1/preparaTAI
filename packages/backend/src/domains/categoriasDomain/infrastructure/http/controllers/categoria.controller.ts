@@ -24,10 +24,11 @@ export const makeHandleGetCategoriasResumen = (
 	) => {
 		try{ 
 			const tipo = req.query.tipo as string
-			const tipoMap: Record<string, "PRACTICA" | "EXAMEN" | "NORMAL"> = {
+			const tipoMap: Record<string, "PRACTICA" | "EXAMEN" | "NORMAL" | "GRUPOPREGUNTAS"> = {
 				PRACTICA: "PRACTICA",
 				EXAMEN: "EXAMEN",
 				NORMAL: "NORMAL",
+				GRUPOPREGUNTAS: "GRUPOPREGUNTAS",
 			};
 			const tipoCategoria = tipoMap[tipo?.toUpperCase() ?? "NORMAL"];
 			const result = await getCategoriasResumen.exec(tipoCategoria);

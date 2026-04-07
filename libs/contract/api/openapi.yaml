@@ -298,6 +298,31 @@ paths:
                 items:
                   $ref: '#/components/schemas/GrupoPreguntasRelacionadas'
 
+  /gruposDePreguntasRelacionadas/porCategoria/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la categoria
+        schema:
+          type: string
+    get:
+      summary: Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria
+      operationId: getAllGruposPreguntasByCategoria
+      tags:
+        - gruposDePreguntasRelacionadas
+        - preguntas
+        - categorias
+      responses:
+        '200':
+          description: Listado de preguntas GrupoPreguntasRelacionadas por categproa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GrupoPreguntasRelacionadas'
+
   /examenes:
     get:
       summary: Obtener un listado de los Examenes
@@ -422,12 +447,21 @@ components:
           type: string
       required:
         - enunciado
+
     GrupoPreguntasRelacionadas:
       type: object
       properties:
         id:
           type: string
-        textoBase:
+        idGrupoPregunta:
+          type: string
+        textoPre:
+          type: string
+        textoPos:
+          type: string
+        codigo:
+          type: string
+        lenguaje:
           type: string
         preguntas:
           type: array
@@ -435,8 +469,11 @@ components:
             $ref: '#/components/schemas/Pregunta'
       required:
         - id
-        - textoBase
+        - textoPre
         - preguntas
+        - idGrupoPregunta
+        - codigo
+        - lenguaje
 
     Examen:
       type: object

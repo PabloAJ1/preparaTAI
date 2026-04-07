@@ -40,7 +40,6 @@
 import { CategoriasApi, Configuration } from '@preparatai/api-client';
 import { computed, onMounted, ref } from 'vue';
 
-
 const api = new CategoriasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
@@ -77,6 +76,7 @@ const cabeceraStyle = computed(() => ({
 	'titulo-repaso': props.modo === 'repaso',
 	'titulo-practica': props.modo === 'practica',
 	'titulo-examen': props.modo === 'examen',
+	'titulo-grupo': props.modo === 'grupo',
 }));
 
 function toggleMostrarPreguntas() {
@@ -130,6 +130,9 @@ function toggleAutoScroll() {
 }
 .titulo-practica {
 	color: var(--color-cabecera-practica);
+}
+.titulo-grupo {
+	color: var(--color-cabecera-grupo);
 }
 
 .cuestionario-actions {

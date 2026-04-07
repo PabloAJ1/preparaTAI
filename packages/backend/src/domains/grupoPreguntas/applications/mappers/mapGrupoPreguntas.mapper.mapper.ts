@@ -3,22 +3,24 @@ import { CodigoVo } from "../../domain/valueObjects/codigo.vo";
 import { IGrupoPreguntasDto } from "../dtos/grupoPreguntas.dto";
 
 export class MapGrupoPreguntas {
-	static toEntity(grupoPreguntas: IGrupoPreguntasDto): GrupoPreguntas{
+	static async toEntity(grupoPreguntas: IGrupoPreguntasDto): Promise<GrupoPreguntas> {
 		return GrupoPreguntas.crear({
-			codigo: CodigoVo.crearConPropiedades(grupoPreguntas.codigo.codigo, grupoPreguntas.codigo.lenguaje),
+			codigo: await CodigoVo.crearConPropiedades(grupoPreguntas.codigo.codigo, grupoPreguntas.codigo.lenguaje),
 			idsPreguntas: grupoPreguntas.idPreguntas,
 			textoPos: grupoPreguntas.textoPos,
 			textoPre: grupoPreguntas.textoPre,
-			id: grupoPreguntas.id
+			id: grupoPreguntas.id,
+			idCategoriaGrupoPregunta: grupoPreguntas.idGrupoPregunta,
 		}) 
 	}
 
-	static toNewEntity(grupoPreguntas: IGrupoPreguntasDto): GrupoPreguntas{
+	static async toNewEntity(grupoPreguntas: IGrupoPreguntasDto): Promise<GrupoPreguntas>{
 		return GrupoPreguntas.crear({
-			codigo: CodigoVo.crearConPropiedades(grupoPreguntas.codigo.codigo, grupoPreguntas.codigo.lenguaje),
+			codigo: await CodigoVo.crearConPropiedades(grupoPreguntas.codigo.codigo, grupoPreguntas.codigo.lenguaje),
 			idsPreguntas: grupoPreguntas.idPreguntas,
 			textoPos: grupoPreguntas.textoPos,
 			textoPre: grupoPreguntas.textoPre,
+			idCategoriaGrupoPregunta: grupoPreguntas.idGrupoPregunta,
 		}) 
 	}
 
@@ -31,7 +33,8 @@ export class MapGrupoPreguntas {
 			id: entity.idGrupoPreguntas,
 			textoPos: entity.textoPos,
 			textoPre: entity.textoPre,
-			idPreguntas: entity.preguntas
+			idPreguntas: entity.preguntas,
+			idGrupoPregunta: entity.idCategoriaGrupoPregunta,
 		}
 	}
 }

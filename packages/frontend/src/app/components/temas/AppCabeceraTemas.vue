@@ -53,6 +53,7 @@ const cabeceraStyle = computed(() => ({
 	'tema-color-repaso': props.modo === 'repaso',
 	'tema-color-practica': props.modo === 'practica',
 	'tema-color-examen': props.modo === 'examen',
+	'tema-color-grupo': props.modo === 'grupo',
 }));
 
 const icono = computed(() => {
@@ -92,6 +93,9 @@ const icono = computed(() => {
 }
 .tema-color-practica {
 	color: var(--color-cabecera-practica);
+}
+.tema-color-grupo {
+	color: var(--color-cabecera-grupo);
 }
 
 .cabecera-categorias {

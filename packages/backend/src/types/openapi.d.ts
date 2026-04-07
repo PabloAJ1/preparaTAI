@@ -230,6 +230,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/gruposDePreguntasRelacionadas/porCategoria/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description el identificador de la categoria */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria */
+        get: operations["getAllGruposPreguntasByCategoria"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/examenes": {
         parameters: {
             query?: never;
@@ -305,7 +325,11 @@ export interface components {
         };
         GrupoPreguntasRelacionadas: {
             id: string;
-            textoBase: string;
+            idGrupoPregunta: string;
+            textoPre: string;
+            textoPos?: string;
+            codigo: string;
+            lenguaje: string;
             preguntas: components["schemas"]["Pregunta"][];
         };
         Examen: {
@@ -651,6 +675,29 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Listado de preguntas GrupoPreguntasRelacionadas */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GrupoPreguntasRelacionadas"][];
+                };
+            };
+        };
+    };
+    getAllGruposPreguntasByCategoria: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description el identificador de la categoria */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Listado de preguntas GrupoPreguntasRelacionadas por categproa */
             200: {
                 headers: {
                     [name: string]: unknown;

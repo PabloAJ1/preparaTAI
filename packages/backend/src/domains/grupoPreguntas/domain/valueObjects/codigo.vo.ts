@@ -1,10 +1,13 @@
 import { ELenguaje } from "../enums/lenguaje.enum";
+import { FormateadorCodigoService } from "../services/codeFormat.service";
 import { TCodigo } from "../types/codigo.type";
 
 export class CodigoVo {
 	readonly #props: TCodigo;
 
-	private constructor(props: TCodigo){
+	private constructor(
+		props: TCodigo
+	){
 		this.#props = props;
 	}
 
@@ -15,10 +18,11 @@ export class CodigoVo {
 		return new CodigoVo(props);
 	}
 
-	static crearConPropiedades(codigo: string, lenguajeStr: string){
-		const lenguaje = ELenguaje[lenguajeStr as keyof typeof ELenguaje]; 
+	static async crearConPropiedades(codigo: string, lenguajeStr: string){
+		const lenguaje = ELenguaje[lenguajeStr.toLocaleUpperCase() as keyof typeof ELenguaje]; 
+		const formateadorCodigoService = new FormateadorCodigoService()
 		return this.crearDesdeProps({
-			codigo: codigo,
+			codigo: await formateadorCodigoService.formatear(codigo, lenguaje),
 			lenguaje: lenguaje ?? ELenguaje.OTROS
 		})
 	}
