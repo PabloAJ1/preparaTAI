@@ -58,13 +58,13 @@ export interface Pregunta {
      * @type {string}
      * @memberof Pregunta
      */
-    estado: string;
+    codigo?: string;
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof Pregunta
      */
-    descartada: boolean;
+    estado: string;
     /**
      * 
      * @type {Array<Respuesta>}
@@ -92,7 +92,6 @@ export function instanceOfPregunta(value: object): value is Pregunta {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('enunciado' in value) || value['enunciado'] === undefined) return false;
     if (!('estado' in value) || value['estado'] === undefined) return false;
-    if (!('descartada' in value) || value['descartada'] === undefined) return false;
     if (!('respuestas' in value) || value['respuestas'] === undefined) return false;
     if (!('estadisticas' in value) || value['estadisticas'] === undefined) return false;
     return true;
@@ -110,8 +109,8 @@ export function PreguntaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': json['id'],
         'enunciado': json['enunciado'],
+        'codigo': json['codigo'] == null ? undefined : json['codigo'],
         'estado': json['estado'],
-        'descartada': json['descartada'],
         'respuestas': ((json['respuestas'] as Array<any>).map(RespuestaFromJSON)),
         'categorias': json['categorias'] == null ? undefined : ((json['categorias'] as Array<any>).map(CategoriaFromJSON)),
         'estadisticas': EstadisticaFromJSON(json['estadisticas']),
@@ -131,8 +130,8 @@ export function PreguntaToJSONTyped(value?: Pregunta | null, ignoreDiscriminator
         
         'id': value['id'],
         'enunciado': value['enunciado'],
+        'codigo': value['codigo'],
         'estado': value['estado'],
-        'descartada': value['descartada'],
         'respuestas': ((value['respuestas'] as Array<any>).map(RespuestaToJSON)),
         'categorias': value['categorias'] == null ? undefined : ((value['categorias'] as Array<any>).map(CategoriaToJSON)),
         'estadisticas': EstadisticaToJSON(value['estadisticas']),

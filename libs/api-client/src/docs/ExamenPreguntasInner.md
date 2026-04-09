@@ -8,15 +8,14 @@ Name | Type
 ------------ | -------------
 `id` | string
 `enunciado` | string
+`codigo` | string
 `estado` | string
-`descartada` | boolean
 `respuestas` | [Array&lt;Respuesta&gt;](Respuesta.md)
 `categorias` | [Array&lt;Categoria&gt;](Categoria.md)
 `estadisticas` | [Estadistica](Estadistica.md)
 `idGrupoPregunta` | string
 `textoPre` | string
 `textoPos` | string
-`codigo` | string
 `lenguaje` | string
 `preguntas` | [Array&lt;Pregunta&gt;](Pregunta.md)
 
@@ -29,15 +28,14 @@ import type { ExamenPreguntasInner } from ''
 const example = {
   "id": null,
   "enunciado": null,
+  "codigo": null,
   "estado": null,
-  "descartada": null,
   "respuestas": null,
   "categorias": null,
   "estadisticas": null,
   "idGrupoPregunta": null,
   "textoPre": null,
   "textoPos": null,
-  "codigo": null,
   "lenguaje": null,
   "preguntas": null,
 } satisfies ExamenPreguntasInner

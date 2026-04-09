@@ -5,8 +5,12 @@
  * "Revisado" -> Ha sido revisado por una persona, no está exento de posibles errores
  * "Verificado" -> Ha sido verificado o por una persona o por una plantilla correctora, se supone que es poco probable que esté mal
  */
+
 export enum EEstado {
 	GPT = "GPT",
 	REVISADO = "Revisado",
-	VERIFICADO = "Verificado"
+	VERIFICADO = "Verificado",
+	ENTERRADO = "Enterrado",
+	DESENTERRADO = "Desenterrado",
+	MARCADO = "Marcado para revisar"
 }

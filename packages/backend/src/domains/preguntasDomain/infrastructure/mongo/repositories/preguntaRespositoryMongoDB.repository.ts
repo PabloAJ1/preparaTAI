@@ -8,6 +8,10 @@ import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
 import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]> {
+		return this.#getPreguntasByQuery({estado: "Marcado para revisar"})
+	}
+
 	async getVariasPreguntasPorIds(idsPreguntas: string[]): Promise<Pregunta[]> {
 		return this.#getPreguntasByQuery({ idPregunta: { $in: idsPreguntas} })
 	}
@@ -66,7 +70,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 
 	async getPreguntasEnterradas(): Promise<Pregunta[]> {
 		const query: QueryFilter<IPreguntaDocument> = {
-			descartada: true
+			estado: "Enterrado"
 		}
 
 		return this.#getPreguntasByQuery(query)
@@ -142,7 +146,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 				$match: {
 					categorias: { $in: [idCategoria] },
 					respuestas: { $elemMatch: { correcta: true } },
-					descartada: false,
+					estado: { $ne: "Enterrado" }
 				},
 			},
 			{

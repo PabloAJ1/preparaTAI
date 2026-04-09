@@ -7,11 +7,10 @@ import { IGetPreguntasPorCateogiraConPaginacion } from '../../../application/sig
 import { IRegistarEstadisticaByPregunta } from '../../../application/signatures/registarEstadisticaByPregunta.interface';
 import { IReiniciarEstadisticas } from '../../../application/signatures/reiniciarEstadisticas.interface';
 import { IEnterrarPregunta } from '../../../application/signatures/enterrarPregunta.interface';
-import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById.interface';
+import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById';
 import { IDesenterrarPreguntas } from '../../../application/signatures/desenterrarPreguntas.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
-type TPreguntaUpdate = components['schemas']['PreguntaUpdate'];
 
 const {
 	getNumeroPreguntas,
@@ -96,11 +95,8 @@ export const makeHandleEditarEnunciadoPregunta =
 	(editarEnunciadoPreguntaById: UpdatePreguntaById) =>
 	async (req: Request, res: Response<TPreguntas>, next: NextFunction) => {
 		try {
-			const cuerpo: TPreguntaUpdate = req.body;
-			const preguntaEditada = await editarEnunciadoPreguntaById.exec({
-				...cuerpo,
-				id: req.params.id,
-			});
+			const cuerpo: TPreguntas = req.body;
+			const preguntaEditada = await editarEnunciadoPreguntaById.exec(MapPreguntaController.toDtoInterno(cuerpo));
 			res.json(MapPreguntaController.toType(preguntaEditada));
 		} catch (err) {
 			next(err);

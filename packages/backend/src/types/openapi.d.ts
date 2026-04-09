@@ -78,6 +78,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/pregunta/{id}/revisar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Marca la pregunta para ser revisada */
+        post: operations["marcarParaRevisar"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/pregunta/todas/desenterrar": {
         parameters: {
             query?: never;
@@ -304,6 +321,7 @@ export interface components {
         };
         Respuesta: {
             enunciado: string;
+            id: string;
             correcta: boolean;
         };
         Estadistica: {
@@ -314,8 +332,8 @@ export interface components {
         Pregunta: {
             id: string;
             enunciado: string;
+            codigo?: string;
             estado: string;
-            descartada: boolean;
             respuestas: components["schemas"]["Respuesta"][];
             categorias?: components["schemas"]["Categoria"][];
             estadisticas: components["schemas"]["Estadistica"];
@@ -340,6 +358,8 @@ export interface components {
             subgrupo?: string;
             preguntas?: (components["schemas"]["Pregunta"] | components["schemas"]["GrupoPreguntasRelacionadas"])[];
         };
+        /** @enum {string} */
+        Estado: "GPT" | "VERIFICADO" | "REVISADO" | "ENTERRADO" | "DESENTERRADO" | "MARCADO";
     };
     responses: never;
     parameters: never;
@@ -449,7 +469,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["PreguntaUpdate"];
+                "application/json": components["schemas"]["Pregunta"];
             };
         };
         responses: {
@@ -504,7 +524,28 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description Intento registrado correctamente, sin contenido de respuesta */
+            /** @description Pregunta enterrada */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    marcarParaRevisar: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Identificador de la pregunta */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Pregunta marcada para revisar */
             204: {
                 headers: {
                     [name: string]: unknown;

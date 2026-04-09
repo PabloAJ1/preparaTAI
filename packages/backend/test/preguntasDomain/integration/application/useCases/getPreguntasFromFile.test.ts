@@ -9,6 +9,9 @@ import { CreateListOfCategorias } from '../../../../../src/domains/categoriasDom
 import { CategoriaAdaperServive } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/categoriasAdapter.service';
 import { CategoriasExternasService } from '../../../../../src/domains/preguntasDomain/application/services/CategoriasExternas.service';
 import { LoadPreguntasFromFile } from '../../../../../src/domains/preguntasDomain/application/useCases/loadPreguntasFromFile';
+import { FormateadorCodigoService } from '../../../../../src/shared/infrastructure/services/services/parserCode.service';
+import { DetectorLenguajeHighlight } from '../../../../../src/shared/infrastructure/services/services/highlightDetector.service';
+import { DetectorLenguajeCodigo } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/detectorCodigoPort.service';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > migration ... ', () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -27,18 +30,22 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 		getListOfCategorias
 	)
 	const categoriasExternasService = new CategoriasExternasService(categoriaAdapertService)
+	const formatCodeService = new FormateadorCodigoService();
+	const detectorDeCodigo = new DetectorLenguajeHighlight();
+	const detectarCodigoContenidoEnunciadoService = new DetectorLenguajeCodigo(
+		detectorDeCodigo,
+		formatCodeService,		
+	)	
+
 	const getPreguntasFromFileUseCase = new LoadPreguntasFromFile(
 		excelAdapterService,
 		preguntasRepositoryMongoDB,
-		categoriasExternasService
+		categoriasExternasService,
+		detectarCodigoContenidoEnunciadoService
 	)
 
 	test('deberia leer el fichero y devolver las SQL', async () => {
-		try{
-			await getPreguntasFromFileUseCase.exec();
-			expect(true).toBeTruthy();
-		}catch(e){
-			throw new Error("No deberia llegar aqui. Err.: " + e)
-		}		
+		await getPreguntasFromFileUseCase.exec();
+		expect(true).toBeTruthy();	
 	});
 });

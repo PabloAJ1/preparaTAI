@@ -36,27 +36,32 @@ export class ExcelAdapterService implements ILoadPreguntasFromFilePort {
 				categorias: [linea.examen],
 				respuestas: [{
 					enunciado: linea.respuesta1,
-					correcta: linea.correcta === "a"
+					correcta: linea.correcta === "a",
+					id: 'nuevo'
 				},{
 					enunciado: linea.respuesta2,
-					correcta: linea.correcta === "a"
+					correcta: linea.correcta === "b",
+					id: 'nuevo'
 				},{
 					enunciado: linea.respuesta3,
-					correcta: linea.correcta === "a"
+					correcta: linea.correcta === "c",
+					id: 'nuevo'
 				},{
 					enunciado: linea.respuesta4,
-					correcta: linea.correcta === "a"
+					correcta: linea.correcta === "d",
+					id: 'nuevo'
 				}],
 				enunciado: linea.Pregunta,
 				estadisticas: { aciertos: 0, fallos: 0, total: 0},
+				estado: linea.estado,
 				id: "nuevo"
 			};
 
 			// Añadimos la pregunta al grupo
         	gruposMap.get(linea.id)?.preguntas.push(pregunta);
 
-		}
-		
+		};
+
 		return Array.from(gruposMap.values());
 	}
 }

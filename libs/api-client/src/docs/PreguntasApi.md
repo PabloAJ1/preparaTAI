@@ -15,6 +15,7 @@ All URIs are relative to */api*
 | [**getNumeroDePreguntas**](PreguntasApi.md#getnumerodepreguntas) | **GET** /pregunta/getNumeroDePreguntas | Obtener el numero de preguntas actuales en la base de datos |
 | [**getOnePreguntasById**](PreguntasApi.md#getonepreguntasbyid) | **GET** /pregunta/{id} | Obtener una pregunta por id |
 | [**getPreguntasPorCategoria**](PreguntasApi.md#getpreguntasporcategoria) | **GET** /pregunta/porCategoria/{id} | Obtener las preguntas que pertenecen a una categoria dada |
+| [**marcarParaRevisar**](PreguntasApi.md#marcarpararevisar) | **POST** /pregunta/{id}/revisar | Marca la pregunta para ser revisada |
 | [**registrarIntentoPregunta**](PreguntasApi.md#registrarintentopreguntaoperation) | **POST** /pregunta/{id}/intentos | Registrar intento de respuesta a una pregunta |
 | [**reiniciarContadorDeEstadisticas**](PreguntasApi.md#reiniciarcontadordeestadisticas) | **GET** /pregunta/estadisticas/reiniciar | Reincia las estadisticas de las preguntas |
 | [**updatePreguntaById**](PreguntasApi.md#updatepreguntabyid) | **PATCH** /pregunta/{id} | Actualizar una pregunta por id |
@@ -268,7 +269,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Intento registrado correctamente, sin contenido de respuesta |  -  |
+| **204** | Pregunta enterrada |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -705,6 +706,71 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## marcarParaRevisar
+
+> marcarParaRevisar(id)
+
+Marca la pregunta para ser revisada
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PreguntasApi,
+} from '';
+import type { MarcarParaRevisarRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PreguntasApi();
+
+  const body = {
+    // string | Identificador de la pregunta
+    id: id_example,
+  } satisfies MarcarParaRevisarRequest;
+
+  try {
+    const data = await api.marcarParaRevisar(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | Identificador de la pregunta | [Defaults to `undefined`] |
+
+### Return type
+
+`void` (Empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Pregunta marcada para revisar |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## registrarIntentoPregunta
 
 > registrarIntentoPregunta(id, registrarIntentoPreguntaRequest)
@@ -832,7 +898,7 @@ No authorization required
 
 ## updatePreguntaById
 
-> Pregunta updatePreguntaById(id, preguntaUpdate)
+> Pregunta updatePreguntaById(id, pregunta)
 
 Actualizar una pregunta por id
 
@@ -852,8 +918,8 @@ async function example() {
   const body = {
     // string | el identificador de la pregunta
     id: id_example,
-    // PreguntaUpdate
-    preguntaUpdate: ...,
+    // Pregunta
+    pregunta: ...,
   } satisfies UpdatePreguntaByIdRequest;
 
   try {
@@ -874,7 +940,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | `string` | el identificador de la pregunta | [Defaults to `undefined`] |
-| **preguntaUpdate** | [PreguntaUpdate](PreguntaUpdate.md) |  | |
+| **pregunta** | [Pregunta](Pregunta.md) |  | |
 
 ### Return type
 

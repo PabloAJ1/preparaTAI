@@ -27,6 +27,12 @@ export interface Respuesta {
     enunciado: string;
     /**
      * 
+     * @type {string}
+     * @memberof Respuesta
+     */
+    id: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof Respuesta
      */
@@ -38,6 +44,7 @@ export interface Respuesta {
  */
 export function instanceOfRespuesta(value: object): value is Respuesta {
     if (!('enunciado' in value) || value['enunciado'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('correcta' in value) || value['correcta'] === undefined) return false;
     return true;
 }
@@ -53,6 +60,7 @@ export function RespuestaFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     return {
         
         'enunciado': json['enunciado'],
+        'id': json['id'],
         'correcta': json['correcta'],
     };
 }
@@ -69,6 +77,7 @@ export function RespuestaToJSONTyped(value?: Respuesta | null, ignoreDiscriminat
     return {
         
         'enunciado': value['enunciado'],
+        'id': value['id'],
         'correcta': value['correcta'],
     };
 }

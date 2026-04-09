@@ -27,18 +27,22 @@ export class MapExcelDtoToEntityPregunta {
 				{
 					enunciado: dtoExcel.respuesta1,
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'a',
+					id: 'nueva'
 				},
 				{
 					enunciado: dtoExcel.respuesta2,
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'b',
+					id: 'nueva'
 				},
 				{
 					enunciado: dtoExcel.respuesta3,
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'c',
+					id: 'nueva'
 				},
 				{
 					enunciado: dtoExcel.respuesta4,
 					correcta: dtoExcel.correcta.toLocaleLowerCase() === 'd',
+					id: 'nueva'
 				},
 			],
 			categorias: categorias,

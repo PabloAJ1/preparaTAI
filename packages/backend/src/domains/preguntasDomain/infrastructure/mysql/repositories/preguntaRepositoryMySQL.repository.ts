@@ -7,26 +7,7 @@ import { IPreguntaSQL } from '../dtos/preguntaSQL.dto';
 import { MapPreguntas } from '../mappers/mapPreguntas.mapper';
 
 export class PreguntaRepositoryMySQL implements IPreguntaRepository {
-	getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
-		throw new Error('Method not implemented.');
-	}
-	getVariasPreguntasPorIds(idsPreguntas: string[]): Promise<Pregunta[]> {
-		throw new Error('Method not implemented.');
-	}
-	createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
-		throw new Error('Method not implemented.');
-	}
-	limpiarDB(): Promise<void> {
-		throw new Error('Method not implemented.');
-	}
-	getPreguntasEnterradas(): Promise<Pregunta[]> {
-		throw new Error('Method not implemented.');
-	}
-	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]> {
-		throw new Error('Method not implemented.');
-	}
-	
-	async getNumeroPreguntasTotales(): Promise<number> {
+		async getNumeroPreguntasTotales(): Promise<number> {
 		const [result] = await pool.query<({total: number} & RowDataPacket)[]>(
 			"SELECT COUNT(*) as total FROM ptype"
 		);
@@ -112,5 +93,26 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 	}
 	reiniciarAllEstadisticas(): Promise<void> {
 		throw new Error('No implementado');
+	}
+	getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
+	getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
+		throw new Error('Method not implemented.');
+	}
+	getVariasPreguntasPorIds(idsPreguntas: string[]): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
+	createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
+		throw new Error('Method not implemented.');
+	}
+	limpiarDB(): Promise<void> {
+		throw new Error('Method not implemented.');
+	}
+	getPreguntasEnterradas(): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
+	}
+	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]> {
+		throw new Error('Method not implemented.');
 	}
 }

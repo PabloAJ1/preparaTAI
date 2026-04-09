@@ -14,65 +14,15 @@
 			<span class="valor">{{ props.estadisticas.total }}</span>
 			<span class="label">int.</span>
 		</div>
-
-		<div
-			v-if="mostrarWarning"
-			class="stat warning"
-			@click="abrirModalWarning">
-			<span class="valor">⚠️</span>
-		</div>
-		<div
-			class="stat descartar"
-			@click="descartarPregunta"
-			title="Descartar / Marcar para revisar">
-			<span class="valor">❗</span>
-		</div>
 	</div>
-
-	<AppWarningModal
-		:visible="mostrarModalWarning"
-		titulo="Advertencia"
-		@close="cerrarModalWarning">
-		<p>
-			Esta pregunta ha sido corregida por una IA, toma precauciones a la hora de
-			tomarla como funete de verdad.
-		</p>
-		<p>Si crees que está mal, reportala. Gracias</p>
-	</AppWarningModal>
 </template>
 
 <script setup lang="ts">
 import { Estadistica } from '@preparatai/api-client';
-import AppWarningModal from './AppWarningModal.vue';
-import { computed, ref } from 'vue';
 
 const props = defineProps<{
 	estadisticas: Estadistica;
-	estado: string;
-	idPregunta: string;
 }>();
-
-const mostrarWarning = computed(() => {
-	return props.estado === 'GPT';
-});
-
-const mostrarModalWarning = ref(false);
-
-function abrirModalWarning() {
-	mostrarModalWarning.value = true;
-}
-
-function cerrarModalWarning() {
-	mostrarModalWarning.value = false;
-}
-
-const emit = defineEmits<{
-	(e: 'descartar', id: string): void;
-}>();
-
-function descartarPregunta() {
-	emit('descartar', props.idPregunta);
-}
 </script>
 
 <style lang="scss">
@@ -122,21 +72,5 @@ function descartarPregunta() {
 
 .stat.total {
 	color: var(--color-stat-intentos);
-}
-
-.stat.warning {
-	color: var(--color-stat-warning);
-	margin-left: 0.5rem;
-	cursor: pointer;
-}
-
-.stat.descartar {
-	color: var(--color-stat-warning); // o rojo si quieres peligro
-	cursor: pointer;
-	margin-left: 0.25rem;
-}
-
-.stat.descartar:hover {
-	transform: scale(1.1);
 }
 </style>

@@ -15,7 +15,6 @@ export const makeHandleGetGrupoPreguntasByIdCategoria =
 	async (req: Request, res: Response<TGrupoPreguntas[]>, next: NextFunction) => {
 		try {
 			const idCategoria = req.params.id;
-			console.log(idCategoria);
 			const gruposPreguntas = await getGrupoPreguntasByIdCategoria.exec(idCategoria);
 			res.json(gruposPreguntas.map(MapGrupoPreguntasController.toResponse));
 		} catch (err) {

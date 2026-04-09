@@ -29,7 +29,7 @@ export class PreguntasPortService implements IPreguntasServicePort{
 		for(const pregunta of preguntas){
 			const preguntaAlmacenada = await this.createPregunta.exec({
 				...pregunta,
-				categorias: categoriasConId
+				categorias: categoriasConId,
 			});
 			listaIdPreguntas.push(preguntaAlmacenada.id);
 		}

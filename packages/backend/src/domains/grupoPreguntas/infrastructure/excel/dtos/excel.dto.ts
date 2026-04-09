@@ -1,4 +1,5 @@
 export interface IExcelDto {
+	estado: string;
 	examen: string;
 	id: string;
 	Pre: string;

@@ -7,12 +7,13 @@ export class MapPreguntaController {
 	static toType(dto: IPreguntaDto): TPreguntas {
 		return {
 			enunciado: dto.enunciado,
+			codigo: dto.codigo,
 			id: dto.id,
 			respuestas: dto.respuestas.map(r => { 
 				return {
-					id: 0,
+					id: r.id,
 					correcta: r.correcta,
-					enunciado: r.enunciado
+					enunciado: r.enunciado,
 				}
 			}),
 			estadisticas: {
@@ -20,8 +21,19 @@ export class MapPreguntaController {
 				fallos: dto.estadisticas.fallos,
 				total: dto.estadisticas.total
 			},
-			descartada: dto.descartada,
 			estado: dto.estado,
+		}
+	}
+
+	static toDtoInterno(body: TPreguntas): IPreguntaDto {
+		return {
+			enunciado: body.enunciado,
+			estadisticas: { aciertos: body.estadisticas.aciertos, fallos: body.estadisticas.fallos, total: body.estadisticas.total},
+			estado: body.estado,
+			id: body.id,
+			respuestas: body.respuestas,
+			codigo: body.codigo,
+			categorias: body.categorias?.map(c => c.id) ?? []
 		}
 	}
 }

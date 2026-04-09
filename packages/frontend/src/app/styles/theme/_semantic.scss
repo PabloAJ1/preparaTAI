@@ -2,6 +2,7 @@
 	//Colores principales
 	--color-main-bg: var(--gray-65);
 	--color-smoke: var(--gray-800);
+	--color-smoke-md: var(--gray-600);
 	--color-white: var(--white);
 	--color-black: var(--black);
 	--color-text-main: var(--gray-800);
@@ -12,12 +13,11 @@
 	--color-modal: var(--dark-blue-300);
 
 	//Editar preguntas
-	--color-editar-pregunta-guardar-bg: var(--green-150);
-	--color-editar-pregunta-guardar: var(--green-800);
-	--color-editar-pregunta-guardar-hover: var(--green-250);
-	--color-editar-pregunta-cancelar-bg: var(--red-75);
-	--color-editar-pregunta-cancelar: var(--red-800);
-	--color-editar-pregunta-cancelar-hover: var(--red-150);
+	--color-textbox-bg: var(--gray-5);
+	--color-editar-pregunta-agregar: var(--blue-550);
+	--color-editar-pregunta-agregar-hover: var(--blue-630);
+	--color-editar-eliminar-btn: var(--red-600);
+	--color-editar-eliminar-btn-hover: var(--red-800);
 
 	//Iconos
 	--color-admin-icons: var(--blue-480);

@@ -10,14 +10,14 @@ export class MapGrupoPreguntasController {
 		
 		for(const p of dto.preguntas){
 			preguntas.push({
-				descartada: false,
 				enunciado: p.enunciado,
 				estadisticas: p.estadisticas,
-				estado: '',
+				estado: p.estado,
 				id: p.id,
 				respuestas: p.respuestas.map(r => { return {
 					enunciado: r.enunciado,
 					correcta: r.correcta,
+					id: r.id
 				}})
 			})
 		}

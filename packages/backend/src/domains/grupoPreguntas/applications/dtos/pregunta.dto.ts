@@ -6,5 +6,6 @@ export interface IPreguntaDto {
 	enunciado: string;
 	respuestas: IRespuestaDto[];
 	categorias: string[];
-	estadisticas: IEstadosticasDto
+	estadisticas: IEstadosticasDto,
+	estado: string;
 }

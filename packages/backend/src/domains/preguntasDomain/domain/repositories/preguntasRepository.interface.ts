@@ -11,6 +11,7 @@ export interface IPreguntaRepository {
 	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]>;
 	getVariasPreguntasPorIds(idsPreguntas: string[]): Promise<Pregunta[]>
 	getPreguntasEnterradas(): Promise<Pregunta[]>
+	getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]>
 	getAllPreguntas(): Promise<Pregunta[]>
 	getPreguntaById(idPregunta: string): Promise<Pregunta>;
 	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta>;

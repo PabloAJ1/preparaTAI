@@ -30,11 +30,17 @@ export class FormateadorCodigoService implements IFormateadorCodigo {
 					singleQuote: false 
 			});
 			case ELenguaje.JAVA:
-				return prettier.format(codigo, { 
-					parser: "java", 
-					plugins: [pluginJava],
-					...this.config
-				});
+				try{
+					return prettier.format(codigo, { 
+						parser: "java", 
+						plugins: [pluginJava],
+						...this.config
+					});
+				} catch(err) {
+					console.warn("Error al trasnformar codigo Java. Err.: " + err);
+					return codigo;
+				}
+
 			default:
 				return codigo;
 		}

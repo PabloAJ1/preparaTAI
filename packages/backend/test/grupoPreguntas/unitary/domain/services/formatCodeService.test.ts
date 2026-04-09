@@ -41,7 +41,6 @@ describe('#Test > unitary > domains > grupoPreguntas > domain > services > forma
 			codigoHTMLSinFormato,
 			ELenguaje.HTML
 		);
-		console.log(result);
 		expect(result).toBe(`<html>\n\t<head>\n\t\t<title>Ejemplo de atributo Href</title>\n\t</head>\n\t<body></body>\n</html>\n`);
 	});
 

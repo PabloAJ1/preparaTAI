@@ -38,7 +38,7 @@ export class PreguntasSQLService implements IPreguntaRepositoryPlano {
 
 			result.push(
 				`INSERT IGNORE INTO ptype (id, pregunta, respuesta, categoria) VALUES ('${idPregunta}','${this.#escapeSQL(
-					pregunta.enunciado
+					pregunta.enunciado.enunciado
 				)}','${this.#escapeSQL(correcta)}','2026')`
 			);
 			pregunta.respuestasIncorrecta.forEach((r) => {

@@ -18,6 +18,7 @@
 			:mostrarPreguntas="mostrarPreguntas"
 			:autoScroll="autoScroll"
 			@descartar="eliminarPregunta" 
+			@revisar="marcarParaRevisar" 
 		/>
 	</TransitionGroup>
 	<!-- Sentinel separado al final de la página -->
@@ -107,6 +108,12 @@ function eliminarPregunta(id: string) {
 	listadoPreguntas.value = listadoPreguntas.value.filter((p) => p.id !== id);
 	api.enterrarPregunta({ id: id });
 }
+
+function marcarParaRevisar(id: string) {
+	listadoPreguntas.value = listadoPreguntas.value.filter((p) => p.id !== id);
+	api.marcarParaRevisar({ id: id });
+}
+
 </script>
 
 <style scoped>
