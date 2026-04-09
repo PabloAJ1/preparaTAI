@@ -23,6 +23,9 @@ export class GrupoPreguntas {
 	get preguntas() {
 		return this.#props.idsPreguntas;
 	}
+	get idCategoriaGrupoPregunta() {
+		return this.#props.idCategoriaGrupoPregunta;
+	}
 
 	static crear(props: Omit<TGrupoPreguntas, 'id'> & Partial<Pick<TGrupoPreguntas, 'id'>>): GrupoPreguntas {
 		return new GrupoPreguntas({

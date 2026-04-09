@@ -1,14 +1,15 @@
 <template>
-	<div :id="props.id" class="cuestionario-card">
-		<AppEnunciadoCodeCuestionario
+	<div 
+		:id="props.id" 
+		class="cuestionario-card"
+	>
+		<AppEnunciadoCuestionario
 			v-if="preguntaLocal"
-			:enunciado="preguntaLocal.enunciado"
 			:indice="props.indice"
-			:estadisticas="preguntaLocal.estadisticas"
-			:id-pregunta="pregunta.id"
-			:estado="pregunta.estado"
+			:pregunta="pregunta"
 			:modo="modo"
 			@descartar="$emit('descartar', $event)"
+			@revisar="$emit('revisar', $event)"
 		/>
 
 		<div
@@ -37,7 +38,7 @@ import {
 	Configuration,
 } from '@preparatai/api-client';
 import AppRespuestaCuestionario from './AppRespuestaCuestionario.vue';
-import AppEnunciadoCodeCuestionario from './AppEnunciadoCodeCuestionario.vue';
+import AppEnunciadoCuestionario from './AppEnunciadoCuestionario.vue';
 
 const props = defineProps<{
 	pregunta: Pregunta;
@@ -57,6 +58,7 @@ const api = new PreguntasApi(
 
 const emit = defineEmits<{
 	(e: 'descartar', id: string): void;
+	(e: 'revisar', id: string): void;
 }>();
 
 async function verificarRespuesta(respuesta: Respuesta) {

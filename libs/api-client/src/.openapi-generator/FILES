@@ -9,6 +9,7 @@ docs/Categoria.md
 docs/CategoriaResumen.md
 docs/CategoriasApi.md
 docs/Estadistica.md
+docs/Estado.md
 docs/Examen.md
 docs/ExamenPreguntasInner.md
 docs/ExamenesApi.md
@@ -23,6 +24,7 @@ index.ts
 models/Categoria.ts
 models/CategoriaResumen.ts
 models/Estadistica.ts
+models/Estado.ts
 models/Examen.ts
 models/ExamenPreguntasInner.ts
 models/GrupoPreguntasRelacionadas.ts

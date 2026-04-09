@@ -14,7 +14,7 @@ import { PreguntaRespositoryMongoDB } from './infrastructure/mongo/repositories/
 import { RegistarEstadisticaByPregunta } from './application/useCases/registarEstadisticaByPregunta';
 import { ReiniciarEstadisticas } from './application/useCases/reiniciarEstadisticas.interface';
 import { EnterrarPregunta } from './application/useCases/enterrarPregunta';
-import { UpdatePreguntaById } from './application/useCases/updatePreguntaById.interface';
+import { UpdatePreguntaById } from './application/useCases/updatePreguntaById';
 import { DesenterrarPreguntas } from './application/useCases/desenterrarPreguntas';
 
 export const preguntasBuilder = () => {

@@ -7,6 +7,8 @@ import PracticaPage from '../pages/PracticaPage.vue'
 import TestPage from '../pages/TestPage.vue'
 import ExamenesPage from '../pages/ExamenesPage.vue'
 import GestionDBPage from '../pages/GestionDBPage.vue'
+import GrupoPreguntasPage from '../pages/GrupoPreguntasPage.vue';
+import GrupoTestPage from '../pages/GrupoTestPage.vue';
 
 const routes = [
 	{
@@ -17,21 +19,30 @@ const routes = [
 				path: '',
 				component: InicioPage,
 			},{
-				path: '/repaso',
+				path: 'repaso',
 				component: RepasoPage,
 			},{
-				path: '/practicas',
+				path: 'practicas',
 				component: PracticaPage,
 			},{
-				path: '/examenes',
+				path: 'examenes',
 				component: ExamenesPage,
 			},{
-				path: '/test/categoria/:modo/:id',
+				path: 'grupoPreguntas',
+				component: GrupoPreguntasPage,
+			},{
+				path: 'test/categoria/grupo/:id',
+				name: 'TestByGrupo',
+				component: GrupoTestPage,
+				props: true,
+				},
+				{
+				path: 'test/categoria/:modo(repaso|practica|examen)/:id',
 				name: 'TestByCategoria',
 				component: TestPage,
 				props: true,
 			},{
-				path: '/gestionDB',
+				path: 'gestionDB',
 				component: GestionDBPage,
 			}
 		],

@@ -23,19 +23,19 @@ services:
     environment:
       NODE_ENV: production
       ENVIROMENT: production
-      HOST: 0.0.0.0
-      MONGO_ATLAS: false
-      MONGO_USER: preparaTAI
-      MONGO_PASSWORD: preparaTAI
-      MONGO_SERVER: mongo:27017
-      MONGO_DB: preparaTAI
-      MONGO_AUTH: ?authSource=admin
-      MONGO_TYPE: mongodb
-      MONGO_EXT_TYPE: mongodb+srv
-      MONGO_EXT_USER: preparaTAI
-      MONGO_EXT_PASSWORD: VnuZEU_PY4BXeTj
-      MONGO_EXT_SERVER: cluster0.vz2bbku.mongodb.net
-      MONGO_EXT_DB: preparaTAI
+      HOST: ${HOST}
+      MONGO_ATLAS: ${MONGO_ATLAS}
+      MONGO_USER: ${MONGO_USER}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_SERVER: ${MONGO_SERVER}
+      MONGO_DB: ${MONGO_DB}
+      MONGO_AUTH: ${MONGO_AUTH}
+      MONGO_TYPE: ${MONGO_TYPE}
+      MONGO_EXT_TYPE: ${MONGO_EXT_TYPE}
+      MONGO_EXT_USER: ${MONGO_EXT_USER}
+      MONGO_EXT_PASSWORD: ${MONGO_EXT_PASSWORD}
+      MONGO_EXT_SERVER: ${MONGO_EXT_SERVER}
+      MONGO_EXT_DB: ${MONGO_EXT_DB}
       VITE_API_BASE_URL: /api
     ports:
       - '3005:3000'

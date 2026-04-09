@@ -7,7 +7,7 @@ export class CrearPregunta implements ICrearPregunta {
 	constructor(private readonly preguntaRepository: IPreguntaRepository) {}
 
 	async exec(preguntaDto: IPreguntaDto): Promise<IPreguntaDto> {
-		const entity = MapsPregunta.toEntity(preguntaDto);
+		const entity = MapsPregunta.toEntityNueva(preguntaDto);
 		const saved = await this.preguntaRepository.createPregunta(entity);
 		const savedDto = MapsPregunta.toDto(saved);
 		return savedDto;

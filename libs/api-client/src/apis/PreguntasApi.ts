@@ -18,7 +18,6 @@ import type {
   Examen,
   GrupoPreguntasRelacionadas,
   Pregunta,
-  PreguntaUpdate,
   RegistrarIntentoPreguntaRequest,
 } from '../models/index';
 import {
@@ -28,8 +27,6 @@ import {
     GrupoPreguntasRelacionadasToJSON,
     PreguntaFromJSON,
     PreguntaToJSON,
-    PreguntaUpdateFromJSON,
-    PreguntaUpdateToJSON,
     RegistrarIntentoPreguntaRequestFromJSON,
     RegistrarIntentoPreguntaRequestToJSON,
 } from '../models/index';
@@ -46,6 +43,10 @@ export interface EnterrarPreguntaRequest {
     id: string;
 }
 
+export interface GetAllGruposPreguntasByCategoriaRequest {
+    id: string;
+}
+
 export interface GetOnePreguntasByIdRequest {
     id: string;
 }
@@ -57,6 +58,10 @@ export interface GetPreguntasPorCategoriaRequest {
     seed?: number;
 }
 
+export interface MarcarParaRevisarRequest {
+    id: string;
+}
+
 export interface RegistrarIntentoPreguntaOperationRequest {
     id: string;
     registrarIntentoPreguntaRequest: RegistrarIntentoPreguntaRequest;
@@ -64,7 +69,7 @@ export interface RegistrarIntentoPreguntaOperationRequest {
 
 export interface UpdatePreguntaByIdRequest {
     id: string;
-    preguntaUpdate: PreguntaUpdate;
+    pregunta: Pregunta;
 }
 
 /**
@@ -318,6 +323,51 @@ export class PreguntasApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for getAllGruposPreguntasByCategoria without sending the request
+     */
+    async getAllGruposPreguntasByCategoriaRequestOpts(requestParameters: GetAllGruposPreguntasByCategoriaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getAllGruposPreguntasByCategoria().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/gruposDePreguntasRelacionadas/porCategoria/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria
+     */
+    async getAllGruposPreguntasByCategoriaRaw(requestParameters: GetAllGruposPreguntasByCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GrupoPreguntasRelacionadas>>> {
+        const requestOptions = await this.getAllGruposPreguntasByCategoriaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(GrupoPreguntasRelacionadasFromJSON));
+    }
+
+    /**
+     * Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria
+     */
+    async getAllGruposPreguntasByCategoria(requestParameters: GetAllGruposPreguntasByCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GrupoPreguntasRelacionadas>> {
+        const response = await this.getAllGruposPreguntasByCategoriaRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Creates request options for getAllPreguntas without sending the request
      */
     async getAllPreguntasRequestOpts(): Promise<runtime.RequestOpts> {
@@ -498,6 +548,50 @@ export class PreguntasApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for marcarParaRevisar without sending the request
+     */
+    async marcarParaRevisarRequestOpts(requestParameters: MarcarParaRevisarRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling marcarParaRevisar().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/pregunta/{id}/revisar`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Marca la pregunta para ser revisada
+     */
+    async marcarParaRevisarRaw(requestParameters: MarcarParaRevisarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.marcarParaRevisarRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Marca la pregunta para ser revisada
+     */
+    async marcarParaRevisar(requestParameters: MarcarParaRevisarRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.marcarParaRevisarRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * Creates request options for registrarIntentoPregunta without sending the request
      */
     async registrarIntentoPreguntaRequestOpts(requestParameters: RegistrarIntentoPreguntaOperationRequest): Promise<runtime.RequestOpts> {
@@ -598,10 +692,10 @@ export class PreguntasApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['preguntaUpdate'] == null) {
+        if (requestParameters['pregunta'] == null) {
             throw new runtime.RequiredError(
-                'preguntaUpdate',
-                'Required parameter "preguntaUpdate" was null or undefined when calling updatePreguntaById().'
+                'pregunta',
+                'Required parameter "pregunta" was null or undefined when calling updatePreguntaById().'
             );
         }
 
@@ -620,7 +714,7 @@ export class PreguntasApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: PreguntaUpdateToJSON(requestParameters['preguntaUpdate']),
+            body: PreguntaToJSON(requestParameters['pregunta']),
         };
     }
 

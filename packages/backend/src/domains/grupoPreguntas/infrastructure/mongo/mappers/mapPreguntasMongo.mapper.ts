@@ -12,20 +12,22 @@ export class MapPreguntasMongo {
 			id: entity.idGrupoPreguntas,
 			preguntas: entity.preguntas,
 			textoPre: entity.textoPre,
-			textoPos: entity.textoPos
+			textoPos: entity.textoPos,
+			idGrupoPregunta: entity.idCategoriaGrupoPregunta
 		}
 	}
 
-	static toEntity(model: IGrupoPreguntasMongo): GrupoPreguntasEntity {
+	static async toEntity(model: IGrupoPreguntasMongo): Promise<GrupoPreguntasEntity> {
 		return GrupoPreguntasEntity.crear({
-			codigo: CodigoVo.crearConPropiedades(
+			codigo: await CodigoVo.crearConPropiedades(
 				model.codigo.codigo,
 				model.codigo.lenguaje
 			),
 			idsPreguntas: model.preguntas,
 			textoPre: model.textoPre,
 			textoPos: model.textoPos,
-			id: model.id
+			id: model.id,
+			idCategoriaGrupoPregunta: model.idGrupoPregunta
 		})
 	}
 }

@@ -9,7 +9,7 @@ export class EstadoHelper {
 		if (!EEstado[key]) {
 			//throw new Error(`Estado inválido: ${value}`);
 			//De momento este por defecto y que no falle
-			return EEstado.REVISADO
+			return EEstado.MARCADO
 		}
 
 		return EEstado[key];

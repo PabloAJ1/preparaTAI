@@ -9,7 +9,7 @@ import { CreateListOfCategorias } from '../../../../../src/domains/categoriasDom
 import { CategoriaAdaperServive } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/categoriasAdapter.service';
 import { CategoriasExternasService } from '../../../../../src/domains/preguntasDomain/application/services/CategoriasExternas.service';
 import { LoadPracticasFromFile } from '../../../../../src/domains/preguntasDomain/application/useCases/loadPracticasFromFile';
-import { GeneradorDePreguntasDePracticaService } from '../../../../../src/domains/preguntasDomain/application/services/GeneradorDePreguntasDePractica.service';
+import { GeneradorDePreguntasDePracticaService } from '../../../../../src/domains/preguntasDomain/infrastructure/adapters/ports/GeneradorDePreguntasDePractica.service';
 
 describe('#Test > integration > domains > preguntasDomain > application > usesCases > migration ... ', () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();

@@ -23,8 +23,8 @@ import {
 
 // Props para personalizar la página
 const props = defineProps<{
-	tipoCategoria: 'PRACTICA' | 'EXAMEN' | 'NORMAL';
-	modo: 'practica' | 'examen' | 'repaso';
+	tipoCategoria: 'PRACTICA' | 'EXAMEN' | 'NORMAL' | 'GRUPOPREGUNTAS';
+	modo: 'practica' | 'examen' | 'repaso' | 'grupo';
 }>();
 
 const api = new CategoriasApi(

@@ -1,9 +1,10 @@
-import { Pregunta } from "../../domain/entities/Pregunta";
-import { EstadisticaVO } from "../../domain/valueObjects/Estadistica.vo";
-import { RespuestaVo } from "../../domain/valueObjects/RespuestaVo";
-import { ICategoriaDto } from "../dtos/categoria.dto";
-import { IPreguntaMigrationDto } from "../dtos/preguntaMigration.interface";
-import { IGeneradorDePreguntasDePracticaService } from "../signatures/generadorDePreguntasDePracticaService.interface";
+import { Pregunta } from "../../../domain/entities/Pregunta";
+import { ContenidoPregunta } from "../../../domain/valueObjects/contenidoPregunta.vo";
+import { EstadisticaVO } from "../../../domain/valueObjects/estadistica.vo";
+import { RespuestaVo } from "../../../domain/valueObjects/RespuestaVo";
+import { ICategoriaDto } from "../../../application/dtos/categoria.dto";
+import { IPreguntaMigrationDto } from "../../../application/dtos/preguntaMigration.interface";
+import { IGeneradorDePreguntasDePracticaService } from "../../../application/signatures/generadorDePreguntasDePracticaService.interface";
 
 export class GeneradorDePreguntasDePracticaService implements IGeneradorDePreguntasDePracticaService {
 	exec(preguntas: IPreguntaMigrationDto[], categorias: Map<string, ICategoriaDto>): Pregunta[] {
@@ -49,7 +50,9 @@ export class GeneradorDePreguntasDePracticaService implements IGeneradorDePregun
 
 				preguntasFinales.push(
 					Pregunta.crear({
-					enunciado: pregunta.enunciado,
+					enunciado: ContenidoPregunta.crearPregunta({
+						enunciado: pregunta.enunciado
+					}),
 					categorias: [categoria],
 					respuestas,
 					estadisticas: EstadisticaVO.inicializar(),

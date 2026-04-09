@@ -38,7 +38,31 @@ export interface GrupoPreguntasRelacionadas {
      * @type {string}
      * @memberof GrupoPreguntasRelacionadas
      */
-    textoBase: string;
+    idGrupoPregunta: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrupoPreguntasRelacionadas
+     */
+    textoPre: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrupoPreguntasRelacionadas
+     */
+    textoPos?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrupoPreguntasRelacionadas
+     */
+    codigo: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrupoPreguntasRelacionadas
+     */
+    lenguaje: string;
     /**
      * 
      * @type {Array<Pregunta>}
@@ -52,7 +76,10 @@ export interface GrupoPreguntasRelacionadas {
  */
 export function instanceOfGrupoPreguntasRelacionadas(value: object): value is GrupoPreguntasRelacionadas {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('textoBase' in value) || value['textoBase'] === undefined) return false;
+    if (!('idGrupoPregunta' in value) || value['idGrupoPregunta'] === undefined) return false;
+    if (!('textoPre' in value) || value['textoPre'] === undefined) return false;
+    if (!('codigo' in value) || value['codigo'] === undefined) return false;
+    if (!('lenguaje' in value) || value['lenguaje'] === undefined) return false;
     if (!('preguntas' in value) || value['preguntas'] === undefined) return false;
     return true;
 }
@@ -68,7 +95,11 @@ export function GrupoPreguntasRelacionadasFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'id': json['id'],
-        'textoBase': json['textoBase'],
+        'idGrupoPregunta': json['idGrupoPregunta'],
+        'textoPre': json['textoPre'],
+        'textoPos': json['textoPos'] == null ? undefined : json['textoPos'],
+        'codigo': json['codigo'],
+        'lenguaje': json['lenguaje'],
         'preguntas': ((json['preguntas'] as Array<any>).map(PreguntaFromJSON)),
     };
 }
@@ -85,7 +116,11 @@ export function GrupoPreguntasRelacionadasToJSONTyped(value?: GrupoPreguntasRela
     return {
         
         'id': value['id'],
-        'textoBase': value['textoBase'],
+        'idGrupoPregunta': value['idGrupoPregunta'],
+        'textoPre': value['textoPre'],
+        'textoPos': value['textoPos'],
+        'codigo': value['codigo'],
+        'lenguaje': value['lenguaje'],
         'preguntas': ((value['preguntas'] as Array<any>).map(PreguntaToJSON)),
     };
 }

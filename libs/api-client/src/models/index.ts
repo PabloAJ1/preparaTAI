@@ -3,6 +3,7 @@
 export * from './Categoria';
 export * from './CategoriaResumen';
 export * from './Estadistica';
+export * from './Estado';
 export * from './Examen';
 export * from './ExamenPreguntasInner';
 export * from './GrupoPreguntasRelacionadas';

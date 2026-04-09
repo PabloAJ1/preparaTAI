@@ -17,13 +17,20 @@ import * as runtime from '../runtime';
 import type {
   Categoria,
   CategoriaResumen,
+  GrupoPreguntasRelacionadas,
 } from '../models/index';
 import {
     CategoriaFromJSON,
     CategoriaToJSON,
     CategoriaResumenFromJSON,
     CategoriaResumenToJSON,
+    GrupoPreguntasRelacionadasFromJSON,
+    GrupoPreguntasRelacionadasToJSON,
 } from '../models/index';
+
+export interface GetAllGruposPreguntasByCategoriaRequest {
+    id: string;
+}
 
 export interface GetCategoriasResumenRequest {
     tipo?: string;
@@ -72,6 +79,51 @@ export class CategoriasApi extends runtime.BaseAPI {
      */
     async getAllCategorias(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Categoria>> {
         const response = await this.getAllCategoriasRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getAllGruposPreguntasByCategoria without sending the request
+     */
+    async getAllGruposPreguntasByCategoriaRequestOpts(requestParameters: GetAllGruposPreguntasByCategoriaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getAllGruposPreguntasByCategoria().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/gruposDePreguntasRelacionadas/porCategoria/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria
+     */
+    async getAllGruposPreguntasByCategoriaRaw(requestParameters: GetAllGruposPreguntasByCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GrupoPreguntasRelacionadas>>> {
+        const requestOptions = await this.getAllGruposPreguntasByCategoriaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(GrupoPreguntasRelacionadasFromJSON));
+    }
+
+    /**
+     * Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria
+     */
+    async getAllGruposPreguntasByCategoria(requestParameters: GetAllGruposPreguntasByCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GrupoPreguntasRelacionadas>> {
+        const response = await this.getAllGruposPreguntasByCategoriaRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

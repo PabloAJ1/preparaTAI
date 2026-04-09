@@ -19,21 +19,17 @@ export class PreguntasPortService implements IPreguntasServicePort{
 		for(const categoria of preguntas[0].categorias){
 			const cat: ICategoriaDto = {
 				idCategoria: 'desconocido',
-				nombreCategoria: categoria,
+				nombreCategoria: `GRUPO-${categoria}`,
 				tipo: 'GRUPOPREGUNTAS'
 			}
 			const findCategoria = await this.buscarOCrearCategoria.exec(cat)
-
-			console.log(findCategoria);
-			console.log(cat);
 			categoriasConId.push(findCategoria.idCategoria)
 		}
 		
-
 		for(const pregunta of preguntas){
 			const preguntaAlmacenada = await this.createPregunta.exec({
 				...pregunta,
-				categorias: categoriasConId
+				categorias: categoriasConId,
 			});
 			listaIdPreguntas.push(preguntaAlmacenada.id);
 		}
