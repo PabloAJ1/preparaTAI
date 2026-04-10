@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "69d8dc68a30f98e8ad71ec5f",
+    "id": "019d771c-f93e-777d-84fd-e3ccf4aa9e0a",
+    "idGrupoPregunta": "019d771c-f925-7751-95c6-5a8324154838",
+    "textoPre": "Preguntas XQuery\nTodas las preguntas se refieren a un XML con esta estructura. Una misma asignatura puedede un profesor.\nCada pregunta incluye el XML que se espera como resultado de la consulta.",
+    "codigo": {
+      "codigo": "<?xml version='1.0' encoding='UTF-8' ?>\n<datos>\n\t<alumno id='001'>\n\t\t<nombre>María Pérez</nombre>\n\t\t<email>maria.perez@example.com</email>\n\t\t<asignaturas>\n\t\t\t<asignatura codigo='MAT101'>\n\t\t\t\t<nombre>Matemáticas I</nombre>\n\t\t\t\t<profesor>Dr. Juan García</profesor>\n\t\t\t</asignatura>\n\t\t\t<asignatura codigo='FIS101'>\n\t\t\t\t<nombre>Física I</nombre>\n\t\t\t\t<profesor>Dra. Ana López</profesor>\n\t\t\t</asignatura>\n\t\t</asignaturas>\n\t</alumno>\n\t<alumno id='002'>\n\t\t<nombre>Juan Rodríguez</nombre>\n\t\t<email>juan.rodriguez@example.com</email>\n\t\t<asignaturas>\n\t\t\t<asignatura codigo='MAT101'>\n\t\t\t\t<nombre>Matemáticas I</nombre>\n\t\t\t\t<profesor>Dr. Juan García</profesor>\n\t\t\t</asignatura>\n\t\t\t<asignatura codigo='QUI101'>\n\t\t\t\t<nombre>Química I</nombre>\n\t\t\t\t<profesor>Dra. Laura Fernández</profesor>\n\t\t\t</asignatura>\n\t\t\t<asignatura codigo='FIS101'>\n\t\t\t\t<nombre>Física I</nombre>\n\t\t\t\t<profesor>Dra. Laura Fernández</profesor>\n\t\t\t</asignatura>\n\t\t</asignaturas>\n\t</alumno>\n</datos>\n",
+      "lenguaje": "XML"
+    },
+    "preguntas": [
+      "019d771c-f929-73ff-9135-79305f999dbc",
+      "019d771c-f92e-7692-abc9-d65d99ff998c",
+      "019d771c-f930-76a8-922d-0593ed7b0901",
+      "019d771c-f931-723f-a5a1-07cc802fe216",
+      "019d771c-f933-7191-8c6e-f090dd91bed2"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "69d8dc68a30f98e8ad71ec71",
+    "id": "019d771c-f958-7419-b834-abf1b4295343",
+    "idGrupoPregunta": "019d771c-f943-734f-90c4-81d0ed650ed0",
+    "textoPre": "Para el siguiente programa en Java:",
+    "codigo": {
+      "codigo": "import java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport java.sql.Statement;\n\npublic class DatabaseConnector {\n\n\tprivate static final String URL =\n\t\t\"jdbc:postgresql://localhost:5432/mydatabase\";\n\tprivate static final String USER = \"admin\";\n\tprivate static final String PASSWORD = \"admin\";\n\n\tpublic static void main(String[] args) {\n\t\ttry (\n\t\t\tConnection connection = DriverManager.getConnection(URL, USER, PASSWORD)\n\t\t) {\n\t\t\tconnection.setAutoCommit(false);\n\t\t\ttry (Statement statement = connection.createStatement()) {\n\t\t\t\tstatement.execute(\n\t\t\t\t\t\"CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL)\"\n\t\t\t\t);\n\t\t\t\tstatement.executeUpdate(\"INSERT INTO users (username) VALUES ('johndoe')\");\n\t\t\t\tResultSet resultSet = statement.executeQuery(\"SELECT * FROM users\");\n\t\t\t\twhile (resultSet.next()) {\n\t\t\t\t\tSystem.out.println(\n\t\t\t\t\t\t\"User ID: \" +\n\t\t\t\t\t\t\tresultSet.getInt(\"id\") +\n\t\t\t\t\t\t\t\", Username: \" +\n\t\t\t\t\t\t\tresultSet.getString(\"username\")\n\t\t\t\t\t);\n\t\t\t\t}\n\t\t\t\tconnection.commit();\n\t\t\t} catch (SQLException e) {\n\t\t\t\tconnection.rollback();\n\t\t\t\tthrow e;\n\t\t\t}\n\t\t} catch (SQLException ex) {\n\t\t\tex.printStackTrace();\n\t\t}\n\t}\n}\n",
+      "lenguaje": "Java"
+    },
+    "preguntas": [
+      "019d771c-f944-7389-ad69-cb49af7037ff",
+      "019d771c-f945-7566-b72c-931c65ea0d1d",
+      "019d771c-f946-70e8-adcf-bf6a669fddd0",
+      "019d771c-f948-722d-b4c5-011c2ab12cb9",
+      "019d771c-f949-76ed-a956-209663f13e99",
+      "019d771c-f94a-766d-af0d-174e7b9a41b9"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "69d8dc68a30f98e8ad71ec7f",
+    "id": "019d771c-f982-7293-b3a0-8e26d8db7fce",
+    "idGrupoPregunta": "019d771c-f943-734f-90c4-81d0ed650ed0",
+    "textoPre": "Para el siguiente programa en Java:",
+    "codigo": {
+      "codigo": "import jakarta.persistence.*; // Para las anotaciones JPA\nimport org.hibernate.Session;\nimport org.hibernate.SessionFactory;\nimport org.hibernate.cfg.Configuration;\nimport org.hibernate.query.Query;\n\n@Entity\n@Table(name = \"users\")\nclass User {\n\n\t@Id\n\t@GeneratedValue(strategy = GenerationType.IDENTITY)\n\tprivate int id;\n\n\t@Column(name = \"username\")\n\tprivate String username;\n\n\t@Column(name = \"full_name\")\n\tprivate String fullName;\n\n\t// Constructor vacío\n\tpublic User() {}\n\n\t// Constructor con parámetros\n\tpublic User(String username, String fullName) {\n\t\tthis.username = username;\n\t\tthis.fullName = fullName;\n\t}\n\n\t// Getters y setters\n\tpublic int getId() {\n\t\treturn id;\n\t}\n\n\tpublic void setId(int id) {\n\t\tthis.id = id;\n\t}\n\n\tpublic String getUsername() {\n\t\treturn username;\n\t}\n\n\tpublic void setUsername(String username) {\n\t\tthis.username = username;\n\t}\n\n\tpublic String getFullName() {\n\t\treturn fullName;\n\t}\n\n\tpublic void setFullName(String fullName) {\n\t\tthis.fullName = fullName;\n\t}\n}\n\npublic class HibernateExample {\n\n\tpublic static void main(String[] args) {\n\t\t// Configuración y creación de una SessionFactory\n\t\tSessionFactory factory = new Configuration()\n\t\t\t.configure(\"hibernate.cfg.xml\")\n\t\t\t.addAnnotatedClass(User.class)\n\t\t\t.buildSessionFactory();\n\n\t\t// Creación de una sesión\n\t\tSession session = factory.openSession();\n\n\t\ttry {\n\t\t\t// Iniciando una transacción\n\t\t\tsession.beginTransaction();\n\n\t\t\t// Guardar un objeto\n\t\t\tUser newUser = new User(\"johndoe\", \"John Doe\");\n\t\t\tsession.save(newUser);\n\n\t\t\t// Consulta de objetos\n\t\t\tQuery<User> query = session.createQuery(\n\t\t\t\t\"from User where username = 'johndoe'\",\n\t\t\t\tUser.class\n\t\t\t);\n\t\t\tUser user = query.uniqueResult();\n\n\t\t\tSystem.out.println(\"User: \" + user.getUsername());\n\n\t\t\t// Comprometer la transacción\n\t\t\tsession.getTransaction().commit();\n\t\t} catch (Exception e) {\n\t\t\te.printStackTrace();\n\t\t\tsession.getTransaction().rollback();\n\t\t} finally {\n\t\t\tsession.close();\n\t\t\tfactory.close();\n\t\t}\n\t}\n}\n",
+      "lenguaje": "Java"
+    },
+    "preguntas": [
+      "019d771c-f95d-7028-b297-ba5b98c93f70",
+      "019d771c-f95f-752e-a7f0-a9e365ea37c6",
+      "019d771c-f960-7312-b772-8bb479025614",
+      "019d771c-f961-712b-81e0-d5208b15ac69",
+      "019d771c-f962-71f7-bdf3-f31d87b46b37"
+    ],
+    "__v": 0
+  }
+]

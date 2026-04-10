@@ -4,9 +4,7 @@ import { GetCategoriasByTipo } from '../../../../../src/domains/categoriasDomain
 import { Categoria } from '../../../../../src/domains/categoriasDomain/domain/entities/Categoria';
 import { IPreguntasPort } from '../../../../../src/domains/categoriasDomain/application/interfaces/preguntasPort.interface';
 import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
-import { PreguntaAdapterPort } from '../../../../../src/domains/categoriasDomain/infrastructure/adapters/ports/preguntaAdapterPort';
-import { PreguntaRepositoryMySQL } from '../../../../../src/domains/preguntasDomain/infrastructure/mysql/repositories/preguntaRepositoryMySQL.repository';
-import { GetNumeroPreguntasPorCategoria } from '../../../../../src/domains/preguntasDomain/application/useCases/getNumeroPreguntasPorCategoria';
+import { PreguntaAdapterPort } from '../../../../../src/domains/categoriasDomain/infrastructure/adapters/ports/preguntaAdapter.service';
 
 describe('#Test > integration > domains > categoriaDomain > application > usesCases > getCategoriaResumen ... ', () => {
 	test('deberia devolver un resultado correcto con repos mockeados', async () => {
@@ -18,6 +16,9 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 		const preguntasMock = 15;
 
 		const repoMockCategorias: ICategoriaRepository = {
+			getCategoriasByName: vi.fn(),
+			getCategoriasById: vi.fn(),
+			createBulkPreguntas: vi.fn(),
 			getCategoriasByType: vi.fn(),
 			getAllCategoriasExamenes: vi.fn(),
 			getListOfCategorias: vi.fn(),
@@ -57,10 +58,8 @@ describe('#Test > integration > domains > categoriaDomain > application > usesCa
 
 	test('deberia devolver un resultado correcto con no mockeados', async () => {
 		const categoriasMySQLRepository = new CategoriaRepositoryMongo();
-		
-		const preguntasMySQLRepository = new PreguntaRepositoryMySQL();
-		const getNumeroPreguntasPorCategoria = new GetNumeroPreguntasPorCategoria(preguntasMySQLRepository);
-		const preguntaAdapterPort = new PreguntaAdapterPort(getNumeroPreguntasPorCategoria)
+		const getEstadisticasPorCategoria = { exec: vi.fn() }
+		const preguntaAdapterPort = new PreguntaAdapterPort(getEstadisticasPorCategoria)
 
 
 		const getCategoriaResumen = new GetCategoriasByTipo(

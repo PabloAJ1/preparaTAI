@@ -1,0 +1,478 @@
+[
+  {
+    "_id": "69d8bce3679616189c74f0cf",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-557606cf9a40",
+    "nombreCategoria": "Soluciones de Ciberseguridad",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d1",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-59282851659a",
+    "nombreCategoria": "Errores HTTP",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d3",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-5cd4f1d5f694",
+    "nombreCategoria": "Puertos TCP/UDP",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d5",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-61cc6555706e",
+    "nombreCategoria": "Claves de Registro Windows",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d7",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-6707d6bafa20",
+    "nombreCategoria": "Velocidad ethernet",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d9",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-69a3fb0e781d",
+    "nombreCategoria": "Velocidades USB",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0db",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-6f54250713ef",
+    "nombreCategoria": "Errors HTTP 5XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0dd",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7107fe70ddfe",
+    "nombreCategoria": "Errors HTTP 1XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0df",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-76fb99ae7b1b",
+    "nombreCategoria": "Errors HTTP 2XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e1",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7992998c316b",
+    "nombreCategoria": "Errors HTTP 3XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e3",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7c276cf2a067",
+    "nombreCategoria": "Errors HTTP 4XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e5",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-820e96c0e2a3",
+    "nombreCategoria": "IEEE 802",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e7",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-843855eed9a8",
+    "nombreCategoria": "Catalogo de servicios",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e9",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-8afb883a7787",
+    "nombreCategoria": "Patrones de Diseño - Creacionales",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0eb",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-8d6e9c6e4711",
+    "nombreCategoria": "Patrones de Diseño - Estructurales",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ed",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-91077ff03e39",
+    "nombreCategoria": "Patrones de Diseño - Comportamiento",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ef",
+    "idCategoria": "019d76a1-d981-7775-90ca-dad07569729e",
+    "nombreCategoria": "Administración Linux",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f1",
+    "idCategoria": "019d76a1-d981-7775-90ca-dd868c2eb846",
+    "nombreCategoria": "Administración Windows",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f3",
+    "idCategoria": "019d76a1-d981-7775-90ca-e369d626d8b7",
+    "nombreCategoria": "IPv4 Header",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f5",
+    "idCategoria": "019d76a1-d981-7775-90ca-e6a53f690919",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f7",
+    "idCategoria": "019d76a1-d981-7775-90ca-e994622590a0",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f9",
+    "idCategoria": "019d76a1-d981-7775-90ca-ee5aba6468e1",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0fb",
+    "idCategoria": "019d76a1-d981-7775-90ca-f29a8816f12e",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0fd",
+    "idCategoria": "019d76a1-d981-7775-90ca-f5fd41c22ed5",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ff",
+    "idCategoria": "019d76a1-d981-7775-90ca-fa22c4582741",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f101",
+    "idCategoria": "019d76a1-d981-7775-90ca-fd4611434d61",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f103",
+    "idCategoria": "019d76a1-d981-7775-90cb-03d724a8c717",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f105",
+    "idCategoria": "019d76a1-d981-7775-90cb-04ba195c3557",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f107",
+    "idCategoria": "019d76a1-d981-7775-90cb-0bd037c9a3da",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f109",
+    "idCategoria": "019d76a1-d981-7775-90cb-0d57ea774bb5",
+    "nombreCategoria": "CUESTIONARIO 14/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10b",
+    "idCategoria": "019d76a1-d981-7775-90cb-1084f6f04489",
+    "nombreCategoria": "Versiones Linux",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10d",
+    "idCategoria": "019d76a1-d981-7775-90cb-14c4a0193e2c",
+    "nombreCategoria": "Administración Bases de Datos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10f",
+    "idCategoria": "019d76a1-d981-7775-90cb-19bb45d9ac19",
+    "nombreCategoria": "Políticas, sistemas y procedimientos de backup y su recuperación.",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f111",
+    "idCategoria": "019d76a1-d981-7775-90cb-1d9ceefd7c59",
+    "nombreCategoria": "Docker",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f113",
+    "idCategoria": "019d76a1-d981-7775-90cb-234f5d0a3105",
+    "nombreCategoria": "CUESTIONARIO 14/TAI–PI - B2/3/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f115",
+    "idCategoria": "019d76a1-d981-7775-90cb-240c91ad4261",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f117",
+    "idCategoria": "019d76a1-d981-7775-90cb-2bbe9e2f12b7",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f119",
+    "idCategoria": "019d76a1-d981-7775-90cb-2e853f64aac9",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11b",
+    "idCategoria": "019d76a1-d981-7775-90cb-309f7c0ae706",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11d",
+    "idCategoria": "019d76a1-d981-7775-90cb-3496b9a435d0",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11f",
+    "idCategoria": "019d76a1-d981-7775-90cb-3a9c3f7944c2",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f121",
+    "idCategoria": "019d76a1-d981-7775-90cb-3c7d72154c2d",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f123",
+    "idCategoria": "019d76a1-d981-7775-90cb-4309c0d27e60",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f125",
+    "idCategoria": "019d76a1-d981-7775-90cb-46d0162c95be",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f127",
+    "idCategoria": "019d76a1-d981-7775-90cb-49563d6a5f7e",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f129",
+    "idCategoria": "019d76a1-d981-7775-90cb-4fdeb902ba35",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12b",
+    "idCategoria": "019d76a1-d981-7775-90cb-52ce301d252b",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12d",
+    "idCategoria": "019d76a1-d981-7775-90cb-556716406e47",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12f",
+    "idCategoria": "019d76a1-d981-7775-90cb-59e6acdb3dc1",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f131",
+    "idCategoria": "019d76a1-d981-7775-90cb-5fb4519aa63a",
+    "nombreCategoria": "Clases de Redes IPV4",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f133",
+    "idCategoria": "019d76a1-d981-7775-90cb-622cf15ccbef",
+    "nombreCategoria": "Prefijos IPV6",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f135",
+    "idCategoria": "019d76a1-d981-7775-90cb-6657aa56715c",
+    "nombreCategoria": "Teoria IPv4 y IPv6",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f137",
+    "idCategoria": "019d76a1-d981-7775-90cb-6a080cddccd6",
+    "nombreCategoria": "Perifericos, conectores y almacenamiento",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f139",
+    "idCategoria": "019d76a1-d981-7775-90cb-6fbc1d02cade",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13b",
+    "idCategoria": "019d76a1-d981-7775-90cb-732a0bf44a0a",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13d",
+    "idCategoria": "019d76a1-d981-7775-90cb-7633daf94323",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13f",
+    "idCategoria": "019d76a1-d981-7775-90cb-789d720ac7ca",
+    "nombreCategoria": "Agenda 2030",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f141",
+    "idCategoria": "019d76a1-d981-7775-90cb-7e6a31e38296",
+    "nombreCategoria": "Agenda España 2030",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f143",
+    "idCategoria": "019d76a1-d981-7775-90cb-8243a0c48e9e",
+    "nombreCategoria": "ENS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f145",
+    "idCategoria": "019d76a1-d981-7775-90cb-866e05f00159",
+    "nombreCategoria": "Normas Técnicas Interoperabilidad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f147",
+    "idCategoria": "019d76a1-d981-7775-90cb-8a2cbaa54ac9",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f149",
+    "idCategoria": "019d76a1-d981-7775-90cb-8d41152fffff",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO I",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14b",
+    "idCategoria": "019d76a1-d981-7775-90cb-91f1f0a63a91",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14d",
+    "idCategoria": "019d76a1-d981-7775-90cb-943e32f71e1c",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-PI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14f",
+    "idCategoria": "019d76a1-d981-7775-90cb-98eb20023b45",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO I",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f151",
+    "idCategoria": "019d76a1-d981-7775-90cb-9dba321c1be6",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f153",
+    "idCategoria": "019d76a1-d981-7775-90cb-a27ddf240968",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f155",
+    "idCategoria": "019d76a1-d981-7775-90cb-a780818d4be6",
+    "nombreCategoria": "CUESTIONARIO TAI PI 2024 - Primera Parte",
+    "tipo": "EXAMEN",
+    "__v": 0
+  }
+]

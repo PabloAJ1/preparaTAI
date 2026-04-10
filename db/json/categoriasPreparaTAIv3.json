@@ -1,0 +1,1941 @@
+[
+  {
+    "_id": "69d8bce3679616189c74f0cf",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-557606cf9a40",
+    "nombreCategoria": "Soluciones de Ciberseguridad",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d1",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-59282851659a",
+    "nombreCategoria": "Errores HTTP",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d3",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-5cd4f1d5f694",
+    "nombreCategoria": "Puertos TCP/UDP",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d5",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-61cc6555706e",
+    "nombreCategoria": "Claves de Registro Windows",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d7",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-6707d6bafa20",
+    "nombreCategoria": "Velocidad ethernet",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0d9",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-69a3fb0e781d",
+    "nombreCategoria": "Velocidades USB",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0db",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-6f54250713ef",
+    "nombreCategoria": "Errors HTTP 5XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0dd",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7107fe70ddfe",
+    "nombreCategoria": "Errors HTTP 1XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0df",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-76fb99ae7b1b",
+    "nombreCategoria": "Errors HTTP 2XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e1",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7992998c316b",
+    "nombreCategoria": "Errors HTTP 3XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e3",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-7c276cf2a067",
+    "nombreCategoria": "Errors HTTP 4XX",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e5",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-820e96c0e2a3",
+    "nombreCategoria": "IEEE 802",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e7",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-843855eed9a8",
+    "nombreCategoria": "Catalogo de servicios",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0e9",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-8afb883a7787",
+    "nombreCategoria": "Patrones de Diseño - Creacionales",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0eb",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-8d6e9c6e4711",
+    "nombreCategoria": "Patrones de Diseño - Estructurales",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ed",
+    "idCategoria": "019d76a1-d97e-75aa-afd6-91077ff03e39",
+    "nombreCategoria": "Patrones de Diseño - Comportamiento",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ef",
+    "idCategoria": "019d76a1-d981-7775-90ca-dad07569729e",
+    "nombreCategoria": "Administración Linux",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f1",
+    "idCategoria": "019d76a1-d981-7775-90ca-dd868c2eb846",
+    "nombreCategoria": "Administración Windows",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f3",
+    "idCategoria": "019d76a1-d981-7775-90ca-e369d626d8b7",
+    "nombreCategoria": "IPv4 Header",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f5",
+    "idCategoria": "019d76a1-d981-7775-90ca-e6a53f690919",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f7",
+    "idCategoria": "019d76a1-d981-7775-90ca-e994622590a0",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0f9",
+    "idCategoria": "019d76a1-d981-7775-90ca-ee5aba6468e1",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0fb",
+    "idCategoria": "019d76a1-d981-7775-90ca-f29a8816f12e",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0fd",
+    "idCategoria": "019d76a1-d981-7775-90ca-f5fd41c22ed5",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f0ff",
+    "idCategoria": "019d76a1-d981-7775-90ca-fa22c4582741",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f101",
+    "idCategoria": "019d76a1-d981-7775-90ca-fd4611434d61",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f103",
+    "idCategoria": "019d76a1-d981-7775-90cb-03d724a8c717",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f105",
+    "idCategoria": "019d76a1-d981-7775-90cb-04ba195c3557",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f107",
+    "idCategoria": "019d76a1-d981-7775-90cb-0bd037c9a3da",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f109",
+    "idCategoria": "019d76a1-d981-7775-90cb-0d57ea774bb5",
+    "nombreCategoria": "CUESTIONARIO 14/TAI–PI - Supuesto II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10b",
+    "idCategoria": "019d76a1-d981-7775-90cb-1084f6f04489",
+    "nombreCategoria": "Versiones Linux",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10d",
+    "idCategoria": "019d76a1-d981-7775-90cb-14c4a0193e2c",
+    "nombreCategoria": "Administración Bases de Datos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f10f",
+    "idCategoria": "019d76a1-d981-7775-90cb-19bb45d9ac19",
+    "nombreCategoria": "Políticas, sistemas y procedimientos de backup y su recuperación.",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f111",
+    "idCategoria": "019d76a1-d981-7775-90cb-1d9ceefd7c59",
+    "nombreCategoria": "Docker",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f113",
+    "idCategoria": "019d76a1-d981-7775-90cb-234f5d0a3105",
+    "nombreCategoria": "CUESTIONARIO 14/TAI–PI - B2/3/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f115",
+    "idCategoria": "019d76a1-d981-7775-90cb-240c91ad4261",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f117",
+    "idCategoria": "019d76a1-d981-7775-90cb-2bbe9e2f12b7",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–LI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f119",
+    "idCategoria": "019d76a1-d981-7775-90cb-2e853f64aac9",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11b",
+    "idCategoria": "019d76a1-d981-7775-90cb-309f7c0ae706",
+    "nombreCategoria": "CUESTIONARIO 15/TAI–PI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11d",
+    "idCategoria": "019d76a1-d981-7775-90cb-3496b9a435d0",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f11f",
+    "idCategoria": "019d76a1-d981-7775-90cb-3a9c3f7944c2",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–LI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f121",
+    "idCategoria": "019d76a1-d981-7775-90cb-3c7d72154c2d",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - B2",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f123",
+    "idCategoria": "019d76a1-d981-7775-90cb-4309c0d27e60",
+    "nombreCategoria": "CUESTIONARIO 16/TAI–PI - B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f125",
+    "idCategoria": "019d76a1-d981-7775-90cb-46d0162c95be",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f127",
+    "idCategoria": "019d76a1-d981-7775-90cb-49563d6a5f7e",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f129",
+    "idCategoria": "019d76a1-d981-7775-90cb-4fdeb902ba35",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12b",
+    "idCategoria": "019d76a1-d981-7775-90cb-52ce301d252b",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12d",
+    "idCategoria": "019d76a1-d981-7775-90cb-556716406e47",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–PI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f12f",
+    "idCategoria": "019d76a1-d981-7775-90cb-59e6acdb3dc1",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - B2/4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f131",
+    "idCategoria": "019d76a1-d981-7775-90cb-5fb4519aa63a",
+    "nombreCategoria": "Clases de Redes IPV4",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f133",
+    "idCategoria": "019d76a1-d981-7775-90cb-622cf15ccbef",
+    "nombreCategoria": "Prefijos IPV6",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f135",
+    "idCategoria": "019d76a1-d981-7775-90cb-6657aa56715c",
+    "nombreCategoria": "Teoria IPv4 y IPv6",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f137",
+    "idCategoria": "019d76a1-d981-7775-90cb-6a080cddccd6",
+    "nombreCategoria": "Perifericos, conectores y almacenamiento",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f139",
+    "idCategoria": "019d76a1-d981-7775-90cb-6fbc1d02cade",
+    "nombreCategoria": "CUESTIONARIO 19/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13b",
+    "idCategoria": "019d76a1-d981-7775-90cb-732a0bf44a0a",
+    "nombreCategoria": "CUESTIONARIO 18/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13d",
+    "idCategoria": "019d76a1-d981-7775-90cb-7633daf94323",
+    "nombreCategoria": "CUESTIONARIO 17/TAI–LI - B3",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f13f",
+    "idCategoria": "019d76a1-d981-7775-90cb-789d720ac7ca",
+    "nombreCategoria": "Agenda 2030",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f141",
+    "idCategoria": "019d76a1-d981-7775-90cb-7e6a31e38296",
+    "nombreCategoria": "Agenda España 2030",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f143",
+    "idCategoria": "019d76a1-d981-7775-90cb-8243a0c48e9e",
+    "nombreCategoria": "ENS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f145",
+    "idCategoria": "019d76a1-d981-7775-90cb-866e05f00159",
+    "nombreCategoria": "Normas Técnicas Interoperabilidad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f147",
+    "idCategoria": "019d76a1-d981-7775-90cb-8a2cbaa54ac9",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f149",
+    "idCategoria": "019d76a1-d981-7775-90cb-8d41152fffff",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO I",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14b",
+    "idCategoria": "019d76a1-d981-7775-90cb-91f1f0a63a91",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-LI SUPUESTO II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14d",
+    "idCategoria": "019d76a1-d981-7775-90cb-943e32f71e1c",
+    "nombreCategoria": "CUESTIONARIO TAI 2022 - TAI-PI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f14f",
+    "idCategoria": "019d76a1-d981-7775-90cb-98eb20023b45",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO I",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f151",
+    "idCategoria": "019d76a1-d981-7775-90cb-9dba321c1be6",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI SUPUESTO II",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f153",
+    "idCategoria": "019d76a1-d981-7775-90cb-a27ddf240968",
+    "nombreCategoria": "CUESTIONARIO TAI 2024 - TAI-LI B2-B4",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8bce3679616189c74f155",
+    "idCategoria": "019d76a1-d981-7775-90cb-a780818d4be6",
+    "nombreCategoria": "CUESTIONARIO TAI PI 2024 - Primera Parte",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fee6",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-d58b3dd7fc4b",
+    "nombreCategoria": "Técnico especialista de Sistemas y Tecnología de la Información para el Servicio Aragones de SaluEjercicio_1",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fee7",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-d8a20f62b28a",
+    "nombreCategoria": "Ley Orgánica 3/2018",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fee8",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-dc04a0ffcd60",
+    "nombreCategoria": "Constitución Española",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fee9",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-e01a3caf73d8",
+    "nombreCategoria": "PowerShell",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feea",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-e41be9f30e1c",
+    "nombreCategoria": "Clonacion",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feeb",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-e8f23cff652a",
+    "nombreCategoria": "Archivos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feec",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-eeb8e9c7c054",
+    "nombreCategoria": "Redes",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feed",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-f277b2368836",
+    "nombreCategoria": "Hardware",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feee",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-f7d6d0d56df1",
+    "nombreCategoria": "Windows AD",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feef",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-f964e271bfa2",
+    "nombreCategoria": "Ley 6/2020",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef0",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9d-fcb7895f3571",
+    "nombreCategoria": "STIC-400",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef1",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-03ced4d2c50e",
+    "nombreCategoria": "SQL",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef2",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-0509325cce7e",
+    "nombreCategoria": "Windows",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef3",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-0b3bfb62dcb6",
+    "nombreCategoria": "VDI",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef4",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-0f827553f6ad",
+    "nombreCategoria": "Virtualizacion",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef5",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-10b5bbd8fdb0",
+    "nombreCategoria": "ISS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef6",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-16e407d23595",
+    "nombreCategoria": "Sistemas Operativos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef7",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-188a2af8f809",
+    "nombreCategoria": "Gestión de incidentes",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef8",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-1c88ca246fce",
+    "nombreCategoria": "TIA 568-B",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fef9",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-2261ab8c8eac",
+    "nombreCategoria": "Cableado",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fefa",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-27c35ceeecd6",
+    "nombreCategoria": "Seguridad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fefb",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-280e4b948d63",
+    "nombreCategoria": "Permisos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fefc",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-2cad88422ceb",
+    "nombreCategoria": "Gestión unificada de usuarios",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fefd",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-33fd499d2f2d",
+    "nombreCategoria": "Almacenamiento",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943fefe",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-35fdc3d01df7",
+    "nombreCategoria": "Windows Server",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943feff",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-3b3af1271dd7",
+    "nombreCategoria": "Antivirus",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff00",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-3d84360973b5",
+    "nombreCategoria": "Seguridad Informática",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff01",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-4334d2f43ab9",
+    "nombreCategoria": "Certificados Electronicos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff02",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-45f87b12757f",
+    "nombreCategoria": "Historia",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff03",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-4b4dd073d561",
+    "nombreCategoria": "Informatica Basica",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff04",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-4f6b73d0d782",
+    "nombreCategoria": "Backups",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff05",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-52615d9f165f",
+    "nombreCategoria": "Perifericos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff06",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-5419a4fcf821",
+    "nombreCategoria": "Web Services",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff07",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-586aa7c03b99",
+    "nombreCategoria": "Office365",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff08",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-5c9b4e47c486",
+    "nombreCategoria": "Servidores de aplicaciones",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff09",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-60a8fa7ac86f",
+    "nombreCategoria": "Aplicaciones",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-676b25f07203",
+    "nombreCategoria": "Criptografica",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-687de9064619",
+    "nombreCategoria": "Escritorio Remoto de Windows",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-6e25e6f6c055",
+    "nombreCategoria": "Firewalls",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-70b13d07e0a3",
+    "nombreCategoria": "TIA-568",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-76ea7ed944cf",
+    "nombreCategoria": "WiFi",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff0f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-79fed0d3a396",
+    "nombreCategoria": "IEEE 802.11",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff10",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-7e14887dc9e0",
+    "nombreCategoria": "Dispositivos de Red",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff11",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-81f3caa75b5b",
+    "nombreCategoria": "Reglamento (UE) 910/2014",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff12",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-84514102f85a",
+    "nombreCategoria": "Autenticacion",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff13",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-88e59557678a",
+    "nombreCategoria": "Calculo de Redes",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff14",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-8e7d89241b7e",
+    "nombreCategoria": "IFCM01",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff15",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-93056d2879f7",
+    "nombreCategoria": "Hilos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff16",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-954793f275be",
+    "nombreCategoria": "Gestion de la memoria",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff17",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-9a9a9f621db8",
+    "nombreCategoria": "Linux",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff18",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-9ef58720e533",
+    "nombreCategoria": "Binario",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff19",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-a1dde02c1ac6",
+    "nombreCategoria": "Hexadecimal",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-a67b15abd0f1",
+    "nombreCategoria": "Conversion",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-a9610c011c0f",
+    "nombreCategoria": "Servidores",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-af04d94543d1",
+    "nombreCategoria": "Active Directory",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-b13579bfec55",
+    "nombreCategoria": "Grupos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-b449e55a1d4c",
+    "nombreCategoria": "Permisos NTFS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff1f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-b84af5cfef7e",
+    "nombreCategoria": "DNS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff20",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-bc7472df5b93",
+    "nombreCategoria": "Administración",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff21",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-c3e7bab03510",
+    "nombreCategoria": "Recursos Ocultos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff22",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-c7cdd65e052e",
+    "nombreCategoria": "Confianzas",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff23",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-c8cf734adf52",
+    "nombreCategoria": "Sitios y Servicios",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff24",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-cdc0738a58d2",
+    "nombreCategoria": "Objetos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff25",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-d2d52926e19c",
+    "nombreCategoria": "Estructura",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff26",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-d7764b6168f1",
+    "nombreCategoria": "Servicios de Red",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff27",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-daef86a3d4d8",
+    "nombreCategoria": "NFS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff28",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-df1e6ca91229",
+    "nombreCategoria": "Comandos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff29",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-e19fdb69f6cd",
+    "nombreCategoria": "Instalación",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-e5e25bfcb1cd",
+    "nombreCategoria": "Configuración",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-ea38f14f178c",
+    "nombreCategoria": "Diagnóstico",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-ecf1eab6f03c",
+    "nombreCategoria": "Directorio",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-f044c6d46366",
+    "nombreCategoria": "LDAP",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-f7dd03147378",
+    "nombreCategoria": "Protocolos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff2f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-f82dfd60048f",
+    "nombreCategoria": "Arquitectura",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff30",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9e-fdb99a88352a",
+    "nombreCategoria": "TCP",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff31",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-03bf5e027812",
+    "nombreCategoria": "IP",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff32",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-059ab18073ea",
+    "nombreCategoria": "Switch",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff33",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-09996ba2ac92",
+    "nombreCategoria": "Proteccion de datos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff34",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-0eb71b70a159",
+    "nombreCategoria": "RGPD",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff35",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-10e15afd5c37",
+    "nombreCategoria": "OSI",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff36",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-147654dfaab7",
+    "nombreCategoria": "PHP",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff37",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-188f25c6781b",
+    "nombreCategoria": "XML",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff38",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-1c47db7ac4f9",
+    "nombreCategoria": "CSS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff39",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-22be36af25cb",
+    "nombreCategoria": "JS",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-242e8d0d31de",
+    "nombreCategoria": "CUERPO DE DIPLOMADOS EN METEOROLOGÍA DEL ESTADO",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-2910cc465747",
+    "nombreCategoria": "CUERPO DE OBSERVADORES DE METEOROLOGÍA DEL ESTADO POR EL SISTEMA GENERAL DE ACCESO LIBRE",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-2d95b77d3fff",
+    "nombreCategoria": "Ley 39/2006",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-3300d3234d19",
+    "nombreCategoria": "Ley 50/1997",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-349242f7395a",
+    "nombreCategoria": "Ley 39/2015",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff3f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-3866242b3375",
+    "nombreCategoria": "Ley 53/1984",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff40",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-3c2bdf69e35e",
+    "nombreCategoria": "Ley 3/2007",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff41",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-433573abe980",
+    "nombreCategoria": "MySQL",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff42",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-4445e867d897",
+    "nombreCategoria": "0486-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff43",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-487dfc15dce9",
+    "nombreCategoria": "0487-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff44",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-4ee864263d90",
+    "nombreCategoria": "0488-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff45",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-52b2f1486548",
+    "nombreCategoria": "0489-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff46",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-545e57fb9a92",
+    "nombreCategoria": "0490-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff47",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-5b8d87b693e9",
+    "nombreCategoria": "-----",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff48",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-5c7abc866093",
+    "nombreCategoria": "IFCS02-484-2023",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff49",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-630bc486c4b4",
+    "nombreCategoria": "IFCS02-0485-2023",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-65850c3576ca",
+    "nombreCategoria": "Especifidad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-6869122f03d1",
+    "nombreCategoria": "IFCS02-485A-2024",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-6fcb2d8d2bcb",
+    "nombreCategoria": "MATERIAL ORIENTATIVO Plaza de Programador/a",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-71bd494ad1cc",
+    "nombreCategoria": "PRUEBAS SELECTiVAS PARA EL ACCESO A PUESTOS VACANTES DE PERSONAL FUNCiONAR10 DEL CUERPO ADMiNISTRATiVO DE LA ADMINISTRAC:ON DE LA COMUNIDAD AUTONOMA DE EXTREMADURA.",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-77a4fa062b39",
+    "nombreCategoria": "BLOQUE III TEMA 7: ARQUITECTURA CLIENTE / SERVIDOR",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff4f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-7a2a88e4167a",
+    "nombreCategoria": "IFCS03-0615-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff50",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-7e19029df734",
+    "nombreCategoria": "IFCS03-0615-2023",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff51",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-80c32e61db05",
+    "nombreCategoria": "IFCS02-0001",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff52",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-85afd48b3bda",
+    "nombreCategoria": "Java",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff53",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-8ac8f20c742c",
+    "nombreCategoria": "Java IO",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff54",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-8d8f5c4a966f",
+    "nombreCategoria": "JDBC",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff55",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-91c29ca194a7",
+    "nombreCategoria": "Hiberante",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff56",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-9721d0977417",
+    "nombreCategoria": "Oracle",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff57",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-99718995fa47",
+    "nombreCategoria": "XPath",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff58",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-9f7b4c987025",
+    "nombreCategoria": "Orcale",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff59",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-a34017a66dec",
+    "nombreCategoria": "EJB",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-a47182d9a72a",
+    "nombreCategoria": "ODBC",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-a8beb5abf393",
+    "nombreCategoria": "SAX",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-ae6f3fa948ff",
+    "nombreCategoria": "DOM",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-b183179e3dd8",
+    "nombreCategoria": "IFCS02-486-2023",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-b773a0098bf6",
+    "nombreCategoria": "Excepciones",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff5f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-bbe45c3fe117",
+    "nombreCategoria": "JPA",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff60",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-bfbf3309a296",
+    "nombreCategoria": "Hibernate",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff61",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-c08583680add",
+    "nombreCategoria": "IFCS02-0487-2023 Entornos de desarrollo",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff62",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-c4a5ace4c0d4",
+    "nombreCategoria": "Ingeniería Software",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff63",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-ca16c4f6ae61",
+    "nombreCategoria": "Metodologías Ágiles",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff64",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-cdea981741ce",
+    "nombreCategoria": "Requisitos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff65",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-d3707b25b595",
+    "nombreCategoria": "Programación",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff66",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-d67966438006",
+    "nombreCategoria": "Lenguaje Ensamblador",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff67",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-db4926872092",
+    "nombreCategoria": "Paradigmas",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff68",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-dc7d6e7396b8",
+    "nombreCategoria": "Desarrollo",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff69",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-e201e6e84afc",
+    "nombreCategoria": "Depuración (IDE)",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6a",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-e43d0d0e1563",
+    "nombreCategoria": "Ciclos de Vida",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6b",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-eac4763ac842",
+    "nombreCategoria": "Calidad SW",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6c",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-ef23a74ee158",
+    "nombreCategoria": "Pruebas Caja Negra",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6d",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-f126168d76a3",
+    "nombreCategoria": "Pruebas Caja Blanca",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6e",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-f6283095731a",
+    "nombreCategoria": "Depuración (Watch)",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff6f",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-fa2249e4ee42",
+    "nombreCategoria": "Pruebas Unitarias",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff70",
+    "idCategoria": "019d76dc-fdcd-71bb-ad9f-fd84286c2d95",
+    "nombreCategoria": "Diseño de Pruebas",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff71",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-027069cbff3d",
+    "nombreCategoria": "Testing (JUnit)",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff72",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-07b5031fd7d1",
+    "nombreCategoria": "UML",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff73",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-0bb3ce642b83",
+    "nombreCategoria": "Metrica v3",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff74",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-0d1e3e9826f5",
+    "nombreCategoria": "Metodologías de desarrollo software",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff75",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-13a2ee3d02ba",
+    "nombreCategoria": "Tipos de Mantenimeinto",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff76",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-15f71326ce08",
+    "nombreCategoria": "Pruebas",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff77",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-1847841d3db5",
+    "nombreCategoria": "IDE's",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff78",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-1c33a7d3005f",
+    "nombreCategoria": "Git",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff79",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-20a42c74104a",
+    "nombreCategoria": "Control de versiones",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7a",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-260f8c9ebd2b",
+    "nombreCategoria": "Programación Orientada a Objetos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7b",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-2a3081cc4686",
+    "nombreCategoria": "Control de Versiones",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7c",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-2fc94634dcc7",
+    "nombreCategoria": "GIT",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7d",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-32a7cd6d24ab",
+    "nombreCategoria": "Refactorización",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7e",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-3464230972b7",
+    "nombreCategoria": "Documentación",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff7f",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-3a7142d123b0",
+    "nombreCategoria": "IFCS02-08-2023",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff80",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-3c1920c90897",
+    "nombreCategoria": "Usabilidad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff81",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-4322c6b187f6",
+    "nombreCategoria": "Diseño Interfaces",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff82",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-464c8f3f956e",
+    "nombreCategoria": "Desarrollo .NET",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff83",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-48b65da68e2a",
+    "nombreCategoria": "Windows Forms",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff84",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-4f44881a18c7",
+    "nombreCategoria": "Interfaces",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff85",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-529a8edbbefd",
+    "nombreCategoria": "Componentes UI",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff86",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-55fc0e1e66e4",
+    "nombreCategoria": "Ingeniería SW",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff87",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-59a9d9ea86b4",
+    "nombreCategoria": "Prototipado",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff88",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-5c8a3ae25946",
+    "nombreCategoria": "Controles",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff89",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-630ab047cc47",
+    "nombreCategoria": "Controles invisibles",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8a",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-64a3f9a1376f",
+    "nombreCategoria": "Programación C#",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8b",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-69a116e32852",
+    "nombreCategoria": "Estructura Código",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8c",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-6e862b23dd97",
+    "nombreCategoria": "Visual Studio",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8d",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-73dc01bc29a5",
+    "nombreCategoria": "Eventos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8e",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-77604ef31926",
+    "nombreCategoria": "Accesibilidad",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff8f",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-780ac53e3915",
+    "nombreCategoria": "Propiedades",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff90",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-7f66b1cc7295",
+    "nombreCategoria": "Informes",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff91",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-82a7e5e461f7",
+    "nombreCategoria": "Reporting",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff92",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-876e5b40f25b",
+    "nombreCategoria": "Estructuras de control",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff93",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-8af802fc7efa",
+    "nombreCategoria": "Despliegue",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff94",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-8fe003f63895",
+    "nombreCategoria": "Testing",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff95",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-90f84efa260f",
+    "nombreCategoria": "Menús",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff96",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-970ea5e69275",
+    "nombreCategoria": "Acceso a Datos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff97",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-9b9df18af6a8",
+    "nombreCategoria": "IFCS02-0488-2022",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff98",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-9e0daab2285a",
+    "nombreCategoria": "IFCS03-04-2025",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff99",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-a1f703df4d4d",
+    "nombreCategoria": "Ayuntamiento de Leon 2021",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9a",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-a7678937ce1a",
+    "nombreCategoria": "Constitucion Española",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9b",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-aa472252eb33",
+    "nombreCategoria": "DFD",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9c",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-aeef284954f4",
+    "nombreCategoria": "Escala Técnica de Sistemas e Informática. Junta de Castilla la Mancha",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9d",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-b395b4665cdf",
+    "nombreCategoria": "Escala Técnica de Sistemas e Informática. Junta de Castilla la Mancha PI",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9e",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-b7740ea3c89d",
+    "nombreCategoria": "Métrica v3",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ff9f",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-b854623bfdb2",
+    "nombreCategoria": "Senado 2021",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ffa0",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-bc884d32a32e",
+    "nombreCategoria": "NTI",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ffa1",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-c1d8264314e9",
+    "nombreCategoria": "Criptografia",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ffa2",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-c67d06de2b7a",
+    "nombreCategoria": "DNI",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ffa3",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-cb88403c4e32",
+    "nombreCategoria": "VPN",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc071832f0c73943ffa4",
+    "idCategoria": "019d76dc-fdcd-71bb-ada0-ceef1040e72f",
+    "nombreCategoria": "PROGRAMACIÓN ORIENTADA A OBJETOS",
+    "tipo": "EXAMEN",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab76",
+    "idCategoria": "019d76dd-1b67-702f-b283-034db4e4cb5a",
+    "nombreCategoria": "Directrices WCAG 2.2 (nivel 1)",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab77",
+    "idCategoria": "019d76dd-1b67-702f-b283-0542ca87bc8b",
+    "nombreCategoria": "Directrices WCAG 2.2 (nivel 2)",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab78",
+    "idCategoria": "019d76dd-1b67-702f-b283-081ba8df436b",
+    "nombreCategoria": "Nivel de cumplimiento WCAG 2.2",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab79",
+    "idCategoria": "019d76dd-1b67-702f-b283-0cf8257cb428",
+    "nombreCategoria": "Identificación de Leyes",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7a",
+    "idCategoria": "019d76dd-1b67-702f-b283-10283fd5d3aa",
+    "nombreCategoria": "Etiquetas HTML",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7b",
+    "idCategoria": "019d76dd-1b67-702f-b283-1554bfbb1498",
+    "nombreCategoria": "HTML",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7c",
+    "idCategoria": "019d76dd-1b67-702f-b283-1a5bb84d5501",
+    "nombreCategoria": "Atributos HTML",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7d",
+    "idCategoria": "019d76dd-1b67-702f-b283-1f987e17371b",
+    "nombreCategoria": "Funciones HTML",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7e",
+    "idCategoria": "019d76dd-1b67-702f-b283-21bc601aeb4e",
+    "nombreCategoria": "Eventos HTML",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab7f",
+    "idCategoria": "019d76dd-1b67-702f-b283-24fa11983a73",
+    "nombreCategoria": "Pruebas del Software",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab80",
+    "idCategoria": "019d76dd-1b67-702f-b283-2bfe34afd016",
+    "nombreCategoria": "Tecnologías Java",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab81",
+    "idCategoria": "019d76dd-1b67-702f-b283-2f771f99bc1f",
+    "nombreCategoria": "Reglas de Codd",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab82",
+    "idCategoria": "019d76dd-1b67-702f-b283-3357510bb288",
+    "nombreCategoria": "Bases de datos",
+    "tipo": "DEFAULT",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab83",
+    "idCategoria": "019d76dd-1b67-702f-b283-35112f13449a",
+    "nombreCategoria": "Apache Fundation",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab84",
+    "idCategoria": "019d76dd-1b67-702f-b283-38a99aae1b83",
+    "nombreCategoria": "Patrones de diseño",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8cc0f3437381dcba7ab85",
+    "idCategoria": "019d76dd-1b67-702f-b283-3f3ef1f8f62c",
+    "nombreCategoria": "Tipo Patrones de diseño",
+    "tipo": "PRACTICA",
+    "__v": 0
+  },
+  {
+    "_id": "69d8dc68a30f98e8ad71ec52",
+    "idCategoria": "019d771c-f925-7751-95c6-5a8324154838",
+    "nombreCategoria": "GRUPO-IFCS02-0001",
+    "tipo": "GRUPOPREGUNTAS",
+    "__v": 0
+  },
+  {
+    "_id": "69d8dc68a30f98e8ad71ec62",
+    "idCategoria": "019d771c-f943-734f-90c4-81d0ed650ed0",
+    "nombreCategoria": "GRUPO-IFCS02-486-2023",
+    "tipo": "GRUPOPREGUNTAS",
+    "__v": 0
+  }
+]

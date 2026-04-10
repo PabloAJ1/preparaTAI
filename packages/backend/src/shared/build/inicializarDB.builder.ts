@@ -2,6 +2,7 @@ import { InicializarCategorias } from "../../domains/categoriasDomain/applicatio
 import { CategoriasSyncService } from "../../domains/categoriasDomain/infrastructure/adapters/ports/categoriasSync.service"
 import { CategoriasExternalAtlasService } from "../../domains/categoriasDomain/infrastructure/atlas/services/categoriasExternalAtlas.service"
 import { CategoriaRepositoryMongo } from "../../domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository"
+import { GestionBDCategoriasRepositoryMongoDB } from "../../domains/categoriasDomain/infrastructure/mongo/repositories/gestionBDCategoriasRepositoryMongoDB"
 import { InicializarPreguntas } from "../../domains/preguntasDomain/application/useCases/inicializarPreguntas"
 import { PreguntasSyncPort } from "../../domains/preguntasDomain/infrastructure/adapters/ports/preguntasSyncPort.service"
 import { PreguntasExternalAtlasService } from "../../domains/preguntasDomain/infrastructure/atlas/services/PreguntasExternalAtlas.service"
@@ -12,10 +13,16 @@ import { PreguntasPortService } from "../infrastructure/adapters/services/pregun
 
 export const inicializarDBBuilder = () => {
 	//Inicializar Categorias
+	const path = `../../db/json/categoriasPreparaTAIv2categoriasPreparaTAIv2_base.json`
 	const categoriasRepositories = new CategoriaRepositoryMongo()
 	const getCategoriasFromAtlas = new CategoriasExternalAtlasService()
 	const categoriasSyncPortService = new CategoriasSyncService(getCategoriasFromAtlas)
-	const inicializarCategoriasUseCase = new InicializarCategorias(categoriasSyncPortService, categoriasRepositories)
+	const getionDBService = new GestionBDCategoriasRepositoryMongoDB(path)
+	const inicializarCategoriasUseCase = new InicializarCategorias(
+		categoriasSyncPortService, 
+		categoriasRepositories,
+		getionDBService
+	)
 	const categoriaPort = new CategoriaPortService(inicializarCategoriasUseCase)
 
 	//Inicializar Preguntas

@@ -152,9 +152,17 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 			{
 				$addFields: {
 					ordenRandom: {
-						$mod: [{ $add: ['$randomKey', seedNormalizado] }, 1],
-					},
-				},
+						$mod: [
+							{
+								$add: [
+									"$randomKey",
+									{ $multiply: [seedNormalizado, 0.6180339887] }
+								]
+							},
+							1
+						]
+					}
+				}
 			},
 			{ $sort: { ordenRandom: 1 } },
 			{ $skip: (pagina - 1) * limit },
