@@ -16,6 +16,9 @@ import { ReiniciarEstadisticas } from './application/useCases/reiniciarEstadisti
 import { EnterrarPregunta } from './application/useCases/enterrarPregunta';
 import { UpdatePreguntaById } from './application/useCases/updatePreguntaById';
 import { DesenterrarPreguntas } from './application/useCases/desenterrarPreguntas';
+import { DetectorLenguajeCodigo } from './infrastructure/adapters/ports/detectorCodigoPort.service';
+import { DetectorLenguajeHighlight } from '../../shared/infrastructure/services/services/highlightDetector.service';
+import { FormateadorCodigoService } from '../../shared/infrastructure/services/services/parserCode.service';
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -40,10 +43,17 @@ export const preguntasBuilder = () => {
 	const categoriasExternasService = new CategoriasExternasService(
 		categoriaAdapertService
 	);
+	const detectorLenguajeHighlight = new DetectorLenguajeHighlight();
+	const formateadorCodigoService = new FormateadorCodigoService();
+	const detectarCodigoEnEnunciadoService = new DetectorLenguajeCodigo(
+		detectorLenguajeHighlight,
+		formateadorCodigoService
+	)
 	const getPreguntasFromFileUseCase = new LoadPreguntasFromFile(
 		excelAdapterService,
 		preguntasRepositoryMongoDB,
-		categoriasExternasService
+		categoriasExternasService,
+		detectarCodigoEnEnunciadoService
 	);
 
 	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMongoDB);
