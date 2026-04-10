@@ -4,6 +4,7 @@ export interface IPreguntasAtlasDto {
     descartada: boolean,
     respuestas: {
 		enunciado: string;
+		id: string;
 		correcta: boolean;
 	}[],
     estadisticas: { aciertos: number, fallos: number, total: number },

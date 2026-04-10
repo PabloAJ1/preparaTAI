@@ -13,5 +13,4 @@ export interface ICategoriaRepository {
 	getAllCategoriasExamenes(): Promise<Categoria[]>
 	getListOfCategorias(listaCategorias: string[]): Promise<Categoria[]>
 	createListOfCategorias(listaCategorias: Categoria[]): Promise<Categoria[]>
-	limpiarDB(): Promise<void>
 }

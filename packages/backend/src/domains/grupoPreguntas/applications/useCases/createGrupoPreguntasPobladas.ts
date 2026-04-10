@@ -13,7 +13,7 @@ export class CreateGrupoPreguntasPobladas implements ICreateGrupoPreguntasPoblad
 	
 	async exec(grupoPreguntasPoblada: IGrupoPreguntasPobladaDto): Promise<IGrupoPreguntasDto> {
 		const idPreguntasGuardadas = await this.preguntasServicePort.createPreguntas(grupoPreguntasPoblada.preguntas);
-		const grupoPregunta = MapGrupoPreguntas.toNewEntity({
+		const grupoPregunta = await MapGrupoPreguntas.toNewEntity({
 			...grupoPreguntasPoblada,
 			idPreguntas: idPreguntasGuardadas
 		});

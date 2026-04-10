@@ -27,10 +27,6 @@ export class CategoriaRepositoryMongo implements ICategoriaRepository {
 		await CategoriaModel.bulkWrite(operaciones);
 	}
 
-	async limpiarDB(): Promise<void> {
-		await CategoriaModel.deleteMany({})
-	}
-
 	async getCategoriasById(idCategoria: string): Promise<Categoria> {
 		const doc = await CategoriaModel.findOne({ idCategoria: idCategoria });
 		if(!doc) throw new CategoriaNoEncontradaById(idCategoria);

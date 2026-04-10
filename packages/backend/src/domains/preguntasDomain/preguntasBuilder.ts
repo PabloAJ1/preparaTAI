@@ -16,6 +16,10 @@ import { ReiniciarEstadisticas } from './application/useCases/reiniciarEstadisti
 import { EnterrarPregunta } from './application/useCases/enterrarPregunta';
 import { UpdatePreguntaById } from './application/useCases/updatePreguntaById';
 import { DesenterrarPreguntas } from './application/useCases/desenterrarPreguntas';
+import { BuscarOCrearCategoria } from '../categoriasDomain/application/useCases/buscarOCrearCategoria';
+import { DetectorLenguajeHighlight } from '../../shared/infrastructure/services/services/highlightDetector.service';
+import { DetectorLenguajeCodigo } from './infrastructure/adapters/ports/detectorCodigoPort.service';
+import { FormateadorCodigoService } from '../grupoPreguntas/domain/services/codeFormat.service';
 
 export const preguntasBuilder = () => {
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
@@ -32,18 +36,27 @@ export const preguntasBuilder = () => {
 	const getListOfCategorias = new GetListOfCategorias(
 		categoriaMongoDBRepository
 	);
+	const buscarOCrearCategoria = new BuscarOCrearCategoria(categoriaMongoDBRepository)
 	const categoriaAdapertService = new CategoriaAdaperServive(
 		getAllCategoriasPort,
 		crateListOfCategorias,
-		getListOfCategorias
+		getListOfCategorias,
+		buscarOCrearCategoria
 	);
 	const categoriasExternasService = new CategoriasExternasService(
 		categoriaAdapertService
 	);
+	const detectarCodigoEnEnunciadoService = new DetectorLenguajeHighlight()
+	const parsearCodigo = new FormateadorCodigoService()
+	const detectorLenguajeCodigo = new DetectorLenguajeCodigo(
+		detectarCodigoEnEnunciadoService,
+		parsearCodigo
+	)
 	const getPreguntasFromFileUseCase = new LoadPreguntasFromFile(
 		excelAdapterService,
 		preguntasRepositoryMongoDB,
-		categoriasExternasService
+		categoriasExternasService,
+		detectorLenguajeCodigo
 	);
 
 	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMongoDB);
