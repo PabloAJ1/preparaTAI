@@ -1,35 +1,24 @@
-import { InicializarCategorias } from "../../domains/categoriasDomain/application/useCases/inicializarCategorias"
-import { CategoriasSyncService } from "../../domains/categoriasDomain/infrastructure/adapters/ports/categoriasSync.service"
-import { CategoriasExternalAtlasService } from "../../domains/categoriasDomain/infrastructure/atlas/services/categoriasExternalAtlas.service"
-import { CategoriaRepositoryMongo } from "../../domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository"
+import { InicializarCategoriasFromFile } from "../../domains/categoriasDomain/application/useCases/inicializarCategoriasFromFile"
 import { GestionBDCategoriasRepositoryMongoDB } from "../../domains/categoriasDomain/infrastructure/mongo/repositories/gestionBDCategoriasRepositoryMongoDB"
-import { InicializarPreguntas } from "../../domains/preguntasDomain/application/useCases/inicializarPreguntas"
-import { PreguntasSyncPort } from "../../domains/preguntasDomain/infrastructure/adapters/ports/preguntasSyncPort.service"
-import { PreguntasExternalAtlasService } from "../../domains/preguntasDomain/infrastructure/atlas/services/PreguntasExternalAtlas.service"
-import { PreguntaRespositoryMongoDB } from "../../domains/preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository"
+import { InicializarPreguntasFromFile } from "../../domains/preguntasDomain/application/useCases/inicializarPreguntasFromFile"
+import { GestionBDPreguntasRepositoryMongoDB } from "../../domains/preguntasDomain/infrastructure/mongo/repositories/gestionBDPreguntasRepositoryMongoDB"
 import { InicializarDB } from "../application/useCases/inicializarDB"
 import { CategoriaPortService } from "../infrastructure/adapters/services/categoriaPort.service"
 import { PreguntasPortService } from "../infrastructure/adapters/services/preguntasPort.service"
 
 export const inicializarDBBuilder = () => {
 	//Inicializar Categorias
-	const path = `../../db/json/categoriasPreparaTAIv2categoriasPreparaTAIv2_base.json`
-	const categoriasRepositories = new CategoriaRepositoryMongo()
-	const getCategoriasFromAtlas = new CategoriasExternalAtlasService()
-	const categoriasSyncPortService = new CategoriasSyncService(getCategoriasFromAtlas)
-	const getionDBService = new GestionBDCategoriasRepositoryMongoDB(path)
-	const inicializarCategoriasUseCase = new InicializarCategorias(
-		categoriasSyncPortService, 
-		categoriasRepositories,
+	const pathCategorias = `/init/categoriasPreparaTAIv3.json`
+	const getionDBService = new GestionBDCategoriasRepositoryMongoDB(pathCategorias)
+	const inicializarCategoriasUseCase = new InicializarCategoriasFromFile(
 		getionDBService
 	)
 	const categoriaPort = new CategoriaPortService(inicializarCategoriasUseCase)
 
 	//Inicializar Preguntas
-	const preguntaRepository = new PreguntaRespositoryMongoDB()
-	const getPreguntasFromAtlas = new PreguntasExternalAtlasService()
-	const preguntasSyncPortService = new PreguntasSyncPort(getPreguntasFromAtlas)
-	const inicializarPreguntasUseCase = new InicializarPreguntas(preguntasSyncPortService, preguntaRepository)
+	const pathPreguntas = `/init/preguntasPreparaTAIv3.json`
+	const gestionPreguntaRepository = new GestionBDPreguntasRepositoryMongoDB(pathPreguntas)
+	const inicializarPreguntasUseCase = new InicializarPreguntasFromFile(gestionPreguntaRepository)
 	const preguntasPort = new PreguntasPortService(inicializarPreguntasUseCase)
 
 	const inicializarDB = new InicializarDB(categoriaPort, preguntasPort)

@@ -1,3 +1,3 @@
 export interface IInicializarPreguntas {
-	exec(options?: { clearDB: boolean  }): Promise<void>
+	exec(options?: { clearDB: boolean, path: string }): Promise<void>
 }

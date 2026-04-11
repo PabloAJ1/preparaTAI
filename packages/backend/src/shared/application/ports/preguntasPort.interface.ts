@@ -1,3 +1,3 @@
 export interface IPreguntasPort {
-	inicializarDB(): Promise<void>
+	inicializarDB(options?: { clearDB: boolean, path: string }): Promise<void>
 }

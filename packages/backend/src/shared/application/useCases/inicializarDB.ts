@@ -9,7 +9,7 @@ export class InicializarDB implements IInicializarDB {
 	){}
 
 	async exec(): Promise<void> {
-		await this.categoriasPort.inicializarDB();
-		await this.preguntasPort.inicializarDB();
+		await this.categoriasPort.inicializarDB({ clearDB: true, path: "" });
+		await this.preguntasPort.inicializarDB({ clearDB: true, path: "" });
 	}
 }

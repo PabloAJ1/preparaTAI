@@ -1,3 +1,3 @@
 export interface ICategoriasPort {
-	inicializarDB(): Promise<void>
+	inicializarDB(options?: { clearDB: boolean, path: string }): Promise<void>
 }
