@@ -8,6 +8,10 @@ import preguntaModel, { IPreguntaDocument } from '../schemas/pregunta.schema';
 import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
+	async getIdsPreguntasByCategoria(idCategoria: string): Promise<string[]> {
+
+	}
+
 	async getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]> {
 		return this.#getPreguntasByQuery({estado: "Marcado para revisar"})
 	}

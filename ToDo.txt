@@ -1,0 +1,8 @@
+
+Back:
+    - Cambiar la funcion de generar preguntas A-B para poder generar cualquier combinacion en funcion de varias listas
+
+Front:
+    - Implementar la creacion de preguntas
+    - En la edicion de pregutnas, poder meter codigo cuando la pregunta inicialmente no tienen codigo
+    - Poder agregar / eliminar categorias al editar las preguntas

@@ -14,6 +14,7 @@ export interface IPreguntaRepository {
 	getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]>
 	getAllPreguntas(): Promise<Pregunta[]>
 	getPreguntaById(idPregunta: string): Promise<Pregunta>;
+	getIdsPreguntasByCategoria(idCategoria: string): Promise<string[]>
 	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta>;
 	reiniciarAllEstadisticas(): Promise<void>;
 	limpiarDB(): Promise<void>

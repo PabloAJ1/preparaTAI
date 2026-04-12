@@ -1,6 +1,6 @@
-export type TPreguntasSession = {
+export interface IPreguntasSession {
     id: string;
     listaPreguntasId: string[];
     seed: number;
-    createdAt: Date;
+    createAt: Date;
 }
