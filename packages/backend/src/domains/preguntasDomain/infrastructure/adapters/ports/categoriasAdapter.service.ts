@@ -3,6 +3,7 @@ import { ICategoriaAdapterService } from "../../../application/ports/categoriaAd
 import { IBuscarOCrearCategoriaPorNombre } from "../signatures/buscarOCrearCategoriaPorNombre.interface";
 import { ICreateListOfCategorias } from "../signatures/createListOfCategorias.interface";
 import { IGetAllCategorias } from "../signatures/getCategorias.interface";
+import { IGetCategoriasByTipo } from "../signatures/getCategoriasByTipo.interface";
 import { IGetListOfCategorias } from "../signatures/getListOfCategorias.interface";
 
 export class CategoriaAdaperServive implements ICategoriaAdapterService {
@@ -10,8 +11,14 @@ export class CategoriaAdaperServive implements ICategoriaAdapterService {
 		private readonly getAllCategoriasPort: IGetAllCategorias,
 		private readonly crateListOfCategorias: ICreateListOfCategorias,
 		private readonly getListOfCategorias: IGetListOfCategorias,
-		private readonly buscarOCrearCategoria: IBuscarOCrearCategoriaPorNombre
+		private readonly buscarOCrearCategoria: IBuscarOCrearCategoriaPorNombre,
+		private readonly getCategoriasByTipo: IGetCategoriasByTipo
 	){}
+	
+	async getAllCategoriasByTipo(tipo: string): Promise<ICategoriaDto[]> {
+		const categorias = await this.getCategoriasByTipo.exec(tipo);
+		return categorias;
+	}
 
 	async crearListadoDeCategoriasPorNombre(categorias: ICategoriaDto[]): Promise<ICategoriaDto[]> {
 		const categoriasCreadas = await this.crateListOfCategorias.exec(categorias);

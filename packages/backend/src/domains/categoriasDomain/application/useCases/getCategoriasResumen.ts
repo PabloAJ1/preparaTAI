@@ -3,9 +3,9 @@ import { ICategoriaRepository } from '../../domain/repositories/categoriaReposit
 import { CategoriaResumenDto } from '../dtos/categoriasResumen.dto';
 import { IPreguntasPort } from '../interfaces/preguntasPort.interface';
 import { MapCateogiraResumen } from '../mappers/mapCategoriasResumen.mapper';
-import { IGetCategoriasByTipo } from '../signatures/getCategoriasResumen.interface';
+import { IGetCategoriasByTipoResumen } from '../signatures/getCategoriasResumen.interface';
 
-export class GetCategoriasByTipo implements IGetCategoriasByTipo {
+export class GetCategoriasByTipoResumen implements IGetCategoriasByTipoResumen {
 	constructor(
 		private readonly categoriasRepositories: ICategoriaRepository,
 		private readonly preguntasPort: IPreguntasPort

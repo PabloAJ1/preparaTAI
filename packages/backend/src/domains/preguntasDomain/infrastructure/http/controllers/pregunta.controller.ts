@@ -9,17 +9,19 @@ import { IReiniciarEstadisticas } from '../../../application/signatures/reinicia
 import { IEnterrarPregunta } from '../../../application/signatures/enterrarPregunta.interface';
 import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById';
 import { IDesenterrarPreguntas } from '../../../application/signatures/desenterrarPreguntas.interface';
+import { ICrearPregunta } from '../../../application/signatures/createPregunta.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
 
 const {
+	getPreguntasPorCateogiraConSesion,
 	getNumeroPreguntas,
-	getPreguntasPorCategoriaPaginando,
 	registarEstadisticaByPregunta,
 	reiniciarEstadisticas,
 	enterrarPregunta,
 	editarEnunciadoPreguntaById,
 	desenterrarPreguntas,
+	crearPregunta,
 } = preguntasBuilder();
 
 export const makeHandleGetNumeroPreguntas =
@@ -114,10 +116,24 @@ export const makeHandleDesenterrarPreguntas =
 		}
 	};
 
+export const makeHandleCrearPregunta =
+	(crearPregunta: ICrearPregunta) =>
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const cuerpo: TPreguntas = req.body;
+			await crearPregunta.exec(MapPreguntaController.toDtoInterno(cuerpo));
+			res.status(204).end();
+		} catch (err) {
+			next(err);
+		}
+	};
+
+export const handleCrearPregunta =
+	makeHandleCrearPregunta(crearPregunta);
 export const handleGetNumeroPreguntas =
 	makeHandleGetNumeroPreguntas(getNumeroPreguntas);
 export const handleGetPreguntasPorCategoria =
-	makeHandleGetPreguntasPorCategoria(getPreguntasPorCategoriaPaginando);
+	makeHandleGetPreguntasPorCategoria(getPreguntasPorCateogiraConSesion);
 export const handleRegistarEstadisticaByPregunta =
 	makeHandleRegistarEstadisticaByPregunta(registarEstadisticaByPregunta);
 export const handleReiniciarEstadisticas = makeHandleReiniciarEstadisticas(

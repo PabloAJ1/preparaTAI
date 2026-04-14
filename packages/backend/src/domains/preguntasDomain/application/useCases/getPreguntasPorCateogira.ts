@@ -1,4 +1,3 @@
-import { Pregunta } from "../../domain/entities/Pregunta";
 import { IPreguntaRepository } from "../../domain/repositories/preguntasRepository.interface";
 import { IPreguntaDto } from "../dtos/pregunta.dto";
 import { MapsPregunta } from "../mappers/mapDtoToEntityPregunta.mapper";
@@ -11,16 +10,8 @@ export class GetPreguntasPorCateogira implements IGetPreguntasPorCateogira {
 	async exec(idCategoria: string): Promise<IPreguntaDto[]>{
 		const preguntas = await this.preguntaRepository.getPreguntasPorCategoria(idCategoria);
 
-		const preguntasConRespuestaMezclada = preguntas.map(p => {
-			return Pregunta.crear({
-				categorias: p.categorias,
-				enunciado: p.enunciado,
-				idPregunta: p.idPregunta,
-				respuestas: SelectorRespuestasService.generarRespuestas(p)
-			})
-		})
-
-		const preguntasMapeadas = preguntasConRespuestaMezclada.map(MapsPregunta.toDto)
+		const preguntasRespuestasMezcladas = SelectorRespuestasService.generarPreguntasConRespuestasMezcladas(preguntas)
+		const preguntasMapeadas = preguntasRespuestasMezcladas.map(MapsPregunta.toDto)
 		return preguntasMapeadas;
 	}
 }

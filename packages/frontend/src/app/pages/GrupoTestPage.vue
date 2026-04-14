@@ -1,6 +1,6 @@
 <template>
 	<AppCabeceraCuestionario 
-		:nombre="id" 
+		:idCategoria="id" 
 		:total-preguntas="numeroPreguntas" 
 		:modo="'grupo'" 
 		@toggle-mostrar-preguntas="handleToggleMostrarPreguntas"

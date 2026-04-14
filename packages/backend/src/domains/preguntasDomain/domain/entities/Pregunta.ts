@@ -19,8 +19,10 @@ export class Pregunta {
 		return this.#props.respuestas;
 	}
 
-	get respuestaCorrecta() {
-		return this.respuestas.find((r) => r.isCorrect);
+	get respuestaCorrecta(): RespuestaVo {
+		const respuesta = this.respuestas.find((r) => r.isCorrect);
+		if(!respuesta) throw new Error("La pregunta no contiene una respuesta correcta")
+		return respuesta;
 	}
 
 	get respuestasIncorrecta() {
@@ -65,18 +67,27 @@ export class Pregunta {
 		if(this.estado !== preguntaModificada.estado)
 			this.#props.estado = preguntaModificada.#props.estado;
 		
+		this.actualizarRespuestas(preguntaModificada.respuestas)
+	}
+
+	actualizarRespuestas(respuestas: RespuestaVo[]) {
 		const nuevasRespuestas: RespuestaVo[] = []
 
-		for (const r of preguntaModificada.respuestas) {
+		for (const r of respuestas) {
 			if (r.id) {
 				const existente = this.respuestas.find(x => x.id === r.id)
 
-				if (!existente) {
-					throw new Error("Respuesta inválida")
-				}
-
-				existente.actualizar(r.enunciado, r.isCorrect)
-				nuevasRespuestas.push(existente)
+				if (existente) {
+					existente.actualizar(r.enunciado, r.isCorrect)
+					nuevasRespuestas.push(existente)
+				}	
+					
+				nuevasRespuestas.push(
+					RespuestaVo.crear({
+						enunciado: r.enunciado,
+						correcta: r.isCorrect
+					})
+				)	
 
 			} else {
 				nuevasRespuestas.push(

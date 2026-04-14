@@ -9,6 +9,8 @@ import ExamenesPage from '../pages/ExamenesPage.vue'
 import GestionDBPage from '../pages/GestionDBPage.vue'
 import GrupoPreguntasPage from '../pages/GrupoPreguntasPage.vue';
 import GrupoTestPage from '../pages/GrupoTestPage.vue';
+import CrearPreguntaPage from '../pages/CrearPreguntaPage.vue';
+import CreatePracticaPage from '../pages/CreatePracticaPage.vue';
 
 const routes = [
 	{
@@ -44,6 +46,12 @@ const routes = [
 			},{
 				path: 'gestionDB',
 				component: GestionDBPage,
+			},{
+				path: 'crear/pregunta',
+				component: CrearPreguntaPage,
+			},{
+				path: 'crear/practica',
+				component: CreatePracticaPage,
 			}
 		],
 	},

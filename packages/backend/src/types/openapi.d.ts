@@ -284,6 +284,84 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/practica": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener todas las practicas con estadisticas */
+        get: operations["getAllPracticas"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/practica/{id}": {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** Obtener una practica por id */
+        get: operations["getPracticaById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/practica/crearPractica": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Guardar una practica */
+        post: operations["createPractica"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/practica/migracion": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Migra las preguntas a practicas */
+        get: operations["migracionPracticas"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/shared/inicializarDB": {
         parameters: {
             query?: never;
@@ -338,6 +416,22 @@ export interface components {
             categorias?: components["schemas"]["Categoria"][];
             estadisticas: components["schemas"]["Estadistica"];
         };
+        PreguntaNueva: {
+            enunciado: string;
+            codigo?: string;
+            estado: string;
+            respuestas: components["schemas"]["Respuesta"][];
+            categorias: components["schemas"]["Categoria"][];
+        };
+        PreguntaPracticaNueva: {
+            enunciado: string;
+            respuesta: string;
+        };
+        PracticaNueva: {
+            estado: string;
+            pregunta: components["schemas"]["PreguntaPracticaNueva"][];
+            nombrePractica: string;
+        };
         PreguntaUpdate: {
             enunciado: string;
         };
@@ -360,6 +454,11 @@ export interface components {
         };
         /** @enum {string} */
         Estado: "GPT" | "VERIFICADO" | "REVISADO" | "ENTERRADO" | "DESENTERRADO" | "MARCADO";
+        Practica: {
+            idPractica: string;
+            nombrePractica: string;
+            preguntas: components["schemas"]["Pregunta"][];
+        };
     };
     responses: never;
     parameters: never;
@@ -766,6 +865,96 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["Examen"][];
                 };
+            };
+        };
+    };
+    getAllPracticas: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Listado de Examenes */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CategoriaResumen"][];
+                };
+            };
+        };
+    };
+    getPracticaById: {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Listado de preguntas de la practica */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Practica"][];
+                };
+            };
+        };
+    };
+    createPractica: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PracticaNueva"];
+            };
+        };
+        responses: {
+            /** @description Practica creada */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    migracionPracticas: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Registros migrados */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

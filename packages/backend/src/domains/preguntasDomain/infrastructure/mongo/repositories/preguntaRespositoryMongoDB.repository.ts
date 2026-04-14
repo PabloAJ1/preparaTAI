@@ -9,7 +9,9 @@ import { chunkArrayService } from '../services/chunkPreguntas.service';
 
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 	async getIdsPreguntasByCategoria(idCategoria: string): Promise<string[]> {
-
+		const result = await preguntaModel
+			.find({ categorias: { $in: [idCategoria] } }, "idPregunta")
+		return result.map(r => r.idPregunta);
 	}
 
 	async getPreguntasMarcadasParaRevisar(): Promise<Pregunta[]> {
@@ -20,27 +22,18 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 		return this.#getPreguntasByQuery({ idPregunta: { $in: idsPreguntas} })
 	}
 
-	async getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
-		const doc = await preguntaModel.aggregate([
-			{
-				$match: {
-					categorias: { $in: [idCategoria] },
-				},
-			},
-			{
-				$group: {
-					_id: null,
-					numeroPreguntas: { $sum: 1 },
-					aciertos: { $sum: { $ifNull: ["$estadisticas.aciertos", 0] } },
-					fallos: { $sum: { $ifNull: ["$estadisticas.fallos", 0] } },
-				}
-			}
-		]);
-		return doc[0] || {
-			numeroPreguntas: 0,
-			aciertos: 0,
-			fallos: 0,
-		};
+	async getNumeroPreguntasAciertosYFallosPorGrupoPreguntas(
+		idsPreguntas: string[]
+	): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
+		const query = { idPregunta: { $in: [idsPreguntas] }}
+		return await this.#preguntasConEstadisticas(query);
+	}
+
+	async getNumeroPreguntasAciertosYFallosPorCateogira(
+		idCategoria: string
+	): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
+		const query = { categorias: { $in: [idCategoria] } }
+		return await this.#preguntasConEstadisticas(query);
 	}
 
 	async createBulkPreguntas(preguntas: Pregunta[]): Promise<void> {
@@ -99,7 +92,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 		return MapPreguntasMongo.toEntity(doc);
 	}
 
-	async updatePreguntaById(pregunta: Pregunta): Promise<Pregunta> {
+	async updatePregunta(pregunta: Pregunta): Promise<Pregunta> {
 		const model = MapPreguntasMongo.toModel(pregunta);
 		const doc = await preguntaModel.findOneAndUpdate(
 			{ idPregunta: model.idPregunta },
@@ -206,12 +199,37 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 		return this.#getPreguntasByQuery(query)
 	}
 
-	getAllPreguntas(): Promise<Pregunta[]> {
-		throw new Error('Method not implemented.');
+	async getAllPreguntas(): Promise<Pregunta[]> {
+		const query: QueryFilter<IPreguntaDocument> = {}
+		return this.#getPreguntasByQuery(query)
 	}
 
 	async #getPreguntasByQuery(query: QueryFilter<IPreguntaDocument>): Promise<Pregunta[]> {
 		const docs = await preguntaModel.find(query);
 		return docs.map(MapPreguntasMongo.toEntity);
+	}
+
+	async #preguntasConEstadisticas(
+		query: QueryFilter<IPreguntaDocument>
+	): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }>  
+	{
+		const doc = await preguntaModel.aggregate([
+			{
+				$match: query
+			},
+			{
+				$group: {
+					_id: null,
+					numeroPreguntas: { $sum: 1 },
+					aciertos: { $sum: { $ifNull: ["$estadisticas.aciertos", 0] } },
+					fallos: { $sum: { $ifNull: ["$estadisticas.fallos", 0] } },
+				}
+			}
+		]);
+		return doc[0] || {
+			numeroPreguntas: 0,
+			aciertos: 0,
+			fallos: 0,
+		};
 	}
 }

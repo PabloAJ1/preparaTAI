@@ -4,11 +4,77 @@ All URIs are relative to */api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**createCategoria**](CategoriasApi.md#createcategoria) | **POST** /categoria | Guardar una categoria |
 | [**getAllCategorias**](CategoriasApi.md#getallcategorias) | **GET** /categoria | Obtener categorias |
 | [**getAllGruposPreguntasByCategoria**](CategoriasApi.md#getallgrupospreguntasbycategoria) | **GET** /gruposDePreguntasRelacionadas/porCategoria/{id} | Obtener Grupos de Preguntas GrupoPreguntasRelacionadas por Categoria |
 | [**getCategoriasResumen**](CategoriasApi.md#getcategoriasresumen) | **GET** /categoria/resumen | Obtener categorias con número de preguntas |
 | [**getOneCategoriaById**](CategoriasApi.md#getonecategoriabyid) | **GET** /categoria/{id} | Obtener una categoria por id |
 
+
+
+## createCategoria
+
+> Categoria createCategoria(categoriaNueva)
+
+Guardar una categoria
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CategoriasApi,
+} from '';
+import type { CreateCategoriaRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new CategoriasApi();
+
+  const body = {
+    // CategoriaNueva
+    categoriaNueva: ...,
+  } satisfies CreateCategoriaRequest;
+
+  try {
+    const data = await api.createCategoria(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **categoriaNueva** | [CategoriaNueva](CategoriaNueva.md) |  | |
+
+### Return type
+
+[**Categoria**](Categoria.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Categoria guardada con exito |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getAllCategorias

@@ -2,8 +2,13 @@ import './styles.scss';
 import { createApp } from 'vue';
 import App from './app/App.vue';
 import router from './app/routers';
+import { VueQueryPlugin, QueryClient } from '@tanstack/vue-query'
 
-const app = createApp(App);
+const queryClient = new QueryClient()
 
-app.use(router);
-app.mount('#root');
+createApp(App)
+	.use(router)
+	.use(VueQueryPlugin, {
+    	queryClient
+	})
+	.mount('#root');

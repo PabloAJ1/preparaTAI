@@ -19,12 +19,18 @@
 				<i class="fa-solid fa-cloud-arrow-down"></i>
 				<p>Inicializar DB</p>
 			</div>
+
+			<!-- Migrar Practicas -->
+			<div class="admin-card file-upload" @click="migrarPracticas">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+				<p>Migrar Practicas</p>
+			</div>
 		</div>
 	</section>
 </template>
 
 <script lang="ts" setup>
-import { AdminApi, Configuration, PreguntasApi } from '@preparatai/api-client';
+import { AdminApi, Configuration, PracticasApi, PreguntasApi } from '@preparatai/api-client';
 
 const reiniciarEstadisticas = async () => {
 	const api = new PreguntasApi(
@@ -47,11 +53,25 @@ const inicializarDB = async () => {
 	await api.inicializarDB();
 };
 
+const inicializarMigracion = async () => {
+	const api = new PracticasApi(
+		new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
+	);
+	await api.migracionPracticas();
+};
+
 function confirmarInicializacion() {
-  const confirmado = window.confirm("¿Estás seguro de que quieres inicializar la base de datos? Esta acción borrara todos los datos y no se puede deshacer.");
-  if (confirmado) {
-    inicializarDB();
-  }
+	const confirmado = window.confirm("¿Estás seguro de que quieres inicializar la base de datos? Esta acción borrara todos los datos y no se puede deshacer.");
+	if (confirmado) {
+		inicializarDB();
+	}
+}
+
+function migrarPracticas() {
+	const confirmado = window.confirm("¿Estás seguro de que quieres realizar la migracion.");
+	if (confirmado) {
+		inicializarMigracion();
+	}
 }
 
 </script>

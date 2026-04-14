@@ -7,6 +7,6 @@ export class EnterrarPregunta implements IEnterrarPregunta {
 	async exec(idPregunta: string): Promise<void> {
 		const pregunta = await this.preguntaRepository.getPreguntaById(idPregunta);
 		pregunta.enterrarPregunta();
-		await this.preguntaRepository.updatePreguntaById(pregunta);
+		await this.preguntaRepository.updatePregunta(pregunta);
 	}
 }

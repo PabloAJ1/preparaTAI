@@ -12,7 +12,7 @@ export class UpdatePreguntaById implements IUpdatePreguntaById {
 		const pregunta = await this.preguntaRepository.getPreguntaById(preguntaDto.id);
 		const preguntaActualizadaEntity = MapsPregunta.toEntity(preguntaDto)
 		pregunta.actualizaPregunta(preguntaActualizadaEntity)
-		const preguntaActualizada = await this.preguntaRepository.updatePreguntaById(pregunta);
+		const preguntaActualizada = await this.preguntaRepository.updatePregunta(pregunta);
 
 		return MapsPregunta.toDto(preguntaActualizada)
 	}

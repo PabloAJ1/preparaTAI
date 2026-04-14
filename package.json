@@ -66,6 +66,7 @@
 	"dependencies": {
 		"@faker-js/faker": "^10.4.0",
 		"@prettier/plugin-xml": "^3.4.2",
+		"@tanstack/vue-query": "^5.99.0",
 		"cors": "^2.8.6",
 		"cross-env": "^10.1.0",
 		"dotenv": "^17.4.1",

@@ -1,21 +1,19 @@
 import { Request, Response, NextFunction } from "express"
-import { IGetCategoriasByTipo } from "../../../application/signatures/getCategoriasResumen.interface";
+import { IGetCategoriasByTipoResumen } from "../../../application/signatures/getCategoriasResumen.interface";
 import { components } from "../../../../../types/openapi";
 import { MapCategoriasResumen } from "../mappers/mapCategoriasResumen.mapper";
 import { categoriaBuilder } from "../../../../../domains/categoriasDomain/categoriaBuilder";
-import { IGetCategoriasById } from "../../../application/signatures/getCategoriaById.interface";
+import { IGetCategoriaById } from "../../../application/signatures/getCategoriaById.interface";
 import { MapCategorias } from "../mappers/mapCategorias.mapper";
+import { IGetAllCategorias } from "../../../application/signatures/getAllCategorias.interface";
 
 type TCategoriaResumen = components["schemas"]["CategoriaResumen"]
 type TCategoria = components["schemas"]["Categoria"]
 
-const {
-	getCategoriaResumen,
-	getCategoriaById
-} = categoriaBuilder();
+const { categorias } = categoriaBuilder();
 
 export const makeHandleGetCategoriasResumen = (
-	getCategoriasResumen: IGetCategoriasByTipo
+	getCategoriasResumen: IGetCategoriasByTipoResumen
 ) =>
 	async (
 		req: Request,
@@ -33,7 +31,6 @@ export const makeHandleGetCategoriasResumen = (
 			const tipoCategoria = tipoMap[tipo?.toUpperCase() ?? "NORMAL"];
 			const result = await getCategoriasResumen.exec(tipoCategoria);
 			const resultMapeado = result.map(MapCategoriasResumen.toReturnType)
-
 			res.json(resultMapeado)
 		} catch(err){
 			next(err);
@@ -41,7 +38,7 @@ export const makeHandleGetCategoriasResumen = (
 	}
 
 export const makeHandleGetCategoriaById = (
-	getCategoriaById: IGetCategoriasById
+	getCategoriaById: IGetCategoriaById
 ) => 
 	async (
 		req: Request,
@@ -57,5 +54,25 @@ export const makeHandleGetCategoriaById = (
 		}
 	}
 
-export const handleGetCategoriasResumen = makeHandleGetCategoriasResumen(getCategoriaResumen);
-export const handleGetCategoriaById = makeHandleGetCategoriaById(getCategoriaById);
+
+export const makeHandleGetAllCategoria = (
+	getAllCategorias: IGetAllCategorias
+) => 
+	async (
+		_req: Request,
+		res: Response<TCategoria[]>,
+		next: NextFunction
+	) => {
+		try{
+			const categoria = await getAllCategorias.exec()
+			res.json(categoria.map(MapCategorias.toReturnType))
+		}catch(err){
+			next(err)
+		}
+	}
+
+export const handles = {
+	getAll: makeHandleGetAllCategoria(categorias.getAll),
+	getResumen: makeHandleGetCategoriasResumen(categorias.getResumen),
+	getById: makeHandleGetCategoriaById(categorias.getById)
+}

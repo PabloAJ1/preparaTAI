@@ -1,5 +1,5 @@
 import { ICategoriaDto } from "../dtos/categoria.dto";
 
-export interface IGetCategoriasById {
+export interface IGetCategoriaById {
 	exec(idCategoria: string): Promise<ICategoriaDto>
 }

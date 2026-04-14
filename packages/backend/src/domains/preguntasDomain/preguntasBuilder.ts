@@ -16,33 +16,26 @@ import { ReiniciarEstadisticas } from './application/useCases/reiniciarEstadisti
 import { EnterrarPregunta } from './application/useCases/enterrarPregunta';
 import { UpdatePreguntaById } from './application/useCases/updatePreguntaById';
 import { DesenterrarPreguntas } from './application/useCases/desenterrarPreguntas';
-import { BuscarOCrearCategoria } from '../categoriasDomain/application/useCases/buscarOCrearCategoria';
 import { DetectorLenguajeHighlight } from '../../shared/infrastructure/services/services/highlightDetector.service';
 import { DetectorLenguajeCodigo } from './infrastructure/adapters/ports/detectorCodigoPort.service';
 import { FormateadorCodigoService } from '../grupoPreguntas/domain/services/codeFormat.service';
+import { GetPreguntasPorCateogiraConSesion } from './application/useCases/getPreguntasPorCateogiraConPaginacionYSesion';
+import { PreguntasSessionRepositoryMongo } from './infrastructure/mongo/repositories/preguntasSessionRepositoryMongo.repository';
+import { CrearPregunta } from './application/useCases/createPregunta';
+import { categoriasExternalBuild } from './categoriasExternalBuild';
 
 export const preguntasBuilder = () => {
+	const {
+		categoriaAdapertService
+	} = categoriasExternalBuild();
+
 	const preguntasRepositoryMongoDB = new PreguntaRespositoryMongoDB();
-	const categoriaMongoDBRepository = new CategoriaRepositoryMongo();
+	const preguntasSessionRepositoryMongoDB = new PreguntasSessionRepositoryMongo()
 
 	const path = '';
 	const excelLoader = new ExcelLoader();
 	const excelAdapterService = new ExcelAdapterService(excelLoader, path);
 
-	const getAllCategoriasPort = new GetAllCategorias(categoriaMongoDBRepository);
-	const crateListOfCategorias = new CreateListOfCategorias(
-		categoriaMongoDBRepository
-	);
-	const getListOfCategorias = new GetListOfCategorias(
-		categoriaMongoDBRepository
-	);
-	const buscarOCrearCategoria = new BuscarOCrearCategoria(categoriaMongoDBRepository)
-	const categoriaAdapertService = new CategoriaAdaperServive(
-		getAllCategoriasPort,
-		crateListOfCategorias,
-		getListOfCategorias,
-		buscarOCrearCategoria
-	);
 	const categoriasExternasService = new CategoriasExternasService(
 		categoriaAdapertService
 	);
@@ -65,6 +58,11 @@ export const preguntasBuilder = () => {
 	);
 	const getPreguntasPorCategoriaPaginando =
 		new GetPreguntasPorCateogiraConPaginacion(preguntasRepositoryMongoDB);
+	const getPreguntasPorCateogiraConSesion = new GetPreguntasPorCateogiraConSesion(
+		preguntasRepositoryMongoDB,
+		preguntasSessionRepositoryMongoDB,
+		getPreguntasPorCategoriaPaginando
+	);
 	const registarEstadisticaByPregunta = new RegistarEstadisticaByPregunta(
 		preguntasRepositoryMongoDB
 	);
@@ -77,8 +75,10 @@ export const preguntasBuilder = () => {
 	);
 
 	const desenterrarPreguntas = new DesenterrarPreguntas(preguntasRepositoryMongoDB);
+	const crearPregunta = new CrearPregunta(preguntasRepositoryMongoDB);
 
 	return {
+		getPreguntasPorCateogiraConSesion,
 		getNumeroPreguntas,
 		getPreguntasPorCategoria,
 		getPreguntasFromFileUseCase,
@@ -87,6 +87,7 @@ export const preguntasBuilder = () => {
 		reiniciarEstadisticas,
 		enterrarPregunta,
 		editarEnunciadoPreguntaById,
-		desenterrarPreguntas
+		desenterrarPreguntas,
+		crearPregunta
 	};
 };

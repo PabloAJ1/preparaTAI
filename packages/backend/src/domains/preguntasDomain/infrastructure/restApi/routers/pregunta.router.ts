@@ -7,9 +7,14 @@ import {
 	handleEnterrarPregunta,
 	handleEditarEnunciadoPregunta,
 	handleDesenterrarPreguntas,
+	handleCrearPregunta,
 } from "../../http/controllers/pregunta.controller";
 
 export const preguntaRoute: Router = Router();
+
+preguntaRoute
+    .route("/")
+	.post(handleCrearPregunta as RequestHandler)
 
 preguntaRoute
     .route("/getNumeroDePreguntas")

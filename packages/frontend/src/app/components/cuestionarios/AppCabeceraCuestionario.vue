@@ -37,24 +37,15 @@
 </template>
 
 <script setup lang="ts">
-import { CategoriasApi, Configuration } from '@preparatai/api-client';
 import { computed, onMounted, ref } from 'vue';
 
-const api = new CategoriasApi(
-	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
-);
-
 const props = defineProps<{
-	nombre: string;
+	nombreCategoria: string;
 	modo: string;
 	totalPreguntas: number;
 }>();
-const nombreCategoria = ref("");
 
 onMounted(async () => {
-	const categoria = await api.getOneCategoriaById({ id: props.nombre });
-	nombreCategoria.value = categoria.nombre
-
 	// cargar preferencias
 	mostrarPreguntas.value =
 		localStorage.getItem("mostrarPreguntas") !== "false"

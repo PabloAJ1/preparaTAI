@@ -111,7 +111,8 @@ async function guardarPregunta() {
 
 	Object.assign(props.pregunta, preguntaEditando.value);
 	// Cerrar modal
-	cerrarModalEdit();}
+	cerrarModalEdit();
+}
 </script>
 
 <style lang="scss">

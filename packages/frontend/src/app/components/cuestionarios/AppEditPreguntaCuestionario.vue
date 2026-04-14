@@ -13,6 +13,12 @@
 			</select>
 		</div>
 
+		<!-- Tags -->
+		<div id="tags" class="form-group">
+			<label for="tags">Etiquetas</label>
+			<textarea v-model="localPregunta.enunciado" rows="3" placeholder="Escribe el enunciado de la pregunta..." />
+		</div>
+
 		<!-- Enunciado -->
 		<div id="enunciado" class="form-group">
 			<label for="enunciado">Enunciado</label>
@@ -21,7 +27,6 @@
 
 		<!-- Codigo -->
 		<div 
-			v-if="localPregunta.codigo"
 			id="codigo" 
 			class="form-group"
 		>
@@ -62,21 +67,43 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue';
 import { Pregunta } from '@preparatai/api-client';
+import { useCategorias } from '../../services/etiquetas.service';
 
 const props = defineProps<{
-	preguntaEditando: Pregunta;
+	preguntaEditando?: Pregunta;
 }>();
+
+const { data: categorias, isLoading } = useCategorias()
+console.log(categorias);
+console.log(isLoading);
+
 
 const emit = defineEmits<{
   (e: 'update', pregunta: Pregunta): void;
 }>();
 
-// Copia local para edición
-const localPregunta = ref<Pregunta>({
-	...props.preguntaEditando,
-	respuestas: props.preguntaEditando.respuestas.map(r => ({ ...r })),
+const crearPreguntaVacia = (): Pregunta => ({
+	estado: 'REVISADO',
+	enunciado: '',
+	codigo: '',
+	respuestas: [
+		{ enunciado: '', correcta: false, id: 'nuevo-1' },
+		{ enunciado: '', correcta: false, id: 'nuevo-2' }
+	],
+	categorias: [],
+	estadisticas: { aciertos: 0, fallos: 0, total: 0},
+	id: 'nuevo'
 });
 
+// Copia local para edición
+const localPregunta = ref<Pregunta>(
+	props.preguntaEditando
+		? {
+				...props.preguntaEditando,
+				respuestas: props.preguntaEditando.respuestas.map(r => ({ ...r })),
+		  }
+		: crearPreguntaVacia()
+);
 
 // Sincronizar si cambia el prop
 watch(
@@ -87,6 +114,21 @@ watch(
     { deep: true } // Importante para detectar cambios en arrays de respuestas
 );
 
+watch(
+	() => props.preguntaEditando,
+	(newVal) => {
+		if (newVal) {
+			localPregunta.value = {
+				...newVal,
+				respuestas: newVal.respuestas.map(r => ({ ...r })),
+			};
+		} else {
+			localPregunta.value = crearPreguntaVacia();
+		}
+	},
+	{ immediate: true }
+);
+
 // Funciones
 function seleccionarCorrecta(index: number) {
 	localPregunta.value.respuestas.forEach((r, i) => {
@@ -95,7 +137,7 @@ function seleccionarCorrecta(index: number) {
 }
 
 function agregarRespuesta() {
-	localPregunta.value.respuestas.push({ enunciado: '', correcta: false });
+	localPregunta.value.respuestas.push({ enunciado: '', correcta: false, id: 'nuevo' });
 }
 
 function eliminarRespuesta(index: number) {

@@ -9,10 +9,18 @@
 			<i class="fa-solid  fa-database" /> Gestion DB
 		</router-link>
 
-		<a
+		<router-link
+			to="/crear/pregunta"
 			class="list-group-item list-group-item-action list-group-item-dark"
 		>
-			<i class="fa-solid fa-plus-circle"></i> Añadir Nueva
-		</a>
+			<i class="fa-solid fa-plus-circle" /> Añadir Nueva Pregunta
+		</router-link>
+
+		<router-link
+			to="/crear/practica"
+			class="list-group-item list-group-item-action list-group-item-dark"
+		>
+			<i class="fa-solid fa-plus-circle" /> Añadir Nueva Practica
+		</router-link>
 	</section>
 </template>

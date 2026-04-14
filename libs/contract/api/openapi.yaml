@@ -252,6 +252,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Categoria'
+    post:
+      tags:
+        - categorias
+      summary: Guardar una categoria
+      operationId: createCategoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoriaNueva'
+      responses:
+        '200':
+          description: Categoria guardada con exito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
 
   /categoria/resumen:
     parameters:
@@ -357,6 +375,91 @@ paths:
                 items:
                   $ref: '#/components/schemas/Examen'
 
+  /practica:
+    get:
+      tags:
+        - practicas
+      summary: Obtener todas las practicas con estadisticas
+      operationId: getAllPracticas
+      responses:
+        '200':
+          description: Listado de Examenes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoriaResumen'
+    
+  /practica/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la practica
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Número de página (empieza en 1)
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Número de preguntas por página
+        schema:
+          type: integer
+          default: 20
+      - name: seed
+        in: query
+        required: false
+        description: Semilla para randomizar las preguntas
+        schema:
+          type: integer
+          default: 0
+    get:
+      tags:
+        - practicas
+      summary: Obtener una practica por id
+      operationId: getPracticaById
+      responses:
+        '200':
+          description: Listado de preguntas de la practica
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Practica'
+
+
+  /practica/crearPractica:
+    post:
+      tags:
+        - practicas
+      summary: Guardar una practica
+      operationId: createPractica
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PracticaNueva'
+      responses:
+        '204':
+          description: Practica creada
+
+  /practica/migracion:
+    get:
+      tags:
+        - practicas
+      summary: Migra las preguntas a practicas
+      operationId: migracionPracticas
+      responses:
+        '204':
+          description: Registros migrados
+
   /shared/inicializarDB:
     get:
       tags:
@@ -382,6 +485,14 @@ components:
         - id
         - nombre
         - tipo
+
+    CategoriaNueva:
+      type: object
+      properties:
+        nombre:
+          type: string
+      required:
+        - nombre
 
     CategoriaResumen:
       type: object
@@ -459,6 +570,58 @@ components:
         - estadisticas
         - estado
 
+    PreguntaNueva:
+      type: object
+      properties:
+        enunciado:
+          type: string
+        codigo:
+          type: string
+        estado:
+          type: string
+        respuestas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Respuesta'
+        categorias:
+          type: array
+          items:
+            $ref: '#/components/schemas/Categoria'
+      required:
+        - id
+        - enunciado
+        - respuestas
+        - estado
+        - categorias
+
+    PreguntaPracticaNueva:
+      type: object
+      properties:
+        enunciado:
+          type: string
+        respuesta:
+          type: string
+      required:
+        - enunciado
+        - respuesta
+
+
+    PracticaNueva:
+      type: object
+      properties:
+        estado:
+          type: string
+        pregunta:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreguntaPracticaNueva'
+        nombrePractica:
+          type: string
+      required:
+        - pregunta
+        - estado
+        - nombrePractica
+
     PreguntaUpdate:
       type: object
       properties:
@@ -526,3 +689,19 @@ components:
         - ENTERRADO
         - DESENTERRADO
         - MARCADO
+
+    Practica: 
+      type: object
+      properties:
+        idPractica:
+          type: string
+        nombrePractica:
+          type: string
+        preguntas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pregunta'
+      required:
+        - idPractica
+        - nombrePractica
+        - preguntas

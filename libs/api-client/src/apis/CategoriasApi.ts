@@ -16,17 +16,24 @@
 import * as runtime from '../runtime';
 import type {
   Categoria,
+  CategoriaNueva,
   CategoriaResumen,
   GrupoPreguntasRelacionadas,
 } from '../models/index';
 import {
     CategoriaFromJSON,
     CategoriaToJSON,
+    CategoriaNuevaFromJSON,
+    CategoriaNuevaToJSON,
     CategoriaResumenFromJSON,
     CategoriaResumenToJSON,
     GrupoPreguntasRelacionadasFromJSON,
     GrupoPreguntasRelacionadasToJSON,
 } from '../models/index';
+
+export interface CreateCategoriaRequest {
+    categoriaNueva: CategoriaNueva;
+}
 
 export interface GetAllGruposPreguntasByCategoriaRequest {
     id: string;
@@ -44,6 +51,53 @@ export interface GetOneCategoriaByIdRequest {
  * 
  */
 export class CategoriasApi extends runtime.BaseAPI {
+
+    /**
+     * Creates request options for createCategoria without sending the request
+     */
+    async createCategoriaRequestOpts(requestParameters: CreateCategoriaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['categoriaNueva'] == null) {
+            throw new runtime.RequiredError(
+                'categoriaNueva',
+                'Required parameter "categoriaNueva" was null or undefined when calling createCategoria().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+
+        let urlPath = `/categoria`;
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CategoriaNuevaToJSON(requestParameters['categoriaNueva']),
+        };
+    }
+
+    /**
+     * Guardar una categoria
+     */
+    async createCategoriaRaw(requestParameters: CreateCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Categoria>> {
+        const requestOptions = await this.createCategoriaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoriaFromJSON(jsonValue));
+    }
+
+    /**
+     * Guardar una categoria
+     */
+    async createCategoria(requestParameters: CreateCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Categoria> {
+        const response = await this.createCategoriaRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Creates request options for getAllCategorias without sending the request

@@ -7,16 +7,20 @@ export const generarPreguntaDto = (props = {}): IPreguntaDto => {
 		enunciado: fakerES.lorem.sentence(),
 		respuestas: [{
 			enunciado: fakerES.lorem.sentence(),
-			correcta: true
+			correcta: true,
+			id: fakerES.string.uuid(),
 		},{
 			enunciado: fakerES.lorem.sentence(),
 			correcta: false,
+			id: fakerES.string.uuid(),
 		},{
 			enunciado: fakerES.lorem.sentence(),
 			correcta: false,
+			id: fakerES.string.uuid(),
 		},{
 			enunciado: fakerES.lorem.sentence(),
 			correcta: false,
+			id: fakerES.string.uuid(),
 		}],
 		categorias: [fakerES.string.uuid(), fakerES.string.uuid(), fakerES.string.uuid()],
 		estadisticas: {
@@ -24,7 +28,6 @@ export const generarPreguntaDto = (props = {}): IPreguntaDto => {
 			fallos: 0,
 			total: 0,
 		},
-		descartada: false,
 		estado: fakerES.helpers.arrayElement(["Verficada", "Revisada", "GPT"]),
 		...props
 	}

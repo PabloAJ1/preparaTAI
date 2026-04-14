@@ -6,6 +6,7 @@ export interface IPreguntaRepository {
 	getNumeroPreguntasTotales(): Promise<number>;
 	getNumeroPreguntasPorCategoria(nombreCategoria: string): Promise<number>;
 	getNumeroPreguntasAciertosYFallosPorCateogira(idCategoria: string): Promise<{numeroPreguntas: number, aciertos: number, fallos: number}>
+	getNumeroPreguntasAciertosYFallosPorGrupoPreguntas(idsPreguntas: string[]): Promise<{numeroPreguntas: number, aciertos: number, fallos: number}>
 	getPreguntasPorCategoria(nombreCategoria: string): Promise<Pregunta[]>;
 	getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]>;
 	getPreguntasPorCategoriaPaginandoConSeed(idCategoria: string, pagina: number, limit: number, seed: number): Promise<Pregunta[]>;
@@ -15,7 +16,7 @@ export interface IPreguntaRepository {
 	getAllPreguntas(): Promise<Pregunta[]>
 	getPreguntaById(idPregunta: string): Promise<Pregunta>;
 	getIdsPreguntasByCategoria(idCategoria: string): Promise<string[]>
-	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta>;
+	updatePregunta(pregunta: Pregunta): Promise<Pregunta>;
 	reiniciarAllEstadisticas(): Promise<void>;
 	limpiarDB(): Promise<void>
 }

@@ -17,7 +17,6 @@ export class CodigoVo {
 		if (!nuevoCodigo.trim()) {
 			throw new Error("El codigo no puede estar vacío");
 		}
-
 		this.#props.codigo = nuevoCodigo;
 	}
 

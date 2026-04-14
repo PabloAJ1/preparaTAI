@@ -8,7 +8,7 @@ export class DesenterrarPreguntas implements IDesenterrarPreguntas {
 		const preguntasEnterradas = await this.preguntaRepository.getPreguntasEnterradas();
 		for(const enterrada of preguntasEnterradas){
 			enterrada.desenterrarPregunta();
-			await this.preguntaRepository.updatePreguntaById(enterrada);
+			await this.preguntaRepository.updatePregunta(enterrada);
 		}
 	}
 

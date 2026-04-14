@@ -1,17 +1,20 @@
 import { Router, RequestHandler } from "express";
 import { 
-	handleGetCategoriasResumen,
-	handleGetCategoriaById
+	handles
 } from "../../http/controllers/categoria.controller";
 
 export const preguntaRoute: Router = Router();
 
 preguntaRoute
+	.route("/")
+	.get(handles.getAll as RequestHandler)
+
+preguntaRoute
 	.route("/resumen")
-	.get(handleGetCategoriasResumen as RequestHandler)
+	.get(handles.getResumen as RequestHandler)
 
 preguntaRoute
 	.route("/:id")
-	.get(handleGetCategoriaById as RequestHandler)
+	.get(handles.getById as RequestHandler)
 
 export default preguntaRoute;

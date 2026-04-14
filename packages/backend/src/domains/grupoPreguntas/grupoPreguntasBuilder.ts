@@ -1,7 +1,7 @@
 import { BuscarOCrearCategoria } from "../categoriasDomain/application/useCases/buscarOCrearCategoria";
 import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
 import { CrearPregunta } from "../preguntasDomain/application/useCases/createPregunta";
-import { GetVariasPreguntasPorIds } from "../preguntasDomain/application/useCases/getVariasPreguntasPorIds";
+import { GetVariasPreguntasPorIds } from "../preguntasDomain/application/useCases/getPreguntasPorVariosIds";
 import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 import { GetGrupoPreguntasByIdCategoria } from "./applications/useCases/getGrupoPreguntasByIdCategoria.interface";
 import { PreguntasPortService } from "./infrastructure/adapters/ports/preguntasPort.service";

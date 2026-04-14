@@ -82,7 +82,7 @@ export class PreguntaRepositoryMySQL implements IPreguntaRepository {
 	getPreguntaById(idPregunta: string): Promise<Pregunta> {
 		throw new Error('Method not implemented.');
 	}
-	updatePreguntaById(pregunta: Pregunta): Promise<Pregunta> {
+	updatePregunta(pregunta: Pregunta): Promise<Pregunta> {
 		throw new Error('Method not implemented.');
 	}
 	getPreguntasPorCategoriaPaginando(idCategoria: string, pagina: number, limit: number): Promise<Pregunta[]> {

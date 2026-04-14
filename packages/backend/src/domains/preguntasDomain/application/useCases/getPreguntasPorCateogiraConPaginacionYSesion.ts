@@ -5,6 +5,7 @@ import { IPreguntaSessionRepository } from "../../domain/repositories/preguntasS
 import { IPreguntaDto } from "../dtos/pregunta.dto";
 import { MapsPregunta } from "../mappers/mapDtoToEntityPregunta.mapper";
 import { MezclarPreguntasService } from "../services/MezclarPreguntas.service";
+import { SelectorRespuestasService } from "../services/SelectorRespuestas.service";
 import { IGetPreguntasPorCateogiraConPaginacion } from "../signatures/getPreguntasPorCateogiraConPaginacion.interface";
 import { GetPreguntasPorCateogiraConPaginacion } from "./getPreguntasPorCateogiraConPaginacion";
 
@@ -79,7 +80,8 @@ export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateog
 
 	#estructurarPreguntas(preguntas: Pregunta[], idsDePagina: string[]){
 		const preguntasOrdenadar = MezclarPreguntasService.ordenarPorListaIds(preguntas, idsDePagina)
-		const preguntasMapeadas = preguntasOrdenadar.map(MapsPregunta.toDto)
+		const preguntasRespuestasMezcladas = SelectorRespuestasService.generarPreguntasConRespuestasMezcladas(preguntasOrdenadar)
+		const preguntasMapeadas = preguntasRespuestasMezcladas.map(MapsPregunta.toDto)
 		return preguntasMapeadas;
 	}
 }

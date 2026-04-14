@@ -12,12 +12,12 @@ export class PreguntasSessionRepositoryMongo implements IPreguntaSessionReposito
         return this.#toEntity(doc);
     }
 
-    async cargarPreguntaSesionPorSeed(seed: number): Promise<PreguntaSession> {
+    async cargarPreguntaSesionPorSeed(seed: number): Promise<PreguntaSession | undefined> {
         const doc = await PreguntasSessionModel.findOne(
 			{ seed: seed },
 		);
 
-        if(!doc) throw new PreguntasSessionNoEncontradaBySeed(seed);
+        if(!doc) return undefined;
 
         return this.#toEntity(doc);
     }

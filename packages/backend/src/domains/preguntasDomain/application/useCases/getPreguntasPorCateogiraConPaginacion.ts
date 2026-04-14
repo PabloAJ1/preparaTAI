@@ -20,16 +20,7 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 			limit,
 			seed
 		);
-		const preguntasConRespuestaMezclada = preguntas.map(p => {
-			return Pregunta.crear({
-				categorias: p.categorias,
-				enunciado: p.enunciado,
-				idPregunta: p.idPregunta,
-				respuestas: SelectorRespuestasService.generarRespuestas(p),
-				estadisticas: p.estadisticas,
-				estado: p.estado
-			})
-		})
+		const preguntasConRespuestaMezclada = SelectorRespuestasService.generarPreguntasConRespuestasMezcladas(preguntas)
 		const preguntasMapeadas = preguntasConRespuestaMezclada.map(MapsPregunta.toDto)
 		return preguntasMapeadas;
 	}

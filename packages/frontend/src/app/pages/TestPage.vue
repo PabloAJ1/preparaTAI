@@ -1,10 +1,10 @@
 <template>
 	<AppCabeceraCuestionario 
-		:nombre="id" 
+		:nombre-categoria="nombreCategoria" 
 		:total-preguntas="numeroPreguntas" 
 		:modo="modo" 
-		@toggleMostrarPreguntas="handleToggleMostrarPreguntas"
-		@toggleAutoScroll="handleToggleAutoScroll"
+		@toggle-mostrar-preguntas="handleToggleMostrarPreguntas"
+		@toggle-auto-scroll="handleToggleAutoScroll"
 	/>
 
 	<TransitionGroup name="fade-slide" tag="div" id="lista-preguntas">
@@ -15,8 +15,8 @@
 			:pregunta="pregunta"
 			:indice="index"
 			:modo="modo"
-			:mostrarPreguntas="mostrarPreguntas"
-			:autoScroll="autoScroll"
+			:mostrar-preguntas="mostrarPreguntas"
+			:auto-scroll="autoScroll"
 			@descartar="eliminarPregunta" 
 			@revisar="marcarParaRevisar" 
 		/>
@@ -33,7 +33,7 @@ import AppCabeceraCuestionario from '../components/cuestionarios/AppCabeceraCues
 import AppPreguntaCuestionario from '../components/cuestionarios/AppPreguntaCuestionario.vue';
 import { useTestAttempt } from '../composables/useTestAttempt';
 import { ref, onUnmounted, onMounted } from 'vue';
-import { Configuration, PreguntasApi, Pregunta } from '@preparatai/api-client';
+import { Configuration, PreguntasApi, Pregunta, PracticasApi } from '@preparatai/api-client';
 import { useInfiniteScroll } from '../composables/useInfiniteScroll';
 
 const page = ref(1);
@@ -45,7 +45,12 @@ const api = new PreguntasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
+const apiPracticas = new PracticasApi(
+	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
+);
+
 const numeroPreguntas = ref(0);
+const nombreCategoria = ref('');
 
 const { id, modo } = defineProps<{
 	id: string;
@@ -85,12 +90,26 @@ onUnmounted(() => {
 async function cargarPreguntas() {
 	cargando.value = true;
 	try {
-		const preguntas = await api.getPreguntasPorCategoria({
-			id,
-			page: page.value,
-			limit: limit.value,
-			seed: Number(seed),
-		});
+		let preguntas: Pregunta[] = [];
+		if(modo === "practica"){
+			const practica = await apiPracticas.getPracticaById({
+				id,
+				page: page.value,
+				limit: limit.value,
+				seed: Number(seed),
+			});
+			preguntas = practica.preguntas
+			nombreCategoria.value = practica.nombrePractica
+		} else {
+			preguntas = await api.getPreguntasPorCategoria({
+				id,
+				page: page.value,
+				limit: limit.value,
+				seed: Number(seed),
+			});
+			nombreCategoria.value = preguntas?.[0].categorias?.[0].nombre ?? id
+		}
+		
 		listadoPreguntas.value.push(...preguntas);
 
 		if (preguntas.length < limit.value) finPreguntas.value = true;

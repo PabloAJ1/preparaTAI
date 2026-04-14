@@ -16,10 +16,10 @@ import { ref, onMounted, computed } from 'vue';
 import AppCabeceraTemas from '../temas/AppCabeceraTemas.vue';
 import AppCategoriaTemas from '../temas/AppCategoriaTemas.vue';
 import {
-	Configuration,
-	CategoriasApi,
 	CategoriaResumen,
 } from '@preparatai/api-client';
+import { categoriasApi } from '../../api/categoria.wrapper';
+import { practicaApi } from '../../api/practica.wrapper';
 
 // Props para personalizar la página
 const props = defineProps<{
@@ -27,18 +27,17 @@ const props = defineProps<{
 	modo: 'practica' | 'examen' | 'repaso' | 'grupo';
 }>();
 
-const api = new CategoriasApi(
-	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
-);
-
 const categoriasResumen = ref<CategoriaResumen[]>([]);
 const textoBusqueda = ref('');
 
 onMounted(async () => {
 	try {
-		categoriasResumen.value = await api.getCategoriasResumen({
-			tipo: props.tipoCategoria,
-		});
+		if(props.tipoCategoria === "PRACTICA"){
+			categoriasResumen.value = await practicaApi.getAll();
+		} else {
+			categoriasResumen.value = await categoriasApi.getCategoriasResumen(props.tipoCategoria);
+		}
+
 	} catch (error) {
 		console.error('Error obteniendo el número de preguntas:', error);
 	}

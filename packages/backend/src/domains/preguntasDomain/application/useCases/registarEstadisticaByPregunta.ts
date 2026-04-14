@@ -10,6 +10,6 @@ export class RegistarEstadisticaByPregunta implements IRegistarEstadisticaByPreg
 		const pregunta = await this.preguntaRepository.getPreguntaById(idPregunta);
 
 		pregunta.estadisticas.registarRespuesta(acierto);
-		await this.preguntaRepository.updatePreguntaById(pregunta)
+		await this.preguntaRepository.updatePregunta(pregunta)
 	}
 }
