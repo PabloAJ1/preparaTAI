@@ -66,6 +66,9 @@ export class Pregunta {
 
 		if(this.estado !== preguntaModificada.estado)
 			this.#props.estado = preguntaModificada.#props.estado;
+
+		if(this.categorias !== preguntaModificada.categorias)
+			this.#props.categorias = preguntaModificada.#props.categorias;
 		
 		this.actualizarRespuestas(preguntaModificada.respuestas)
 	}

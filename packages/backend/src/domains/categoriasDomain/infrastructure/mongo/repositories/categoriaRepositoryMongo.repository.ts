@@ -7,6 +7,11 @@ import { CategoriaNoEncontradaById } from "../../../application/errors/Categoria
 import { CategoriaNoEncontradaByNombre } from "../../../application/errors/CategoriaNoEncontradaByNombre.error";
 
 export class CategoriaRepositoryMongo implements ICategoriaRepository {
+	async getByIds(idsCategorias: string[]): Promise<Categoria[]> {
+		const docs = await CategoriaModel.find({ idCategoria: { $in: idsCategorias }});
+		return docs.map(MapCategoriaMongo.toEntity)
+	}
+
 	async getCategoriasByName(nombreCategoria: string): Promise<Categoria> {
 		const doc = await CategoriaModel.findOne({ nombreCategoria: nombreCategoria });
 		if(!doc) throw new CategoriaNoEncontradaByNombre(nombreCategoria);

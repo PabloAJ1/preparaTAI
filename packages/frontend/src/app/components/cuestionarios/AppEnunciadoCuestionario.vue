@@ -37,7 +37,6 @@ const props = defineProps<{
 	indice: number;
 	modo: string;
 }>();
-
 const colorNumero = computed(() => ({
 	'tema-color-repaso': props.modo === 'repaso',
 	'tema-color-practica': props.modo === 'practica',

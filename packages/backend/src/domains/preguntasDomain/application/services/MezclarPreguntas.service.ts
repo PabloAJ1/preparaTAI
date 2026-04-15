@@ -1,8 +1,9 @@
 import seedrandom from 'seedrandom';
 import { Pregunta } from '../../domain/entities/Pregunta';
+import { IMezclarPreguntasService } from '../signatures/mezclarPreguntasService,interface';
 
-export class MezclarPreguntasService {
-	static mezclarPreguntas(preguntas: Pregunta[], seed: number): Pregunta[] {
+export class MezclarPreguntasService implements IMezclarPreguntasService {
+	mezclarPreguntas(preguntas: Pregunta[], seed: number): Pregunta[] {
 		const arr = [...preguntas];
 		const rng = seedrandom(seed.toString());
 
@@ -14,7 +15,7 @@ export class MezclarPreguntasService {
 		return arr;
 	}
 
-	static ordenarPorListaIds(
+	ordenarPorListaIds(
 		preguntas: Pregunta[],
 		idsOrdenados: string[],
 	): Pregunta[] {

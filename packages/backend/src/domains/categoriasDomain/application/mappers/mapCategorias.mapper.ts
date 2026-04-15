@@ -1,4 +1,5 @@
 import { Categoria } from "../../domain/entities/Categoria";
+import { ETipoCategoria } from "../../domain/enums/tipoCategoria.enum";
 import { TipoCategortiaHelper } from "../../domain/helpers/tipoCategoria.helper";
 import { ICategoriaDto } from "../dtos/categoria.dto";
 
@@ -14,7 +15,7 @@ export class MapCategoria {
 	static toEntity(dto: ICategoriaDto): Categoria {
 		return Categoria.crear({
 			nombreCategoria: dto.nombreCategoria,
-			tipo: TipoCategortiaHelper.fromString(dto.tipo)
+			tipo: TipoCategortiaHelper.fromString(dto.tipo ?? ETipoCategoria.DEFAULT)
 		})
 	}
 

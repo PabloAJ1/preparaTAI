@@ -35,6 +35,7 @@ import { useTestAttempt } from '../composables/useTestAttempt';
 import { ref, onUnmounted, onMounted } from 'vue';
 import { Configuration, PreguntasApi, Pregunta, PracticasApi } from '@preparatai/api-client';
 import { useInfiniteScroll } from '../composables/useInfiniteScroll';
+import { practicaApi } from '../api/practica.wrapper';
 
 const page = ref(1);
 const limit = ref(50);
@@ -42,10 +43,6 @@ const cargando = ref(false);
 let finPreguntas = ref(false);
 
 const api = new PreguntasApi(
-	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
-);
-
-const apiPracticas = new PracticasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
@@ -92,12 +89,12 @@ async function cargarPreguntas() {
 	try {
 		let preguntas: Pregunta[] = [];
 		if(modo === "practica"){
-			const practica = await apiPracticas.getPracticaById({
+			const practica = await practicaApi.getById(
 				id,
-				page: page.value,
-				limit: limit.value,
-				seed: Number(seed),
-			});
+				page.value,
+				limit.value,
+				Number(seed),
+			);
 			preguntas = practica.preguntas
 			nombreCategoria.value = practica.nombrePractica
 		} else {

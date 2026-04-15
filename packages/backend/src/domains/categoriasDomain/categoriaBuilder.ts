@@ -1,5 +1,6 @@
 import { EstadisticasPorCategoria } from "../preguntasDomain/application/useCases/estadisticasPorCategoria";
 import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
+import { CreateCategoria } from "./application/useCases/createCategoria";
 import { GetAllCategorias } from "./application/useCases/getAllCategorias";
 import { GetCategoriasById } from "./application/useCases/getCategoriaById";
 import { GetCategoriasByTipoResumen } from "./application/useCases/getCategoriasResumen";
@@ -20,12 +21,14 @@ export const categoriaBuilder = () => {
 
 	const getCategoriaById = new GetCategoriasById(categoriaRepositoryMongo)
 	const getAllCategorias = new GetAllCategorias(categoriaRepositoryMongo)
+	const createCategoria = new CreateCategoria(categoriaRepositoryMongo)
 
 	return {
 		categorias: {
 			getAll: getAllCategorias,
 			getResumen: getCategoriaResumen,
-			getById: getCategoriaById
+			getById: getCategoriaById,
+			create: createCategoria
 		}
 	}
 }

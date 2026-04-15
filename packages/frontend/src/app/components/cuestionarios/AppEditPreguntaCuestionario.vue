@@ -14,10 +14,10 @@
 		</div>
 
 		<!-- Tags -->
-		<div id="tags" class="form-group">
-			<label for="tags">Etiquetas</label>
-			<textarea v-model="localPregunta.enunciado" rows="3" placeholder="Escribe el enunciado de la pregunta..." />
-		</div>
+		<AppEtiquetasChips 
+			v-model="localPregunta.categorias"
+			:categorias-existentes="localPregunta.categorias"
+		/>
 
 		<!-- Enunciado -->
 		<div id="enunciado" class="form-group">
@@ -67,16 +67,11 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue';
 import { Pregunta } from '@preparatai/api-client';
-import { useCategorias } from '../../services/etiquetas.service';
+import AppEtiquetasChips from './AppEtiquetasChips.vue';
 
 const props = defineProps<{
 	preguntaEditando?: Pregunta;
 }>();
-
-const { data: categorias, isLoading } = useCategorias()
-console.log(categorias);
-console.log(isLoading);
-
 
 const emit = defineEmits<{
   (e: 'update', pregunta: Pregunta): void;
@@ -240,7 +235,7 @@ const insertarTab = (event: KeyboardEvent) => {
 					border: 1px solid var(--color-smoke);
 					font-size: 0.95rem;
 					color: var(--color-smoke);
-					background-color: var(--color-textbox-bg);;
+					background-color: var(--color-textbox-bg);
 				}
 			}
 

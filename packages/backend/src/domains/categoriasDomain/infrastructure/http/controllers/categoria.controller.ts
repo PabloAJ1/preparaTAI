@@ -6,6 +6,7 @@ import { categoriaBuilder } from "../../../../../domains/categoriasDomain/catego
 import { IGetCategoriaById } from "../../../application/signatures/getCategoriaById.interface";
 import { MapCategorias } from "../mappers/mapCategorias.mapper";
 import { IGetAllCategorias } from "../../../application/signatures/getAllCategorias.interface";
+import { ICreateCategoria } from "../../../application/signatures/createCategoria.interface";
 
 type TCategoriaResumen = components["schemas"]["CategoriaResumen"]
 type TCategoria = components["schemas"]["Categoria"]
@@ -71,8 +72,26 @@ export const makeHandleGetAllCategoria = (
 		}
 	}
 
+export const makeHandleCreateCategoria = (
+	createCategoria: ICreateCategoria
+) => 
+	async (
+		req: Request,
+		res: Response<TCategoria>,
+		next: NextFunction
+	) => {
+		try{
+			const cuerpo: TCategoria = req.body
+			const categoria = await createCategoria.exec(MapCategorias.toDto(cuerpo))
+			res.json(MapCategorias.toReturnType(categoria));
+		}catch(err){
+			next(err)
+		}
+	}
+
 export const handles = {
 	getAll: makeHandleGetAllCategoria(categorias.getAll),
 	getResumen: makeHandleGetCategoriasResumen(categorias.getResumen),
-	getById: makeHandleGetCategoriaById(categorias.getById)
+	getById: makeHandleGetCategoriaById(categorias.getById),
+	create: makeHandleCreateCategoria(categorias.create)
 }

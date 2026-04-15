@@ -5,7 +5,7 @@ import {
 	handleRegistarEstadisticaByPregunta,
 	handleReiniciarEstadisticas,
 	handleEnterrarPregunta,
-	handleEditarEnunciadoPregunta,
+	handleEditarPregunta,
 	handleDesenterrarPreguntas,
 	handleCrearPregunta,
 } from "../../http/controllers/pregunta.controller";
@@ -30,7 +30,7 @@ preguntaRoute
 
 preguntaRoute
     .route("/:id")
-	.patch(handleEditarEnunciadoPregunta as RequestHandler);
+	.patch(handleEditarPregunta as RequestHandler);
 
 preguntaRoute
     .route("/:id/intentos")

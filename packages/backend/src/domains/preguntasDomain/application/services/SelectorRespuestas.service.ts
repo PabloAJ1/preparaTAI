@@ -4,24 +4,25 @@
  */
 
 import { Pregunta } from '../../domain/entities/Pregunta';
+import { TTipoPreguntas } from '../../domain/enums/tipoPreguntas.enum';
 import { RespuestaVo } from '../../domain/valueObjects/RespuestaVo';
+import { ISelectorRespuestasService } from '../signatures/SelectorRespuestasService.interface';
 
-export class SelectorRespuestasService {
-	static generarPreguntasConRespuestasMezcladas(
+export class SelectorRespuestasService implements ISelectorRespuestasService {
+	generar(
 		preguntas: Pregunta[], 
-		tipo: "PRACTICA" | "DEFAULT" = "DEFAULT",
+		tipo: TTipoPreguntas = TTipoPreguntas.DEFAULT,
 		numeroRespuestas = 4,
 	): Pregunta[] {
 		const poolRespuestas = preguntas.map(p => p.respuestaCorrecta);
 
 		return preguntas.map(p => {
-			let incorrectasUnicas: RespuestaVo[] = []
-
-			if(tipo === "DEFAULT"){
-				incorrectasUnicas = this.#poolIncorrectas(p.respuestasIncorrecta, p)
-			}else {
-				incorrectasUnicas = this.#poolIncorrectas(poolRespuestas, p)
-			}
+			const incorrectasUnicas: RespuestaVo[] = 
+				this.#obtenerPoolIncorrectas(
+					tipo,
+					poolRespuestas,
+					p
+				)
 
 			const respuestas = this.#generarRespuestas(
 				p,
@@ -40,7 +41,7 @@ export class SelectorRespuestasService {
 		});
 	}
 
-	static #generarRespuestas(
+	#generarRespuestas(
 		pregunta: Pregunta,
 		incorrectasUnicas: RespuestaVo[],
 		numeroRespuestas: number
@@ -59,7 +60,15 @@ export class SelectorRespuestasService {
 		]);
 	}
 
-	static #poolIncorrectas(pool: RespuestaVo[], pregunta: Pregunta,){
+	#obtenerPoolIncorrectas(tipo: TTipoPreguntas, poolRespuestas: RespuestaVo[], pregunta: Pregunta){
+		const respuestasIncorrectas = (tipo === "DEFAULT") 
+			? pregunta.respuestasIncorrecta 
+			: poolRespuestas;
+
+		return this.#poolIncorrectas(respuestasIncorrectas, pregunta)
+	}
+
+	#poolIncorrectas(pool: RespuestaVo[], pregunta: Pregunta,){
 		const seen = new Set<string>();
 		const incorrectasUnicas = [];
 
@@ -76,7 +85,7 @@ export class SelectorRespuestasService {
 		return incorrectasUnicas;
 	}
 
-	static #shuffle(respuestas: RespuestaVo[]): RespuestaVo[] {
+	#shuffle(respuestas: RespuestaVo[]): RespuestaVo[] {
 		const arr = [...respuestas];
 
 		for (let i = arr.length - 1; i > 0; i--) {

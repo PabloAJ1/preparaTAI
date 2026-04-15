@@ -11,4 +11,12 @@ export class MapCategorias {
 			tipo: dto.tipo
 		}
 	}
+	
+	static toDto(body: TCategoria): ICategoriaDto {
+		return {
+			idCategoria: body.id,
+			nombreCategoria: body.nombre,
+			tipo: body.tipo
+		}
+	}
 }

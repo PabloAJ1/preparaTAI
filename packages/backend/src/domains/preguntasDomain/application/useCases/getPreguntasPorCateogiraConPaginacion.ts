@@ -1,12 +1,14 @@
-import { Pregunta } from "../../domain/entities/Pregunta";
 import { IPreguntaRepository } from "../../domain/repositories/preguntasRepository.interface";
 import { IPreguntaDto } from "../dtos/pregunta.dto";
 import { MapsPregunta } from "../mappers/mapDtoToEntityPregunta.mapper";
-import { SelectorRespuestasService } from "../services/SelectorRespuestas.service";
 import { IGetPreguntasPorCateogiraConPaginacion } from "../signatures/getPreguntasPorCateogiraConPaginacion.interface";
+import { ISelectorRespuestasService } from "../signatures/SelectorRespuestasService.interface";
 
 export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCateogiraConPaginacion {
-	constructor(private readonly preguntaRepository: IPreguntaRepository){}
+	constructor(
+		private readonly preguntaRepository: IPreguntaRepository,
+		private readonly selectorRespuestasService: ISelectorRespuestasService
+	){}
 
 	async exec(
 		idCategoria: string,
@@ -20,7 +22,7 @@ export class GetPreguntasPorCateogiraConPaginacion implements IGetPreguntasPorCa
 			limit,
 			seed
 		);
-		const preguntasConRespuestaMezclada = SelectorRespuestasService.generarPreguntasConRespuestasMezcladas(preguntas)
+		const preguntasConRespuestaMezclada = this.selectorRespuestasService.generar(preguntas)
 		const preguntasMapeadas = preguntasConRespuestaMezclada.map(MapsPregunta.toDto)
 		return preguntasMapeadas;
 	}

@@ -1,15 +1,21 @@
-import { Pregunta } from "../../domain/entities/Pregunta";
-import { PreguntaSession } from "../../domain/entities/PreguntasSession";
 import { IPreguntaRepository } from "../../domain/repositories/preguntasRepository.interface";
-import { IPreguntaSessionRepository } from "../../domain/repositories/preguntasSessionRepository.interface";
-import { IPreguntaDto } from "../dtos/pregunta.dto";
-import { MapsPregunta } from "../mappers/mapDtoToEntityPregunta.mapper";
-import { MezclarPreguntasService } from "../services/MezclarPreguntas.service";
-import { SelectorRespuestasService } from "../services/SelectorRespuestas.service";
-import { IGetPreguntasPorCateogiraConPaginacion } from "../signatures/getPreguntasPorCateogiraConPaginacion.interface";
-import { GetPreguntasPorCateogiraConPaginacion } from "./getPreguntasPorCateogiraConPaginacion";
+import { IPreguntasSessionSevice } from "../../domain/signatures/PreguntasSessionSevice.interfcae";
+import { IPreguntaPobladaDto } from "../dtos/preguntaPoblada.dto";
+import { IGenerarListaPreguntasService } from "../signatures/GenerarListaPreguntasService.interface";
+import { IGetPreguntasPorCateogiraConSession } from "../signatures/getPreguntasPorCateogiraConSession.interface";
 
 /**
+ * @version 4
+ * @date 15-04-2026
+ * He eliminado lo relativo a comprobar el tamaño de las preguntas para ver si merece la pena crear una sesion o no
+ * Se puede simplificar el codigo, aunque hagamos trabajar un poco más a la base de datos, pero realmente hablamos de una consulta y un
+ * almacenamiento, asi que definimos que siempre se cree la sesion
+ * 
+ * Hay que revisar y comparar con getById de practicas, ya que comparten bastante codigo, la funcion estructurarPreguntas es la misma, para lo demás 
+ * podriamos establecer un patron stategy
+ * 
+ * Además deberiamos devolver una estructura más como la de practicas donde englobemos las preguntas en un array mejor que devolver el array de golpe
+ * 
  * @version 3
  * En esta versión vamos a crear una entidad "sesion" que va a persistir.
  * En primer lugar obtenedremos el numero de preguntas de la categoria, ya que si el numero es inferior a el numero
@@ -27,11 +33,11 @@ import { GetPreguntasPorCateogiraConPaginacion } from "./getPreguntasPorCateogir
  * por lo tanto luego serán necesario ordenarlo de acuerdo al orden de la sesion
  */
 
-export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateogiraConPaginacion {
+export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateogiraConSession {
 	constructor(
 		private readonly preguntaRepository: IPreguntaRepository,
-		private readonly preguntasSessionRepository: IPreguntaSessionRepository,
-		private readonly getPreguntasPorCateogiraConPaginacionUseCase: GetPreguntasPorCateogiraConPaginacion
+		private readonly preguntasSessionSevice: IPreguntasSessionSevice,
+		private readonly generarListaPreguntasService: IGenerarListaPreguntasService,
 	){}
 
 	async exec(
@@ -39,49 +45,13 @@ export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateog
 		page = 1, 
 		limit = 50,
 		seed = 0
-	): Promise<IPreguntaDto[]>{
-		const [ numeroDePreguntas, session ] = await Promise.all([
-			this.preguntaRepository.getNumeroPreguntasPorCategoria(idCategoria),
-			this.preguntasSessionRepository.cargarPreguntaSesionPorSeed(seed)
-		])
+	): Promise<IPreguntaPobladaDto[]>{
+		const idsPreguntas = await this.preguntaRepository.getIdsPreguntasByCategoria(idCategoria);
+		const session = await this.preguntasSessionSevice.getOrCreate(seed, idsPreguntas)
 
-		if(numeroDePreguntas <= limit){
-			return this.getPreguntasPorCateogiraConPaginacionUseCase.exec(
-				idCategoria,
-				page,
-				limit,
-				seed
-			);
-		} else if(!session){
-			const idPreguntas = await this.preguntaRepository.getIdsPreguntasByCategoria(idCategoria);
+		const idsDePagina = session.obtenerPagina(page, limit);
+		const preguntas = await this.preguntaRepository.getVariasPreguntasPorIds(idsDePagina)
 
-			const sessionEntity = PreguntaSession.crear({
-				createdAt: new Date(),
-				listaPreguntasId: idPreguntas,
-				seed: seed
-			})
-			const idsDePagina = sessionEntity.obtenerPagina(1, limit);
-			const [
-				_,
-				preguntas
-			] = await Promise.all([
-				this.preguntasSessionRepository.crearPreguntasSesion(sessionEntity),
-				this.preguntaRepository.getVariasPreguntasPorIds(idsDePagina)
-			]);
-
-			return this.#estructurarPreguntas(preguntas, idsDePagina)
-		} else {
-			const idsDePagina = session.obtenerPagina(page, limit);
-			const preguntas = await  this.preguntaRepository.getVariasPreguntasPorIds(idsDePagina)
-
-			return this.#estructurarPreguntas(preguntas, idsDePagina)
-		}
-	}
-
-	#estructurarPreguntas(preguntas: Pregunta[], idsDePagina: string[]){
-		const preguntasOrdenadar = MezclarPreguntasService.ordenarPorListaIds(preguntas, idsDePagina)
-		const preguntasRespuestasMezcladas = SelectorRespuestasService.generarPreguntasConRespuestasMezcladas(preguntasOrdenadar)
-		const preguntasMapeadas = preguntasRespuestasMezcladas.map(MapsPregunta.toDto)
-		return preguntasMapeadas;
+		return this.generarListaPreguntasService.generar(preguntas, idsDePagina)
 	}
 }

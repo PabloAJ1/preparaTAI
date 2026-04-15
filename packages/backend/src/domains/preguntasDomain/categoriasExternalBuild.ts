@@ -1,6 +1,7 @@
 import { BuscarOCrearCategoria } from "../categoriasDomain/application/useCases/buscarOCrearCategoria";
 import { CreateListOfCategorias } from "../categoriasDomain/application/useCases/createListOfCategorias";
 import { GetAllCategorias } from "../categoriasDomain/application/useCases/getAllCategorias";
+import { GetCategoriasByIds } from "../categoriasDomain/application/useCases/getCategoriasByIds";
 import { GetCategoriasByTipo } from "../categoriasDomain/application/useCases/getCategoriasByTipo.interface";
 import { GetListOfCategorias } from "../categoriasDomain/application/useCases/getListOfCategorias";
 import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
@@ -11,6 +12,7 @@ export const categoriasExternalBuild = () => {
 	const buscarOCrearCategoria = new BuscarOCrearCategoria(categoriaMongoDBRepository)
 	const getCategoriasByTipo = new GetCategoriasByTipo(categoriaMongoDBRepository)
 	const getAllCategoriasPort = new GetAllCategorias(categoriaMongoDBRepository);
+	const getCategoriasByIds = new GetCategoriasByIds(categoriaMongoDBRepository);
 	const crateListOfCategorias = new CreateListOfCategorias(
 		categoriaMongoDBRepository
 	);
@@ -23,7 +25,8 @@ export const categoriasExternalBuild = () => {
 		crateListOfCategorias,
 		getListOfCategorias,
 		buscarOCrearCategoria,
-		getCategoriasByTipo
+		getCategoriasByTipo,
+		getCategoriasByIds
 	);
 
 	return {

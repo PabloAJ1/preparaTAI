@@ -1,13 +1,8 @@
-import { CreateListOfCategorias } from '../categoriasDomain/application/useCases/createListOfCategorias';
-import { GetAllCategorias } from '../categoriasDomain/application/useCases/getAllCategorias';
-import { GetListOfCategorias } from '../categoriasDomain/application/useCases/getListOfCategorias';
-import { CategoriaRepositoryMongo } from '../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
 import { CategoriasExternasService } from './application/services/CategoriasExternas.service';
 import { GetNumeroPreguntas } from './application/useCases/getNumeroDePreguntas';
 import { LoadPreguntasFromFile } from './application/useCases/loadPreguntasFromFile';
 import { GetPreguntasPorCateogira } from './application/useCases/getPreguntasPorCateogira';
 import { GetPreguntasPorCateogiraConPaginacion } from './application/useCases/getPreguntasPorCateogiraConPaginacion';
-import { CategoriaAdaperServive } from './infrastructure/adapters/ports/categoriasAdapter.service';
 import { ExcelAdapterService } from './infrastructure/adapters/ports/excelAdapter.service';
 import { ExcelLoader } from './infrastructure/excel/services/excelLoader.service';
 import { PreguntaRespositoryMongoDB } from './infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository';
@@ -23,6 +18,10 @@ import { GetPreguntasPorCateogiraConSesion } from './application/useCases/getPre
 import { PreguntasSessionRepositoryMongo } from './infrastructure/mongo/repositories/preguntasSessionRepositoryMongo.repository';
 import { CrearPregunta } from './application/useCases/createPregunta';
 import { categoriasExternalBuild } from './categoriasExternalBuild';
+import { PreguntaSessionService } from './domain/services/PreguntaSession.service';
+import { GenerarListaPreguntasService } from './application/services/GenerarListaPreguntas.service';
+import { MezclarPreguntasService } from './application/services/MezclarPreguntas.service';
+import { SelectorRespuestasService } from './application/services/SelectorRespuestas.service';
 
 export const preguntasBuilder = () => {
 	const {
@@ -53,15 +52,32 @@ export const preguntasBuilder = () => {
 	);
 
 	const getNumeroPreguntas = new GetNumeroPreguntas(preguntasRepositoryMongoDB);
+	const selectorRespuestasService = new SelectorRespuestasService();
 	const getPreguntasPorCategoria = new GetPreguntasPorCateogira(
-		preguntasRepositoryMongoDB
+		preguntasRepositoryMongoDB,
+		selectorRespuestasService
 	);
 	const getPreguntasPorCategoriaPaginando =
-		new GetPreguntasPorCateogiraConPaginacion(preguntasRepositoryMongoDB);
+		new GetPreguntasPorCateogiraConPaginacion(
+			preguntasRepositoryMongoDB,
+			selectorRespuestasService
+		);
+
+	const preguntasSessionSevice = new PreguntaSessionService(
+		preguntasSessionRepositoryMongoDB
+	)
+
+	const mezclarPreguntasService = new MezclarPreguntasService();
+	const generarListaPreguntasService = new GenerarListaPreguntasService(
+		mezclarPreguntasService,
+		selectorRespuestasService,
+		categoriaAdapertService
+	)
+
 	const getPreguntasPorCateogiraConSesion = new GetPreguntasPorCateogiraConSesion(
 		preguntasRepositoryMongoDB,
-		preguntasSessionRepositoryMongoDB,
-		getPreguntasPorCategoriaPaginando
+		preguntasSessionSevice,
+		generarListaPreguntasService
 	);
 	const registarEstadisticaByPregunta = new RegistarEstadisticaByPregunta(
 		preguntasRepositoryMongoDB
@@ -78,16 +94,24 @@ export const preguntasBuilder = () => {
 	const crearPregunta = new CrearPregunta(preguntasRepositoryMongoDB);
 
 	return {
-		getPreguntasPorCateogiraConSesion,
-		getNumeroPreguntas,
-		getPreguntasPorCategoria,
-		getPreguntasFromFileUseCase,
-		getPreguntasPorCategoriaPaginando,
-		registarEstadisticaByPregunta,
-		reiniciarEstadisticas,
-		enterrarPregunta,
-		editarEnunciadoPreguntaById,
-		desenterrarPreguntas,
-		crearPregunta
+		pregunta: {
+			get: {
+				count: getNumeroPreguntas,
+				byCategoria: getPreguntasPorCategoria,
+				fromFile: getPreguntasFromFileUseCase,
+				withSession: getPreguntasPorCateogiraConSesion,
+				withPagination: getPreguntasPorCategoriaPaginando,			
+			},
+			create: crearPregunta,
+			update: {
+				atributos: editarEnunciadoPreguntaById,
+				enterrar: enterrarPregunta,
+				desenterrar: desenterrarPreguntas,
+			},
+			estadisticas: {
+				reiniciar: reiniciarEstadisticas,
+				registrar: registarEstadisticaByPregunta,
+			}
+		},
 	};
 };

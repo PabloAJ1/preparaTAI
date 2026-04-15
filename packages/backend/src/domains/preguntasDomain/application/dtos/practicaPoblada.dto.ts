@@ -1,7 +1,7 @@
-import { IPreguntaDto } from "./pregunta.dto";
+import { IPreguntaPobladaDto } from "./preguntaPoblada.dto";
 
 export interface IPracticaPobladaDto {
 	idPractica: string;
 	nombrePractica: string;
-	preguntas: IPreguntaDto[]
+	preguntas: IPreguntaPobladaDto[]
 }

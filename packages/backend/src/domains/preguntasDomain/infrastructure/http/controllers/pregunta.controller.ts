@@ -3,26 +3,17 @@ import { IGetNumeroPreguntas } from '../../../application/signatures/getNumeroPr
 import { preguntasBuilder } from '../../../preguntasBuilder';
 import { components } from '../../../../../types/openapi';
 import { MapPreguntaController } from '../mappers/mapPreguntasController.mapper';
-import { IGetPreguntasPorCateogiraConPaginacion } from '../../../application/signatures/getPreguntasPorCateogiraConPaginacion.interface';
 import { IRegistarEstadisticaByPregunta } from '../../../application/signatures/registarEstadisticaByPregunta.interface';
 import { IReiniciarEstadisticas } from '../../../application/signatures/reiniciarEstadisticas.interface';
 import { IEnterrarPregunta } from '../../../application/signatures/enterrarPregunta.interface';
 import { UpdatePreguntaById } from '../../../application/useCases/updatePreguntaById';
 import { IDesenterrarPreguntas } from '../../../application/signatures/desenterrarPreguntas.interface';
 import { ICrearPregunta } from '../../../application/signatures/createPregunta.interface';
+import { IGetPreguntasPorCateogiraConSession } from '../../../application/signatures/getPreguntasPorCateogiraConSession.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
 
-const {
-	getPreguntasPorCateogiraConSesion,
-	getNumeroPreguntas,
-	registarEstadisticaByPregunta,
-	reiniciarEstadisticas,
-	enterrarPregunta,
-	editarEnunciadoPreguntaById,
-	desenterrarPreguntas,
-	crearPregunta,
-} = preguntasBuilder();
+const { pregunta } = preguntasBuilder();
 
 export const makeHandleGetNumeroPreguntas =
 	(getNumeroPreguntas: IGetNumeroPreguntas) =>
@@ -36,7 +27,7 @@ export const makeHandleGetNumeroPreguntas =
 	};
 
 export const makeHandleGetPreguntasPorCategoria =
-	(getPreguntasPorCategoria: IGetPreguntasPorCateogiraConPaginacion) =>
+	(getPreguntasPorCategoria: IGetPreguntasPorCateogiraConSession) =>
 	async (req: Request, res: Response<TPreguntas[]>, next: NextFunction) => {
 		try {
 			const categoria = decodeURIComponent(req.params.categoria);
@@ -50,7 +41,7 @@ export const makeHandleGetPreguntasPorCategoria =
 				seed
 			);
 
-			res.json(preguntas.map(MapPreguntaController.toType));
+			res.json(preguntas.map(MapPreguntaController.toTypePoblado));
 		} catch (err) {
 			next(err);
 		}
@@ -93,7 +84,7 @@ export const makeHandleEnterrarPregunta =
 		}
 	};
 
-export const makeHandleEditarEnunciadoPregunta =
+export const makeHandleEditarPregunta =
 	(editarEnunciadoPreguntaById: UpdatePreguntaById) =>
 	async (req: Request, res: Response<TPreguntas>, next: NextFunction) => {
 		try {
@@ -129,20 +120,20 @@ export const makeHandleCrearPregunta =
 	};
 
 export const handleCrearPregunta =
-	makeHandleCrearPregunta(crearPregunta);
+	makeHandleCrearPregunta(pregunta.create);
 export const handleGetNumeroPreguntas =
-	makeHandleGetNumeroPreguntas(getNumeroPreguntas);
+	makeHandleGetNumeroPreguntas(pregunta.get.count);
 export const handleGetPreguntasPorCategoria =
-	makeHandleGetPreguntasPorCategoria(getPreguntasPorCateogiraConSesion);
+	makeHandleGetPreguntasPorCategoria(pregunta.get.withSession);
 export const handleRegistarEstadisticaByPregunta =
-	makeHandleRegistarEstadisticaByPregunta(registarEstadisticaByPregunta);
+	makeHandleRegistarEstadisticaByPregunta(pregunta.estadisticas.registrar);
 export const handleReiniciarEstadisticas = makeHandleReiniciarEstadisticas(
-	reiniciarEstadisticas
+	pregunta.estadisticas.reiniciar
 );
 export const handleEnterrarPregunta =
-	makeHandleEnterrarPregunta(enterrarPregunta);
-export const handleEditarEnunciadoPregunta = makeHandleEditarEnunciadoPregunta(
-	editarEnunciadoPreguntaById
+	makeHandleEnterrarPregunta(pregunta.update.enterrar);
+export const handleEditarPregunta = makeHandleEditarPregunta(
+	pregunta.update.atributos
 );
 export const handleDesenterrarPreguntas =
-	makeHandleDesenterrarPreguntas(desenterrarPreguntas);
+	makeHandleDesenterrarPreguntas(pregunta.update.desenterrar);

@@ -6,4 +6,11 @@ const api = new PracticasApi(
 
 export const practicaApi = {
 	getAll: () => api.getAllPracticas(),
+	getById: (id: string, page: number, limit: number, seed: number) => 
+		api.getPracticaById({
+			id,
+			page,
+			limit,
+			seed,
+		}),
 };

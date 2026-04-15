@@ -8,6 +8,7 @@ export const preguntaRoute: Router = Router();
 preguntaRoute
 	.route("/")
 	.get(handles.getAll as RequestHandler)
+	.post(handles.create as RequestHandler)
 
 preguntaRoute
 	.route("/resumen")

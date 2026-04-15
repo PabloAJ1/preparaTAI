@@ -12,7 +12,7 @@ export class CategoriasExternasService implements ICategoriasExternasService {
 		const categoriasExteneras = this.#getCategorias(preguntasDto);
 
 		const categorias = Array.from(categoriasExteneras);
-		const existentes = await this.categoriaPort.obtenerCategoriasPorNombre(
+		const existentes = await this.categoriaPort.getByNombres(
 			categorias.map(c => c.nombreCategoria)
 		);
 

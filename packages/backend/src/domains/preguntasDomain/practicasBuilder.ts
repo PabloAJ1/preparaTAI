@@ -8,6 +8,9 @@ import { PreguntaSessionService } from "./domain/services/PreguntaSession.servic
 import { PracticasMongoDBRepository } from "./infrastructure/mongo/repositories/practicasMongoDBRepository.repository"
 import { PreguntaRespositoryMongoDB } from "./infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
 import { PreguntasSessionRepositoryMongo } from "./infrastructure/mongo/repositories/preguntasSessionRepositoryMongo.repository";
+import { MezclarPreguntasService } from "./application/services/MezclarPreguntas.service";
+import { SelectorRespuestasService } from "./application/services/SelectorRespuestas.service";
+import { GenerarListaPreguntasService } from "./application/services/GenerarListaPreguntas.service";
 
 export const practicasBuilder = () => {
 	const {
@@ -40,10 +43,19 @@ export const practicasBuilder = () => {
 		practicasMongoDBRepository,
 	)
 
+	const mezclarPreguntasService = new MezclarPreguntasService();
+	const selectorRespuestasService = new SelectorRespuestasService();
+	const generarListaPreguntasService = new GenerarListaPreguntasService(
+		mezclarPreguntasService,
+		selectorRespuestasService,
+		categoriaAdapertService
+	)
+
 	const getPreguntasPractica = new GetPreguntasPractica(
 		preguntasRepositoryMongoDB,
 		practicasMongoDBRepository,
-		preguntasSessionSevice
+		preguntasSessionSevice,
+		generarListaPreguntasService
 	)
 
 	return { 
