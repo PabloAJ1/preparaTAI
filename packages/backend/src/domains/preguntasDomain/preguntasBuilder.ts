@@ -59,8 +59,7 @@ export const preguntasBuilder = () => {
 	);
 	const getPreguntasPorCategoriaPaginando =
 		new GetPreguntasPorCateogiraConPaginacion(
-			preguntasRepositoryMongoDB,
-			selectorRespuestasService
+			preguntasRepositoryMongoDB
 		);
 
 	const preguntasSessionSevice = new PreguntaSessionService(

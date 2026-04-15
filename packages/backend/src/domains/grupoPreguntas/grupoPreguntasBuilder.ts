@@ -1,5 +1,6 @@
 import { BuscarOCrearCategoria } from "../categoriasDomain/application/useCases/buscarOCrearCategoria";
 import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
+import { SelectorRespuestasService } from "../preguntasDomain/application/services/SelectorRespuestas.service";
 import { CrearPregunta } from "../preguntasDomain/application/useCases/createPregunta";
 import { GetVariasPreguntasPorIds } from "../preguntasDomain/application/useCases/getPreguntasPorVariosIds";
 import { PreguntaRespositoryMongoDB } from "../preguntasDomain/infrastructure/mongo/repositories/preguntaRespositoryMongoDB.repository";
@@ -12,9 +13,13 @@ export const grupoPreguntasBuilder = () => {
 	const preguntasRepositoryMongo = new PreguntaRespositoryMongoDB();
 	const categoriaRepositoryMongo = new CategoriaRepositoryMongo();
 
+	const selectorRespuestasService = new SelectorRespuestasService();
 	const buscarOCrearCategoria = new BuscarOCrearCategoria(categoriaRepositoryMongo);
 	const createPregunta = new CrearPregunta(preguntasRepositoryMongo);
-	const getVariasPreguntasPorId = new GetVariasPreguntasPorIds(preguntasRepositoryMongo)
+	const getVariasPreguntasPorId = new GetVariasPreguntasPorIds(
+		preguntasRepositoryMongo,
+		selectorRespuestasService
+	)
 
 	const preguntasPortService = new PreguntasPortService(
 		getVariasPreguntasPorId,

@@ -1,4 +1,3 @@
-import { PreguntasSessionNoEncontradaBySeed } from "../../../application/errors/PreguntasSessionNoEncontradaById.error";
 import { PreguntaSession } from "../../../domain/entities/PreguntasSession";
 import { IPreguntaSessionRepository } from "../../../domain/repositories/preguntasSessionRepository.interface";
 import { IPreguntasSession } from "../interfaces/preguntasSession.interface";
