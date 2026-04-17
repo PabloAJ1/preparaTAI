@@ -634,7 +634,7 @@ No authorization required
 
 ## getPreguntasPorCategoria
 
-> Array&lt;Pregunta&gt; getPreguntasPorCategoria(id, page, limit, seed)
+> ListaDePreguntasPorCategoria getPreguntasPorCategoria(id, page, limit, seed)
 
 Obtener las preguntas que pertenecen a una categoria dada
 
@@ -686,7 +686,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**Array&lt;Pregunta&gt;**](Pregunta.md)
+[**ListaDePreguntasPorCategoria**](ListaDePreguntasPorCategoria.md)
 
 ### Authorization
 

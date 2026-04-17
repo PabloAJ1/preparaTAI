@@ -1,4 +1,5 @@
 export enum TTipoPreguntas {
 	PRACTICA = "PRACTICA",
-	DEFAULT = "DEFAULT"
+	DEFAULT = "DEFAULT",
+	INVERTIDO = "INVERTIDO"
 }

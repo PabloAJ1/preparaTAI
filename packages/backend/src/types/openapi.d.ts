@@ -183,7 +183,8 @@ export interface paths {
         /** Obtener categorias */
         get: operations["getAllCategorias"];
         put?: never;
-        post?: never;
+        /** Guardar una categoria */
+        post: operations["createCategoria"];
         delete?: never;
         options?: never;
         head?: never;
@@ -328,6 +329,33 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/practica/{id}/invertida": {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** Obtener una practica por id cambiando preguntas por respuestas */
+        get: operations["getPracticaByIdInvertida"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/practica/crearPractica": {
         parameters: {
             query?: never;
@@ -388,6 +416,9 @@ export interface components {
             nombre: string;
             tipo: string;
         };
+        CategoriaNueva: {
+            nombre: string;
+        };
         CategoriaResumen: {
             /** @example 0000-00000-0000000-0000 */
             id: string;
@@ -415,6 +446,11 @@ export interface components {
             respuestas: components["schemas"]["Respuesta"][];
             categorias?: components["schemas"]["Categoria"][];
             estadisticas: components["schemas"]["Estadistica"];
+        };
+        ListaDePreguntasPorCategoria: {
+            idCategoriaPrincipal: string;
+            nombreCategoriaPrincipal: string;
+            preguntas: components["schemas"]["Pregunta"][];
         };
         PreguntaNueva: {
             enunciado: string;
@@ -716,7 +752,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Pregunta"][];
+                    "application/json": components["schemas"]["ListaDePreguntasPorCategoria"];
                 };
             };
         };
@@ -755,6 +791,30 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Categoria"][];
+                };
+            };
+        };
+    };
+    createCategoria: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CategoriaNueva"];
+            };
+        };
+        responses: {
+            /** @description Categoria guardada con exito */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Categoria"];
                 };
             };
         };
@@ -913,7 +973,37 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Practica"][];
+                    "application/json": components["schemas"]["Practica"];
+                };
+            };
+        };
+    };
+    getPracticaByIdInvertida: {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Listado de preguntas de la practica invertida */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Practica"];
                 };
             };
         };

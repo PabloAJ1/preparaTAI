@@ -76,7 +76,8 @@ export const preguntasBuilder = () => {
 	const getPreguntasPorCateogiraConSesion = new GetPreguntasPorCateogiraConSesion(
 		preguntasRepositoryMongoDB,
 		preguntasSessionSevice,
-		generarListaPreguntasService
+		generarListaPreguntasService,
+		categoriaAdapertService
 	);
 	const registarEstadisticaByPregunta = new RegistarEstadisticaByPregunta(
 		preguntasRepositoryMongoDB

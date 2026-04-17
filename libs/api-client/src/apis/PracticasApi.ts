@@ -39,6 +39,13 @@ export interface GetPracticaByIdRequest {
     seed?: number;
 }
 
+export interface GetPracticaByIdInvertidaRequest {
+    id: string;
+    page?: number;
+    limit?: number;
+    seed?: number;
+}
+
 /**
  * 
  */
@@ -181,6 +188,63 @@ export class PracticasApi extends runtime.BaseAPI {
      */
     async getPracticaById(requestParameters: GetPracticaByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Practica> {
         const response = await this.getPracticaByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getPracticaByIdInvertida without sending the request
+     */
+    async getPracticaByIdInvertidaRequestOpts(requestParameters: GetPracticaByIdInvertidaRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getPracticaByIdInvertida().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['seed'] != null) {
+            queryParameters['seed'] = requestParameters['seed'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/practica/{id}/invertida`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Obtener una practica por id cambiando preguntas por respuestas
+     */
+    async getPracticaByIdInvertidaRaw(requestParameters: GetPracticaByIdInvertidaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Practica>> {
+        const requestOptions = await this.getPracticaByIdInvertidaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PracticaFromJSON(jsonValue));
+    }
+
+    /**
+     * Obtener una practica por id cambiando preguntas por respuestas
+     */
+    async getPracticaByIdInvertida(requestParameters: GetPracticaByIdInvertidaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Practica> {
+        const response = await this.getPracticaByIdInvertidaRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

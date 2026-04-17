@@ -12,6 +12,7 @@ import { ICrearPregunta } from '../../../application/signatures/createPregunta.i
 import { IGetPreguntasPorCateogiraConSession } from '../../../application/signatures/getPreguntasPorCateogiraConSession.interface';
 
 type TPreguntas = components['schemas']['Pregunta'];
+type TListaDePreguntasPorCategoria = components['schemas']['ListaDePreguntasPorCategoria'];
 
 const { pregunta } = preguntasBuilder();
 
@@ -28,7 +29,7 @@ export const makeHandleGetNumeroPreguntas =
 
 export const makeHandleGetPreguntasPorCategoria =
 	(getPreguntasPorCategoria: IGetPreguntasPorCateogiraConSession) =>
-	async (req: Request, res: Response<TPreguntas[]>, next: NextFunction) => {
+	async (req: Request, res: Response<TListaDePreguntasPorCategoria>, next: NextFunction) => {
 		try {
 			const categoria = decodeURIComponent(req.params.categoria);
 			const page = parseInt(req.query.page as string) || 1;
@@ -41,7 +42,7 @@ export const makeHandleGetPreguntasPorCategoria =
 				seed
 			);
 
-			res.json(preguntas.map(MapPreguntaController.toTypePoblado));
+			res.json(MapPreguntaController.toTypoListaPoblada(preguntas));
 		} catch (err) {
 			next(err);
 		}

@@ -46,6 +46,20 @@
 						<i class="fa-solid fa-arrow-right categoria-link-icon" />
 					</router-link>
 
+					<router-link
+						v-if="categoria?.id && modo === 'practica'"
+						:key="$route.name"
+						:class="linkClase"
+						:modo="modo"
+						:to="{
+							name: 'TestByCategoria',
+							params: { id: categoria.id, modo: 'invertida' },
+						}"
+						class="categoria-link">
+						Invertida
+						<i class="fa-solid fa-arrow-left categoria-link-icon" />
+					</router-link>
+
 					<div class="categoria-percent" :style="{ color: colorPorcentaje }">
 						<i class="fa-solid fa-chart-simple"></i>
 						{{ porcentajeAcierto }}%
@@ -62,12 +76,13 @@ import { computed } from 'vue';
 
 const props = defineProps<{
 	categoria: CategoriaResumen;
-	modo?: 'repaso' | 'practica' | 'examen' | 'grupo';
+	modo?: 'repaso' | 'practica' | 'examen' | 'grupo' | 'invertida';
 }>();
 
 const icono = computed(() => {
 	switch (props.modo) {
 		case 'practica':
+		case 'invertida':
 			return 'fa-solid fa-puzzle-piece';
 		case 'examen':
 			return 'fa-solid fa-pencil'; // icono para examen
@@ -79,14 +94,14 @@ const icono = computed(() => {
 
 const linkClase = computed(() => ({
 	'categoria-link-repaso': props.modo === 'repaso',
-	'categoria-link-practica': props.modo === 'practica',
+	'categoria-link-practica': props.modo === 'practica' || props.modo === 'invertida',
 	'categoria-link-examen': props.modo === 'examen',
 	'categoria-link-grupo': props.modo === 'grupo',
 }));
 
 const iconoClase = computed(() => ({
 	'categoria-icon-repaso': props.modo === 'repaso',
-	'categoria-icon-practica': props.modo === 'practica',
+	'categoria-icon-practica': props.modo === 'practica' || props.modo === 'invertida',
 	'categoria-icon-examen': props.modo === 'examen',
 	'categoria-icon-grupos': props.modo === 'grupo',
 }));

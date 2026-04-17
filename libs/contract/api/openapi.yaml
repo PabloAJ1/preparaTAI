@@ -223,9 +223,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pregunta'
+                $ref: '#/components/schemas/ListaDePreguntasPorCategoria'
 
   /pregunta/estadisticas/reiniciar:
     get:
@@ -433,6 +431,48 @@ paths:
               schema:
                 $ref: '#/components/schemas/Practica'
 
+  /practica/{id}/invertida:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: el identificador de la practica
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Número de página (empieza en 1)
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        description: Número de preguntas por página
+        schema:
+          type: integer
+          default: 20
+      - name: seed
+        in: query
+        required: false
+        description: Semilla para randomizar las preguntas
+        schema:
+          type: integer
+          default: 0
+    get:
+      tags:
+        - practicas
+      summary: Obtener una practica por id cambiando preguntas por respuestas
+      operationId: getPracticaByIdInvertida
+      responses:
+        '200':
+          description: Listado de preguntas de la practica invertida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Practica'
+
 
   /practica/crearPractica:
     post:
@@ -569,6 +609,22 @@ components:
         - respuestas
         - estadisticas
         - estado
+    
+    ListaDePreguntasPorCategoria:
+      type: object
+      properties:
+        idCategoriaPrincipal:
+          type: string
+        nombreCategoriaPrincipal:
+          type: string
+        preguntas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pregunta'
+      required:
+        - idCategoriaPrincipal
+        - nombreCategoriaPrincipal
+        - preguntas
 
     PreguntaNueva:
       type: object
@@ -604,7 +660,6 @@ components:
       required:
         - enunciado
         - respuesta
-
 
     PracticaNueva:
       type: object

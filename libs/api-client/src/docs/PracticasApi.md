@@ -7,6 +7,7 @@ All URIs are relative to */api*
 | [**createPractica**](PracticasApi.md#createpractica) | **POST** /practica/crearPractica | Guardar una practica |
 | [**getAllPracticas**](PracticasApi.md#getallpracticas) | **GET** /practica | Obtener todas las practicas con estadisticas |
 | [**getPracticaById**](PracticasApi.md#getpracticabyid) | **GET** /practica/{id} | Obtener una practica por id |
+| [**getPracticaByIdInvertida**](PracticasApi.md#getpracticabyidinvertida) | **GET** /practica/{id}/invertida | Obtener una practica por id cambiando preguntas por respuestas |
 | [**migracionPracticas**](PracticasApi.md#migracionpracticas) | **GET** /practica/migracion | Migra las preguntas a practicas |
 
 
@@ -203,6 +204,80 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Listado de preguntas de la practica |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getPracticaByIdInvertida
+
+> Practica getPracticaByIdInvertida(id, page, limit, seed)
+
+Obtener una practica por id cambiando preguntas por respuestas
+
+### Example
+
+```ts
+import {
+  Configuration,
+  PracticasApi,
+} from '';
+import type { GetPracticaByIdInvertidaRequest } from '';
+
+async function example() {
+  console.log("🚀 Testing  SDK...");
+  const api = new PracticasApi();
+
+  const body = {
+    // string | el identificador de la practica
+    id: id_example,
+    // number | Número de página (empieza en 1) (optional)
+    page: 56,
+    // number | Número de preguntas por página (optional)
+    limit: 56,
+    // number | Semilla para randomizar las preguntas (optional)
+    seed: 56,
+  } satisfies GetPracticaByIdInvertidaRequest;
+
+  try {
+    const data = await api.getPracticaByIdInvertida(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `string` | el identificador de la practica | [Defaults to `undefined`] |
+| **page** | `number` | Número de página (empieza en 1) | [Optional] [Defaults to `1`] |
+| **limit** | `number` | Número de preguntas por página | [Optional] [Defaults to `20`] |
+| **seed** | `number` | Semilla para randomizar las preguntas | [Optional] [Defaults to `0`] |
+
+### Return type
+
+[**Practica**](Practica.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Listado de preguntas de la practica invertida |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

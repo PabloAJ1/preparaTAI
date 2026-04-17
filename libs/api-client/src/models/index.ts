@@ -8,6 +8,7 @@ export * from './Estado';
 export * from './Examen';
 export * from './ExamenPreguntasInner';
 export * from './GrupoPreguntasRelacionadas';
+export * from './ListaDePreguntasPorCategoria';
 export * from './Practica';
 export * from './PracticaNueva';
 export * from './Pregunta';

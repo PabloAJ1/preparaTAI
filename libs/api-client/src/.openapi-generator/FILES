@@ -17,6 +17,7 @@ docs/ExamenPreguntasInner.md
 docs/ExamenesApi.md
 docs/GrupoPreguntasRelacionadas.md
 docs/GruposDePreguntasRelacionadasApi.md
+docs/ListaDePreguntasPorCategoria.md
 docs/Practica.md
 docs/PracticaNueva.md
 docs/PracticasApi.md
@@ -36,6 +37,7 @@ models/Estado.ts
 models/Examen.ts
 models/ExamenPreguntasInner.ts
 models/GrupoPreguntasRelacionadas.ts
+models/ListaDePreguntasPorCategoria.ts
 models/Practica.ts
 models/PracticaNueva.ts
 models/Pregunta.ts

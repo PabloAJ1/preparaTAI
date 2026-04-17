@@ -97,14 +97,24 @@ async function cargarPreguntas() {
 			);
 			preguntas = practica.preguntas
 			nombreCategoria.value = practica.nombrePractica
+		} else if(modo === "invertida"){
+			const practica = await practicaApi.getInvertido(
+				id,
+				page.value,
+				limit.value,
+				Number(seed),
+			);
+			preguntas = practica.preguntas
+			nombreCategoria.value = practica.nombrePractica
 		} else {
-			preguntas = await api.getPreguntasPorCategoria({
+			const ejercicio = await api.getPreguntasPorCategoria({
 				id,
 				page: page.value,
 				limit: limit.value,
 				seed: Number(seed),
 			});
-			nombreCategoria.value = preguntas?.[0].categorias?.[0].nombre ?? id
+			preguntas = ejercicio.preguntas
+			nombreCategoria.value = ejercicio.nombreCategoriaPrincipal
 		}
 		
 		listadoPreguntas.value.push(...preguntas);

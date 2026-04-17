@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   Examen,
   GrupoPreguntasRelacionadas,
+  ListaDePreguntasPorCategoria,
   Pregunta,
   RegistrarIntentoPreguntaRequest,
 } from '../models/index';
@@ -25,6 +26,8 @@ import {
     ExamenToJSON,
     GrupoPreguntasRelacionadasFromJSON,
     GrupoPreguntasRelacionadasToJSON,
+    ListaDePreguntasPorCategoriaFromJSON,
+    ListaDePreguntasPorCategoriaToJSON,
     PreguntaFromJSON,
     PreguntaToJSON,
     RegistrarIntentoPreguntaRequestFromJSON,
@@ -532,17 +535,17 @@ export class PreguntasApi extends runtime.BaseAPI {
     /**
      * Obtener las preguntas que pertenecen a una categoria dada
      */
-    async getPreguntasPorCategoriaRaw(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Pregunta>>> {
+    async getPreguntasPorCategoriaRaw(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListaDePreguntasPorCategoria>> {
         const requestOptions = await this.getPreguntasPorCategoriaRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PreguntaFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListaDePreguntasPorCategoriaFromJSON(jsonValue));
     }
 
     /**
      * Obtener las preguntas que pertenecen a una categoria dada
      */
-    async getPreguntasPorCategoria(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Pregunta>> {
+    async getPreguntasPorCategoria(requestParameters: GetPreguntasPorCategoriaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListaDePreguntasPorCategoria> {
         const response = await this.getPreguntasPorCategoriaRaw(requestParameters, initOverrides);
         return await response.value();
     }
