@@ -1,3 +1,4 @@
+import { TTipoPreguntas } from "../../../domain/enums/tipoPreguntas.enum";
 import { IPracticaRepository } from "../../../domain/repositories/practicaRepository.interface";
 import { IPreguntaRepository } from "../../../domain/repositories/preguntasRepository.interface";
 import { IPreguntasSessionSevice } from "../../../domain/signatures/PreguntasSessionSevice.interfcae";
@@ -30,7 +31,7 @@ export class GetPreguntasPractica implements IGetPreguntasPractica {
 		return {
 			idPractica: practica.id,
 			nombrePractica: practica.nombrePractica,
-			preguntas: await this.generarListaPreguntasService.generar(preguntas, idsDePagina)
+			preguntas: await this.generarListaPreguntasService.generar(preguntas, idsDePagina, TTipoPreguntas.PRACTICA)
 		}
 	}
 }

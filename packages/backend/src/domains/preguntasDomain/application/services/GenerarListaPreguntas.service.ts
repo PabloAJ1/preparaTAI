@@ -1,4 +1,5 @@
 import { Pregunta } from "../../domain/entities/Pregunta";
+import { TTipoPreguntas } from "../../domain/enums/tipoPreguntas.enum";
 import { ICategoriaDto } from "../dtos/categoria.dto";
 import { IPreguntaPobladaDto } from "../dtos/preguntaPoblada.dto";
 import { MapsPregunta } from "../mappers/mapDtoToEntityPregunta.mapper";
@@ -14,9 +15,9 @@ export class GenerarListaPreguntasService implements IGenerarListaPreguntasServi
 		private readonly categoriaAdapterService: ICategoriaAdapterService
 	){}
 
-	async generar(preguntas: Pregunta[], idsDePagina: string[]): Promise<IPreguntaPobladaDto[]> {
+	async generar(preguntas: Pregunta[], idsDePagina: string[], tipoPreguntas?: TTipoPreguntas): Promise<IPreguntaPobladaDto[]> {
 		const ordenadas = this.#ordenar(preguntas, idsDePagina);
-		const mezcladas = this.#mezclarRespuestas(ordenadas)
+		const mezcladas = this.#mezclarRespuestas(ordenadas, tipoPreguntas)
 		const categorizadas = await this.#categorizar(mezcladas)
 		return categorizadas;
 	}
@@ -25,8 +26,8 @@ export class GenerarListaPreguntasService implements IGenerarListaPreguntasServi
 		return this.mezclarPreguntasService.ordenarPorListaIds(preguntas, idsDePagina)
 	}
 
-	#mezclarRespuestas(preguntas: Pregunta[]): Pregunta[]{
-		return this.selectorRespuestasService.generar(preguntas)
+	#mezclarRespuestas(preguntas: Pregunta[], tipoPreguntas?: TTipoPreguntas): Pregunta[]{
+		return this.selectorRespuestasService.generar(preguntas, tipoPreguntas)
 	}
 
 	async #categorizar(preguntas: Pregunta[]): Promise<IPreguntaPobladaDto[]> {
