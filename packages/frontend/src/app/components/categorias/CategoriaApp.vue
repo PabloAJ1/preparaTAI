@@ -24,7 +24,7 @@ import { practicaApi } from '../../api/practica.wrapper';
 // Props para personalizar la página
 const props = defineProps<{
 	tipoCategoria: 'PRACTICA' | 'EXAMEN' | 'NORMAL' | 'GRUPOPREGUNTAS';
-	modo: 'practica' | 'examen' | 'repaso' | 'grupo';
+	modo: 'practica' | 'examen' | 'repaso' | 'grupo' | 'invertida';
 }>();
 
 const categoriasResumen = ref<CategoriaResumen[]>([]);

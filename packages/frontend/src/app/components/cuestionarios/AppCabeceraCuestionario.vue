@@ -65,7 +65,7 @@ const autoScroll = ref(true)
 
 const cabeceraStyle = computed(() => ({
 	'titulo-repaso': props.modo === 'repaso',
-	'titulo-practica': props.modo === 'practica',
+	'titulo-practica': props.modo === 'practica' || props.modo === 'invertida',
 	'titulo-examen': props.modo === 'examen',
 	'titulo-grupo': props.modo === 'grupo',
 }));

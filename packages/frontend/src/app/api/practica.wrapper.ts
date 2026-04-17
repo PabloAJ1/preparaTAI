@@ -13,4 +13,11 @@ export const practicaApi = {
 			limit,
 			seed,
 		}),
+	getInvertido: (id: string, page: number, limit: number, seed: number) => 
+		api.getPracticaByIdInvertida({
+			id,
+			page,
+			limit,
+			seed,
+		}),
 };

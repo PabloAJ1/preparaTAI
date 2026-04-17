@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 const props = defineProps<{
-  modo?: 'repaso' | 'practica' | 'examen' | 'grupo';
+  modo?: 'repaso' | 'practica' | 'examen' | 'grupo' | 'invertida';
 }>();
 
 const emit = defineEmits<{
@@ -40,6 +40,7 @@ watch(textoBusqueda, (valor) => {
 const titulo = computed(() => {
 	switch (props.modo) {
 		case 'practica':
+		case 'invertida':
 			return 'Ejercicios de Práctica';
 		case 'examen':
 			return 'Preguntas de Examenes';
@@ -51,7 +52,7 @@ const titulo = computed(() => {
 
 const cabeceraStyle = computed(() => ({
 	'tema-color-repaso': props.modo === 'repaso',
-	'tema-color-practica': props.modo === 'practica',
+	'tema-color-practica': props.modo === 'practica' || props.modo === 'invertida',
 	'tema-color-examen': props.modo === 'examen',
 	'tema-color-grupo': props.modo === 'grupo',
 }));

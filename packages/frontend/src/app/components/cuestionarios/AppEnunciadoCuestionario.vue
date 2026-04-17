@@ -39,7 +39,7 @@ const props = defineProps<{
 }>();
 const colorNumero = computed(() => ({
 	'tema-color-repaso': props.modo === 'repaso',
-	'tema-color-practica': props.modo === 'practica',
+	'tema-color-practica': props.modo === 'practica' || props.modo === 'invertida',
 	'tema-color-examen': props.modo === 'examen',
 	'tema-color-grupo': props.modo === 'grupo',
 }));

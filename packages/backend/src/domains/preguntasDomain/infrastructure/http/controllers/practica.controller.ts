@@ -61,6 +61,27 @@ export const makeHandleGetPreguntasPractica =
 		}
 	};
 
+export const makeHandleGetPreguntasPracticaInvetida =
+	(getPreguntasPracticaInvertidas: IGetPreguntasPractica) =>
+	async (req: Request, res: Response<TPractica>, next: NextFunction) => {
+		try {
+			const idPregunta = req.params.id;
+			const page = parseInt(req.query.page as string) || 1;
+			const limit = parseInt(req.query.limit as string) || 20;
+			const seed = parseInt(req.query.seed as string) || 0;
+			
+			const practica = await getPreguntasPracticaInvertidas.exec(
+				idPregunta,
+				page,
+				limit,
+				seed
+			);
+			res.status(200).json(MapPracticasController.toPracticaResponse(practica));
+		} catch (err) {
+			next(err);
+		}
+	};
+
 export const makeHandleGetAllWithEstadisticas =
 	(practicaGetAllWithEstadisticas: IGetListadoPracticasConEstadisticas) =>
 	async (_req: Request, res: Response<TCategoriaResumen[]>, next: NextFunction) => {
@@ -72,6 +93,8 @@ export const makeHandleGetAllWithEstadisticas =
 		}
 	};
 
+export const handleGetPreguntasPracticaInvetida =
+	makeHandleGetPreguntasPracticaInvetida(practica.get.invertidas);
 export const handleGetPreguntasPractica =
 	makeHandleGetPreguntasPractica(practica.get.preguntas);
 export const handleGetAllWithEstadisticas =

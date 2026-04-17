@@ -329,6 +329,33 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/practica/{id}/invertida": {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** Obtener una practica por id cambiando preguntas por respuestas */
+        get: operations["getPracticaByIdInvertida"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/practica/crearPractica": {
         parameters: {
             query?: never;
@@ -941,6 +968,36 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Listado de preguntas de la practica */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Practica"];
+                };
+            };
+        };
+    };
+    getPracticaByIdInvertida: {
+        parameters: {
+            query?: {
+                /** @description Número de página (empieza en 1) */
+                page?: number;
+                /** @description Número de preguntas por página */
+                limit?: number;
+                /** @description Semilla para randomizar las preguntas */
+                seed?: number;
+            };
+            header?: never;
+            path: {
+                /** @description el identificador de la practica */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Listado de preguntas de la practica invertida */
             200: {
                 headers: {
                     [name: string]: unknown;

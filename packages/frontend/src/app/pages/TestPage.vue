@@ -97,6 +97,15 @@ async function cargarPreguntas() {
 			);
 			preguntas = practica.preguntas
 			nombreCategoria.value = practica.nombrePractica
+		} else if(modo === "invertida"){
+			const practica = await practicaApi.getInvertido(
+				id,
+				page.value,
+				limit.value,
+				Number(seed),
+			);
+			preguntas = practica.preguntas
+			nombreCategoria.value = practica.nombrePractica
 		} else {
 			const ejercicio = await api.getPreguntasPorCategoria({
 				id,

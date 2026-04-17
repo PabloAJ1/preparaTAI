@@ -3,7 +3,8 @@ import {
 	handleCrearPractica,
 	handleMigrarPractica,
 	handleGetAllWithEstadisticas,
-	handleGetPreguntasPractica
+	handleGetPreguntasPractica,
+	handleGetPreguntasPracticaInvetida
 } from "../../http/controllers/practica.controller";
 
 export const practicaRoute: Router = Router();
@@ -23,6 +24,10 @@ practicaRoute
 practicaRoute
 	.route("/:id")
 	.get(handleGetPreguntasPractica as RequestHandler)
+	
+practicaRoute
+	.route("/:id/invertida")
+	.get(handleGetPreguntasPracticaInvetida as RequestHandler)
 
 export default practicaRoute;
 	

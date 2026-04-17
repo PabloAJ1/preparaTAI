@@ -45,12 +45,12 @@ export class PracticasMongoDBRepository implements IPracticaRepository {
 	}
 
 	#toEntity(doc: IPractica): Practica {
-		return Practica.crear({
-			idPractica: doc.idPractica,
-			nombrePractica: doc.nombrePractica,
-			respuestasCorrectas: new Map(
-				Object.entries(doc.respuestasCorrectas)
-			)
-	});
+			return Practica.crear({
+				idPractica: doc.idPractica,
+				nombrePractica: doc.nombrePractica,
+				respuestasCorrectas: new Map(
+					Object.entries(doc.respuestasCorrectas)
+				)
+		});
 	}
 }

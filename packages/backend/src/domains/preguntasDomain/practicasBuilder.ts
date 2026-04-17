@@ -11,6 +11,7 @@ import { PreguntasSessionRepositoryMongo } from "./infrastructure/mongo/reposito
 import { MezclarPreguntasService } from "./application/services/MezclarPreguntas.service";
 import { SelectorRespuestasService } from "./application/services/SelectorRespuestas.service";
 import { GenerarListaPreguntasService } from "./application/services/GenerarListaPreguntas.service";
+import { GetPreguntasPracticaInvertidas } from "./application/useCases/practicas/getByIdInvertido";
 
 export const practicasBuilder = () => {
 	const {
@@ -58,13 +59,21 @@ export const practicasBuilder = () => {
 		generarListaPreguntasService
 	)
 
+	const getPreguntasPracticaInvertidas = new GetPreguntasPracticaInvertidas(
+		preguntasRepositoryMongoDB,
+		practicasMongoDBRepository,
+		preguntasSessionSevice,
+		generarListaPreguntasService
+	)
+	
 	return { 
 		practica : {
 			crear,
 			migrar,
 			get: {
 				allWithEstadisticas,
-				preguntas: getPreguntasPractica
+				preguntas: getPreguntasPractica,
+				invertidas: getPreguntasPracticaInvertidas
 			}
 		}
 	}
