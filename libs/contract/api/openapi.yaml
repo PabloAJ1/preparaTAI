@@ -223,9 +223,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pregunta'
+                $ref: '#/components/schemas/ListaDePreguntasPorCategoria'
 
   /pregunta/estadisticas/reiniciar:
     get:
@@ -569,6 +567,22 @@ components:
         - respuestas
         - estadisticas
         - estado
+    
+    ListaDePreguntasPorCategoria:
+      type: object
+      properties:
+        idCategoriaPrincipal:
+          type: string
+        nombreCategoriaPrincipal:
+          type: string
+        preguntas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pregunta'
+      required:
+        - idCategoriaPrincipal
+        - nombreCategoriaPrincipal
+        - preguntas
 
     PreguntaNueva:
       type: object
@@ -604,7 +618,6 @@ components:
       required:
         - enunciado
         - respuesta
-
 
     PracticaNueva:
       type: object

@@ -1,8 +1,10 @@
 import { IPreguntaDto } from "../../../../../domains/preguntasDomain/application/dtos/pregunta.dto";
 import { components } from "../../../../../types/openapi"
+import { IListaPreguntasPobladasDto } from "../../../application/dtos/listaPreguntasPobladas.dto";
 import { IPreguntaPobladaDto } from "../../../application/dtos/preguntaPoblada.dto";
 
 type TPreguntas = components["schemas"]["Pregunta"]
+type TListaDePreguntasPorCategoria = components['schemas']['ListaDePreguntasPorCategoria'];
 
 export class MapPreguntaController {
 	static toType(dto: IPreguntaDto): TPreguntas {
@@ -51,6 +53,14 @@ export class MapPreguntaController {
 					tipo: c.tipo
 				}
 			})
+		}
+	}
+
+	static toTypoListaPoblada(dto: IListaPreguntasPobladasDto): TListaDePreguntasPorCategoria {
+		return {
+			idCategoriaPrincipal: dto.idCategoriaPrincipal,
+			nombreCategoriaPrincipal: dto.nombreCategoriaPrincipal,
+			preguntas: dto.listaPreguntas.map(this.toTypePoblado)
 		}
 	}
 

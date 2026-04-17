@@ -1,6 +1,7 @@
 import { IPreguntaRepository } from "../../domain/repositories/preguntasRepository.interface";
 import { IPreguntasSessionSevice } from "../../domain/signatures/PreguntasSessionSevice.interfcae";
-import { IPreguntaPobladaDto } from "../dtos/preguntaPoblada.dto";
+import { IListaPreguntasPobladasDto } from "../dtos/listaPreguntasPobladas.dto";
+import { ICategoriaAdapterService } from "../ports/categoriaAdapterService.interface";
 import { IGenerarListaPreguntasService } from "../signatures/GenerarListaPreguntasService.interface";
 import { IGetPreguntasPorCateogiraConSession } from "../signatures/getPreguntasPorCateogiraConSession.interface";
 
@@ -38,6 +39,7 @@ export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateog
 		private readonly preguntaRepository: IPreguntaRepository,
 		private readonly preguntasSessionSevice: IPreguntasSessionSevice,
 		private readonly generarListaPreguntasService: IGenerarListaPreguntasService,
+		private readonly getCategoria: ICategoriaAdapterService
 	){}
 
 	async exec(
@@ -45,13 +47,19 @@ export class GetPreguntasPorCateogiraConSesion implements IGetPreguntasPorCateog
 		page = 1, 
 		limit = 50,
 		seed = 0
-	): Promise<IPreguntaPobladaDto[]>{
+	): Promise<IListaPreguntasPobladasDto>{
 		const idsPreguntas = await this.preguntaRepository.getIdsPreguntasByCategoria(idCategoria);
 		const session = await this.preguntasSessionSevice.getOrCreate(seed, idsPreguntas)
 
 		const idsDePagina = session.obtenerPagina(page, limit);
 		const preguntas = await this.preguntaRepository.getVariasPreguntasPorIds(idsDePagina)
 
-		return this.generarListaPreguntasService.generar(preguntas, idsDePagina)
+		const categoria = (await this.getCategoria.getByIds([idCategoria]))[0]
+
+		return {
+			idCategoriaPrincipal: idCategoria,
+			nombreCategoriaPrincipal: categoria.nombreCategoria,
+			listaPreguntas: await this.generarListaPreguntasService.generar(preguntas, idsDePagina)
+		}
 	}
 }

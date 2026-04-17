@@ -1,5 +1,5 @@
-import { IPreguntaPobladaDto } from "../dtos/preguntaPoblada.dto";
+import { IListaPreguntasPobladasDto } from "../dtos/listaPreguntasPobladas.dto";
 
 export interface IGetPreguntasPorCateogiraConSession {
-	exec(idCategoria: string, page?: number, limit?: number, seed?: number): Promise<IPreguntaPobladaDto[]>
+	exec(idCategoria: string, page?: number, limit?: number, seed?: number): Promise<IListaPreguntasPobladasDto>
 }

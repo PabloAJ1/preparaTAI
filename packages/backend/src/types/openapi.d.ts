@@ -183,7 +183,8 @@ export interface paths {
         /** Obtener categorias */
         get: operations["getAllCategorias"];
         put?: never;
-        post?: never;
+        /** Guardar una categoria */
+        post: operations["createCategoria"];
         delete?: never;
         options?: never;
         head?: never;
@@ -388,6 +389,9 @@ export interface components {
             nombre: string;
             tipo: string;
         };
+        CategoriaNueva: {
+            nombre: string;
+        };
         CategoriaResumen: {
             /** @example 0000-00000-0000000-0000 */
             id: string;
@@ -415,6 +419,11 @@ export interface components {
             respuestas: components["schemas"]["Respuesta"][];
             categorias?: components["schemas"]["Categoria"][];
             estadisticas: components["schemas"]["Estadistica"];
+        };
+        ListaDePreguntasPorCategoria: {
+            idCategoriaPrincipal: string;
+            nombreCategoriaPrincipal: string;
+            preguntas: components["schemas"]["Pregunta"][];
         };
         PreguntaNueva: {
             enunciado: string;
@@ -716,7 +725,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Pregunta"][];
+                    "application/json": components["schemas"]["ListaDePreguntasPorCategoria"];
                 };
             };
         };
@@ -755,6 +764,30 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Categoria"][];
+                };
+            };
+        };
+    };
+    createCategoria: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CategoriaNueva"];
+            };
+        };
+        responses: {
+            /** @description Categoria guardada con exito */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Categoria"];
                 };
             };
         };
@@ -913,7 +946,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Practica"][];
+                    "application/json": components["schemas"]["Practica"];
                 };
             };
         };
