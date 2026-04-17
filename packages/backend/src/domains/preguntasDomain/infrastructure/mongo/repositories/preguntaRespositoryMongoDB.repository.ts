@@ -25,7 +25,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 	async getNumeroPreguntasAciertosYFallosPorGrupoPreguntas(
 		idsPreguntas: string[]
 	): Promise<{ numeroPreguntas: number; aciertos: number; fallos: number; }> {
-		const query = { idPregunta: { $in: [idsPreguntas] }}
+		const query = { idPregunta: { $in: idsPreguntas }}
 		return await this.#preguntasConEstadisticas(query);
 	}
 
@@ -226,6 +226,7 @@ export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 				}
 			}
 		]);
+
 		return doc[0] || {
 			numeroPreguntas: 0,
 			aciertos: 0,
