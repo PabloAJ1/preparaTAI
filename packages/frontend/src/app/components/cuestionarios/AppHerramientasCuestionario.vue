@@ -31,7 +31,6 @@
 		<AppEditPreguntaCuestionario 
 			v-if="preguntaEditando" 
 			:pregunta-editando="preguntaEditando" 
-			@update="preguntaEditando = $event"
 		/>
 	</AppEditPreguntaModal>
 
@@ -103,14 +102,14 @@ function revisarPregunta() {
 // Guardar cambios
 async function guardarPregunta() {
 	if (!preguntaEditando.value) return;
+	console.log(preguntaEditando.value);
 
 	await api.updatePreguntaById({
 		id: props.pregunta.id,
 		pregunta: preguntaEditando.value
 	})
 
-	Object.assign(props.pregunta, preguntaEditando.value);
-	// Cerrar modal
+	Object.assign(props.pregunta, { ...preguntaEditando.value });
 	cerrarModalEdit();
 }
 </script>

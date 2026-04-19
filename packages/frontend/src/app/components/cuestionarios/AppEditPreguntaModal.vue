@@ -50,6 +50,8 @@ function handleKey(e: KeyboardEvent) {
 	if (e.key === 'Escape') cerrar();
 }
 
+console.log("Caracoli");
+
 onMounted(() => window.addEventListener('keydown', handleKey));
 onUnmounted(() => window.removeEventListener('keydown', handleKey));
 </script>

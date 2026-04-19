@@ -3,7 +3,7 @@
 		<!-- Estado -->
 		<div id="estado" class="form-group">
 			<label for="estado">Estado</label>
-			<select v-model="localPregunta.estado">
+			<select v-model="pregunta.estado">
 				<option value="VALIDADO">Validado</option>
 				<option value="REVISADO">Revisado</option>
 				<option value="GPT">GPT</option>
@@ -15,14 +15,14 @@
 
 		<!-- Tags -->
 		<AppEtiquetasChips 
-			v-model="localPregunta.categorias"
-			:categorias-existentes="localPregunta.categorias"
+			v-model="pregunta.categorias"
+			:categorias-existentes="pregunta.categorias"
 		/>
 
 		<!-- Enunciado -->
 		<div id="enunciado" class="form-group">
 			<label for="enunciado">Enunciado</label>
-			<textarea v-model="localPregunta.enunciado" rows="3" placeholder="Escribe el enunciado de la pregunta..." />
+			<textarea v-model="pregunta.enunciado" rows="3" placeholder="Escribe el enunciado de la pregunta..." />
 		</div>
 
 		<!-- Codigo -->
@@ -31,14 +31,14 @@
 			class="form-group"
 		>
 			<label for="codigo">Codigo</label>
-			<textarea v-model="localPregunta.codigo" rows="3" placeholder="Codigo" @keydown="insertarTab"/>
+			<textarea v-model="pregunta.codigo" rows="3" placeholder="Codigo" @keydown="insertarTab"/>
 		</div>
 
 		<!-- Respuestas -->
 		<div id="respuestas" class="form-group">
 			<label for="respuestas">Respuestas</label>
 			<div class="respuestas-list">
-				<div v-for="(r, i) in localPregunta.respuestas" :key="i" class="respuesta-card"
+				<div v-for="(r, i) in pregunta.respuestas" :key="i" class="respuesta-card"
 					:class="{ correcta: r.correcta }">
 					<div class="respuesta-content">
 						<span 
@@ -65,8 +65,8 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue';
-import { Pregunta } from '@preparatai/api-client';
+import { computed, ref, nextTick } from 'vue';
+import type { Pregunta } from '@preparatai/api-client';
 import AppEtiquetasChips from './AppEtiquetasChips.vue';
 
 const props = defineProps<{
@@ -90,53 +90,43 @@ const crearPreguntaVacia = (): Pregunta => ({
 	id: 'nuevo'
 });
 
-// Copia local para edición
-const localPregunta = ref<Pregunta>(
-	props.preguntaEditando
-		? {
-				...props.preguntaEditando,
-				respuestas: props.preguntaEditando.respuestas.map(r => ({ ...r })),
-		  }
-		: crearPreguntaVacia()
-);
+// estado interno SOLO para modo creación
+const localPregunta = ref<Pregunta>(crearPreguntaVacia());
 
-// Sincronizar si cambia el prop
-watch(
-    localPregunta, 
-    (newValue) => {
-        emit('update', newValue);
-    }, 
-    { deep: true } // Importante para detectar cambios en arrays de respuestas
-);
-
-watch(
-	() => props.preguntaEditando,
-	(newVal) => {
-		if (newVal) {
-			localPregunta.value = {
-				...newVal,
-				respuestas: newVal.respuestas.map(r => ({ ...r })),
-			};
+// 🔑 fuente única
+const pregunta = computed({
+	get: () => props.preguntaEditando ?? localPregunta.value,
+	set: (val: Pregunta) => {
+		if (props.preguntaEditando) {
+			emit('update', val); // modo edición
 		} else {
-			localPregunta.value = crearPreguntaVacia();
+			localPregunta.value = val; // modo creación
+			emit('update', val); // importante para el padre en create
 		}
-	},
-	{ immediate: true }
-);
+	}
+});
+
+// helpers para mutaciones reactivas
+function updatePregunta() {
+	pregunta.value = { ...pregunta.value };
+}
 
 // Funciones
 function seleccionarCorrecta(index: number) {
-	localPregunta.value.respuestas.forEach((r, i) => {
+	pregunta.value.respuestas.forEach((r, i) => {
 		r.correcta = i === index;
 	});
+	updatePregunta();
 }
 
 function agregarRespuesta() {
-	localPregunta.value.respuestas.push({ enunciado: '', correcta: false, id: 'nuevo' });
+	pregunta.value.respuestas.push({ enunciado: '', correcta: false, id: 'nuevo' });
+	updatePregunta();
 }
 
 function eliminarRespuesta(index: number) {
-	localPregunta.value.respuestas.splice(index, 1);
+	pregunta.value.respuestas.splice(index, 1);
+	updatePregunta();
 }
 
 const insertarTab = (event: KeyboardEvent) => {
@@ -151,10 +141,12 @@ const insertarTab = (event: KeyboardEvent) => {
 
 		const tabChar = '\t';
 
-		localPregunta.value.codigo = 
-			(localPregunta.value.codigo ?? '').substring(0, start) +
+		pregunta.value.codigo = 
+			(pregunta.value.codigo ?? '').substring(0, start) +
 			tabChar +
-			(localPregunta.value.codigo ?? '').substring(end);
+			(pregunta.value.codigo ?? '').substring(end);
+
+		updatePregunta();
 
 		nextTick(() => {
 			el.selectionStart = el.selectionEnd = start + tabChar.length;

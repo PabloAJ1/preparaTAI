@@ -1,8 +1,8 @@
 
 Back:
     - Cambiar la funcion de generar preguntas A-B para poder generar cualquier combinacion en funcion de varias listas
-
+    - Cuando se crea una practica con un nombre que ya existe, vuelve a crear otra practica en vez de asociar las preguntas a la practica existente
+    - Se se da varias veces a guardar, no comprueba si la pregunta existe y la puede crear varias veces
 Front:
-    - Implementar la creacion de preguntas
     - En la edicion de pregutnas, poder meter codigo cuando la pregunta inicialmente no tienen codigo
-    - Poder agregar / eliminar categorias al editar las preguntas
+    - Cuando se creen preguntas / practicas, deberia borrar el formulario y dar un mensaje de confirmacion
