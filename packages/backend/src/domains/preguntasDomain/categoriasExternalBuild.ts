@@ -2,7 +2,7 @@ import { BuscarOCrearCategoria } from "../categoriasDomain/application/useCases/
 import { CreateListOfCategorias } from "../categoriasDomain/application/useCases/createListOfCategorias";
 import { GetAllCategorias } from "../categoriasDomain/application/useCases/getAllCategorias";
 import { GetCategoriasByIds } from "../categoriasDomain/application/useCases/getCategoriasByIds";
-import { GetCategoriasByTipo } from "../categoriasDomain/application/useCases/getCategoriasByTipo.interface";
+import { GetCategoriasByTipo } from "../categoriasDomain/application/useCases/getCategoriasByTipo";
 import { GetListOfCategorias } from "../categoriasDomain/application/useCases/getListOfCategorias";
 import { CategoriaRepositoryMongo } from "../categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository";
 import { CategoriaAdaperServive } from "./infrastructure/adapters/ports/categoriasAdapter.service";

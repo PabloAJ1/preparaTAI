@@ -1,9 +1,15 @@
 <template>
 	<div class="cuerpo">
-		<AppEditPreguntaCuestionario @update="nuevaPregunta = $event" />
+		<AppEditPreguntaCuestionario
+			:pregunta-editando="nuevaPregunta"
+			@update="nuevaPregunta = $event"
+		/>
 		
-		<button class="btn btn-save" @click="guardarPregunta">
-			<i class="fa-regular fa-floppy-disk"></i> Guardar
+		<button 
+			class="btn btn-save" 
+			@click="guardarPregunta"
+		>
+			<i class="fa-regular fa-floppy-disk" /> Guardar
 		</button>
 	</div>
 </template>
@@ -13,12 +19,27 @@ import { Configuration, Pregunta, PreguntasApi } from '@preparatai/api-client';
 import AppEditPreguntaCuestionario from '../components/cuestionarios/AppEditPreguntaCuestionario.vue';
 import { ref } from 'vue';
 
-const nuevaPregunta = ref<Pregunta | null>(null);
 const api = new PreguntasApi(
 	new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL })
 );
 
+const nuevaPregunta = ref<Pregunta>({
+	estado: 'REVISADO',
+	enunciado: '',
+	codigo: '',
+	respuestas: [
+		{ enunciado: '', correcta: false, id: 'nuevo-1' },
+		{ enunciado: '', correcta: false, id: 'nuevo-2' },
+		{ enunciado: '', correcta: false, id: 'nuevo-3' },
+		{ enunciado: '', correcta: false, id: 'nuevo-4' }
+	],
+	categorias: [],
+	estadisticas: { aciertos: 0, fallos: 0, total: 0 },
+	id: 'nuevo'
+});
+
 async function guardarPregunta() {
+	console.log(nuevaPregunta);
 	if (!nuevaPregunta.value) return;
 
 	await api.createPregunta({

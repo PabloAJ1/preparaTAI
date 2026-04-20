@@ -31,7 +31,7 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 		getAllCategoriasPort,
 		crateListOfCategorias,
 		getListOfCategorias,
-		buscarOCrearCategoriaMock
+		buscarOCrearCategoriaMock,
 	)
 	const categoriasExternasService = new CategoriasExternasService(categoriaAdapertService)
 	const generadorDePreguntasDePracticaService = new GeneradorDePreguntasDePracticaService()

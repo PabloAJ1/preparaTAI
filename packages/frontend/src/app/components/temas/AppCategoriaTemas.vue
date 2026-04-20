@@ -3,14 +3,18 @@
 		<div class="categoria-card">
 			<div class="categoria-card-body">
 				<div class="categoria-header">
-					<div class="categoria-icon" :class="iconoClase">
+					<div 
+						class="categoria-icon" 
+						:class="iconoClase"
+					>
 						<i :class="icono" />
 					</div>
 
 					<h5
 						class="categoria-title"
 						:title="categoria.nombre"
-						:aria-label="categoria.nombre">
+						:aria-label="categoria.nombre"
+					>
 						{{ categoria.nombre }}
 					</h5>
 				</div>
@@ -22,12 +26,12 @@
 
 					<div class="categoria-stats">
 						<div class="stat stat-ok">
-							<i class="fa-solid fa-check"></i>
+							<i class="fa-solid fa-check" />
 							{{ categoria.estadisticas.aciertos }}
 						</div>
 
 						<div class="stat stat-ko">
-							<i class="fa-solid fa-xmark"></i>
+							<i class="fa-solid fa-xmark" />
 							{{ categoria.estadisticas.fallos }}
 						</div>
 					</div>
@@ -41,7 +45,8 @@
 							name: modo !== 'grupo' ? 'TestByCategoria' : 'TestByGrupo',
 							params: { id: categoria.id, modo: modo },
 						}"
-						class="categoria-link">
+						class="categoria-link"
+					>
 						Comenzar
 						<i class="fa-solid fa-arrow-right categoria-link-icon" />
 					</router-link>
@@ -55,13 +60,17 @@
 							name: 'TestByCategoria',
 							params: { id: categoria.id, modo: 'invertida' },
 						}"
-						class="categoria-link">
+						class="categoria-link"
+					>
 						Invertida
 						<i class="fa-solid fa-arrow-left categoria-link-icon" />
 					</router-link>
 
-					<div class="categoria-percent" :style="{ color: colorPorcentaje }">
-						<i class="fa-solid fa-chart-simple"></i>
+					<div 
+						class="categoria-percent" 
+						:style="{ color: colorPorcentaje }"
+					>
+						<i class="fa-solid fa-chart-simple" />
 						{{ porcentajeAcierto }}%
 					</div>
 				</div>

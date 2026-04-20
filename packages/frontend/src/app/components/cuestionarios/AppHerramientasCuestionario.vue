@@ -37,8 +37,8 @@
 	<!-- Modal de warning -->
 	<AppWarningModal :visible="mostrarModalWarning" titulo="Advertencia" @close="cerrarModalWarning">
 		<p>
-			Esta pregunta ha sido corregida por una IA, toma precauciones a la hora de
-			tomarla como fuente de verdad.
+			Esta pregunta ha sido corregida por una IA o está Marcada para Revisar, 
+			toma precauciones a la hora de tomarla como fuente de verdad.
 		</p>
 		<p>Si crees que está mal, repórtala. Gracias</p>
 	</AppWarningModal>
@@ -61,7 +61,7 @@ const api = new PreguntasApi(
 );
 
 // Computed
-const mostrarWarning = computed(() => props.pregunta.estado === 'GPT');
+const mostrarWarning = computed(() => props.pregunta.estado === 'GPT' || props.pregunta.estado === 'Marcado para revisar');
 
 // Warning modal
 const mostrarModalWarning = ref(false);

@@ -1,6 +1,8 @@
 <template>
 	<section>
-		<div class="sidebar-header mt-2">Administración</div>
+		<div class="sidebar-header mt-2">
+			Administración
+		</div>
 
 		<router-link
 			to="/gestionDB"
@@ -20,7 +22,7 @@
 			to="/crear/practica"
 			class="list-group-item list-group-item-action list-group-item-dark"
 		>
-			<i class="fa-solid fa-plus-circle" /> Añadir Nueva Practica
+			<i class="fa-solid fa-square-plus" /> Añadir Nueva Practica
 		</router-link>
 	</section>
 </template>

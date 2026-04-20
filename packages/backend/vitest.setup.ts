@@ -7,11 +7,7 @@ import * as mongooseDev from "./src/shared/infrastructure/db/mongo/mongo.connect
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const envPath = path.resolve(__dirname, 'environment/.env.dev');
-
-console.log(__dirname);
-console.log(envPath);
 dotenv.config({ path: envPath, override: true });
-
 console.info('ENVIROMENT cargado en setupFiles:', process.env.ENVIROMENT);
 
 let mongoServer: MongoMemoryServer;

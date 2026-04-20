@@ -1,7 +1,7 @@
-import { IPreguntaRepository } from '../../domain/repositories/preguntasRepository.interface';
-import { IPreguntaDto } from '../dtos/pregunta.dto';
-import { MapsPregunta } from '../mappers/mapDtoToEntityPregunta.mapper';
-import { ICrearPregunta } from '../signatures/createPregunta.interface';
+import { IPreguntaRepository } from '../../../domain/repositories/preguntasRepository.interface';
+import { IPreguntaDto } from '../../dtos/pregunta.dto';
+import { MapsPregunta } from '../../mappers/mapDtoToEntityPregunta.mapper';
+import { ICrearPregunta } from '../../signatures/createPregunta.interface';
 
 export class CrearPregunta implements ICrearPregunta {
 	constructor(private readonly preguntaRepository: IPreguntaRepository) {}

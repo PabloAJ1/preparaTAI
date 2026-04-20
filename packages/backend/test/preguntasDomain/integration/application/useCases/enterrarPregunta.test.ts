@@ -23,14 +23,12 @@ describe('#Test > integration > domains > preguntasDomain > application > usesCa
 
 	test('deberia leer el fichero y devolver las SQL', async () => {
 		//Pre condiciones
-		expect(pregunta).toHaveProperty("descartada")
-		expect(pregunta.descartada).toBeFalsy();
+		expect(pregunta.estado).not.toBe("Enterrado");
 		
 		await enterrarPreguntaUseCase.exec(pregunta.id);
 		const preguntaEnterrada = await getPreguntaByIdUseCase.exec(pregunta.id)
 
-		expect(preguntaEnterrada).toHaveProperty("descartada")
-		expect(preguntaEnterrada.descartada).toBeTruthy();
+		expect(preguntaEnterrada.estado).toBe("Enterrado");
 	});
 
 });

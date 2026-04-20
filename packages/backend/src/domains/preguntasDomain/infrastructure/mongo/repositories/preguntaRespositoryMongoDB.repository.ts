@@ -10,7 +10,7 @@ import { chunkArrayService } from '../services/chunkPreguntas.service';
 export class PreguntaRespositoryMongoDB implements IPreguntaRepository {
 	async getIdsPreguntasByCategoria(idCategoria: string): Promise<string[]> {
 		const result = await preguntaModel
-			.find({ categorias: { $in: [idCategoria] } }, "idPregunta")
+			.find({ categorias: { $in: [idCategoria] }, estado: { $ne: "Enterrado" } }, "idPregunta")
 		return result.map(r => r.idPregunta);
 	}
 

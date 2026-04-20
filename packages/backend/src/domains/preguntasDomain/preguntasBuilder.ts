@@ -16,7 +16,7 @@ import { DetectorLenguajeCodigo } from './infrastructure/adapters/ports/detector
 import { FormateadorCodigoService } from '../grupoPreguntas/domain/services/codeFormat.service';
 import { GetPreguntasPorCateogiraConSesion } from './application/useCases/getPreguntasPorCateogiraConPaginacionYSesion';
 import { PreguntasSessionRepositoryMongo } from './infrastructure/mongo/repositories/preguntasSessionRepositoryMongo.repository';
-import { CrearPregunta } from './application/useCases/createPregunta';
+import { CrearPregunta } from './application/useCases/preguntas/create';
 import { categoriasExternalBuild } from './categoriasExternalBuild';
 import { PreguntaSessionService } from './domain/services/PreguntaSession.service';
 import { GenerarListaPreguntasService } from './application/services/GenerarListaPreguntas.service';

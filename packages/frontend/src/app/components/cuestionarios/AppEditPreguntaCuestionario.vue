@@ -4,11 +4,11 @@
 		<div id="estado" class="form-group">
 			<label for="estado">Estado</label>
 			<select v-model="pregunta.estado">
-				<option value="VALIDADO">Validado</option>
-				<option value="REVISADO">Revisado</option>
+				<option value="Validado">Validado</option>
+				<option value="Revisado">Revisado</option>
 				<option value="GPT">GPT</option>
-				<option value="ENTERRADO">Enterrado</option>
-				<option value="MARCADO">Marcado para revisar</option>
+				<option value="Enterrado">Enterrado</option>
+				<option value="Marcado para revisar">Marcado para revisar</option>
 				<!-- añade más opciones según tus necesidades -->
 			</select>
 		</div>

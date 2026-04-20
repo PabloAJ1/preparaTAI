@@ -1,8 +1,9 @@
-import { test, expect, describe } from 'vitest';
+import { test, expect, describe, vi } from 'vitest';
 import { CategoriaRepositoryMongo } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/categoriaRepositoryMongo.repository';
 import { CategoriasExternalAtlasService } from '../../../../../src/domains/categoriasDomain/infrastructure/atlas/services/categoriasExternalAtlas.service';
 import { CategoriasSyncService } from '../../../../../src/domains/categoriasDomain/infrastructure/adapters/ports/categoriasSync.service';
 import { InicializarCategorias } from '../../../../../src/domains/categoriasDomain/application/useCases/inicializarCategorias';
+import { GestionBDCategoriasRepositoryMongoDB } from '../../../../../src/domains/categoriasDomain/infrastructure/mongo/repositories/gestionBDCategoriasRepositoryMongoDB';
 
 describe('#Test > integration > domains > categoriasDomain > application > usesCases > inicializarCategorias ... ', () => {
 	const categoriaMongRepository = new CategoriaRepositoryMongo();
@@ -10,10 +11,12 @@ describe('#Test > integration > domains > categoriasDomain > application > usesC
 	const portCategoriasSync = new CategoriasSyncService(
 		getCategoriasFromAtlas
 	)
+	const getionDBService = new GestionBDCategoriasRepositoryMongoDB('');
 
 	const inicializarCategoriasUseCase = new InicializarCategorias(
 		portCategoriasSync,
-		categoriaMongRepository
+		categoriaMongRepository,
+		getionDBService
 	)
 
 	test('no deberia devolver ningun error, este test lo hacemos sin borrar la db', async () => {

@@ -10,7 +10,8 @@ export class MapsPregunta {
 	public static toEntityNueva(dto: IPreguntaDto): Pregunta {
 		return Pregunta.crear({
 			enunciado: ContenidoPregunta.crearPregunta({
-				enunciado: dto.enunciado
+				enunciado: dto.enunciado,
+				codigo: dto.codigo ? CodigoVo.crearDesdeProps({codigo: dto.codigo}) : undefined
 			}),
 			categorias: dto.categorias ?? [],
 			respuestas: dto.respuestas.map((r) => {
