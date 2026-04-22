@@ -25,13 +25,22 @@ export class GetPreguntasPractica implements IGetPreguntasPractica {
 		const idsPreguntas = [...practica.relacionPreguntasRespuestas.keys()]
 		const session = await this.preguntasSessionSevice.getOrCreate(seed, idsPreguntas)
 
+		const todasLasPreguntas = await this.preguntaRepository.getVariasPreguntasPorIds(idsPreguntas)
+
+		const preguntasGeneradas = await this.generarListaPreguntasService.generar(
+			todasLasPreguntas,
+			idsPreguntas,
+			TTipoPreguntas.PRACTICA
+		)
+
 		const idsDePagina = session.obtenerPagina(page, limit);
-		const preguntas = await this.preguntaRepository.getVariasPreguntasPorIds(idsDePagina)
+
+		const preguntasPagina = preguntasGeneradas.filter(p => idsDePagina.includes(p.id))
 
 		return {
 			idPractica: practica.id,
 			nombrePractica: practica.nombrePractica,
-			preguntas: await this.generarListaPreguntasService.generar(preguntas, idsDePagina, TTipoPreguntas.PRACTICA)
-		}
+			preguntas: preguntasPagina
+		};
 	}
 }
