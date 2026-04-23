@@ -1,6 +1,5 @@
 import { TPreguntasSession } from '../types/preguntasSession.type';
 import { v7 as uuid } from 'uuid';
-import seedrandom from 'seedrandom';
 
 export class PreguntaSession {
 	#props: TPreguntasSession;
