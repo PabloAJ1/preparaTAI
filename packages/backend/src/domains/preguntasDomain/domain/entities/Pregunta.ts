@@ -21,7 +21,7 @@ export class Pregunta {
 
 	get respuestaCorrecta(): RespuestaVo {
 		const respuesta = this.respuestas.find((r) => r.isCorrect);
-		if(!respuesta) throw new Error("La pregunta no contiene una respuesta correcta")
+		if(!respuesta) throw new Error("La pregunta no contiene una respuesta correcta. Id pregunta: " + this.idPregunta)
 		return respuesta;
 	}
 
