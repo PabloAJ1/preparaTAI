@@ -3,6 +3,7 @@ import { IPracticaRepository } from "../../../domain/repositories/practicaReposi
 import { IPreguntaRepository } from "../../../domain/repositories/preguntasRepository.interface";
 import { IPreguntasSessionSevice } from "../../../domain/signatures/PreguntasSessionSevice.interfcae";
 import { IPracticaPobladaDto } from "../../dtos/practicaPoblada.dto";
+import { IPreguntaPobladaDto } from "../../dtos/preguntaPoblada.dto";
 import { IGenerarListaPreguntasService } from "../../signatures/GenerarListaPreguntasService.interface";
 import { IGetPreguntasPractica } from "../../signatures/getPracticaById.interface";
 
@@ -29,13 +30,17 @@ export class GetPreguntasPractica implements IGetPreguntasPractica {
 
 		const preguntasGeneradas = await this.generarListaPreguntasService.generar(
 			todasLasPreguntas,
-			idsPreguntas,
+			session.listaPreguntasId,
 			TTipoPreguntas.PRACTICA
 		)
 
 		const idsDePagina = session.obtenerPagina(page, limit);
 
-		const preguntasPagina = preguntasGeneradas.filter(p => idsDePagina.includes(p.id))
+		const mapa = new Map(preguntasGeneradas.map(p => [p.id, p]));
+
+		const preguntasPagina = idsDePagina
+			.map(id => mapa.get(id))
+			.filter((p): p is IPreguntaPobladaDto  => p !== undefined);
 
 		return {
 			idPractica: practica.id,
