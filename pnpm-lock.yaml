@@ -142,7 +142,7 @@ importers:
         specifier: ^1.26.6
         version: 1.26.6
       '@types/seedrandom':
-        specifier: 3.0.8
+        specifier: ^3.0.8
         version: 3.0.8
       '@typescript-eslint/parser':
         specifier: ^7.18.0
